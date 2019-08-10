@@ -19,8 +19,9 @@
             <VideoView
                 android:id="@+id/video"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
+                android:layout_height="200dp"
+                android:minHeight="100dp"
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/image"

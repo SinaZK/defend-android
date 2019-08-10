@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +24,8 @@ public class NewsActivity extends Activity {
     ImageView image;
     VideoView videoView;
     News news;
+
+    private String TAG = "_News";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,10 @@ public class NewsActivity extends Activity {
     }
 
     private void prepareVideo() {
+        Log.i(TAG, "Preparing video");
         if (!news.hasVideo()) return;
+
+        Log.i(TAG, "has video!!!");
 
         Uri video = Uri.parse(news.getVideoUrl());
         videoView.setVideoURI(video);
@@ -74,5 +80,6 @@ public class NewsActivity extends Activity {
                 videoView.start();
             }
         });
+        videoView.start();
     }
 }
