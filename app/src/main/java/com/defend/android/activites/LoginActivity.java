@@ -1,12 +1,15 @@
 package com.defend.android.activites;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.utils.ResourceManager;
 
@@ -31,5 +34,18 @@ public class LoginActivity extends Activity {
 
     private void initUI() {
         ResourceManager.getInstance().decorateButton(loginButton, Color.RED);
+
+        newTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSignUpActivity();
+            }
+        });
+    }
+
+    private void startSignUpActivity() {
+        Intent intent = new Intent(MyApp.getInstance(), SignUpActivity.class);
+        MyApp.getInstance().startActivity(intent);
+        finish();
     }
 }
