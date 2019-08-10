@@ -4,6 +4,7 @@ package com.defend.android.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,11 @@ import android.widget.ProgressBar;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.defend.android.MyApp;
 import com.defend.android.Network.AuthObjectRequest;
+import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
+import com.defend.android.adapters.NewsListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.NewsManager;
 
@@ -33,6 +37,7 @@ public class NewsFragment extends Fragment {
     private RecyclerView recyclerView;
     private SwipeRefreshLayout refreshLayout;
     private ProgressBar progressBar;
+    private NewsListAdapter adapter;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -47,6 +52,12 @@ public class NewsFragment extends Fragment {
         progressBar = view.findViewById(R.id.progress);
         recyclerView = view.findViewById(R.id.recycler_view);
         refreshLayout = view.findViewById(R.id.refresh);
+
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MyApp.getInstance());
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new NewsListAdapter();
+        recyclerView.setAdapter(adapter);
 
         NewsManager.getInstance().clearNews();
         sendListRequest();
@@ -74,12 +85,13 @@ public class NewsFragment extends Fragment {
                 setLoading(false);
             }
         });
+        NetworkManager.getInstance().sendRequest(request);
     }
 
     private void onSuccess(JSONArray result) {
         NewsManager.getInstance().addNews(result);
         page ++;
-
+        adapter.notifyDataSetChanged();
     }
 
     private void setLoading(boolean isLoading) {

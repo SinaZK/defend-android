@@ -24,4 +24,8 @@ public class NewsManager {
             news.add(_new);
         }
     }
+
+    public ArrayList<News> getNews() {
+        return news;
+    }
 }
