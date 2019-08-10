@@ -7,6 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!--Main drawer-->
     <string name="menu_home">خانه</string>
     <string name="menu_news">اخبار</string>
     <string name="menu_books">خرید کتاب</string>
@@ -30,8 +31,5 @@
     <string name="sign_error_user_short">نام کاربری حداقل ۶ حرف باشد</string>
     <string name="sign_error_user_exist">نام کاربری قبلا انتخاب شده است.</string>
     <string name="sign_success">ثبت نام با موفقیت انجام شد.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
