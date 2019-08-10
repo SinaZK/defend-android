@@ -3,6 +3,7 @@ package com.defend.android.activites;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,6 +27,8 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    String TAG = "_MAIN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +78,12 @@ public class MainActivity extends AppCompatActivity
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+                Log.i(TAG, "success " + response.toString());
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.i(TAG, "failed " + error.toString());
             }
         });
         NetworkManager.getInstance().sendRequest(request);
