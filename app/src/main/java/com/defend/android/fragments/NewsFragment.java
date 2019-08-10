@@ -62,6 +62,15 @@ public class NewsFragment extends Fragment {
         NewsManager.getInstance().clearNews();
         sendListRequest();
 
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                page = 1;
+                sendListRequest();
+                NewsManager.getInstance().clearNews();
+            }
+        });
+
         return view;
     }
 
@@ -73,6 +82,7 @@ public class NewsFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 setLoading(false);
+                refreshLayout.setRefreshing(false);
                 try {
                     onSuccess(response.getJSONArray("results"));
                 } catch (JSONException e) {
@@ -83,6 +93,7 @@ public class NewsFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 setLoading(false);
+                refreshLayout.setRefreshing(false);
             }
         });
         NetworkManager.getInstance().sendRequest(request);
