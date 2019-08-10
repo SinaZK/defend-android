@@ -27,8 +27,8 @@
     <string name="sign_pass_hint">رمز عبور</string>
     <string name="sign_pass2_hint">تکرار رمز عبور</string>
     <string name="sign_error_pass_short">کلمه‌ی عبور حداقل ۶ کاراکتر باشد.</string>
-    <string name="sign_error_pass_not_match">کلمه‌‌های عبور با تفاوت دارند!</string>
-    <string name="sign_error_user_short">نام کاربری حداقل ۴ حرف باشد</string>
+    <string name="sign_error_pass_not_match">کلمه‌‌های عبور با هم تفاوت دارند!</string>
+    <string name="sign_error_user_short">نام کاربری حداقل ۶ حرف باشد</string>
     <string name="sign_error_user_exist">نام کاربری قبلا انتخاب شده است.</string>
     <string name="sign_success">ثبت نام با موفقیت انجام شد.</string>
 

@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
-        NetworkManager.getInstance().init(this);
-        sendRequest();
     }
 
     @Override
@@ -71,22 +68,6 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
-
-    public void sendRequest() {
-        String url = Constants.API_URL + Constants.API_SIGN_UP;
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(), new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i(TAG, "success " + response.toString());
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i(TAG, "failed " + error.toString());
-            }
-        });
-        NetworkManager.getInstance().sendRequest(request);
     }
 
     @Override
