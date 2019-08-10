@@ -39,9 +39,10 @@
         android:layout_marginRight="80dp"
         android:layout_marginLeft="80dp"
         android:layout_below="@id/passText"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="80dp"
         android:text="@string/login_btn"
-        android:textSize="25sp" />
+        android:textSize="20dp"
+        tools:ignore="SpUsage" />
 
     <TextView
         android:id="@+id/new_user_text"
@@ -49,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/button"
         android:layout_centerHorizontal="true"
-        android:textSize="26dp"
+        android:textSize="18dp"
         android:layout_marginTop="10dp"
         tools:ignore="SpUsage"
         android:textColor="@android:color/holo_blue_dark"
