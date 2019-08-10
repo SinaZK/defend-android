@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activites.LoginActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/userText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="140dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginLeft="90dp"
+        android:hint="@string/login_user_hint"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/passText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:layout_marginRight="90dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="40dp"
+        android:hint="@string/login_pass_hint"
+        android:gravity="center"
+        android:layout_below="@id/userText"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_below="@id/passText"
+        android:layout_marginTop="120dp"
+        android:text="@string/login_btn"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/new_user_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button"
+        android:layout_centerHorizontal="true"
+        android:textSize="26dp"
+        android:layout_marginTop="10dp"
+        tools:ignore="SpUsage"
+        android:textColor="@android:color/holo_blue_dark"
+        android:text="@string/login_new_user"/>
+</RelativeLayout>

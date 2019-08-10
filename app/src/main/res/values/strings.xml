@@ -13,4 +13,10 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <!--Login Activity-->
+    <string name="login_btn">ورود</string>
+    <string name="login_user_hint">نام کاربری</string>
+    <string name="login_pass_hint">رمز عبور</string>
+    <string name="login_new_user"><u>اکانت بسازید</u></string>
 </resources>
