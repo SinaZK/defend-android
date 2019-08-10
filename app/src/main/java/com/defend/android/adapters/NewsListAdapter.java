@@ -52,9 +52,11 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         ResourceManager.getInstance().decorateTextView(viewHolder.datetime, Color.parseColor("#777777"));
         viewHolder.title.setText(news.getTitle());
         viewHolder.datetime.setText(news.getDateTimeString());
-        Picasso.get().load(news.getImageUrl())
-                .error(R.drawable.ic_launcher_no_image)
-                .into(viewHolder.image);
+        if(news.hasImage()) {
+            Picasso.get().load(news.getImageUrl())
+                    .error(R.drawable.ic_launcher_no_image)
+                    .into(viewHolder.image);
+        }
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

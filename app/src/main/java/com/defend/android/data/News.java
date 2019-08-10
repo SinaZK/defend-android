@@ -19,11 +19,11 @@ public class News {
         videoUrl = object.optString("video_url");
     }
 
-    private boolean hasVideo() {
+    public boolean hasVideo() {
         return videoUrl.length() > 0;
     }
 
-    private boolean hasImage() {
+    public boolean hasImage() {
         return imageUrl.length() > 0;
     }
 
