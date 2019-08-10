@@ -28,4 +28,5 @@ public class NewsManager {
     public ArrayList<News> getNews() {
         return news;
     }
+
 }

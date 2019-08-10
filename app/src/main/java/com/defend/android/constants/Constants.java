@@ -19,6 +19,7 @@ public class Constants {
     //Extras
     public static String EXTRA_LOGIN_USER = "username";
     public static String EXTRA_LOGIN_PASSWORD = "password";
+    public static String EXTRA_NEWS_ID = "news";
 
     //Main Drawer item id
     public static int MENU_HOME = 1;
