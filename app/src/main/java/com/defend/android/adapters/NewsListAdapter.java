@@ -14,6 +14,7 @@ import com.defend.android.R;
 import com.defend.android.data.News;
 import com.defend.android.data.NewsManager;
 import com.defend.android.utils.ResourceManager;
+import com.squareup.picasso.Picasso;
 
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyViewHolder> {
 
@@ -45,6 +46,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         ResourceManager.getInstance().decorateTextView(viewHolder.datetime, Color.parseColor("#777777"));
         viewHolder.title.setText(news.getTitle());
         viewHolder.datetime.setText(news.getDateTimeString());
+        Picasso.get().load(news.getImageUrl())
+                .error(R.drawable.ic_launcher_background)
+                .into(viewHolder.image);
     }
 
     @Override

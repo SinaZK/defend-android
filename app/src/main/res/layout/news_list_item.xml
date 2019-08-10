@@ -34,9 +34,9 @@
             android:layout_toLeftOf="@id/image" />
 
         <View
-            android:background="#000000"
+            android:background="#c7c7c7"
             android:layout_width="match_parent"
-            android:layout_height="3dp"
+            android:layout_height="2dp"
             android:layout_below="@id/image"
             android:layout_marginTop="20dp"
             />
