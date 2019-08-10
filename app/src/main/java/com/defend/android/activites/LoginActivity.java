@@ -38,7 +38,7 @@ public class LoginActivity extends Activity {
         ResourceManager.getInstance().decorateEditText(passEditText, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(newTextView, Color.BLACK, Constants.FONT_BOLD);
 
-        loginButton.setBackgroundResource(R.drawable.green_btn);
+        loginButton.setBackgroundResource(R.drawable.btn_bg);
         ResourceManager.getInstance().decorateButton(loginButton, Color.WHITE);
 
         newTextView.setOnClickListener(new View.OnClickListener() {
