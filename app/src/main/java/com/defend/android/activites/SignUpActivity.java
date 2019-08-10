@@ -120,6 +120,8 @@ public class SignUpActivity extends Activity {
     private void finishOK() {
         Utils.showToast(getString(R.string.sign_success));
         Intent intent = new Intent(MyApp.getInstance(), LoginActivity.class);
+        intent.putExtra(Constants.EXTRA_LOGIN_USER, userEditText.getText().toString());
+        intent.putExtra(Constants.EXTRA_LOGIN_PASSWORD, passEditText.getText().toString());
         startActivity(intent);
         finish();
     }

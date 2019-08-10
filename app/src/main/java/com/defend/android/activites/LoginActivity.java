@@ -20,6 +20,8 @@ public class LoginActivity extends Activity {
     TextView newTextView;
     Button loginButton;
 
+    private String username, password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,13 @@ public class LoginActivity extends Activity {
                 startSignUpActivity();
             }
         });
+
+        username = getIntent().getStringExtra(Constants.EXTRA_LOGIN_USER);
+        if(username == null) username = "";
+        password = getIntent().getStringExtra(Constants.EXTRA_LOGIN_USER);
+        if(password == null) password = "";
+        userEditText.setText(username);
+        passEditText.setText(password);
     }
 
     private void startSignUpActivity() {

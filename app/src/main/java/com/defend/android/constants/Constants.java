@@ -13,4 +13,8 @@ public class Constants {
 
     //Data
     public static String DATA_FIELD_TOKEN = "jwt-token";
+
+    //Extras
+    public static String EXTRA_LOGIN_USER = "username";
+    public static String EXTRA_LOGIN_PASSWORD = "password";
 }
