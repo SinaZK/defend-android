@@ -112,8 +112,6 @@ public class SignUpActivity extends Activity {
             public void onErrorResponse(VolleyError error) {
                 Utils.showToast(getString(R.string.sign_error_user_exist));
                 userEditText.setError(getString(R.string.sign_error_user_exist));
-
-                Log.e(TAG, error.toString());
             }
         });
         NetworkManager.getInstance().sendRequest(request);
