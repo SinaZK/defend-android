@@ -6,13 +6,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-public class Network {
-    private static Network instance;
+public class NetworkManager {
+    private static NetworkManager instance;
     private Activity activity;
     private RequestQueue queue;
 
-    public static Network getInstance() {
-        if(instance == null) instance = new Network();
+    public static NetworkManager getInstance() {
+        if(instance == null) instance = new NetworkManager();
 
         return instance;
     }
