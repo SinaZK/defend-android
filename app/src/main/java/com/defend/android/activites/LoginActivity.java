@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.defend.android.MyApp;
 import com.defend.android.R;
+import com.defend.android.constants.Constants;
 import com.defend.android.utils.ResourceManager;
 
 public class LoginActivity extends Activity {
@@ -33,7 +34,12 @@ public class LoginActivity extends Activity {
     }
 
     private void initUI() {
-        ResourceManager.getInstance().decorateButton(loginButton, Color.RED);
+        ResourceManager.getInstance().decorateEditText(userEditText, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(passEditText, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(newTextView, Color.BLACK, Constants.FONT_BOLD);
+
+        loginButton.setBackgroundResource(R.drawable.green_btn);
+        ResourceManager.getInstance().decorateButton(loginButton, Color.WHITE);
 
         newTextView.setOnClickListener(new View.OnClickListener() {
             @Override
