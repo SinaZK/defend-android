@@ -3,6 +3,8 @@ package com.defend.android;
 import android.app.Application;
 import android.util.Log;
 
+import com.defend.android.data.DataStore;
+
 public class MyApp extends Application {
     private static MyApp singleton;
 
@@ -14,6 +16,7 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         singleton = this;
-        Log.i("_MAIN", "THIS CALLED");
+
+        DataStore.getInstance();
     }
 }

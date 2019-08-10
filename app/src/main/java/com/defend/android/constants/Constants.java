@@ -10,4 +10,7 @@ public class Constants {
     public final static int FONT_REGULAR = 0;
     public final static int FONT_BOLD = 1;
     public final static int FONT_LIGHT = 2;
+
+    //Data
+    public static String DATA_FIELD_TOKEN = "jwt-token";
 }
