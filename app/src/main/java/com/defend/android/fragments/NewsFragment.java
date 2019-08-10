@@ -3,6 +3,8 @@ package com.defend.android.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +16,11 @@ import com.android.volley.VolleyError;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
-import com.defend.android.data.News;
 import com.defend.android.data.NewsManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +30,8 @@ public class NewsFragment extends Fragment {
     private int page = 1;
     private boolean isLoading;
 
+    private RecyclerView recyclerView;
+    private SwipeRefreshLayout refreshLayout;
     private ProgressBar progressBar;
 
     public NewsFragment() {
@@ -44,6 +45,8 @@ public class NewsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
         progressBar = view.findViewById(R.id.progress);
+        recyclerView = view.findViewById(R.id.recycler_view);
+        refreshLayout = view.findViewById(R.id.refresh);
 
         NewsManager.getInstance().clearNews();
         sendListRequest();

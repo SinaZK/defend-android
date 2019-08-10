@@ -35,12 +35,8 @@ public class News {
         return body;
     }
 
-    public String getDateString() {
-        return dateString;
-    }
-
-    public String getTimeString() {
-        return timeString;
+    public String getDateTimeString() {
+        return dateString + " - " + timeString;
     }
 
     public String getImageUrl() {
