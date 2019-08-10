@@ -1,5 +1,6 @@
 package com.defend.android.adapters;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.data.News;
 import com.defend.android.data.NewsManager;
+import com.defend.android.utils.ResourceManager;
 
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyViewHolder> {
 
@@ -39,6 +41,8 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, int i) {
         News news = NewsManager.getInstance().getNews().get(i);
+        ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK);
+        ResourceManager.getInstance().decorateTextView(viewHolder.datetime, Color.parseColor("#777777"));
         viewHolder.title.setText(news.getTitle());
         viewHolder.datetime.setText(news.getDateTimeString());
     }

@@ -70,6 +70,7 @@ public class ResourceManager {
      */
     public void decorateTextView(TextView textView, int color) {
         textView.setTextColor(color);
+        textView.setTypeface(font);
     }
 
     /**
