@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -24,6 +26,8 @@ public class NewsActivity extends Activity {
     ImageView image;
     VideoView videoView;
     News news;
+    View videoBG;
+    ProgressBar videoProgress;
 
     private String TAG = "_News";
 
@@ -37,6 +41,8 @@ public class NewsActivity extends Activity {
         date = findViewById(R.id.date);
         image = findViewById(R.id.image);
         videoView = findViewById(R.id.video);
+        videoBG = findViewById(R.id.video_bg);
+        videoProgress = findViewById(R.id.video_progress);
 
         int id = getIntent().getIntExtra(Constants.EXTRA_NEWS_ID, -1);
         if (id == -1) finish();
@@ -49,10 +55,12 @@ public class NewsActivity extends Activity {
         title.setText(news.getTitle());
         body.setText(news.getBody());
         date.setText(news.getDateTimeString());
-        if (news.hasImage()) {
+        if (news.hasImage() && !news.hasVideo()) {
             Picasso.get().load(news.getImageUrl())
                     .error(R.drawable.ic_launcher_no_image)
                     .into(image);
+            videoBG.setVisibility(View.GONE);
+            videoProgress.setVisibility(View.GONE);
         }
 
         ResourceManager.getInstance().decorateTextView(title, Color.BLACK, Constants.FONT_BOLD);
@@ -63,20 +71,21 @@ public class NewsActivity extends Activity {
     }
 
     private void prepareVideo() {
-        Log.i(TAG, "Preparing video");
         if (!news.hasVideo()) return;
-
-        Log.i(TAG, "has video!!!");
 
         Uri video = Uri.parse(news.getVideoUrl());
         videoView.setVideoURI(video);
         videoView.setVisibility(View.VISIBLE);
         image.setVisibility(View.GONE);
 
+        MediaController mediaController = new MediaController(this, false);
+        mediaController.setAnchorView(videoView);
+        videoView.setMediaController(mediaController);
         videoView.setZOrderOnTop(true); //Very important line, add it to Your code
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
+                videoProgress.setVisibility(View.GONE);
                 videoView.start();
             }
         });
