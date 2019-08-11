@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -53,7 +55,8 @@ public class NewsActivity extends Activity {
 
     private void initUI() {
         title.setText(news.getTitle());
-        body.setText(news.getBody());
+        body.setMovementMethod(LinkMovementMethod.getInstance());
+        body.setText(Html.fromHtml(news.getBody().replace("\n", "<br>")));
         date.setText(news.getDateTimeString());
         if (news.hasImage() && !news.hasVideo()) {
             Picasso.get().load(news.getImageUrl())
