@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.defend.android.R;
+import com.defend.android.calendar.DateConverter;
+import com.defend.android.calendar.JalaliDate;
 import com.defend.android.constants.Constants;
 import com.defend.android.fragments.NewsFragment;
 import com.mikepenz.materialdrawer.Drawer;
@@ -15,6 +18,8 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+
+import java.time.LocalDate;
 
 public class MainActivity extends AppCompatActivity {
     String TAG = "_MAIN";
@@ -30,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         initDrawer();
+
+        DateConverter converter = new DateConverter();
+        JalaliDate localDate = converter.nowAsJalali();
+        Log.i(TAG, "" + localDate.getMonthPersian().getValue() + " " + localDate.toString());
+
     }
 
     private void initDrawer() {
