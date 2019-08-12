@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         initDrawer();
+        drawer.setSelection(Constants.MENU_EVENTS);
     }
 
     private void initDrawer() {

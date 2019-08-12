@@ -1,6 +1,9 @@
 package com.defend.android.adapters;
 
+import android.animation.AnimatorInflater;
+import android.animation.StateListAnimator;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -81,6 +84,11 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
     private void setViewDay(MyViewHolder holder, int position) {
         ResourceManager.getInstance().decorateTextView(holder.text, Color.WHITE);
         holder.text.setText(getDayOfMonthStr(position));
+        if(getDayOfMonthStr(position).length() > 0) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                holder.cardView.setStateListAnimator(AnimatorInflater.loadStateListAnimator(MyApp.getInstance(), R.anim.lift));
+            }
+        }
     }
 
     private void invisibleView(MyViewHolder holder) {
