@@ -3,25 +3,13 @@
     android:id="@+id/calendar_month_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0000ff">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/salam"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calendar Month View"
-        android:textSize="30sp"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:text="salam View"
-        android:layout_marginTop="50dp"
-        android:textSize="30sp"/>
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

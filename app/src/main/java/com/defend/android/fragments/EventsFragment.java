@@ -8,12 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.defend.android.R;
+import com.defend.android.customViews.CalendarMonthView;
+import com.defend.android.customViews.CalendarView;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class EventsFragment extends Fragment {
 
+    CalendarMonthView calendarView;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -24,7 +27,12 @@ public class EventsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_events, container, false);
+        View view = inflater.inflate(R.layout.fragment_events, container, false);
+
+        calendarView = view.findViewById(R.id.calendar);
+        calendarView.setMonth(1);
+
+        return view;
     }
 
 }
