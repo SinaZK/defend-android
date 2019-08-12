@@ -17,10 +17,12 @@
 
     <com.defend.android.customViews.CalendarMonthView
         android:id="@+id/calendar"
-        android:layout_centerInParent="true"
+        android:layout_below="@id/month_text"
+        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
 
     </com.defend.android.customViews.CalendarMonthView>
