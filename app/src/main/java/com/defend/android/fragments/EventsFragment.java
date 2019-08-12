@@ -34,7 +34,8 @@ public class EventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
         viewPager = view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(new MonthViewFragmentAdapter(getChildFragmentManager()));
+        viewPager.setAdapter(new MonthViewFragmentAdapter(getChildFragmentManager(), 1398, 5));
+        viewPager.setCurrentItem(MonthViewFragmentAdapter.FIRST_PAGE);
 
         return view;
     }
