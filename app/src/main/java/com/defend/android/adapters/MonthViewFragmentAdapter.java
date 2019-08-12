@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.defend.android.fragments.MonthViewFragment;
 
 public class MonthViewFragmentAdapter extends FragmentPagerAdapter {
-    private int count = 10;
+    private int count = 24;
     private int startMonth = 1;
     private int startYear = 1398;
 

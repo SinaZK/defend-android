@@ -112,9 +112,6 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
 
     private int getDayOfMonth(int position) {
         if (position < 7) return -1;
-
-        Log.i("salam", "startWeekDay = " + startWeekDay);
-
         int startDay = 6 + startWeekDay;
 
         if (position <= startDay) return -1;
