@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.MediaController;
@@ -31,7 +30,7 @@ public class NewsActivity extends Activity {
     View videoBG;
     ProgressBar videoProgress;
 
-    private String TAG = "_News";
+    //private String TAG = "_News";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

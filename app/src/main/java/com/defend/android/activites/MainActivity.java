@@ -19,8 +19,6 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import java.time.LocalDate;
-
 public class MainActivity extends AppCompatActivity {
     String TAG = "_MAIN";
     Drawer drawer;
@@ -43,36 +41,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initDrawer() {
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(Constants.MENU_HOME).withIcon(R.drawable.ic_menu_camera)
-                .withName(R.string.menu_home);
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(Constants.MENU_BOOKS).withName(R.string.menu_books)
+        PrimaryDrawerItem homeItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_HOME).withName(R.string.menu_home)
+                .withIcon(R.drawable.ic_menu_camera);
+        PrimaryDrawerItem bookItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_BOOKS).withName(R.string.menu_books)
                 .withIcon(R.drawable.ic_menu_gallery);
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(Constants.MENU_MAGAZINES).withName(R.string.menu_magazine)
+        PrimaryDrawerItem magazineItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_MAGAZINES).withName(R.string.menu_magazine)
             .withIcon(R.drawable.ic_menu_manage);
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWS).withName(R.string.menu_news)
+        PrimaryDrawerItem newsItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWS).withName(R.string.menu_news)
+                .withIcon(R.drawable.ic_menu_send);
+        PrimaryDrawerItem eventItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EVENTS).withName(R.string.menu_news)
                 .withIcon(R.drawable.ic_menu_send);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
-                //.withDrawerGravity(Gravity.RIGHT)
-                //.withToolbar(toolbar)
                 .addDrawerItems(
-                        item1,
+                        homeItem,
                         new DividerDrawerItem(),
-                        item2,
-                        item3,
-                        item4
+                        newsItem,
+                        eventItem,
+                        bookItem,
+                        magazineItem,
+                        new DividerDrawerItem()
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
 
+                        Fragment fragment = null;
+
                         if (position == Constants.MENU_NEWS) {
-                            Fragment fragment = new NewsFragment();
-                            FragmentManager fragmentManager = getSupportFragmentManager();
-                            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+                            fragment = new NewsFragment();
+                        }
+
+                        if (position == Constants.MENU_EVENTS) {
 
                         }
+
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
                         drawer.closeDrawer();
 

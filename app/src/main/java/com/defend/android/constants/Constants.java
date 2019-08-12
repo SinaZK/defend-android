@@ -21,9 +21,10 @@ public class Constants {
     public static String EXTRA_LOGIN_PASSWORD = "password";
     public static String EXTRA_NEWS_ID = "news";
 
-    //Main Drawer item id
+    //Main Drawer item id (just id not the order)
     public static int MENU_HOME = 1;
     public static int MENU_BOOKS = 2;
     public static int MENU_MAGAZINES = 3;
     public static int MENU_NEWS = 4;
+    public static int MENU_EVENTS = 5;
 }

@@ -12,6 +12,7 @@
     <!--Main drawer-->
     <string name="menu_home">خانه</string>
     <string name="menu_news">اخبار</string>
+    <string name="menu_events">رویدادها</string>
     <string name="menu_books">خرید کتاب</string>
     <string name="menu_magazine">مجلات</string>
 
