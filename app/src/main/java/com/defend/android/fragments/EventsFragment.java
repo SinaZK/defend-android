@@ -3,11 +3,15 @@ package com.defend.android.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.defend.android.R;
+import com.defend.android.adapters.MonthViewFragmentAdapter;
+import com.defend.android.calendar.CalendarUtils;
 import com.defend.android.customViews.CalendarMonthView;
 import com.defend.android.customViews.CalendarView;
 
@@ -16,7 +20,7 @@ import com.defend.android.customViews.CalendarView;
  */
 public class EventsFragment extends Fragment {
 
-    CalendarMonthView calendarView;
+    ViewPager viewPager;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -29,8 +33,12 @@ public class EventsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
-        calendarView = view.findViewById(R.id.calendar);
-        calendarView.setDate(1398, 12);
+        for(int i = 1;i <= 12;i++) {
+            Log.i("salam", "" + i + " :" + CalendarUtils.getFirstWeekDayOfMonth(1398, i));
+        }
+
+        viewPager = view.findViewById(R.id.view_pager);
+        viewPager.setAdapter(new MonthViewFragmentAdapter(getChildFragmentManager()));
 
         return view;
     }

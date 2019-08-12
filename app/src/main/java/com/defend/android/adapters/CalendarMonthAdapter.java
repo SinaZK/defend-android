@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -112,9 +113,13 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
     private int getDayOfMonth(int position) {
         if (position < 7) return -1;
 
-        if (position < 7 + startWeekDay) return -1;
+        Log.i("salam", "startWeekDay = " + startWeekDay);
 
-        int d = position - (6 + startWeekDay);
+        int startDay = 6 + startWeekDay;
+
+        if (position <= startDay) return -1;
+
+        int d = position - (startDay);
         if (d > CalendarUtils.getDaysInMonth(year, month)) return -1;
 
         return d;
