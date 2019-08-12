@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.defend.android.MyApp;
@@ -28,6 +29,8 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
     private int year;
     private int startWeekDay;
 
+    private int selectedItem = -1;
+
     public CalendarMonthAdapter() {
         setDate(1398, 1);
     }
@@ -35,7 +38,8 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView text;
         public ImageView selectedImage, todayImage;
-        public CardView cardView;
+        public RelativeLayout cardView;
+        public View view;
 
         public MyViewHolder(View view) {
             super(view);
@@ -43,6 +47,7 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
             selectedImage = view.findViewById(R.id.selected);
             todayImage = view.findViewById(R.id.today);
             cardView = view.findViewById(R.id.parent);
+            this.view = view.findViewById(R.id.view);
         }
     }
 
@@ -64,12 +69,18 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
             setViewDay(viewHolder, i);
         }
 
-        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if(selectedItem == i) {
+            setSelectItem(viewHolder, i);
+        }
 
-            }
-        });
+        if(getDayOfMonth(i) != -1) {
+            viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectItem(i);
+                }
+            });
+        }
     }
 
     @Override
@@ -92,9 +103,16 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
         }
     }
 
+    private void setSelectItem(MyViewHolder holder, int position) {
+        holder.selectedImage.setVisibility(View.VISIBLE);
+        holder.view.setVisibility(View.VISIBLE);
+        holder.text.setTextColor(Color.BLACK);
+    }
+
     private void invisibleView(MyViewHolder holder) {
         holder.todayImage.setVisibility(View.GONE);
         holder.selectedImage.setVisibility(View.GONE);
+        holder.view.setVisibility(View.GONE);
     }
 
     private int getType(int position) {
@@ -127,5 +145,14 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
         if(day == -1) return "";
 
         return String.valueOf(day);
+    }
+
+    private void selectItem(int position) {
+        if(selectedItem != -1) {
+            notifyItemChanged(selectedItem);
+        }
+        selectedItem = position;
+        Log.i("salam", "selectedItem = " + selectedItem);
+        notifyItemChanged(selectedItem);
     }
 }
