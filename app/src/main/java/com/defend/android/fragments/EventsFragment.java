@@ -30,7 +30,7 @@ public class EventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
         calendarView = view.findViewById(R.id.calendar);
-        calendarView.setMonth(1);
+        calendarView.setDate(1398, 12);
 
         return view;
     }

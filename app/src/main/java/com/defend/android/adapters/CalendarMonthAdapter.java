@@ -20,7 +20,13 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
     private int TYPE_DAY = 1;
     private int TYPE_TOP = 2;
 
-    private int month = 1;
+    private int month;
+    private int year;
+    private int startWeekDay;
+
+    public CalendarMonthAdapter() {
+        setDate(1398, 1);
+    }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView text;
@@ -64,7 +70,7 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
 
     @Override
     public int getItemCount() {
-        return 6 * 7;
+        return 7 * 7;
     }
 
     private void setViewTop(MyViewHolder holder, int position) {
@@ -74,7 +80,7 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
 
     private void setViewDay(MyViewHolder holder, int position) {
         ResourceManager.getInstance().decorateTextView(holder.text, Color.WHITE);
-        holder.text.setText(String.valueOf(position));
+        holder.text.setText(getDayOfMonthStr(position));
     }
 
     private void invisibleView(MyViewHolder holder) {
@@ -88,7 +94,28 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
         return TYPE_DAY;
     }
 
-    public void setMonth(int month) {
+    public void setDate(int year, int month) {
         this.month = month;
+        this.year = year;
+
+        startWeekDay = CalendarUtils.getFirstWeekDayOfMonth(year, month);
+    }
+
+    private int getDayOfMonth(int position) {
+        if (position < 7) return -1;
+
+        if (position < 7 + startWeekDay) return -1;
+
+        int d = position - (6 + startWeekDay);
+        if (d > CalendarUtils.getDaysInMonth(year, month)) return -1;
+
+        return d;
+    }
+
+    private String getDayOfMonthStr(int position) {
+        int day = getDayOfMonth(position);
+        if(day == -1) return "";
+
+        return String.valueOf(day);
     }
 }

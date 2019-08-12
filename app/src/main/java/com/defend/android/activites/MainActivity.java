@@ -34,11 +34,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         initDrawer();
-
-        DateConverter converter = new DateConverter();
-        JalaliDate localDate = converter.nowAsJalali();
-        Log.i(TAG, "" + localDate.getMonthPersian().getValue() + " " + localDate.toString());
-
     }
 
     private void initDrawer() {

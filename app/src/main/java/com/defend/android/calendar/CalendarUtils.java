@@ -1,7 +1,13 @@
 package com.defend.android.calendar;
 
+import android.util.Log;
+
 import com.defend.android.MyApp;
 import com.defend.android.R;
+import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
+
+import java.time.LocalDate;
+import java.util.Calendar;
 
 public class CalendarUtils {
     public static String getWeekDayChar(int day) {
@@ -35,4 +41,23 @@ public class CalendarUtils {
 
         return "";
     }
+
+    public static int getFirstWeekDayOfMonth(int year, int month) {
+        PersianCalendar calendar = new PersianCalendar();
+        calendar.setPersianDate(year, month - 1, 1);
+        return calendar.get(Calendar.DAY_OF_WEEK);
+    }
+
+    public static int getDaysInMonth(int year, int month) {
+        if (month <= 6) return 31;
+        if (month < 12) return 30;
+
+        JalaliDate date = new JalaliDate(year, month, 1);
+        if (date.isLeapYear()) {
+            return 30;
+        }
+
+        return 29;
+    }
+
 }

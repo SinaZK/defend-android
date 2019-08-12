@@ -14,6 +14,7 @@ public class CalendarMonthView extends RelativeLayout {
 
     RecyclerView recyclerView;
     private int month; //Jalali
+    private int year;
 
     public CalendarMonthView(Context context) {
         super(context);
@@ -37,7 +38,8 @@ public class CalendarMonthView extends RelativeLayout {
         recyclerView = view.findViewById(R.id.main_recycler);
     }
 
-    public void setMonth(int month) {
+    public void setDate(int year, int month) {
+        this.year = year;
         this.month = month;
         initRecycler();
     }
@@ -45,7 +47,7 @@ public class CalendarMonthView extends RelativeLayout {
     CalendarMonthAdapter adapter;
     private void initRecycler() {
         adapter = new CalendarMonthAdapter();
-        adapter.setMonth(month);
+        adapter.setDate(year, month);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 7));
