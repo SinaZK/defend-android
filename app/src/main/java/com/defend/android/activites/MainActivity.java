@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             .withIcon(R.drawable.ic_menu_manage);
         PrimaryDrawerItem newsItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWS).withName(R.string.menu_news)
                 .withIcon(R.drawable.ic_menu_send);
-        PrimaryDrawerItem eventItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EVENTS).withName(R.string.menu_news)
+        PrimaryDrawerItem eventItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EVENTS).withName(R.string.menu_events)
                 .withIcon(R.drawable.ic_menu_send);
 
         drawer = new DrawerBuilder()
@@ -69,11 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
                         Fragment fragment = null;
 
-                        if (position == Constants.MENU_NEWS) {
+                        Log.i(TAG, "position = " + position);
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_NEWS) {
                             fragment = new NewsFragment();
                         }
 
-                        if (position == Constants.MENU_EVENTS) {
+                        if (drawerItem.getIdentifier() == Constants.MENU_EVENTS) {
 
                         }
 
