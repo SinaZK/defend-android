@@ -12,8 +12,11 @@ import android.view.ViewGroup;
 import com.defend.android.R;
 import com.defend.android.adapters.MonthViewFragmentAdapter;
 import com.defend.android.calendar.CalendarUtils;
+import com.defend.android.calendar.DateConverter;
+import com.defend.android.calendar.JalaliDate;
 import com.defend.android.customViews.CalendarMonthView;
 import com.defend.android.customViews.CalendarView;
+import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,11 +33,12 @@ public class EventsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
+        DateConverter converter = new DateConverter();
+        JalaliDate today = converter.nowAsJalali();
         viewPager = view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(new MonthViewFragmentAdapter(getChildFragmentManager(), 1398, 5));
+        viewPager.setAdapter(new MonthViewFragmentAdapter(getChildFragmentManager(), today.getYear(), today.getMonthPersian().getValue()));
         viewPager.setCurrentItem(MonthViewFragmentAdapter.FIRST_PAGE);
 
         return view;

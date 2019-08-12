@@ -45,7 +45,6 @@ public class CalendarUtils {
     public static int getFirstWeekDayOfMonth(int year, int month) {
         PersianCalendar calendar = new PersianCalendar();
         calendar.setPersianDate(year, month - 1, 1);
-        //Log.i("salam", calendar.getPersianMonthName() + " " + (calendar.get(Calendar.DAY_OF_WEEK)));
         return calendar.get(Calendar.DAY_OF_WEEK) % 7;
     }
 
