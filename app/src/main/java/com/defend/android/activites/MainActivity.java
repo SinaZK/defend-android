@@ -12,6 +12,7 @@ import com.defend.android.R;
 import com.defend.android.calendar.DateConverter;
 import com.defend.android.calendar.JalaliDate;
 import com.defend.android.constants.Constants;
+import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.NewsFragment;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -76,11 +77,13 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_EVENTS) {
-
+                            fragment = new EventsFragment();
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
-                        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+                        if(fragment != null) {
+                            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+                        }
 
                         drawer.closeDrawer();
 

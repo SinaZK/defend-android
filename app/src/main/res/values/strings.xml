@@ -35,4 +35,22 @@
     <string name="sign_error_user_exist">نام کاربری قبلا انتخاب شده است.</string>
     <string name="sign_success">ثبت نام با موفقیت انجام شد.</string>
 
+    <!--Calendar view-->
+    <string name="day_1">شنبه</string>
+    <string name="day_2">یکشنبه</string>
+    <string name="day_3">دوشنبه</string>
+    <string name="day_4">سه‌‍‌شنبه</string>
+    <string name="day_5">چهارشنبه</string>
+    <string name="day_6">پنج‌شنبه</string>
+    <string name="day_7">جمعه</string>
+    <string name="fday_1">ش</string>
+    <string name="fday_2">ی</string>
+    <string name="fday_3">د</string>
+    <string name="fday_4">س</string>
+    <string name="fday_5">چ</string>
+    <string name="fday_6">پ</string>
+    <string name="fday_7">ج</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
