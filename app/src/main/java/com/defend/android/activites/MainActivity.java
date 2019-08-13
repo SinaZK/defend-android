@@ -14,6 +14,7 @@ import com.defend.android.calendar.JalaliDate;
 import com.defend.android.constants.Constants;
 import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.NewsFragment;
+import com.defend.android.fragments.WarfareCategoryFragment;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         initDrawer();
-        drawer.setSelection(Constants.MENU_EVENTS);
+        drawer.setSelection(Constants.MENU_WARFARE);
     }
 
     private void initDrawer() {
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 .withIcon(R.drawable.ic_menu_send);
         PrimaryDrawerItem eventItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EVENTS).withName(R.string.menu_events)
                 .withIcon(R.drawable.ic_menu_send);
+        PrimaryDrawerItem warfareItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_WARFARE)
+                .withName(R.string.menu_warfare).withIcon(R.drawable.ic_menu_send);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         new DividerDrawerItem(),
                         newsItem,
                         eventItem,
+                        warfareItem,
                         bookItem,
                         magazineItem,
                         new DividerDrawerItem()
@@ -74,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
 
                         if (drawerItem.getIdentifier() == Constants.MENU_EVENTS) {
                             fragment = new EventsFragment();
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_WARFARE) {
+                            fragment = new WarfareCategoryFragment();
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();

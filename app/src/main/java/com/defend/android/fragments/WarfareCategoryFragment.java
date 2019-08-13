@@ -3,6 +3,7 @@ package com.defend.android.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,12 @@ import android.widget.ProgressBar;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.defend.android.MyApp;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
+import com.defend.android.adapters.WarfareCategoryListAdapter;
+import com.defend.android.adapters.WarfareListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Warfare;
 import com.defend.android.data.WarfareCategory;
@@ -66,6 +70,7 @@ public class WarfareCategoryFragment extends Fragment {
                 setProgress(false);
                 updateWarfares(response.optJSONObject("results").optJSONArray("atlases"));
                 updateWarfareCategories(response.optJSONObject("results").optJSONArray("categories"));
+                updateRVs();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -94,8 +99,18 @@ public class WarfareCategoryFragment extends Fragment {
         }
     }
 
+    WarfareListAdapter warfareListAdapter;
+    WarfareCategoryListAdapter warfareCategoryListAdapter;
     private void updateRVs() {
-        
+        warfareListAdapter = new WarfareListAdapter();
+        warfareListAdapter.setWarfares(warfares);
+        warfareRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
+        warfareRV.setAdapter(warfareListAdapter);
+
+        warfareCategoryListAdapter = new WarfareCategoryListAdapter();
+        warfareCategoryListAdapter.setWarfareCategories(warfareCategories);
+        catRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
+        catRV.setAdapter(warfareCategoryListAdapter);
     }
 
     private void setProgress(boolean progress) {

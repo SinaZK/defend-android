@@ -15,6 +15,7 @@
     <string name="menu_events">رویدادها</string>
     <string name="menu_books">خرید کتاب</string>
     <string name="menu_magazine">مجلات</string>
+    <string name="menu_warfare">اطلس جنگ‌افزارها</string>
 
     <!--Login Activity-->
     <string name="login_btn">ورود</string>
