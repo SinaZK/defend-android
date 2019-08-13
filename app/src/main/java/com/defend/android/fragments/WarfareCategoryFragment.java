@@ -21,6 +21,7 @@ import com.defend.android.R;
 import com.defend.android.adapters.WarfareCategoryListAdapter;
 import com.defend.android.adapters.WarfareListAdapter;
 import com.defend.android.constants.Constants;
+import com.defend.android.customViews.ExtendedRecyclerView;
 import com.defend.android.data.Warfare;
 import com.defend.android.data.WarfareCategory;
 import com.defend.android.listeners.WarfareCategoryItemSelectListener;
@@ -37,7 +38,7 @@ import java.util.Locale;
 public class WarfareCategoryFragment extends Fragment {
 
     ProgressBar progressBar;
-    RecyclerView catRV, warfareRV;
+    ExtendedRecyclerView catRV, warfareRV;
     Button backButton;
     private ArrayList<Integer> categoryQueue = new ArrayList<>();
     private ArrayList<Warfare> warfares = new ArrayList<>();
