@@ -55,7 +55,6 @@ public class MonthViewFragment extends Fragment {
         this.month = month;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -151,7 +150,6 @@ public class MonthViewFragment extends Fragment {
     }
 
     public void setSelectedDay(int day) {
-        Log.i("salam", "selcted = " + day + " size = " + findEventsByDate(day));
         adapter.setDay(day);
         synchronized(adapter) {
             adapter.notifyDataSetChanged();

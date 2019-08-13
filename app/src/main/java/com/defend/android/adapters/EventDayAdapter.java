@@ -1,5 +1,6 @@
 package com.defend.android.adapters;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.defend.android.MyApp;
 import com.defend.android.R;
+import com.defend.android.activites.EventDetailActivity;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Event;
 import com.defend.android.fragments.MonthViewFragment;
@@ -66,7 +68,9 @@ public class EventDayAdapter extends RecyclerView.Adapter<EventDayAdapter.MyView
         viewHolder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MyApp.getInstance(), EventDetailActivity.class);
+                //intent.putExtra()
+                MyApp.getInstance().startActivity(intent);
             }
         });
     }

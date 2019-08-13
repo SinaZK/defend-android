@@ -19,7 +19,7 @@ public class Event {
         imageUrl = object.optString("image_url");
     }
 
-    private boolean hasImage() {
+    public boolean hasImage() {
         return imageUrl.length() > 0;
     }
 
