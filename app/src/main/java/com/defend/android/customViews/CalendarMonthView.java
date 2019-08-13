@@ -9,12 +9,14 @@ import android.widget.RelativeLayout;
 
 import com.defend.android.R;
 import com.defend.android.adapters.CalendarMonthAdapter;
+import com.defend.android.listeners.CalendarOnDaySelectListener;
 
 public class CalendarMonthView extends RelativeLayout {
 
     RecyclerView recyclerView;
     private int month; //Jalali
     private int year;
+    CalendarOnDaySelectListener listener;
 
     public CalendarMonthView(Context context) {
         super(context);
@@ -29,6 +31,10 @@ public class CalendarMonthView extends RelativeLayout {
     public CalendarMonthView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
+    }
+
+    public void setListener(CalendarOnDaySelectListener listener) {
+        this.listener = listener;
     }
 
     private void initView() {
@@ -48,6 +54,7 @@ public class CalendarMonthView extends RelativeLayout {
     private void initRecycler() {
         adapter = new CalendarMonthAdapter();
         adapter.setDate(year, month);
+        adapter.setListener(listener);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 7));

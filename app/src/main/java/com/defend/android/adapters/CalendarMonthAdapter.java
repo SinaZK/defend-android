@@ -1,13 +1,10 @@
 package com.defend.android.adapters;
 
 import android.animation.AnimatorInflater;
-import android.animation.StateListAnimator;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +15,7 @@ import android.widget.TextView;
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.calendar.CalendarUtils;
+import com.defend.android.listeners.CalendarOnDaySelectListener;
 import com.defend.android.utils.ResourceManager;
 
 public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdapter.MyViewHolder> {
@@ -30,9 +28,14 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
     private int startWeekDay;
 
     private int selectedItem = -1;
+    private CalendarOnDaySelectListener listener;
 
     public CalendarMonthAdapter() {
         setDate(1398, 1);
+    }
+
+    public void setListener(CalendarOnDaySelectListener listener) {
+        this.listener = listener;
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -152,7 +155,10 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
             notifyItemChanged(selectedItem);
         }
         selectedItem = position;
-        Log.i("salam", "selectedItem = " + selectedItem);
         notifyItemChanged(selectedItem);
+
+        if(listener != null) {
+            listener.onDaySelect(year, month, getDayOfMonth(position));
+        }
     }
 }

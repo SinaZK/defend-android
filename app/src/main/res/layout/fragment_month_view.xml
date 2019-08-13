@@ -27,4 +27,23 @@
 
     </com.defend.android.customViews.CalendarMonthView>
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/calendar"
+        android:layout_centerHorizontal="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/event_rv"
+        android:layout_below="@id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp">
+
+    </android.support.v7.widget.RecyclerView>
+
 </RelativeLayout>

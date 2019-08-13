@@ -6,6 +6,7 @@ public class Constants {
     public static String API_SIGN_UP = "users/"; //POST
     public static String API_LOGIN = "users/login/"; //POST
     public static String API_LIST_NEWS = "news/"; //GET
+    public static String API_LIST_MONTH_EVENTS = "events/"; //POST
 
     //Font Constants
     public final static int FONT_REGULAR = 0;
