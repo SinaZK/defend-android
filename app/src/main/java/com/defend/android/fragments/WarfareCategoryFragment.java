@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.android.volley.Request;
@@ -37,6 +38,7 @@ public class WarfareCategoryFragment extends Fragment {
 
     ProgressBar progressBar;
     RecyclerView catRV, warfareRV;
+    Button backButton;
     private ArrayList<Integer> categoryQueue = new ArrayList<>();
     private ArrayList<Warfare> warfares = new ArrayList<>();
     private ArrayList<WarfareCategory> warfareCategories = new ArrayList<>();
@@ -44,16 +46,21 @@ public class WarfareCategoryFragment extends Fragment {
     public WarfareCategoryFragment() {
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_warfare_category, container, false);
 
         catRV = view.findViewById(R.id.category_rv);
         warfareRV = view.findViewById(R.id.warfare_rv);
         progressBar = view.findViewById(R.id.progress);
+        backButton = view.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
 
         categoryQueue.add(0);
         sendAtlasRequest();
@@ -132,6 +139,13 @@ public class WarfareCategoryFragment extends Fragment {
             warfareRV.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    private void goBack() {
+        if(categoryQueue.size() > 1) {
+            categoryQueue.remove(categoryQueue.size() - 1);
+            sendAtlasRequest();
+        }
     }
 
 }
