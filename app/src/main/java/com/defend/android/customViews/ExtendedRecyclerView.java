@@ -9,6 +9,12 @@ import android.util.AttributeSet;
 import com.defend.android.utils.Utils;
 
 public class ExtendedRecyclerView extends RecyclerView {
+    private int maxSize;
+
+    public void setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
+    }
+
     public ExtendedRecyclerView(@NonNull Context context) {
         super(context);
     }
@@ -23,7 +29,9 @@ public class ExtendedRecyclerView extends RecyclerView {
 
     @Override
     protected void onMeasure(int widthSpec, int heightSpec) {
-        heightSpec = MeasureSpec.makeMeasureSpec(Utils.dpToPx(240), MeasureSpec.AT_MOST);
+        if(maxSize > 0) {
+            heightSpec = MeasureSpec.makeMeasureSpec(Utils.dpToPx(maxSize), MeasureSpec.AT_MOST);
+        }
         super.onMeasure(widthSpec, heightSpec);
     }
 }

@@ -115,6 +115,9 @@ public class WarfareCategoryFragment extends Fragment {
         warfareListAdapter.setWarfares(warfares);
         warfareRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
         warfareRV.setAdapter(warfareListAdapter);
+        if(warfareCategories.size() == 0) {
+            warfareRV.setMaxSize(1000);
+        }
 
         warfareCategoryListAdapter = new WarfareCategoryListAdapter();
         warfareCategoryListAdapter.setWarfareCategories(warfareCategories);
