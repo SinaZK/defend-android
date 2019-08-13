@@ -16,6 +16,8 @@ import com.defend.android.data.Event;
 import com.defend.android.fragments.MonthViewFragment;
 import com.defend.android.utils.ResourceManager;
 
+import java.util.Locale;
+
 public class EventDayAdapter extends RecyclerView.Adapter<EventDayAdapter.MyViewHolder> {
 
     private MonthViewFragment fragment;
@@ -59,7 +61,7 @@ public class EventDayAdapter extends RecyclerView.Adapter<EventDayAdapter.MyView
         Event event = fragment.findEventsByDate(day).get(i);
 
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
-        viewHolder.title.setText(event.getTitle());
+        viewHolder.title.setText(String.format(Locale.ENGLISH, "%d.%s", i + 1, event.getTitle()));
 
         viewHolder.parent.setOnClickListener(new View.OnClickListener() {
             @Override

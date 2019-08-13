@@ -35,14 +35,23 @@
         android:layout_width="50dp"
         android:layout_height="50dp" />
 
+    <View
+        android:id="@+id/separator"
+        android:layout_below="@id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#ffffff"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/event_rv"
-        android:layout_below="@id/calendar"
+        android:layout_below="@id/separator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="10dp">
 
     </android.support.v7.widget.RecyclerView>
 
