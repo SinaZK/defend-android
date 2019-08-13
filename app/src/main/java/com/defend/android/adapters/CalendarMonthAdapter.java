@@ -15,8 +15,11 @@ import android.widget.TextView;
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.calendar.CalendarUtils;
+import com.defend.android.data.Event;
 import com.defend.android.listeners.CalendarOnDaySelectListener;
 import com.defend.android.utils.ResourceManager;
+
+import java.util.ArrayList;
 
 public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdapter.MyViewHolder> {
 
@@ -51,6 +54,13 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
             todayImage = view.findViewById(R.id.today);
             cardView = view.findViewById(R.id.parent);
             this.view = view.findViewById(R.id.view);
+        }
+    }
+
+    private boolean [] hasEvent = new boolean[32];
+    public void setEvents(ArrayList<Event> events) {
+        for(int i = 0;i < events.size();i++) {
+            hasEvent[events.get(i).getDay()] = true;
         }
     }
 
@@ -98,6 +108,11 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
 
     private void setViewDay(MyViewHolder holder, int position) {
         ResourceManager.getInstance().decorateTextView(holder.text, Color.WHITE);
+        if(getDayOfMonth(position) > 0) {
+            if(hasEvent[getDayOfMonth(position)]) {
+                ResourceManager.getInstance().decorateTextView(holder.text, Color.RED);
+            }
+        }
         holder.text.setText(getDayOfMonthStr(position));
         if(getDayOfMonthStr(position).length() > 0) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

@@ -9,7 +9,10 @@ import android.widget.RelativeLayout;
 
 import com.defend.android.R;
 import com.defend.android.adapters.CalendarMonthAdapter;
+import com.defend.android.data.Event;
 import com.defend.android.listeners.CalendarOnDaySelectListener;
+
+import java.util.ArrayList;
 
 public class CalendarMonthView extends RelativeLayout {
 
@@ -59,5 +62,10 @@ public class CalendarMonthView extends RelativeLayout {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 7));
         recyclerView.setAdapter(adapter);
+    }
+
+    public void setEvents(ArrayList<Event> events) {
+        adapter.setEvents(events);
+        adapter.notifyDataSetChanged();
     }
 }

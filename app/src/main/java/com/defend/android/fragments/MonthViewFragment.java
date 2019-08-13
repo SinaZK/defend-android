@@ -98,6 +98,7 @@ public class MonthViewFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 addEvents(response.optJSONArray("results"));
+                calendarView.setEvents(events);
                 setProgress(false);
             }
         }, new Response.ErrorListener() {
@@ -112,6 +113,7 @@ public class MonthViewFragment extends Fragment {
     }
 
     public void addEvents(JSONArray array) {
+        events.clear();
         for (int i = 0;i < array.length();i++) {
             Event event = new Event();
             event.updateFromJson(array.optJSONObject(i));
