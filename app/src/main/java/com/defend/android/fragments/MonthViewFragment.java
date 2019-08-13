@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,7 +122,7 @@ public class MonthViewFragment extends Fragment {
     public ArrayList<Event> findEventsByDate(int d) {
         ArrayList<Event> dayEvents = new ArrayList<>();
         for(int i = 0;i < events.size();i++) {
-            if(events.get(i).getDay() == d) {
+            if(events.get(i).getDay() == d && events.get(i).getMonth() == month && events.get(i).getYear() == year) {
                 dayEvents.add(events.get(i));
             }
         }
@@ -148,6 +149,7 @@ public class MonthViewFragment extends Fragment {
     }
 
     public void setSelectedDay(int day) {
+        Log.i("salam", "selcted = " + day + " size = " + findEventsByDate(day));
         adapter.setDay(day);
         synchronized(adapter) {
             adapter.notifyDataSetChanged();
