@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,8 @@ public class WarfareListAdapter extends RecyclerView.Adapter<WarfareListAdapter.
             Picasso.get().load(warfare.getImageUrl())
                     .error(R.drawable.ic_launcher_no_image)
                     .into(viewHolder.image);
+        } else {
+            viewHolder.image.setImageResource(R.drawable.ic_launcher_no_image);
         }
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
