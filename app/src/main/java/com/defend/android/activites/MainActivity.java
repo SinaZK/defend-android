@@ -68,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
                         Fragment fragment = null;
 
-                        Log.i(TAG, "position = " + position);
-
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWS) {
                             fragment = new NewsFragment();
                         }

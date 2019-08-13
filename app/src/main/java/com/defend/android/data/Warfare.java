@@ -12,9 +12,11 @@ public class Warfare {
 
     public Warfare updateFromJson(JSONObject object) {
         this.object = object;
+
         name = object.optString("name");
         body = object.optString("body");
         imageUrl = object.optString("image_url");
+        category = object.optInt("category");
 
         return this;
     }
@@ -39,7 +41,7 @@ public class Warfare {
         return category;
     }
 
-    public JSONObject getObject() {
+    public JSONObject toJson() {
         return object;
     }
 }

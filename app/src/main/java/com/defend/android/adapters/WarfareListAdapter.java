@@ -1,5 +1,6 @@
 package com.defend.android.adapters;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.defend.android.MyApp;
 import com.defend.android.R;
+import com.defend.android.activites.WarfareDetailActivity;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Warfare;
 import com.defend.android.utils.ResourceManager;
@@ -52,7 +54,7 @@ public class WarfareListAdapter extends RecyclerView.Adapter<WarfareListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, final int i) {
-        Warfare warfare = warfares.get(i);
+        final Warfare warfare = warfares.get(i);
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
         viewHolder.title.setText(warfare.getName());
         if(warfare.hasImage()) {
@@ -62,12 +64,13 @@ public class WarfareListAdapter extends RecyclerView.Adapter<WarfareListAdapter.
         } else {
             viewHolder.image.setImageResource(R.drawable.ic_launcher_no_image);
         }
+
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(MyApp.getInstance(), NewsActivity.class);
-                //intent.putExtra(Constants.EXTRA_NEWS_ID, i);
-                //MyApp.getInstance().startActivity(intent);
+                Intent intent = new Intent(MyApp.getInstance(), WarfareDetailActivity.class);
+                intent.putExtra(Constants.EXTRA_WARFARE_JSON, warfare.toJson().toString());
+                MyApp.getInstance().startActivity(intent);
             }
         });
     }
