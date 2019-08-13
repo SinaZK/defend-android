@@ -15,6 +15,7 @@ import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Warfare;
 import com.defend.android.data.WarfareCategory;
+import com.defend.android.listeners.WarfareCategoryItemSelectListener;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 public class WarfareCategoryListAdapter extends RecyclerView.Adapter<WarfareCategoryListAdapter.MyViewHolder> {
 
     private ArrayList<WarfareCategory> warfareCategories = new ArrayList<>();
+    private WarfareCategoryItemSelectListener listener;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
@@ -39,6 +41,10 @@ public class WarfareCategoryListAdapter extends RecyclerView.Adapter<WarfareCate
         this.warfareCategories = warfares;
     }
 
+    public void setListener(WarfareCategoryItemSelectListener listener) {
+        this.listener = listener;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -50,16 +56,16 @@ public class WarfareCategoryListAdapter extends RecyclerView.Adapter<WarfareCate
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, final int i) {
-        WarfareCategory warfareCategory = warfareCategories.get(i);
+        final WarfareCategory warfareCategory = warfareCategories.get(i);
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
         viewHolder.title.setText(warfareCategory.getName());
 
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(MyApp.getInstance(), NewsActivity.class);
-                //intent.putExtra(Constants.EXTRA_NEWS_ID, i);
-                //MyApp.getInstance().startActivity(intent);
+                if(listener != null) {
+                    listener.onCategorySelect(warfareCategory.getId());
+                }
             }
         });
     }

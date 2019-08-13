@@ -22,6 +22,7 @@ import com.defend.android.adapters.WarfareListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Warfare;
 import com.defend.android.data.WarfareCategory;
+import com.defend.android.listeners.WarfareCategoryItemSelectListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -109,6 +110,13 @@ public class WarfareCategoryFragment extends Fragment {
 
         warfareCategoryListAdapter = new WarfareCategoryListAdapter();
         warfareCategoryListAdapter.setWarfareCategories(warfareCategories);
+        warfareCategoryListAdapter.setListener(new WarfareCategoryItemSelectListener() {
+            @Override
+            public void onCategorySelect(int categoryId) {
+                categoryQueue.add(categoryId);
+                sendAtlasRequest();
+            }
+        });
         catRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
         catRV.setAdapter(warfareCategoryListAdapter);
     }
