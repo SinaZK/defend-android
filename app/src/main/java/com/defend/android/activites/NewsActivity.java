@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.MediaController;
@@ -61,7 +62,9 @@ public class NewsActivity extends Activity {
             Picasso.get().load(news.getImageUrl())
                     .error(R.drawable.ic_launcher_no_image)
                     .into(image);
+            Log.i("salam", "gone");
             videoBG.setVisibility(View.GONE);
+            videoView.setVisibility(View.GONE);
             videoProgress.setVisibility(View.GONE);
         }
 
