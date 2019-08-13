@@ -14,9 +14,12 @@ import com.defend.android.data.Event;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class EventDetailActivity extends Activity {
 
-    TextView title, body, date;
+    TextView title, body, date, location;
     ImageView image;
     Event event = new Event();
 
@@ -28,11 +31,15 @@ public class EventDetailActivity extends Activity {
         title = findViewById(R.id.title);
         body = findViewById(R.id.body);
         date = findViewById(R.id.date);
+        location = findViewById(R.id.location);
         image = findViewById(R.id.image);
 
-        //int id = getIntent().getIntExtra(Constants.EXTRA_event_ID, -1);
-        //if (id == -1) finish();
-        //event = eventManager.getInstance().getevent().get(id);
+        String jsonString = getIntent().getStringExtra(Constants.EXTRA_EVENT_JSON);
+        try {
+            event.updateFromJson(new JSONObject(jsonString));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         initUI();
     }
@@ -41,6 +48,7 @@ public class EventDetailActivity extends Activity {
         title.setText(event.getTitle());
         body.setMovementMethod(LinkMovementMethod.getInstance());
         body.setText(Html.fromHtml(event.getBody().replace("\n", "<br>")));
+        location.setText(event.getLocation());
         date.setText(event.getDate());
         if (event.hasImage()) {
             Picasso.get().load(event.getImageUrl())
@@ -50,6 +58,7 @@ public class EventDetailActivity extends Activity {
 
         ResourceManager.getInstance().decorateTextView(title, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(location, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(date, Color.BLACK, Constants.FONT_LIGHT);
     }
 }

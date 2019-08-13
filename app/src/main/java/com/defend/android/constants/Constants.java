@@ -21,6 +21,7 @@ public class Constants {
     public static String EXTRA_LOGIN_USER = "username";
     public static String EXTRA_LOGIN_PASSWORD = "password";
     public static String EXTRA_NEWS_ID = "news";
+    public static String EXTRA_EVENT_JSON = "event";
 
     //Main Drawer item id (just id not the order)
     public static int MENU_HOME = 1;

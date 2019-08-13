@@ -60,7 +60,7 @@ public class EventDayAdapter extends RecyclerView.Adapter<EventDayAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, final int i) {
-        Event event = fragment.findEventsByDate(day).get(i);
+        final Event event = fragment.findEventsByDate(day).get(i);
 
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
         viewHolder.title.setText(String.format(Locale.ENGLISH, "%d.%s", i + 1, event.getTitle()));
@@ -69,7 +69,7 @@ public class EventDayAdapter extends RecyclerView.Adapter<EventDayAdapter.MyView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MyApp.getInstance(), EventDetailActivity.class);
-                //intent.putExtra()
+                intent.putExtra(Constants.EXTRA_EVENT_JSON, event.toJson().toString());
                 MyApp.getInstance().startActivity(intent);
             }
         });

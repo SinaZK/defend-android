@@ -1,5 +1,6 @@
 package com.defend.android.data;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Event {
@@ -17,6 +18,23 @@ public class Event {
         date = object.optString("jalali_date");
         time = object.optString("time");
         imageUrl = object.optString("image_url");
+    }
+
+    public JSONObject toJson() {
+        JSONObject result = new JSONObject();
+
+        try {
+            result.put("title", title);
+            result.put("body", body);
+            result.put("location", location);
+            result.put("jalali_date", date);
+            result.put("time", time);
+            result.put("image_url", imageUrl);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
     public boolean hasImage() {

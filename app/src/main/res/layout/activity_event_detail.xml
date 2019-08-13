@@ -12,7 +12,8 @@
         <RelativeLayout
             android:id="@+id/top"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:minHeight="100dp">
 
             <ImageView
                 android:id="@+id/image"
@@ -52,7 +53,7 @@
             tools:ignore="SpUsage" />
 
         <TextView
-            android:id="@+id/loaction"
+            android:id="@+id/location"
             android:layout_below="@id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +64,7 @@
 
         <TextView
             android:id="@+id/body"
-            android:layout_below="@id/loaction"
+            android:layout_below="@id/location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
