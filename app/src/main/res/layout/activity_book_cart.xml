@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activites.BookCartActivity"
-    android:background="@color/activityBackground">
+    android:background="@color/mdtp_white">
 
     <RelativeLayout
         android:id="@+id/total_parent"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:background="@color/activityBackground">
 
         <TextView
             android:id="@+id/total_tv"

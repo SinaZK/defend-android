@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import android.widget.TextView;
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
+import com.defend.android.data.Book;
 import com.defend.android.data.BookOrder;
 import com.defend.android.data.BookShopItem;
 import com.defend.android.listeners.BookCartItemChangeListener;
@@ -34,6 +34,7 @@ public class BookCartAdapter extends RecyclerView.Adapter<BookCartAdapter.MyView
         public ImageView image;
         public CardView cardView;
         public Spinner spinner;
+        public ImageView removeImage;
 
         public MyViewHolder(View view) {
             super(view);
@@ -41,6 +42,7 @@ public class BookCartAdapter extends RecyclerView.Adapter<BookCartAdapter.MyView
             spinner = view.findViewById(R.id.spinner);
             image = view.findViewById(R.id.image);
             price = view.findViewById(R.id.price);
+            removeImage = view.findViewById(R.id.remove_img);
             cardView = view.findViewById(R.id.parent);
         }
     }
@@ -60,7 +62,7 @@ public class BookCartAdapter extends RecyclerView.Adapter<BookCartAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, final int i) {
-        BookShopItem shopItem = BookOrder.getInstance().getItems().get(i);
+        final BookShopItem shopItem = BookOrder.getInstance().getItems().get(i);
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(viewHolder.price, Color.RED, Constants.FONT_BOLD);
         viewHolder.title.setText(shopItem.getBook().getTitle());
@@ -74,6 +76,16 @@ public class BookCartAdapter extends RecyclerView.Adapter<BookCartAdapter.MyView
         } else {
             viewHolder.image.setImageResource(R.drawable.ic_launcher_no_image);
         }
+
+        viewHolder.removeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeAt(i, shopItem.getBook());
+                if(listener != null) {
+                    listener.onItemRemove();
+                }
+            }
+        });
 
         initSpinner(viewHolder, viewHolder.spinner, shopItem);
     }
@@ -126,7 +138,11 @@ public class BookCartAdapter extends RecyclerView.Adapter<BookCartAdapter.MyView
 
             }
         });
+    }
 
-
+    private void removeAt(int position, Book book) {
+        BookOrder.getInstance().removeItem(book);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, BookOrder.getInstance().getItems().size());
     }
 }

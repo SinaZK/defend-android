@@ -61,6 +61,14 @@ public class BookCartActivity extends Activity {
                 BookOrder.getInstance().updateItem(bookShopItem.getBook(), quantity);
                 setTotalValueText();
             }
+
+            @Override
+            public void onItemRemove() {
+                setTotalValueText();
+                if(BookOrder.getInstance().getItems().size() == 0) {
+                    finish();
+                }
+            }
         });
 
         itemRecyclerView.setHasFixedSize(true);

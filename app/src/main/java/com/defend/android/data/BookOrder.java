@@ -49,8 +49,14 @@ public class BookOrder {
         BookShopItem item = find(book.getId());
         if(item == null) return;
 
-        Log.i("salam", "set q : " + book.getTitle() + " : " + q);
         item.setQuantity(q);
+    }
+
+    public void removeItem(Book book) {
+        BookShopItem item = find(book.getId());
+        if (item == null) return;
+
+        items.remove(item);
     }
 
     public JSONObject toJson(boolean includeState) {
