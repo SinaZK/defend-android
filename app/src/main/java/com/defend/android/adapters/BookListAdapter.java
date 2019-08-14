@@ -88,6 +88,13 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+            }
+        });
+
+        viewHolder.cartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if (bookAddToCartListener != null) {
                     bookAddToCartListener.onAdd(book);
                 }

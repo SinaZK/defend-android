@@ -8,10 +8,12 @@ public class Book {
     private String author = "";
     private int price;
     private String imageUrl = "";
+    private int id;
     private JSONObject object;
 
     public void updateFromJson(JSONObject object) {
         this.object = object;
+        id = object.optInt("id");
         title = object.optString("title");
         body = object.optString("body");
         author = object.optString("author");
@@ -45,5 +47,9 @@ public class Book {
 
     public int getPrice() {
         return price;
+    }
+
+    public int getId() {
+        return id;
     }
 }

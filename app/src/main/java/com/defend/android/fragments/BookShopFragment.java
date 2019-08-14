@@ -1,6 +1,7 @@
 package com.defend.android.fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -10,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -21,8 +24,10 @@ import com.defend.android.R;
 import com.defend.android.adapters.BookListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
+import com.defend.android.data.BookOrder;
 import com.defend.android.listeners.BookAddToCartListener;
 import com.defend.android.listeners.RecyclerLoadMoreListener;
+import com.defend.android.utils.ResourceManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -36,6 +41,10 @@ public class BookShopFragment extends Fragment {
 
     RecyclerView recyclerView;
     SwipeRefreshLayout refreshLayout;
+
+    RelativeLayout cartParent;
+    TextView cartTextView;
+
     private int page = 1;
 
     private ArrayList <Book> books = new ArrayList<>();
@@ -49,6 +58,8 @@ public class BookShopFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_book_shop, container, false);
 
+        cartParent = view.findViewById(R.id.cart_parent);
+        cartTextView = view.findViewById(R.id.cart_tv);
         recyclerView = view.findViewById(R.id.book_rv);
         refreshLayout = view.findViewById(R.id.refresh);
 
@@ -60,9 +71,28 @@ public class BookShopFragment extends Fragment {
             }
         });
 
+        ResourceManager.getInstance().decorateTextView(cartTextView, Color.WHITE, Constants.FONT_BOLD);
+        cartParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCartActivity();
+            }
+        });
+
         sendBookRequest(true);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(BookOrder.getInstance().getItems().size() > 0) {
+            cartParent.setVisibility(View.VISIBLE);
+        } else {
+            cartParent.setVisibility(View.GONE);
+        }
     }
 
     private boolean isLoading;
@@ -70,8 +100,6 @@ public class BookShopFragment extends Fragment {
         if(isLoading) return;
 
         String url = Constants.API_URL + Constants.API_LIST_BOOKS + "?page=" + page;
-
-        Log.i("salam", "url = " + url);
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
@@ -130,12 +158,17 @@ public class BookShopFragment extends Fragment {
         adapter.setBookAddToCartListener(new BookAddToCartListener() {
             @Override
             public void onAdd(Book book) {
-
+                BookOrder.getInstance().addItem(book, 1);
+                cartParent.setVisibility(View.VISIBLE);
             }
         });
 
         recyclerView.setLayoutManager(new GridLayoutManager(MyApp.getInstance(), 2));
         recyclerView.setAdapter(adapter);
     }
-    
+
+    private void openCartActivity() {
+
+    }
+
 }

@@ -55,4 +55,5 @@
     <!--BookShopFragment-->
     <string name="price_str">%d تومان</string>
     <string name="add_to_cart">افزودن به سبد خرید</string>
+    <string name="cart_view_btn">مشاهده‌ی سبد خرید</string>
 </resources>

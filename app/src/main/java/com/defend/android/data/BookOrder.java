@@ -33,6 +33,10 @@ public class BookOrder {
         }
     }
 
+    public void addItem(Book book, int quantity) {
+        addItem(book.getId(), quantity);
+    }
+
     private BookShopItem find(int bookId) {
         for(int i = 0;i < items.size();i++) {
             if (items.get(i).getBookId() == bookId) {
