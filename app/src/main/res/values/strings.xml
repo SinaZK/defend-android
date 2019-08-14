@@ -53,6 +53,6 @@
     <string name="fday_7">ج</string>
 
     <!--BookShopFragment-->
-    <string name="price_str">%s تومان</string>
+    <string name="price_str">%d تومان</string>
     <string name="add_to_cart">افزودن به سبد خرید</string>
 </resources>

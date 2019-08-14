@@ -1,10 +1,10 @@
 package com.defend.android.adapters;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +13,8 @@ import android.widget.TextView;
 
 import com.defend.android.MyApp;
 import com.defend.android.R;
-import com.defend.android.activites.NewsActivity;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
-import com.defend.android.data.News;
-import com.defend.android.data.NewsManager;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
@@ -60,13 +57,18 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(viewHolder.price, Color.RED);
         viewHolder.title.setText(book.getTitle());
-        viewHolder.price.setText(book.getPrice());
+        viewHolder.price.setText(String.format(MyApp.getInstance().getString(R.string.price_str), book.getPrice()));
 
         if(book.hasImage()) {
             Picasso.get().load(book.getImageUrl())
                     .error(R.drawable.ic_launcher_no_image)
                     .into(viewHolder.image);
+        } else {
+            viewHolder.image.setImageResource(R.drawable.ic_launcher_no_image);
         }
+
+        Log.i("salam", "book : " + book.getTitle() + " " + book.getAuthor());
+
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +79,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return NewsManager.getInstance().getNews().size();
+        return books.size();
     }
 }

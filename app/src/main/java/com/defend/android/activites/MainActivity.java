@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
+import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.NewsFragment;
 import com.defend.android.fragments.WarfareCategoryFragment;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         initDrawer();
-        drawer.setSelection(Constants.MENU_WARFARE);
+        drawer.setSelection(Constants.MENU_BOOKS);
     }
 
     private void initDrawer() {
@@ -78,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
                         if (drawerItem.getIdentifier() == Constants.MENU_WARFARE) {
                             fragment = new WarfareCategoryFragment();
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_BOOKS) {
+                            fragment = new BookShopFragment();
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();

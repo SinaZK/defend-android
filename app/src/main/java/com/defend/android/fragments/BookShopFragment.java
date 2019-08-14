@@ -49,6 +49,13 @@ public class BookShopFragment extends Fragment {
         recyclerView = view.findViewById(R.id.book_rv);
         refreshLayout = view.findViewById(R.id.refresh);
 
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                sendBookRequest(true);
+            }
+        });
+
         sendBookRequest(true);
 
         return view;
@@ -64,6 +71,8 @@ public class BookShopFragment extends Fragment {
                 if(clear) {
                     books.clear();
                 }
+
+                onSuccess(response.optJSONArray("results"));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -95,6 +104,7 @@ public class BookShopFragment extends Fragment {
     private void initRV() {
         adapter = new BookListAdapter();
         adapter.setBooks(books);
+
         recyclerView.setLayoutManager(new GridLayoutManager(MyApp.getInstance(), 2));
         recyclerView.setAdapter(adapter);
     }
