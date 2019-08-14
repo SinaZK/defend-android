@@ -1,6 +1,7 @@
 package com.defend.android.fragments;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import com.defend.android.MyApp;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
+import com.defend.android.activites.BookCartActivity;
 import com.defend.android.adapters.BookListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
@@ -168,7 +170,8 @@ public class BookShopFragment extends Fragment {
     }
 
     private void openCartActivity() {
-
+        Intent intent = new Intent(MyApp.getInstance(), BookCartActivity.class);
+        MyApp.getInstance().startActivity(intent);
     }
 
 }

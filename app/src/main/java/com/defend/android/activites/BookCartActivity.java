@@ -1,18 +1,20 @@
 package com.defend.android.activites;
 
+import android.app.Activity;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
+import com.defend.android.data.BookOrder;
 import com.defend.android.utils.ResourceManager;
 
-public class BookCartActivity extends AppCompatActivity {
+public class BookCartActivity extends Activity {
 
     TextView totalTextView, valueTextView;
     TextView checkoutTextView;
@@ -41,11 +43,14 @@ public class BookCartActivity extends AppCompatActivity {
             }
         });
 
+        valueTextView.setText(String.format(MyApp.getInstance().getString(R.string.book_total_price_val),
+                BookOrder.getInstance().getTotalPrice()));
+
         initRV();
     }
 
     private void initRV() {
-        
+
     }
 
     private void checkout() {

@@ -6,6 +6,7 @@ import org.json.JSONObject;
 public class BookShopItem {
     private int bookId;
     private int quantity;
+    private int price;
 
     public BookShopItem() {
     }
@@ -45,5 +46,13 @@ public class BookShopItem {
 
     public void addQuantity(int q) {
         this.quantity += q;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

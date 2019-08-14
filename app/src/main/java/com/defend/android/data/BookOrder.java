@@ -24,17 +24,19 @@ public class BookOrder {
         items.clear();
     }
 
-    public void addItem(int id, int quantity) {
+    public void addItem(int id, int quantity, int price) {
         BookShopItem item = find(id);
         if(item == null) {
-            items.add(new BookShopItem(id, quantity));
+            BookShopItem shopItem = new BookShopItem(id, quantity);
+            shopItem.setPrice(price);
+            items.add(shopItem);
         } else {
             item.addQuantity(quantity);
         }
     }
 
     public void addItem(Book book, int quantity) {
-        addItem(book.getId(), quantity);
+        addItem(book.getId(), quantity, book.getPrice());
     }
 
     private BookShopItem find(int bookId) {
@@ -76,5 +78,14 @@ public class BookOrder {
 
     public ArrayList<BookShopItem> getItems() {
         return items;
+    }
+
+    public int getTotalPrice() {
+        int price = 0;
+        for(int i = 0;i < items.size();i++) {
+            price += items.get(i).getQuantity() * items.get(i).getPrice();
+        }
+
+        return price;
     }
 }
