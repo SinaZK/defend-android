@@ -15,6 +15,7 @@ import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
+import com.defend.android.listeners.RecyclerLoadMoreListener;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyViewHolder> {
 
     private ArrayList<Book> books;
+    private RecyclerLoadMoreListener loadMoreListener;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, price;
@@ -40,6 +42,10 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
 
     public void setBooks(ArrayList<Book> books) {
         this.books = books;
+    }
+
+    public void setLoadMoreListener(RecyclerLoadMoreListener loadMoreListener) {
+        this.loadMoreListener = loadMoreListener;
     }
 
     @NonNull
@@ -67,14 +73,18 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
             viewHolder.image.setImageResource(R.drawable.ic_launcher_no_image);
         }
 
-        Log.i("salam", "book : " + book.getTitle() + " " + book.getAuthor());
-
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
+        if (i >= books.size() - 5) {
+            if(loadMoreListener != null) {
+                loadMoreListener.loadMore();
+            }
+        }
     }
 
     @Override

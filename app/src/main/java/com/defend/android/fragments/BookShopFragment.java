@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.defend.android.R;
 import com.defend.android.adapters.BookListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
+import com.defend.android.listeners.RecyclerLoadMoreListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -52,6 +54,7 @@ public class BookShopFragment extends Fragment {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                page = 1;
                 sendBookRequest(true);
             }
         });
@@ -61,8 +64,13 @@ public class BookShopFragment extends Fragment {
         return view;
     }
 
+    private boolean isLoading;
     private void sendBookRequest(final boolean clear) {
-        String url = Constants.API_URL + Constants.API_LIST_BOOKS + "?page = " + page;
+        if(isLoading) return;
+
+        String url = Constants.API_URL + Constants.API_LIST_BOOKS + "?page=" + page;
+
+        Log.i("salam", "url = " + url);
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
@@ -72,7 +80,7 @@ public class BookShopFragment extends Fragment {
                     books.clear();
                 }
 
-                onSuccess(response.optJSONArray("results"));
+                onSuccess(response.optJSONArray("results"), clear);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -87,9 +95,10 @@ public class BookShopFragment extends Fragment {
 
     private void setProgress(boolean progress) {
         refreshLayout.setRefreshing(progress);
+        isLoading = progress;
     }
 
-    private void onSuccess(JSONArray array) {
+    private void onSuccess(JSONArray array, boolean clear) {
         for(int i = 0;i < array.length();i++) {
             Book book = new Book();
             book.updateFromJson(array.optJSONObject(i));
@@ -97,13 +106,28 @@ public class BookShopFragment extends Fragment {
             books.add(book);
         }
 
-        initRV();
+        Log.i("salam", "books count = " + books.size());
+
+        if(clear) {
+            initRV();
+        } else {
+            adapter.notifyDataSetChanged();
+        }
     }
 
     BookListAdapter adapter;
     private void initRV() {
         adapter = new BookListAdapter();
         adapter.setBooks(books);
+        adapter.setLoadMoreListener(new RecyclerLoadMoreListener() {
+            @Override
+            public void loadMore() {
+                if(!isLoading) {
+                    page += 1;
+                    sendBookRequest(false);
+                }
+            }
+        });
 
         recyclerView.setLayoutManager(new GridLayoutManager(MyApp.getInstance(), 2));
         recyclerView.setAdapter(adapter);
