@@ -4,22 +4,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class BookShopItem {
-    private int bookId;
+    private Book book;
     private int quantity;
-    private int price;
+
 
     public BookShopItem() {
     }
 
-    public BookShopItem(int bookId, int quantity) {
-        this.bookId = bookId;
+    public BookShopItem(Book book, int quantity) {
+        this.book = book;
         this.quantity = quantity;
     }
 
     public JSONObject toJson() {
         JSONObject object = new JSONObject();
         try {
-            object.put("book", bookId);
+            object.put("book", book.getId());
             object.put("quantity", quantity);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -28,12 +28,12 @@ public class BookShopItem {
         return object;
     }
 
-    public int getBookId() {
-        return bookId;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public int getQuantity() {
@@ -49,10 +49,6 @@ public class BookShopItem {
     }
 
     public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+        return quantity * book.getPrice();
     }
 }
