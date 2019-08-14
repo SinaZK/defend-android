@@ -13,7 +13,7 @@
     <string name="menu_home">خانه</string>
     <string name="menu_news">اخبار</string>
     <string name="menu_events">رویدادها</string>
-    <string name="menu_books">خرید کتاب</string>
+    <string name="menu_books">کتابفروشی</string>
     <string name="menu_magazine">مجلات</string>
     <string name="menu_warfare">اطلس جنگ‌افزارها</string>
 
@@ -52,6 +52,7 @@
     <string name="fday_6">پ</string>
     <string name="fday_7">ج</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--BookShopFragment-->
+    <string name="price_str">%s تومان</string>
+    <string name="add_to_cart">افزودن به سبد خرید</string>
 </resources>
