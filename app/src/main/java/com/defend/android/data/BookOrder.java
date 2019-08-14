@@ -1,5 +1,7 @@
 package com.defend.android.data;
 
+import android.util.Log;
+
 import com.defend.android.constants.Constants;
 
 import org.json.JSONArray;
@@ -41,6 +43,14 @@ public class BookOrder {
         }
 
         return null;
+    }
+
+    public void updateItem(Book book, int q) {
+        BookShopItem item = find(book.getId());
+        if(item == null) return;
+
+        Log.i("salam", "set q : " + book.getTitle() + " : " + q);
+        item.setQuantity(q);
     }
 
     public JSONObject toJson(boolean includeState) {

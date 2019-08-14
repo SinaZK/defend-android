@@ -14,6 +14,8 @@ import com.defend.android.R;
 import com.defend.android.adapters.BookCartAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.BookOrder;
+import com.defend.android.data.BookShopItem;
+import com.defend.android.listeners.BookCartItemChangeListener;
 import com.defend.android.utils.ResourceManager;
 
 public class BookCartActivity extends Activity {
@@ -53,6 +55,14 @@ public class BookCartActivity extends Activity {
     BookCartAdapter adapter;
     private void initRV() {
         adapter = new BookCartAdapter();
+        adapter.setListener(new BookCartItemChangeListener() {
+            @Override
+            public void onChange(BookShopItem bookShopItem, int quantity) {
+                BookOrder.getInstance().updateItem(bookShopItem.getBook(), quantity);
+                setTotalValueText();
+            }
+        });
+
         itemRecyclerView.setHasFixedSize(true);
         itemRecyclerView.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
         itemRecyclerView.setAdapter(adapter);
