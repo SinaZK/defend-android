@@ -8,7 +8,8 @@ public class Constants {
     public static String API_LIST_NEWS = "news/"; //GET
     public static String API_LIST_MONTH_EVENTS = "events/"; //POST
     public static String API_LIST_ATLAS_CATEGORY = "atlas/with-category/%d"; //GET
-    public static String API_LIST_BOOKS = "book/all/"; //POST
+    public static String API_LIST_BOOKS = "book/all/"; //GET
+    public static String API_CHECKOUT_ORDER = "book/order/new"; //POST
 
     //Font Constants
     public final static int FONT_REGULAR = 0;
@@ -33,4 +34,12 @@ public class Constants {
     public static int MENU_NEWS = 4;
     public static int MENU_EVENTS = 5;
     public static int MENU_WARFARE = 6;
+
+    //BookOrderStates
+    public static String STATE_CHECKOUT = "checkout";
+    public static String STATE_PAID = "paid";
+    public static String STATE_CANCELED = "cancel";
+    public static String STATE_PAID_FAILED = "payfail";
+    public static String STATE_DELIVERING = "delivering";
+    public static String STATE_DELIVERED = "delivered";
 }

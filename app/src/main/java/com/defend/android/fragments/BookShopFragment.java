@@ -21,6 +21,7 @@ import com.defend.android.R;
 import com.defend.android.adapters.BookListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
+import com.defend.android.listeners.BookAddToCartListener;
 import com.defend.android.listeners.RecyclerLoadMoreListener;
 
 import org.json.JSONArray;
@@ -126,9 +127,15 @@ public class BookShopFragment extends Fragment {
                 }
             }
         });
+        adapter.setBookAddToCartListener(new BookAddToCartListener() {
+            @Override
+            public void onAdd(Book book) {
+
+            }
+        });
 
         recyclerView.setLayoutManager(new GridLayoutManager(MyApp.getInstance(), 2));
         recyclerView.setAdapter(adapter);
     }
-
+    
 }

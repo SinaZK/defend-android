@@ -16,6 +16,7 @@ import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
+import com.defend.android.listeners.BookAddToCartListener;
 import com.defend.android.listeners.RecyclerLoadMoreListener;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
@@ -25,6 +26,8 @@ import java.util.ArrayList;
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyViewHolder> {
 
     private ArrayList<Book> books;
+
+    private BookAddToCartListener bookAddToCartListener;
     private RecyclerLoadMoreListener loadMoreListener;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -51,6 +54,10 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         this.loadMoreListener = loadMoreListener;
     }
 
+    public void setBookAddToCartListener(BookAddToCartListener bookAddToCartListener) {
+        this.bookAddToCartListener = bookAddToCartListener;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -62,7 +69,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, final int i) {
-        Book book = books.get(i);
+        final Book book = books.get(i);
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(viewHolder.price, Color.RED);
         ResourceManager.getInstance().decorateButton(viewHolder.cartButton, Color.WHITE);
@@ -81,7 +88,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (bookAddToCartListener != null) {
+                    bookAddToCartListener.onAdd(book);
+                }
             }
         });
 
