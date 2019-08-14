@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,6 +20,9 @@ import com.defend.android.data.BookOrder;
 import com.defend.android.data.BookShopItem;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookCartAdapter extends RecyclerView.Adapter<BookCartAdapter.MyViewHolder> {
 
@@ -62,10 +67,52 @@ public class BookCartAdapter extends RecyclerView.Adapter<BookCartAdapter.MyView
         } else {
             viewHolder.image.setImageResource(R.drawable.ic_launcher_no_image);
         }
+
+        initSpinner(viewHolder.spinner, shopItem);
     }
 
     @Override
     public int getItemCount() {
         return BookOrder.getInstance().getItems().size();
+    }
+
+    private void initSpinner(Spinner spinner, BookShopItem item) {
+        ArrayList <String> list = new ArrayList<>();
+        for(int i = 1; i <= 5;i++) {
+            list.add(String.valueOf(i));
+        }
+        ArrayAdapter <String> arrayAdapter = new ArrayAdapter <String> (MyApp.getInstance(), R.layout.spinner_item, list) {
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                ResourceManager.getInstance().decorateTextView((TextView) view, Color.BLACK);
+
+                return view;
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+
+                ResourceManager.getInstance().decorateTextView((TextView) view, Color.BLACK);
+
+                return view;
+            }
+        };
+        spinner.setAdapter(arrayAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 }
