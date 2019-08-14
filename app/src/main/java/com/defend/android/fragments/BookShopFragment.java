@@ -106,8 +106,6 @@ public class BookShopFragment extends Fragment {
             books.add(book);
         }
 
-        Log.i("salam", "books count = " + books.size());
-
         if(clear) {
             initRV();
         } else {

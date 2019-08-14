@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, price;
         public ImageView image;
+        public Button cartButton;
         public CardView cardView;
 
         public MyViewHolder(View view) {
@@ -36,6 +38,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
             title = view.findViewById(R.id.title);
             price = view.findViewById(R.id.price);
             image = view.findViewById(R.id.image);
+            cartButton = view.findViewById(R.id.cart_btn);
             cardView = view.findViewById(R.id.parent);
         }
     }
@@ -62,6 +65,8 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         Book book = books.get(i);
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(viewHolder.price, Color.RED);
+        ResourceManager.getInstance().decorateButton(viewHolder.cartButton, Color.WHITE);
+        viewHolder.cartButton.setBackgroundResource(R.drawable.btn_bg);
         viewHolder.title.setText(book.getTitle());
         viewHolder.price.setText(String.format(MyApp.getInstance().getString(R.string.price_str), book.getPrice()));
 
