@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activites.WarfareDetailActivity"></activity>
+        <activity android:name=".activites.BookCartActivity"></activity>
+        <activity android:name=".activites.WarfareDetailActivity" />
         <activity android:name=".activites.EventDetailActivity" />
         <activity android:name=".activites.NewsActivity" />
         <activity android:name=".activites.SignUpActivity" />
