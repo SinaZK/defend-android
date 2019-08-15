@@ -22,7 +22,7 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:inputType="text"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="90dp"
                 android:layout_marginLeft="90dp"
                 android:hint="@string/bill_name"
@@ -42,7 +42,7 @@
                 android:gravity="center"
                 android:background="@drawable/white_btn"
                 android:layout_below="@id/name"
-                android:inputType="text"
+                android:inputType="number"
                 tools:ignore="TextFields" />
 
             <EditText
