@@ -1,6 +1,7 @@
 package com.defend.android.activites;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -91,25 +92,8 @@ public class BookCartActivity extends Activity {
     }
 
     private void checkout() {
-        if(progressBar.getVisibility() == View.VISIBLE) return;
-
-        String url = Constants.API_URL + Constants.API_CHECKOUT_ORDER;
-
-        JsonObjectRequest request = new AuthObjectRequest(Request.Method.POST, url,
-                BookOrder.getInstance().toJson(false), new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                setProgress(false);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                setProgress(false);
-            }
-        });
-
-        setProgress(true);
-        NetworkManager.getInstance().sendRequest(request);
+        Intent intent = new Intent(MyApp.getInstance(), BookBillingActivity.class);
+        MyApp.getInstance().startActivity(intent);
     }
 
     private void setProgress(boolean progress) {

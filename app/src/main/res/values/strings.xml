@@ -67,4 +67,10 @@
     <string name="book_author_str">نویسنده: %s</string>
     <string name="book_detail_item_price">قیمت: %d تومان</string>
 
+    <!--BookBillingActivity-->
+    <string name="bill_name">نام</string>
+    <string name="bill_phone">شماره تلفن</string>
+    <string name="bill_address">آدرس</string>
+    <string name="bill_checkout">خرید</string>
+
 </resources>
