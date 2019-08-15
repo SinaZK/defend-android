@@ -1,27 +1,30 @@
 package com.defend.android.activites;
 
+import android.app.Activity;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
-import com.defend.android.data.Event;
+import com.defend.android.data.BookOrder;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BookDetailActivity extends AppCompatActivity {
+public class BookDetailActivity extends Activity {
 
-    TextView title, body, author, price;
+    RelativeLayout cartParent;
+    TextView title, body, author, price, addToCartTV;
     ImageView image;
     Book book = new Book();
 
@@ -35,6 +38,8 @@ public class BookDetailActivity extends AppCompatActivity {
         author = findViewById(R.id.author);
         price = findViewById(R.id.price);
         image = findViewById(R.id.image);
+        cartParent = findViewById(R.id.add_to_cart_parent);
+        addToCartTV = findViewById(R.id.cart_tv);
 
         String jsonString = getIntent().getStringExtra(Constants.EXTRA_BOOK_JSON);
         try {
@@ -62,5 +67,13 @@ public class BookDetailActivity extends AppCompatActivity {
         ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(author, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(price, Color.RED, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(addToCartTV, Color.WHITE, Constants.FONT_REGULAR);
+
+        cartParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookOrder.getInstance().addItem(book, 1);
+            }
+        });
     }
 }

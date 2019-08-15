@@ -15,7 +15,7 @@ public class Book {
         this.object = object;
         id = object.optInt("id");
         title = object.optString("title");
-        body = object.optString("body");
+        body = object.optString("description");
         author = object.optString("author");
         imageUrl = object.optString("image_url");
         price = object.optInt("price");
