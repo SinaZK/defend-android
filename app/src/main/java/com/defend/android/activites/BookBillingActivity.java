@@ -14,6 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.defend.android.MyApp;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
@@ -59,6 +60,9 @@ public class BookBillingActivity extends Activity {
 
     private void checkout() {
         if(progressBar.getVisibility() == View.VISIBLE) return;
+        if(!checkFields()) return;
+
+        BookOrder.getInstance().addBillingInfo(name.getText().toString(), phone.getText().toString(), address.getText().toString());
 
         String url = Constants.API_URL + Constants.API_CHECKOUT_ORDER;
 
@@ -77,6 +81,26 @@ public class BookBillingActivity extends Activity {
 
         setProgress(true);
         NetworkManager.getInstance().sendRequest(request);
+    }
+
+    private boolean checkFields() {
+        boolean isOk = true;
+        if (name.getText().toString().length() == 0) {
+            name.setError(getString(R.string.bill_required));
+            isOk = false;
+        }
+
+        if (phone.getText().toString().length() == 0) {
+            phone.setError(getString(R.string.bill_required));
+            isOk = false;
+        }
+
+        if (address.getText().toString().length() == 0) {
+            address.setError(getString(R.string.bill_required));
+            isOk = false;
+        }
+
+        return isOk;
     }
 
     private void setProgress(boolean progress) {
