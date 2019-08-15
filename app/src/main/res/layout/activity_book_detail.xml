@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,80 +8,82 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="100dp">
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_no_image" />
 
     </RelativeLayout>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <View
+        android:id="@+id/seperator"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/top"
+        android:background="#c7c7c7" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seperator"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:textSize="25dp"
+        tools:ignore="RtlHardcoded,SpUsage" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
+        android:textSize="16dp"
+        tools:ignore="RtlHardcoded,SpUsage" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/author"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:textSize="16dp"
+        tools:ignore="RtlHardcoded,SpUsage" />
+
+    <View
+        android:id="@+id/seperator2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/price"
+        android:layout_marginTop="10dp"
+        android:background="#c7c7c7" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/top"
+        android:layout_below="@id/price"
         android:layout_above="@id/add_to_cart_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <View
-                android:id="@+id/seperator"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c7c7c7" />
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/seperator"
-                android:layout_margin="16dp"
-                android:gravity="right"
-                android:textSize="25dp"
-                tools:ignore="SpUsage" />
-
-            <TextView
-                android:id="@+id/author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/title"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:textSize="16dp"
-                tools:ignore="RtlHardcoded,SpUsage" />
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/author"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:textSize="16dp"
-                tools:ignore="RtlHardcoded,SpUsage" />
-
-            <View
-                android:id="@+id/seperator2"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_below="@id/price"
-                android:layout_marginTop="10dp"
-                android:background="#c7c7c7" />
-
             <TextView
                 android:id="@+id/body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/price"
-                android:layout_margin="10dp"
+                android:layout_margin="30dp"
                 android:gravity="right"
                 android:textSize="18dp"
                 tools:ignore="SpUsage" />
