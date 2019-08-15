@@ -62,4 +62,9 @@
     <string name="book_total_price_str">جمع کل خرید</string>
     <string name="book_checkout">خرید خود را نهایی کنید</string>
     <string name="book_item_price">قیمت: %d تومان</string>
+
+    <!--BookDetailActivity-->
+    <string name="book_author_str">نویسنده: %s</string>
+    <string name="book_detail_item_price">قیمت: %d تومان</string>
+
 </resources>

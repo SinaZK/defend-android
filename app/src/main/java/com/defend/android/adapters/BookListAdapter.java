@@ -1,5 +1,6 @@
 package com.defend.android.adapters;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.defend.android.MyApp;
 import com.defend.android.R;
+import com.defend.android.activites.BookDetailActivity;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
 import com.defend.android.listeners.BookAddToCartListener;
@@ -88,7 +90,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MyApp.getInstance(), BookDetailActivity.class);
+                intent.putExtra(Constants.EXTRA_BOOK_JSON, book.toJson().toString());
+                MyApp.getInstance().startActivity(intent);
             }
         });
 

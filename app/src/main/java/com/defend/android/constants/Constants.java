@@ -26,6 +26,7 @@ public class Constants {
     public static String EXTRA_NEWS_ID = "news";
     public static String EXTRA_EVENT_JSON = "event";
     public static String EXTRA_WARFARE_JSON = "warfare";
+    public static String EXTRA_BOOK_JSON = "book";
 
     //Main Drawer item id (just id not the order)
     public static int MENU_HOME = 1;
