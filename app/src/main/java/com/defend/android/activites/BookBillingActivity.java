@@ -1,5 +1,6 @@
 package com.defend.android.activites;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import com.defend.android.utils.ResourceManager;
 
 import org.json.JSONObject;
 
-public class BookBillingActivity extends AppCompatActivity {
+public class BookBillingActivity extends Activity {
 
     EditText name, phone, address;
     RelativeLayout checkout;
@@ -52,6 +53,8 @@ public class BookBillingActivity extends AppCompatActivity {
                 checkout();
             }
         });
+
+        setProgress(false);
     }
 
     private void checkout() {

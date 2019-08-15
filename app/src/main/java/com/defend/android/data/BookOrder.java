@@ -1,7 +1,5 @@
 package com.defend.android.data;
 
-import android.util.Log;
-
 import com.defend.android.constants.Constants;
 
 import org.json.JSONArray;
@@ -14,6 +12,10 @@ public class BookOrder {
     private static BookOrder instance;
 
     private String state = Constants.STATE_CHECKOUT;
+    private String billName = "";
+    private String billPhone = "";
+    private String billAddress = "";
+
     private ArrayList <BookShopItem> items = new ArrayList<>();
 
     public static BookOrder getInstance() {
@@ -66,6 +68,10 @@ public class BookOrder {
             if(includeState) {
                 object.put("state", state);
             }
+            object.put("billing_address", billAddress);
+            object.put("billing_name", billName);
+            object.put("billing_phone", billPhone);
+
             JSONArray itemArray = new JSONArray();
             for(int i = 0;i < items.size();i++) {
                 itemArray.put(items.get(i).toJson());
@@ -97,5 +103,23 @@ public class BookOrder {
         }
 
         return price;
+    }
+
+    public void addBillingInfo(String name, String phone, String address) {
+        this.billName = name;
+        this.billPhone = phone;
+        this.billAddress = address;
+    }
+
+    public String getBillName() {
+        return billName;
+    }
+
+    public String getBillPhone() {
+        return billPhone;
+    }
+
+    public String getBillAddress() {
+        return billAddress;
     }
 }

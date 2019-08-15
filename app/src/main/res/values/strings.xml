@@ -72,5 +72,6 @@
     <string name="bill_phone">شماره تلفن</string>
     <string name="bill_address">آدرس</string>
     <string name="bill_checkout">خرید</string>
+    <string name="bill_required">این فیلد الزامیست</string>
 
 </resources>
