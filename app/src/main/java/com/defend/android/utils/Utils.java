@@ -1,6 +1,8 @@
 package com.defend.android.utils;
 
+import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.util.TypedValue;
 import android.widget.Toast;
 
@@ -20,5 +22,10 @@ public class Utils {
         );
 
         return (int)px;
+    }
+
+    public static void openUrl(String url) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        MyApp.getInstance().startActivity(browserIntent);
     }
 }

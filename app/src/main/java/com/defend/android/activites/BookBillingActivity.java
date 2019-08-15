@@ -21,6 +21,7 @@ import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.BookOrder;
 import com.defend.android.utils.ResourceManager;
+import com.defend.android.utils.Utils;
 
 import org.json.JSONObject;
 
@@ -71,6 +72,11 @@ public class BookBillingActivity extends Activity {
             @Override
             public void onResponse(JSONObject response) {
                 setProgress(false);
+                try {
+                    Utils.openUrl(response.optString("pay_url"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
