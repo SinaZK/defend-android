@@ -68,7 +68,7 @@ public class LoginActivity extends Activity {
 
         String username = getIntent().getStringExtra(Constants.EXTRA_LOGIN_USER);
         if(username == null) username = "";
-        String password = getIntent().getStringExtra(Constants.EXTRA_LOGIN_USER);
+        String password = getIntent().getStringExtra(Constants.EXTRA_LOGIN_PASSWORD);
         if(password == null) password = "";
         userEditText.setText(username);
         passEditText.setText(password);
