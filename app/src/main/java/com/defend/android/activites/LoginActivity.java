@@ -111,8 +111,6 @@ public class LoginActivity extends Activity {
             Log.e(TAG, e.toString());
         }
 
-        Log.i(TAG, object.toString());
-
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -135,7 +133,6 @@ public class LoginActivity extends Activity {
             String token = response.getString("token");
             DataStore.getInstance().setStringData(Constants.DATA_FIELD_TOKEN, token);
             DataStore.getInstance().setStringData(Constants.DATA_FIELD_USERNAME, username);
-            Log.i(TAG, "user = " + username + " token = " + token);
         } catch (Exception e) {
             Log.e(TAG, e.toString());
         }
