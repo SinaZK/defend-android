@@ -102,6 +102,8 @@ public class SignUpActivity extends Activity {
             Log.e(TAG, e.toString());
         }
 
+        Log.i(TAG, "url = " + url);
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -110,6 +112,7 @@ public class SignUpActivity extends Activity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.i(TAG, "error = " + error.networkResponse + " " + error);
                 Utils.showToast(getString(R.string.sign_error_user_exist));
                 userEditText.setError(getString(R.string.sign_error_user_exist));
             }
@@ -122,6 +125,7 @@ public class SignUpActivity extends Activity {
         Intent intent = new Intent(MyApp.getInstance(), LoginActivity.class);
         intent.putExtra(Constants.EXTRA_LOGIN_USER, userEditText.getText().toString());
         intent.putExtra(Constants.EXTRA_LOGIN_PASSWORD, passEditText.getText().toString());
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
     }
