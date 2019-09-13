@@ -21,9 +21,11 @@ public class SplashActivity extends AppCompatActivity {
     private void done() {
         if (DataStore.getInstance().isLogin()) {
             Intent intent = new Intent(MyApp.getInstance(), MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             MyApp.getInstance().startActivity(intent);
         } else {
             Intent intent = new Intent(MyApp.getInstance(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             MyApp.getInstance().startActivity(intent);
         }
         finish();

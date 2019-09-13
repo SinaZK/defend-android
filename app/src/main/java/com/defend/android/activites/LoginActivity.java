@@ -76,6 +76,7 @@ public class LoginActivity extends Activity {
 
     private void startSignUpActivity() {
         Intent intent = new Intent(MyApp.getInstance(), SignUpActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         MyApp.getInstance().startActivity(intent);
         finish();
     }
@@ -142,6 +143,7 @@ public class LoginActivity extends Activity {
 
     private void finishOK() {
         Intent intent = new Intent(MyApp.getInstance(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
     }
