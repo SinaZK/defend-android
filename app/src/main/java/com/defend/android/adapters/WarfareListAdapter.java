@@ -70,6 +70,7 @@ public class WarfareListAdapter extends RecyclerView.Adapter<WarfareListAdapter.
             public void onClick(View v) {
                 Intent intent = new Intent(MyApp.getInstance(), WarfareDetailActivity.class);
                 intent.putExtra(Constants.EXTRA_WARFARE_JSON, warfare.toJson().toString());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 MyApp.getInstance().startActivity(intent);
             }
         });

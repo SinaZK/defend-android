@@ -70,6 +70,7 @@ public class EventDayAdapter extends RecyclerView.Adapter<EventDayAdapter.MyView
             public void onClick(View v) {
                 Intent intent = new Intent(MyApp.getInstance(), EventDetailActivity.class);
                 intent.putExtra(Constants.EXTRA_EVENT_JSON, event.toJson().toString());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 MyApp.getInstance().startActivity(intent);
             }
         });

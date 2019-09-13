@@ -171,6 +171,7 @@ public class BookShopFragment extends Fragment {
 
     private void openCartActivity() {
         Intent intent = new Intent(MyApp.getInstance(), BookCartActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         MyApp.getInstance().startActivity(intent);
     }
 

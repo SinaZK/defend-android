@@ -92,6 +92,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
             public void onClick(View v) {
                 Intent intent = new Intent(MyApp.getInstance(), BookDetailActivity.class);
                 intent.putExtra(Constants.EXTRA_BOOK_JSON, book.toJson().toString());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 MyApp.getInstance().startActivity(intent);
             }
         });

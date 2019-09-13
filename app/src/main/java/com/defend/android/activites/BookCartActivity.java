@@ -93,6 +93,7 @@ public class BookCartActivity extends Activity {
 
     private void checkout() {
         Intent intent = new Intent(MyApp.getInstance(), BookBillingActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         MyApp.getInstance().startActivity(intent);
     }
 
