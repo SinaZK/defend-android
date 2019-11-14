@@ -46,8 +46,8 @@ public class LoginActivity extends Activity {
     }
 
     private void initUI() {
-        ResourceManager.getInstance().decorateEditText(userEditText, Color.BLACK, Constants.FONT_REGULAR);
-        ResourceManager.getInstance().decorateEditText(passEditText, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(userEditText, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(passEditText, Color.WHITE, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(newTextView, Color.WHITE, Constants.FONT_BOLD);
 
         loginButton.setBackgroundResource(R.drawable.btn_bg);
