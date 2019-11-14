@@ -1,6 +1,7 @@
 package com.defend.android.fragments;
 
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
+import com.defend.android.activites.MainActivity;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.DataStore;
 import com.defend.android.utils.ResourceManager;
@@ -38,6 +40,11 @@ public class HomeFragment extends Fragment {
     ImageView newsImageView;
     TextView newsTextView, bookTextView, calendarTextView;
 
+    MainActivity mainActivity;
+
+    public void setMainActivity(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+    }
 
     public HomeFragment() {
         // Required empty public constructor
@@ -71,6 +78,27 @@ public class HomeFragment extends Fragment {
         ResourceManager.getInstance().decorateTextView(newsTextView, Color.WHITE);
         ResourceManager.getInstance().decorateTextView(bookTextView, Color.WHITE);
         ResourceManager.getInstance().decorateTextView(calendarTextView, Color.WHITE);
+
+        newsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.setFragment(new NewsFragment());
+            }
+        });
+
+        bookCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.setFragment(new BookShopFragment());
+            }
+        });
+
+        calendarCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.setFragment(new EventsFragment());
+            }
+        });
     }
 
     private boolean isLoading;

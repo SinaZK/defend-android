@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (drawerItem.getIdentifier() == Constants.MENU_HOME) {
                             fragment = new HomeFragment();
+                            ((HomeFragment) fragment).setMainActivity(MainActivity.this);
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWS) {
@@ -102,6 +103,13 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .withDrawerWidthDp(250)
                 .build();
+    }
+
+    public void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if(fragment != null) {
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        }
     }
 
     @Override
