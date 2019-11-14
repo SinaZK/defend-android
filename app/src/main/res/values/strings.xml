@@ -21,7 +21,7 @@
     <string name="login_btn">ورود</string>
     <string name="login_user_hint">نام کاربری</string>
     <string name="login_pass_hint">رمز عبور</string>
-    <string name="login_new_user"><u>اکانت بسازید</u></string>
+    <string name="login_new_user"><u>اکانت جدید بسازید</u></string>
     <string name="login_error">خطا در ورود.</string>
 
     <!--Signup Activity-->

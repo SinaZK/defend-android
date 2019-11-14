@@ -52,10 +52,10 @@ public class SignUpActivity extends Activity {
     }
 
     private void initUI() {
-        ResourceManager.getInstance().decorateEditText(userEditText, Color.BLACK, Constants.FONT_REGULAR);
-        ResourceManager.getInstance().decorateEditText(passEditText, Color.BLACK, Constants.FONT_REGULAR);
-        ResourceManager.getInstance().decorateEditText(pass2EditText, Color.BLACK, Constants.FONT_REGULAR);
-        ResourceManager.getInstance().decorateEditText(emailEditText, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(userEditText, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(passEditText, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(pass2EditText, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(emailEditText, Color.WHITE, Constants.FONT_REGULAR);
 
         signUpButton.setBackgroundResource(R.drawable.btn_bg);
         ResourceManager.getInstance().decorateButton(signUpButton, Color.WHITE);
