@@ -40,17 +40,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void initDrawer() {
         PrimaryDrawerItem homeItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_HOME).withName(R.string.menu_home)
-                .withIcon(R.drawable.ic_menu_camera);
+                .withIcon(R.drawable.home);
         PrimaryDrawerItem bookItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_BOOKS).withName(R.string.menu_books)
-                .withIcon(R.drawable.ic_menu_gallery);
+                .withIcon(R.drawable.book2);
         PrimaryDrawerItem magazineItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_MAGAZINES).withName(R.string.menu_magazine)
-            .withIcon(R.drawable.ic_menu_manage);
+            .withIcon(R.drawable.magazine);
         PrimaryDrawerItem newsItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWS).withName(R.string.menu_news)
-                .withIcon(R.drawable.ic_menu_send);
+                .withIcon(R.drawable.news2);
         PrimaryDrawerItem eventItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EVENTS).withName(R.string.menu_events)
-                .withIcon(R.drawable.ic_menu_send);
+                .withIcon(R.drawable.events);
         PrimaryDrawerItem warfareItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_WARFARE)
-                .withName(R.string.menu_warfare).withIcon(R.drawable.ic_menu_send);
+                .withName(R.string.menu_warfare).withIcon(R.drawable.warfare);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
