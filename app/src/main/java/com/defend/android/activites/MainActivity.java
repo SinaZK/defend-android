@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
+import com.defend.android.customViews.MyToolbar;
 import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.HomeFragment;
@@ -23,12 +24,16 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 public class MainActivity extends AppCompatActivity {
     String TAG = "_MAIN";
-    Drawer drawer;
+    public Drawer drawer;
+    public MyToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setActivity(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
@@ -73,22 +78,27 @@ public class MainActivity extends AppCompatActivity {
                         if (drawerItem.getIdentifier() == Constants.MENU_HOME) {
                             fragment = new HomeFragment();
                             ((HomeFragment) fragment).setMainActivity(MainActivity.this);
+                            toolbar.setText(getString(R.string.menu_home));
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWS) {
                             fragment = new NewsFragment();
+                            toolbar.setText(getString(R.string.menu_news));
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_EVENTS) {
                             fragment = new EventsFragment();
+                            toolbar.setText(getString(R.string.menu_events));
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_WARFARE) {
                             fragment = new WarfareCategoryFragment();
+                            toolbar.setText(getString(R.string.menu_warfare));
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_BOOKS) {
                             fragment = new BookShopFragment();
+                            toolbar.setText(getString(R.string.menu_books));
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -105,11 +115,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
     }
 
-    public void setFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        if(fragment != null) {
-            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-        }
+    public void setFragment(int type) {
+        drawer.setSelection(type);
     }
 
     @Override

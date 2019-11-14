@@ -82,21 +82,21 @@ public class HomeFragment extends Fragment {
         newsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.setFragment(new NewsFragment());
+                mainActivity.setFragment(Constants.MENU_NEWS);
             }
         });
 
         bookCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.setFragment(new BookShopFragment());
+                mainActivity.setFragment(Constants.MENU_BOOKS);
             }
         });
 
         calendarCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.setFragment(new EventsFragment());
+                mainActivity.setFragment(Constants.MENU_EVENTS);
             }
         });
     }
