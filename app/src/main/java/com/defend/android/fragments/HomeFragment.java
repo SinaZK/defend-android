@@ -1,14 +1,17 @@
 package com.defend.android.fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -18,6 +21,8 @@ import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.DataStore;
+import com.defend.android.utils.ResourceManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -29,6 +34,9 @@ public class HomeFragment extends Fragment {
     private String TAG = "_Home";
     ProgressBar progressBar;
     RelativeLayout parent;
+    RelativeLayout newsCard, bookCard, calendarCard;
+    ImageView newsImageView;
+    TextView newsTextView, bookTextView, calendarTextView;
 
 
     public HomeFragment() {
@@ -44,21 +52,33 @@ public class HomeFragment extends Fragment {
 
         progressBar = view.findViewById(R.id.progress);
         parent = view.findViewById(R.id.parent);
+        newsImageView = view.findViewById(R.id.news_image);
+        newsTextView = view.findViewById(R.id.news_title);
+        bookTextView = view.findViewById(R.id.book_title);
+        calendarTextView = view.findViewById(R.id.calendar_title);
+        newsCard = view.findViewById(R.id.news);
+        bookCard = view.findViewById(R.id.book);
+        calendarCard = view.findViewById(R.id.calendar);
 
         sendSyncRequest();
 
+        initUI();
+
         return view;
+    }
+
+    private void initUI() {
+        ResourceManager.getInstance().decorateTextView(newsTextView, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(bookTextView, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(calendarTextView, Color.WHITE);
     }
 
     private boolean isLoading;
     private void sendSyncRequest() {
         if(isLoading) return;
+        parent.setVisibility(View.GONE);
 
         String url = Constants.API_URL + Constants.API_SYNC;
-
-        Log.i(TAG, "url = " + url);
-        String token = DataStore.getInstance().getStringData(Constants.DATA_FIELD_TOKEN, "");
-        Log.i(TAG, "token = " + token);
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
@@ -92,7 +112,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void setNewsURL(String url) {
+        if (url.length() == 0) return;
 
+        Log.i(TAG, "url = " + url);
+
+        Picasso.get().load(url)
+                .error(R.drawable.news_card)
+                .into(newsImageView);
     }
 
     private void showCards() {
