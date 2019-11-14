@@ -25,4 +25,9 @@
         android:src="@drawable/drawer"
         android:scaleType="fitCenter"/>
 
+    <View
+        android:background="#222222"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
