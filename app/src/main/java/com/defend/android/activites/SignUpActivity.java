@@ -45,6 +45,10 @@ public class SignUpActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(MyApp.getInstance(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void initUI() {
