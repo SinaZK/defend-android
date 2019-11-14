@@ -74,4 +74,11 @@
     <string name="bill_checkout">خرید</string>
     <string name="bill_required">این فیلد الزامیست</string>
 
+    <!--MainFragment-->
+    <string name="title">دفاع</string>
+    <string name="card_news">اخبار</string>
+    <string name="card_book">کتابفروشی</string>
+    <string name="card_atlas">اطلس‌ها</string>
+    <string name="card_calendar">تقویم مناسبت‌ها</string>
+
 </resources>

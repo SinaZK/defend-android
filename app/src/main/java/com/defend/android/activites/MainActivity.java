@@ -12,6 +12,7 @@ import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.EventsFragment;
+import com.defend.android.fragments.HomeFragment;
 import com.defend.android.fragments.NewsFragment;
 import com.defend.android.fragments.WarfareCategoryFragment;
 import com.mikepenz.materialdrawer.Drawer;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         initDrawer();
-        drawer.setSelection(Constants.MENU_BOOKS);
+        drawer.setSelection(Constants.MENU_HOME);
     }
 
     private void initDrawer() {
@@ -68,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
 
                         Fragment fragment = null;
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_HOME) {
+                            fragment = new HomeFragment();
+                        }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWS) {
                             fragment = new NewsFragment();
@@ -104,34 +109,4 @@ public class MainActivity extends AppCompatActivity {
         drawer.closeDrawer();
     }
 
-//    @SuppressWarnings("StatementWithEmptyBody")
-//    @Override
-//    public boolean onNavigationItemSelected(MenuItem item) {
-//        Fragment fragment = null;
-//        Class fragmentClass = null;
-//
-//        int id = item.getItemId();
-//
-//        if (id == R.id.nav_home) {
-//            // Handle the camera action
-//        } else if (id == R.id.nav_books) {
-//
-//        } else if (id == R.id.nav_news) {
-//            fragmentClass = NewsFragment.class;
-//        } else if (id == R.id.nav_magazines) {
-//
-//        } else {
-//            fragmentClass = NewsFragment.class;
-//        }
-//
-//        try {
-//            fragment = (Fragment) fragmentClass.newInstance();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
 }

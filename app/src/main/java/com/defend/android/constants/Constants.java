@@ -1,8 +1,9 @@
 package com.defend.android.constants;
 
 public class Constants {
-    //public static String API_URL = "http://192.168.43.36:8000/";
-    public static String API_URL = "http://185.8.175.170/";
+    public static String API_URL = "http://192.168.43.36:8000/";
+//    public static String API_URL = "http://185.8.175.170/";
+//    public static String API_URL = "http://127.0.0.1:8000/";
 
     public static String API_SIGN_UP = "users/"; //POST
     public static String API_LOGIN = "users/login/"; //POST
@@ -11,6 +12,7 @@ public class Constants {
     public static String API_LIST_ATLAS_CATEGORY = "atlas/with-category/%d"; //GET
     public static String API_LIST_BOOKS = "book/all/"; //GET
     public static String API_CHECKOUT_ORDER = "book/order/new"; //POST
+    public static String API_SYNC = "sync/"; //POST
 
     //Font Constants
     public final static int FONT_REGULAR = 0;
