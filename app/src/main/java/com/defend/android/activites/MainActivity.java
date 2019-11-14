@@ -74,11 +74,13 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
 
                         Fragment fragment = null;
+                        toolbar.setVisibility(View.VISIBLE);
 
                         if (drawerItem.getIdentifier() == Constants.MENU_HOME) {
                             fragment = new HomeFragment();
                             ((HomeFragment) fragment).setMainActivity(MainActivity.this);
                             toolbar.setText(getString(R.string.menu_home));
+                            toolbar.setVisibility(View.GONE);
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWS) {
