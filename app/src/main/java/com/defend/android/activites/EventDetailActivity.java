@@ -58,7 +58,7 @@ public class EventDetailActivity extends Activity {
 
         ResourceManager.getInstance().decorateTextView(title, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
-        ResourceManager.getInstance().decorateTextView(location, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(location, Color.parseColor("#222222"), Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(date, Color.BLACK, Constants.FONT_LIGHT);
     }
 }
