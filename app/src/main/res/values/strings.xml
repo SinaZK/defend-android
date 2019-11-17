@@ -51,6 +51,20 @@
     <string name="fday_5">چ</string>
     <string name="fday_6">پ</string>
     <string name="fday_7">ج</string>
+    <string name="month_1">فروردین</string>
+    <string name="month_2">اردیبهشت</string>
+    <string name="month_3">خرداد</string>
+    <string name="month_4">تیر</string>
+    <string name="month_5">مرداد</string>
+    <string name="month_6">شهریور</string>
+    <string name="month_7">مهر</string>
+    <string name="month_8">آبان</string>
+    <string name="month_9">آذر</string>
+    <string name="month_10">دی</string>
+    <string name="month_11">بهمن</string>
+    <string name="month_12">اسفند</string>
+
+
 
     <!--BookShopFragment-->
     <string name="price_str">%d تومان</string>

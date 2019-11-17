@@ -20,6 +20,7 @@ import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.adapters.EventDayAdapter;
+import com.defend.android.calendar.CalendarUtils;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.CalendarMonthView;
 import com.defend.android.data.Event;
@@ -65,7 +66,8 @@ public class MonthViewFragment extends Fragment {
         eventRecyclerView = view.findViewById(R.id.event_rv);
         monthTextView = view.findViewById(R.id.month_text);
         ResourceManager.getInstance().decorateTextView(monthTextView, Color.WHITE, Constants.FONT_BOLD);
-        monthTextView.setText(String.format(Locale.ENGLISH, "%d %d", year, month));
+        monthTextView.setText(String.format(Locale.ENGLISH, "%s %d", CalendarUtils.getMonthPersianString(month), year
+        ));
 
         calendarView = view.findViewById(R.id.calendar);
         calendarView.setListener(new CalendarOnDaySelectListener() {

@@ -42,6 +42,38 @@ public class CalendarUtils {
         return "";
     }
 
+    public static String getMonthPersianString(int month) {
+        switch (month) {
+            case 1:
+                return MyApp.getInstance().getString(R.string.month_1);
+            case 2:
+                return MyApp.getInstance().getString(R.string.month_2);
+            case 3:
+                return MyApp.getInstance().getString(R.string.month_3);
+            case 4:
+                return MyApp.getInstance().getString(R.string.month_4);
+            case 5:
+                return MyApp.getInstance().getString(R.string.month_5);
+            case 6:
+                return MyApp.getInstance().getString(R.string.month_6);
+            case 7:
+                return MyApp.getInstance().getString(R.string.month_7);
+            case 8:
+                return MyApp.getInstance().getString(R.string.month_8);
+            case 9:
+                return MyApp.getInstance().getString(R.string.month_9);
+            case 10:
+                return MyApp.getInstance().getString(R.string.month_10);
+            case 11:
+                return MyApp.getInstance().getString(R.string.month_11);
+            case 12:
+                return MyApp.getInstance().getString(R.string.month_12);
+        }
+
+        return "";
+    }
+
+
     public static int getFirstWeekDayOfMonth(int year, int month) {
         PersianCalendar calendar = new PersianCalendar();
         calendar.setPersianDate(year, month - 1, 1);
