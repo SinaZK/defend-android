@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
                         new DividerDrawerItem(),
                         newsItem,
                         eventItem,
-                        warfareItem,
-                        bookItem,
-                        magazineItem,
+//                        warfareItem,
+                        //bookItem,
+//                        magazineItem,
                         new DividerDrawerItem()
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
