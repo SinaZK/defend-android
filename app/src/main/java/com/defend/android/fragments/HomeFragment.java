@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
         bookCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mainActivity.setFragment(Constants.MENU_BOOKS);
+                mainActivity.setFragment(Constants.MENU_BOOKS);
             }
         });
 

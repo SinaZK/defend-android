@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         newsItem,
                         eventItem,
 //                        warfareItem,
-                        //bookItem,
+                        bookItem,
 //                        magazineItem,
                         new DividerDrawerItem()
                 )
