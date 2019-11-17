@@ -40,11 +40,15 @@ public class EventDayAdapter extends RecyclerView.Adapter<EventDayAdapter.MyView
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
+        public TextView time;
+        public TextView location;
         public CardView parent;
 
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
+            time = view.findViewById(R.id.time);
+            location = view.findViewById(R.id.location);
             parent = view.findViewById(R.id.parent);
         }
     }
@@ -62,8 +66,10 @@ public class EventDayAdapter extends RecyclerView.Adapter<EventDayAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, final int i) {
         final Event event = fragment.findEventsByDate(day).get(i);
 
-        ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
-        viewHolder.title.setText(String.format(Locale.ENGLISH, "%d.%s", i + 1, event.getTitle()));
+        ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(viewHolder.time, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(viewHolder.location, Color.parseColor("#c7c7c7ff"), Constants.FONT_REGULAR);
+        viewHolder.title.setText(String.format(Locale.ENGLISH, "%s", event.getTitle()));
 
         viewHolder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
