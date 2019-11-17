@@ -68,8 +68,10 @@ public class EventDayAdapter extends RecyclerView.Adapter<EventDayAdapter.MyView
 
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.WHITE, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(viewHolder.time, Color.WHITE, Constants.FONT_BOLD);
-        ResourceManager.getInstance().decorateTextView(viewHolder.location, Color.parseColor("#c7c7c7ff"), Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(viewHolder.location, Color.parseColor("#c7c7ff"), Constants.FONT_REGULAR);
         viewHolder.title.setText(String.format(Locale.ENGLISH, "%s", event.getTitle()));
+        viewHolder.location.setText(event.getLocation());
+        viewHolder.time.setText(event.getTime());
 
         viewHolder.parent.setOnClickListener(new View.OnClickListener() {
             @Override

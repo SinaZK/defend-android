@@ -23,7 +23,6 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:textSize="18dp"
-            android:text="18:30"
             tools:ignore="RtlHardcoded,SpUsage" />
 
         <TextView
@@ -35,15 +34,24 @@
             android:textSize="18dp"
             tools:ignore="RtlHardcoded,SpUsage" />
 
+        <ImageView
+            android:id="@+id/location_img"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_toLeftOf="@id/time"
+            android:layout_below="@id/title"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/location_color"
+            tools:ignore="RtlHardcoded" />
+
         <TextView
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/time"
+            android:layout_toLeftOf="@id/location_img"
             android:layout_below="@id/title"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="3dp"
             android:textSize="16dp"
-            android:text="تهران میدان فاطمی"
             tools:ignore="RtlHardcoded,SpUsage" />
 
         <View
