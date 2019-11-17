@@ -92,7 +92,8 @@
     <string name="title">دفاع</string>
     <string name="card_news">اخبار</string>
     <string name="card_book">کتابفروشی</string>
-    <string name="card_atlas">اطلس‌ها</string>
+    <string name="card_atlas">اطلس جنگ‌افزارها</string>
+    <string name="card_magazine">مجلات</string>
     <string name="card_calendar">تقویم رویدادها</string>
 
 </resources>

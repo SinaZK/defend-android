@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
     RelativeLayout parent;
     RelativeLayout newsCard, bookCard, calendarCard;
     ImageView newsImageView;
-    TextView newsTextView, bookTextView, calendarTextView;
+    TextView newsTextView, bookTextView, calendarTextView, magazineTextView, warfareTextView;
 
     MainActivity mainActivity;
 
@@ -63,6 +63,8 @@ public class HomeFragment extends Fragment {
         newsTextView = view.findViewById(R.id.news_title);
         bookTextView = view.findViewById(R.id.book_title);
         calendarTextView = view.findViewById(R.id.calendar_title);
+        magazineTextView = view.findViewById(R.id.mag_title);
+        warfareTextView = view.findViewById(R.id.war_title);
         newsCard = view.findViewById(R.id.news);
         bookCard = view.findViewById(R.id.book);
         calendarCard = view.findViewById(R.id.calendar);
@@ -78,6 +80,8 @@ public class HomeFragment extends Fragment {
         ResourceManager.getInstance().decorateTextView(newsTextView, Color.WHITE);
         ResourceManager.getInstance().decorateTextView(bookTextView, Color.WHITE);
         ResourceManager.getInstance().decorateTextView(calendarTextView, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(warfareTextView, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(magazineTextView, Color.WHITE);
 
         newsCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +93,7 @@ public class HomeFragment extends Fragment {
         bookCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.setFragment(Constants.MENU_BOOKS);
+//                mainActivity.setFragment(Constants.MENU_BOOKS);
             }
         });
 
