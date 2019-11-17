@@ -12,7 +12,7 @@
     <!--Main drawer-->
     <string name="menu_home">خانه</string>
     <string name="menu_news">اخبار</string>
-    <string name="menu_events">رویدادها</string>
+    <string name="menu_events">تقویم رویدادها</string>
     <string name="menu_books">کتابفروشی</string>
     <string name="menu_magazine">مجلات</string>
     <string name="menu_warfare">اطلس جنگ‌افزارها</string>
@@ -93,6 +93,6 @@
     <string name="card_news">اخبار</string>
     <string name="card_book">کتابفروشی</string>
     <string name="card_atlas">اطلس‌ها</string>
-    <string name="card_calendar">تقویم مناسبت‌ها</string>
+    <string name="card_calendar">تقویم رویدادها</string>
 
 </resources>
