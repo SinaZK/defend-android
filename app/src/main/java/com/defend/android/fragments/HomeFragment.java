@@ -36,9 +36,10 @@ public class HomeFragment extends Fragment {
     private String TAG = "_Home";
     ProgressBar progressBar;
     RelativeLayout parent;
-    RelativeLayout newsCard, bookCard, calendarCard;
+    RelativeLayout newsCard, bookCard, calendarCard, warfareCard, infoCard, tesCard;
     ImageView newsImageView;
     TextView newsTextView, bookTextView, calendarTextView, magazineTextView, warfareTextView;
+    TextView infoTextView, tesTextView;
 
     MainActivity mainActivity;
 
@@ -65,9 +66,14 @@ public class HomeFragment extends Fragment {
         calendarTextView = view.findViewById(R.id.calendar_title);
         magazineTextView = view.findViewById(R.id.mag_title);
         warfareTextView = view.findViewById(R.id.war_title);
+        infoTextView = view.findViewById(R.id.info_title);
+        tesTextView = view.findViewById(R.id.tes_title);
         newsCard = view.findViewById(R.id.news);
         bookCard = view.findViewById(R.id.book);
         calendarCard = view.findViewById(R.id.calendar);
+        tesCard = view.findViewById(R.id.tes_calendar);
+        warfareCard = view.findViewById(R.id.warfare);
+        infoCard = view.findViewById(R.id.infographic);
 
         sendSyncRequest();
 
@@ -82,6 +88,8 @@ public class HomeFragment extends Fragment {
         ResourceManager.getInstance().decorateTextView(calendarTextView, Color.WHITE);
         ResourceManager.getInstance().decorateTextView(warfareTextView, Color.WHITE);
         ResourceManager.getInstance().decorateTextView(magazineTextView, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(infoTextView, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(tesTextView, Color.WHITE);
 
         newsCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +109,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mainActivity.setFragment(Constants.MENU_EVENTS);
+            }
+        });
+
+        tesCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.setFragment(Constants.MENU_TESCALENDAR);
+            }
+        });
+
+        infoCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.setFragment(Constants.MENU_INFOGRAPHIC);
             }
         });
     }

@@ -215,8 +215,86 @@
                     android:layout_marginTop="20dp" />
 
             </RelativeLayout>
-
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_4"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/row_3"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/infographic"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/card_bg">
+
+                <ImageView
+                    android:id="@+id/info_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/magazine_color"
+                    android:scaleType="fitCenter"/>
+
+                <TextView
+                    android:id="@+id/info_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="22dp"
+                    android:layout_below="@id/info_image"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/card_info" />
+
+                <View
+                    android:background="#222222"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="20dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tes_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/card_bg">
+
+                <ImageView
+                    android:id="@+id/tes_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/warfare_col"
+                    android:scaleType="fitCenter"/>
+
+                <TextView
+                    android:id="@+id/tes_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="22dp"
+                    android:layout_below="@id/tes_image"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/card_tes" />
+
+                <View
+                    android:background="#222222"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="20dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
 
     </RelativeLayout>
 

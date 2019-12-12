@@ -97,5 +97,7 @@
     <string name="card_atlas">اطلس جنگ‌افزارها</string>
     <string name="card_magazine">مجلات</string>
     <string name="card_calendar">تقویم رویدادها</string>
+    <string name="card_info">داده‌نمایی</string>
+    <string name="card_tes">تقویم ارایه‌ها</string>
 
 </resources>
