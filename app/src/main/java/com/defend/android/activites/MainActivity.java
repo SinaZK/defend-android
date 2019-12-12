@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                         new DividerDrawerItem(),
                         newsItem,
                         eventItem,
-//                        warfareItem,
+                        warfareItem,
                         bookItem,
 //                        magazineItem,
                         new DividerDrawerItem()
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             fragment = new HomeFragment();
                             ((HomeFragment) fragment).setMainActivity(MainActivity.this);
                             toolbar.setText(getString(R.string.menu_home));
-                            toolbar.setVisibility(View.GONE);
+//                            toolbar.setVisibility(View.GONE);
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWS) {

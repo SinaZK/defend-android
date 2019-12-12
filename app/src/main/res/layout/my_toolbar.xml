@@ -22,7 +22,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
-        android:src="@drawable/drawer"
+        android:src="@drawable/drawer_white"
         android:scaleType="fitCenter"/>
 
     <View
