@@ -38,6 +38,8 @@ public class Constants {
     public static int MENU_NEWS = 4;
     public static int MENU_EVENTS = 5;
     public static int MENU_WARFARE = 6;
+    public static int MENU_INFOGRAPHIC = 7;
+    public static int MENU_TESCALENDAR = 8;
 
     //BookOrderStates
     public static String STATE_CHECKOUT = "checkout";

@@ -16,6 +16,8 @@
     <string name="menu_books">کتابفروشی</string>
     <string name="menu_magazine">مجلات</string>
     <string name="menu_warfare">اطلس جنگ‌افزارها</string>
+    <string name="menu_infographic">داده‌نمایی</string>
+    <string name="menu_tes_calendar">تقویم ارایه‌ها</string>
 
     <!--Login Activity-->
     <string name="login_btn">ورود</string>
