@@ -17,6 +17,7 @@ import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.MyToolbar;
 import com.defend.android.fragments.BookShopFragment;
+import com.defend.android.fragments.CreateEventFragment;
 import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.HomeFragment;
 import com.defend.android.fragments.InfographicCategoryFragment;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 .withName(R.string.menu_warfare).withIcon(R.drawable.warfare);
         PrimaryDrawerItem infoItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_INFOGRAPHIC)
                 .withName(R.string.menu_infographic).withIcon(R.drawable.warfare);
-        PrimaryDrawerItem tesCalendarItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_TESCALENDAR)
+        PrimaryDrawerItem tesCalendarItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWEVENT)
                 .withName(R.string.menu_tes_calendar).withIcon(R.drawable.warfare);
 
         drawer = new DrawerBuilder()
@@ -120,6 +121,11 @@ public class MainActivity extends AppCompatActivity {
                         if (drawerItem.getIdentifier() == Constants.MENU_INFOGRAPHIC) {
                             fragment = new InfographicCategoryFragment();
                             toolbar.setText(getString(R.string.menu_infographic));
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_NEWEVENT) {
+                            fragment = new CreateEventFragment();
+                            toolbar.setText(getString(R.string.menu_tes_calendar));
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();

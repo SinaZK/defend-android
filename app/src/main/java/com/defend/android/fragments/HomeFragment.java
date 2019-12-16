@@ -1,7 +1,6 @@
 package com.defend.android.fragments;
 
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,7 +21,6 @@ import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
 import com.defend.android.constants.Constants;
-import com.defend.android.data.DataStore;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
@@ -115,7 +113,7 @@ public class HomeFragment extends Fragment {
         tesCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.setFragment(Constants.MENU_TESCALENDAR);
+                mainActivity.setFragment(Constants.MENU_NEWEVENT);
             }
         });
 
