@@ -1,12 +1,9 @@
 package com.defend.android.calendar;
 
-import android.util.Log;
-
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 
 public class CalendarUtils {

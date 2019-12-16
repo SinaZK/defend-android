@@ -108,8 +108,8 @@
     <string name="title_hint">عنوان رویداد</string>
     <string name="location_hint">محل برگزاری</string>
     <string name="body_hint">توضیحات</string>
-    <string name="time_tv">ساعت رویداد: %s:%s</string>
-    <string name="date_tv">تاریخ رویداد: %d/%d/%d</string>
+    <string name="time_tv">ساعت رویداد: %02d:%02d</string>
+    <string name="date_tv">تاریخ رویداد: %2d %s %2d</string>
     <string name="submit_btn">ارسال</string>
 
 </resources>

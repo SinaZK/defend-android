@@ -14,8 +14,11 @@ import android.widget.TextView;
 
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
+import com.defend.android.calendar.CalendarUtils;
 import com.defend.android.constants.Constants;
 import com.defend.android.utils.ResourceManager;
+
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +30,12 @@ public class CreateEventFragment extends Fragment {
     TextView timeTextView, dateTextView;
     Button submitButton;
     ProgressBar progressBar;
+
+    private int hour = 12;
+    private int minute = 0;
+    private int day = 1;
+    private int month = 1;
+    private int year = 1396;
 
 
     public CreateEventFragment() {
@@ -69,6 +78,23 @@ public class CreateEventFragment extends Fragment {
 
             }
         });
+
+        updateTime(hour, minute);
+        updateDate(year, month, day);
+    }
+
+    private void updateTime(int h, int m) {
+        hour = h;
+        minute = m;
+        timeTextView.setText(String.format(Locale.ENGLISH, getString(R.string.time_tv), hour, minute));
+    }
+
+    private void updateDate(int y, int m, int d) {
+        year = y;
+        month = m;
+        day = d;
+        dateTextView.setText(String.format(Locale.ENGLISH, getString(R.string.date_tv), day,
+                CalendarUtils.getMonthPersianString(month), year));
     }
 
     private void setProgress(boolean show) {
