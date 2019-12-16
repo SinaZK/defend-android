@@ -100,4 +100,7 @@
     <string name="card_info">داده‌نمایی</string>
     <string name="card_tes">تقویم ارایه‌ها</string>
 
+    <!--WarfareFragment-->
+    <string name="warfare_back_btn">بازگشت</string>
+
 </resources>

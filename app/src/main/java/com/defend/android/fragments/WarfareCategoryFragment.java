@@ -1,10 +1,12 @@
 package com.defend.android.fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ import com.defend.android.customViews.ExtendedRecyclerView;
 import com.defend.android.data.Warfare;
 import com.defend.android.data.WarfareCategory;
 import com.defend.android.listeners.WarfareCategoryItemSelectListener;
+import com.defend.android.utils.ResourceManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,8 +40,10 @@ import java.util.Locale;
  */
 public class WarfareCategoryFragment extends Fragment {
 
+    private String TAG = "_Warfare";
+
     ProgressBar progressBar;
-    ExtendedRecyclerView catRV, warfareRV;
+    RecyclerView catRV, warfareRV;
     Button backButton;
     private ArrayList<Integer> categoryQueue = new ArrayList<>();
     private ArrayList<Warfare> warfares = new ArrayList<>();
@@ -56,17 +61,25 @@ public class WarfareCategoryFragment extends Fragment {
         warfareRV = view.findViewById(R.id.warfare_rv);
         progressBar = view.findViewById(R.id.progress);
         backButton = view.findViewById(R.id.back_button);
+
+        categoryQueue.add(0);
+        onCategoryChange();
+        sendAtlasRequest();
+
+        initUI();
+
+        return view;
+    }
+
+    private void initUI() {
+        ResourceManager.getInstance().decorateButton(backButton, Color.WHITE);
+        backButton.setBackgroundResource(R.drawable.btn_bg);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goBack();
             }
         });
-
-        categoryQueue.add(0);
-        sendAtlasRequest();
-
-        return view;
     }
 
     private void sendAtlasRequest() {
@@ -115,9 +128,9 @@ public class WarfareCategoryFragment extends Fragment {
         warfareListAdapter.setWarfares(warfares);
         warfareRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
         warfareRV.setAdapter(warfareListAdapter);
-        if(warfareCategories.size() == 0) {
-            warfareRV.setMaxSize(1000);
-        }
+//        if(warfareCategories.size() == 0) {
+//            warfareRV.setMaxSize(1000);
+//        }
 
         warfareCategoryListAdapter = new WarfareCategoryListAdapter();
         warfareCategoryListAdapter.setWarfareCategories(warfareCategories);
@@ -149,6 +162,14 @@ public class WarfareCategoryFragment extends Fragment {
         if(categoryQueue.size() > 1) {
             categoryQueue.remove(categoryQueue.size() - 1);
             sendAtlasRequest();
+        }
+    }
+
+    public void onCategoryChange() {
+        if (categoryQueue.size() == 1) {
+            backButton.setVisibility(View.GONE);
+        } else {
+            backButton.setVisibility(View.VISIBLE);
         }
     }
 
