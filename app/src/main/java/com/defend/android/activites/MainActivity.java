@@ -14,6 +14,7 @@ import com.defend.android.customViews.MyToolbar;
 import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.HomeFragment;
+import com.defend.android.fragments.InfographicCategoryFragment;
 import com.defend.android.fragments.NewsFragment;
 import com.defend.android.fragments.WarfareCategoryFragment;
 import com.mikepenz.materialdrawer.Drawer;
@@ -107,6 +108,11 @@ public class MainActivity extends AppCompatActivity {
                         if (drawerItem.getIdentifier() == Constants.MENU_BOOKS) {
                             fragment = new BookShopFragment();
                             toolbar.setText(getString(R.string.menu_books));
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_INFOGRAPHIC) {
+                            fragment = new InfographicCategoryFragment();
+                            toolbar.setText(getString(R.string.menu_infographic));
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();

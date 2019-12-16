@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import com.defend.android.R;
 import com.defend.android.adapters.WarfareCategoryListAdapter;
 import com.defend.android.adapters.WarfareListAdapter;
 import com.defend.android.constants.Constants;
-import com.defend.android.customViews.ExtendedRecyclerView;
 import com.defend.android.data.Warfare;
 import com.defend.android.data.WarfareCategory;
 import com.defend.android.listeners.WarfareCategoryItemSelectListener;
@@ -40,22 +38,22 @@ import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WarfareCategoryFragment extends Fragment {
+public class InfographicCategoryFragment extends Fragment {
 
-    private String TAG = "_Warfare";
+    private String TAG = "_Infographic";
 
     ProgressBar progressBar;
-    RecyclerView catRV, warfareRV;
+    RecyclerView catRV, infoRV;
     RelativeLayout topParent;
     Button backButton;
     TextView categoryNameTextView;
 
     private ArrayList<Integer> categoryQueue = new ArrayList<>();
     private ArrayList<String> categoryQueueName = new ArrayList<>();
-    private ArrayList<Warfare> warfares = new ArrayList<>();
-    private ArrayList<WarfareCategory> warfareCategories = new ArrayList<>();
+    private ArrayList<Warfare> info = new ArrayList<>();
+    private ArrayList<WarfareCategory> infoCategories = new ArrayList<>();
 
-    public WarfareCategoryFragment() {
+    public InfographicCategoryFragment() {
     }
 
     @Override
@@ -64,7 +62,7 @@ public class WarfareCategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_warfare_category, container, false);
 
         catRV = view.findViewById(R.id.category_rv);
-        warfareRV = view.findViewById(R.id.warfare_rv);
+        infoRV = view.findViewById(R.id.warfare_rv);
         progressBar = view.findViewById(R.id.progress);
         backButton = view.findViewById(R.id.back_button);
         topParent = view.findViewById(R.id.top_parent);
@@ -95,14 +93,14 @@ public class WarfareCategoryFragment extends Fragment {
 
     private void sendAtlasRequest() {
         String url = Constants.API_URL +
-                String.format(Locale.ENGLISH, Constants.API_LIST_ATLAS_CATEGORY, categoryQueue.get(categoryQueue.size() - 1));
+                String.format(Locale.ENGLISH, Constants.API_LIST_INFOGRAPHIC_CATEGORY, categoryQueue.get(categoryQueue.size() - 1));
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 setProgress(false);
-                updateWarfares(response.optJSONObject("results").optJSONArray("atlases"));
-                updateWarfareCategories(response.optJSONObject("results").optJSONArray("categories"));
+                updateInfos(response.optJSONObject("results").optJSONArray("info"));
+                updateInfoCategories(response.optJSONObject("results").optJSONArray("categories"));
                 updateRVs();
             }
         }, new Response.ErrorListener() {
@@ -116,36 +114,36 @@ public class WarfareCategoryFragment extends Fragment {
         NetworkManager.getInstance().sendRequest(request);
     }
 
-    private void updateWarfares(JSONArray array) {
-        warfares.clear();
+    private void updateInfos(JSONArray array) {
+        info.clear();
 
         for(int i = 0;i < array.length();i++) {
-            warfares.add(new Warfare().updateFromJson(array.optJSONObject(i)));
+            info.add(new Warfare().updateFromJson(array.optJSONObject(i)));
         }
     }
 
-    private void updateWarfareCategories(JSONArray array) {
-        warfareCategories.clear();
+    private void updateInfoCategories(JSONArray array) {
+        infoCategories.clear();
 
         for(int i = 0;i < array.length();i++) {
-            warfareCategories.add(new WarfareCategory().updateFromJson(array.optJSONObject(i)));
+            infoCategories.add(new WarfareCategory().updateFromJson(array.optJSONObject(i)));
         }
     }
 
-    WarfareListAdapter warfareListAdapter;
-    WarfareCategoryListAdapter warfareCategoryListAdapter;
+    WarfareListAdapter infoListAdapter;
+    WarfareCategoryListAdapter infoCategoryListAdapter;
     private void updateRVs() {
-        warfareListAdapter = new WarfareListAdapter();
-        warfareListAdapter.setWarfares(warfares);
-        warfareRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
-        warfareRV.setAdapter(warfareListAdapter);
-//        if(warfareCategories.size() == 0) {
+        infoListAdapter = new WarfareListAdapter();
+        infoListAdapter.setWarfares(info);
+        infoRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
+        infoRV.setAdapter(infoListAdapter);
+//        if(infoCategories.size() == 0) {
 //            infoRV.setMaxSize(1000);
 //        }
 
-        warfareCategoryListAdapter = new WarfareCategoryListAdapter();
-        warfareCategoryListAdapter.setWarfareCategories(warfareCategories);
-        warfareCategoryListAdapter.setListener(new WarfareCategoryItemSelectListener() {
+        infoCategoryListAdapter = new WarfareCategoryListAdapter();
+        infoCategoryListAdapter.setWarfareCategories(infoCategories);
+        infoCategoryListAdapter.setListener(new WarfareCategoryItemSelectListener() {
             @Override
             public void onCategorySelect(int categoryId, String name) {
                 categoryQueue.add(categoryId);
@@ -155,18 +153,18 @@ public class WarfareCategoryFragment extends Fragment {
             }
         });
         catRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
-        catRV.setAdapter(warfareCategoryListAdapter);
+        catRV.setAdapter(infoCategoryListAdapter);
     }
 
     private void setProgress(boolean progress) {
         if(progress) {
             this.progressBar.setVisibility(View.VISIBLE);
             catRV.setVisibility(View.GONE);
-            warfareRV.setVisibility(View.GONE);
+            infoRV.setVisibility(View.GONE);
         } else {
             this.progressBar.setVisibility(View.GONE);
             catRV.setVisibility(View.VISIBLE);
-            warfareRV.setVisibility(View.VISIBLE);
+            infoRV.setVisibility(View.VISIBLE);
         }
 
     }
