@@ -104,7 +104,12 @@
     <string name="warfare_parent_cat_tv">دسته‌ها</string>
     <string name="title_activity_infographic_detail">InfographicDetailActivity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- CreateEventFragment -->
+    <string name="title_hint">عنوان رویداد</string>
+    <string name="location_hint">محل برگزاری</string>
+    <string name="body_hint">توضیحات</string>
+    <string name="time_tv">ساعت رویداد: %s:%s</string>
+    <string name="date_tv">تاریخ رویداد: %d/%d/%d</string>
+    <string name="submit_btn">ارسال</string>
 
 </resources>
