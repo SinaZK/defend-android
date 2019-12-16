@@ -17,7 +17,7 @@
     <string name="menu_magazine">مجلات</string>
     <string name="menu_warfare">اطلس جنگ‌افزارها</string>
     <string name="menu_infographic">داده‌نمایی</string>
-    <string name="menu_tes_calendar">تقویم ارایه‌ها</string>
+    <string name="menu_tes_calendar">ثبت رویداد</string>
 
     <!--Login Activity-->
     <string name="login_btn">ورود</string>
@@ -97,7 +97,7 @@
     <string name="card_magazine">مجلات</string>
     <string name="card_calendar">تقویم رویدادها</string>
     <string name="card_info">داده‌نمایی</string>
-    <string name="card_tes">تقویم ارایه‌ها</string>
+    <string name="card_tes">ثبت رویداد</string>
 
     <!--WarfareFragment-->
     <string name="warfare_back_btn">بازگشت</string>

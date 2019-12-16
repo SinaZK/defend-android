@@ -8,6 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.defend.android.Network.AuthObjectRequest;
+import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.MyToolbar;
@@ -22,6 +27,8 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     String TAG = "_MAIN";
@@ -136,6 +143,34 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         drawer.closeDrawer();
+    }
+
+    private boolean isLoading;
+    private void sendSyncRequest() {
+        if(isLoading) return;
+//        parent.setVisibility(View.GONE);
+
+        String url = Constants.API_URL + Constants.API_SYNC;
+
+        AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, new JSONObject(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+//                setProgress(false);
+
+                Log.i(TAG, "response = " + response);
+
+//                setNewsURL(response.optJSONObject("news").optString("image_url"));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                setProgress(false);
+                Log.i(TAG, "error = " + error);
+            }
+        });
+
+//        setProgress(true);
+        NetworkManager.getInstance().sendRequest(request);
     }
 
 }

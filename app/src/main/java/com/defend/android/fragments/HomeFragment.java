@@ -125,6 +125,13 @@ public class HomeFragment extends Fragment {
                 mainActivity.setFragment(Constants.MENU_INFOGRAPHIC);
             }
         });
+
+        warfareCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.setFragment(Constants.MENU_WARFARE);
+            }
+        });
     }
 
     private boolean isLoading;
