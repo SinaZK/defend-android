@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "_MAIN";
     public Drawer drawer;
     public MyToolbar toolbar;
+    private String lastFragmentTag = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,13 +125,19 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWEVENT) {
-                            fragment = new CreateEventFragment();
+                            if (!lastFragmentTag.equals("")) {
+                                android.support.v4.app.Fragment fr_v4 = getSupportFragmentManager().findFragmentByTag(lastFragmentTag);
+                                getSupportFragmentManager().beginTransaction().remove(fr_v4).commit();
+                            }
+                            lastFragmentTag = "";
+                            getFragmentManager().beginTransaction().replace(R.id.flContent, new CreateEventFragment()).commit();
                             toolbar.setText(getString(R.string.menu_tes_calendar));
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         if(fragment != null) {
-                            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+                            lastFragmentTag = String.valueOf(drawerItem.getIdentifier());
+                            fragmentManager.beginTransaction().replace(R.id.flContent, fragment, lastFragmentTag).commit();
                         }
 
                         drawer.closeDrawer();

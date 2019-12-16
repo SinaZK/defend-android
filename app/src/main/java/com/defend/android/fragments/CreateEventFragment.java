@@ -1,9 +1,9 @@
 package com.defend.android.fragments;
 
 
+import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +17,17 @@ import com.defend.android.activites.MainActivity;
 import com.defend.android.calendar.CalendarUtils;
 import com.defend.android.constants.Constants;
 import com.defend.android.utils.ResourceManager;
+import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
+import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
+import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
+import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 
 import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CreateEventFragment extends Fragment {
+public class CreateEventFragment extends Fragment implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     MainActivity activity;
     EditText titleEditText, locationEditText, bodyEditText;
@@ -79,8 +83,28 @@ public class CreateEventFragment extends Fragment {
             }
         });
 
+        timeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog dialog = TimePickerDialog.newInstance(CreateEventFragment.this,
+                        hour, minute, true);
+                dialog.show(getFragmentManager(), "timePicker");
+            }
+        });
+
+        dateTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = DatePickerDialog.newInstance(CreateEventFragment.this,
+                        year, month, day);
+                dialog.show(getFragmentManager(), "DatePickerDialog");
+            }
+        });
+
+        PersianCalendar calendar = new PersianCalendar();
+
         updateTime(hour, minute);
-        updateDate(year, month, day);
+        updateDate(calendar.getPersianYear(), calendar.getPersianMonth(), calendar.getPersianDay());
     }
 
     private void updateTime(int h, int m) {
@@ -90,6 +114,7 @@ public class CreateEventFragment extends Fragment {
     }
 
     private void updateDate(int y, int m, int d) {
+        m = m + 1;
         year = y;
         month = m;
         day = d;
@@ -113,4 +138,13 @@ public class CreateEventFragment extends Fragment {
 
     }
 
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        updateDate(year, monthOfYear, dayOfMonth);
+    }
+
+    @Override
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+        updateTime(hourOfDay, minute);
+    }
 }
