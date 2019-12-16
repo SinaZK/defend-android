@@ -4,7 +4,8 @@ import org.json.JSONObject;
 
 public class Infographic {
     private String name = "";
-    private String body = "";
+    private String topText = "";
+    private String bottomText = "";
     private String imageUrl = "";
     private int category;
 
@@ -14,7 +15,8 @@ public class Infographic {
         this.object = object;
 
         name = object.optString("name");
-        body = object.optString("body");
+        topText = object.optString("top_text");
+        bottomText = object.optString("bottom_text");
         imageUrl = object.optString("image_url");
         category = object.optInt("category");
 
@@ -29,8 +31,12 @@ public class Infographic {
         return name;
     }
 
-    public String getBody() {
-        return body;
+    public String getTopText() {
+        return topText;
+    }
+
+    public String getBottomText() {
+        return bottomText;
     }
 
     public String getImageUrl() {

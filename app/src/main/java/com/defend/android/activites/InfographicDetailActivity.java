@@ -1,10 +1,11 @@
 package com.defend.android.activites;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,9 +18,9 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class InfographicDetailActivity extends AppCompatActivity {
+public class InfographicDetailActivity extends Activity {
 
-    TextView title, body;
+    TextView title, topText, bottomText;
     ImageView image;
 
     Infographic infographic = new Infographic();
@@ -30,7 +31,8 @@ public class InfographicDetailActivity extends AppCompatActivity {
         setContentView(R.layout.content_infographic_detail);
 
         title = findViewById(R.id.title);
-        body = findViewById(R.id.body);
+        topText = findViewById(R.id.top_text);
+        bottomText = findViewById(R.id.bottom_text);
         image = findViewById(R.id.image);
 
         String jsonString = getIntent().getStringExtra(Constants.EXTRA_WARFARE_JSON);
@@ -45,8 +47,18 @@ public class InfographicDetailActivity extends AppCompatActivity {
 
     private void initUI() {
         title.setText(infographic.getName());
-        body.setMovementMethod(LinkMovementMethod.getInstance());
-        body.setText(Html.fromHtml(infographic.getBody().replace("\n", "<br>")));
+        topText.setMovementMethod(LinkMovementMethod.getInstance());
+        topText.setText(Html.fromHtml(infographic.getTopText().replace("\n", "<br>")));
+        bottomText.setMovementMethod(LinkMovementMethod.getInstance());
+        bottomText.setText(Html.fromHtml(infographic.getBottomText().replace("\n", "<br>")));
+
+        if (infographic.getBottomText().length() == 0) {
+            bottomText.setVisibility(View.GONE);
+        }
+
+        if (infographic.getTopText().length() == 0) {
+            topText.setVisibility(View.GONE);
+        }
 
         if (infographic.hasImage()) {
             Picasso.get().load(infographic.getImageUrl())
@@ -55,6 +67,7 @@ public class InfographicDetailActivity extends AppCompatActivity {
         }
 
         ResourceManager.getInstance().decorateTextView(title, Color.BLACK, Constants.FONT_BOLD);
-        ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(topText, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(bottomText, Color.BLACK, Constants.FONT_REGULAR);
     }
 }
