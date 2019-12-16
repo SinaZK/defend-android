@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -44,8 +46,13 @@ public class WarfareCategoryFragment extends Fragment {
 
     ProgressBar progressBar;
     RecyclerView catRV, warfareRV;
+    RelativeLayout topParent;
     Button backButton;
+    TextView categoryNameTextView;
+
+    private String categoryName = "";
     private ArrayList<Integer> categoryQueue = new ArrayList<>();
+    private ArrayList<String> categoryQueueName = new ArrayList<>();
     private ArrayList<Warfare> warfares = new ArrayList<>();
     private ArrayList<WarfareCategory> warfareCategories = new ArrayList<>();
 
@@ -61,8 +68,11 @@ public class WarfareCategoryFragment extends Fragment {
         warfareRV = view.findViewById(R.id.warfare_rv);
         progressBar = view.findViewById(R.id.progress);
         backButton = view.findViewById(R.id.back_button);
+        topParent = view.findViewById(R.id.top_parent);
+        categoryNameTextView = view.findViewById(R.id.category_tv);
 
         categoryQueue.add(0);
+        categoryQueueName.add(getString(R.string.warfare_parent_cat_tv));
         onCategoryChange();
         sendAtlasRequest();
 
@@ -80,6 +90,8 @@ public class WarfareCategoryFragment extends Fragment {
                 goBack();
             }
         });
+
+        ResourceManager.getInstance().decorateTextView(categoryNameTextView, Color.WHITE, Constants.FONT_BOLD);
     }
 
     private void sendAtlasRequest() {
@@ -136,9 +148,12 @@ public class WarfareCategoryFragment extends Fragment {
         warfareCategoryListAdapter.setWarfareCategories(warfareCategories);
         warfareCategoryListAdapter.setListener(new WarfareCategoryItemSelectListener() {
             @Override
-            public void onCategorySelect(int categoryId) {
+            public void onCategorySelect(int categoryId, String name) {
+                categoryName = name;
                 categoryQueue.add(categoryId);
+                categoryQueueName.add(name);
                 sendAtlasRequest();
+                onCategoryChange();
             }
         });
         catRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
@@ -161,15 +176,18 @@ public class WarfareCategoryFragment extends Fragment {
     private void goBack() {
         if(categoryQueue.size() > 1) {
             categoryQueue.remove(categoryQueue.size() - 1);
+            categoryQueueName.remove(categoryQueueName.size() - 1);
             sendAtlasRequest();
         }
+        onCategoryChange();
     }
 
     public void onCategoryChange() {
-        if (categoryQueue.size() == 1) {
-            backButton.setVisibility(View.GONE);
+        if (categoryQueue.size() <= 1) {
+            topParent.setVisibility(View.GONE);
         } else {
-            backButton.setVisibility(View.VISIBLE);
+            topParent.setVisibility(View.VISIBLE);
+            categoryNameTextView.setText(categoryQueueName.get(categoryQueueName.size() - 1));
         }
     }
 

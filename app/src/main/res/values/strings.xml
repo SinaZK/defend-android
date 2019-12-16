@@ -102,5 +102,6 @@
 
     <!--WarfareFragment-->
     <string name="warfare_back_btn">بازگشت</string>
+    <string name="warfare_parent_cat_tv">دسته‌ها</string>
 
 </resources>

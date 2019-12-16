@@ -64,7 +64,7 @@ public class WarfareCategoryListAdapter extends RecyclerView.Adapter<WarfareCate
             @Override
             public void onClick(View v) {
                 if(listener != null) {
-                    listener.onCategorySelect(warfareCategory.getId());
+                    listener.onCategorySelect(warfareCategory.getId(), warfareCategory.getName());
                 }
             }
         });
