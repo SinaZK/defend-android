@@ -11,9 +11,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activites.BookBillingActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activites.InfographicDetailActivity"
+            android:label="@string/title_activity_infographic_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activites.BookBillingActivity" />
         <activity android:name=".activites.BookDetailActivity" />
         <activity android:name=".activites.BookCartActivity" />
         <activity android:name=".activites.WarfareDetailActivity" />

@@ -67,7 +67,6 @@
     <string name="month_12">اسفند</string>
 
 
-
     <!--BookShopFragment-->
     <string name="price_str">%d تومان</string>
     <string name="add_to_cart">افزودن به سبد خرید</string>
@@ -103,5 +102,6 @@
     <!--WarfareFragment-->
     <string name="warfare_back_btn">بازگشت</string>
     <string name="warfare_parent_cat_tv">دسته‌ها</string>
+    <string name="title_activity_infographic_detail">InfographicDetailActivity</string>
 
 </resources>

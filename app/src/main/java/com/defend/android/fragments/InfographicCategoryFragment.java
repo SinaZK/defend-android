@@ -21,9 +21,10 @@ import com.defend.android.MyApp;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
+import com.defend.android.adapters.InfoListAdapter;
 import com.defend.android.adapters.WarfareCategoryListAdapter;
-import com.defend.android.adapters.WarfareListAdapter;
 import com.defend.android.constants.Constants;
+import com.defend.android.data.Infographic;
 import com.defend.android.data.Warfare;
 import com.defend.android.data.WarfareCategory;
 import com.defend.android.listeners.WarfareCategoryItemSelectListener;
@@ -50,7 +51,7 @@ public class InfographicCategoryFragment extends Fragment {
 
     private ArrayList<Integer> categoryQueue = new ArrayList<>();
     private ArrayList<String> categoryQueueName = new ArrayList<>();
-    private ArrayList<Warfare> info = new ArrayList<>();
+    private ArrayList<Infographic> info = new ArrayList<>();
     private ArrayList<WarfareCategory> infoCategories = new ArrayList<>();
 
     public InfographicCategoryFragment() {
@@ -118,7 +119,7 @@ public class InfographicCategoryFragment extends Fragment {
         info.clear();
 
         for(int i = 0;i < array.length();i++) {
-            info.add(new Warfare().updateFromJson(array.optJSONObject(i)));
+            info.add(new Infographic().updateFromJson(array.optJSONObject(i)));
         }
     }
 
@@ -130,11 +131,11 @@ public class InfographicCategoryFragment extends Fragment {
         }
     }
 
-    WarfareListAdapter infoListAdapter;
+    InfoListAdapter infoListAdapter;
     WarfareCategoryListAdapter infoCategoryListAdapter;
     private void updateRVs() {
-        infoListAdapter = new WarfareListAdapter();
-        infoListAdapter.setWarfares(info);
+        infoListAdapter = new InfoListAdapter();
+        infoListAdapter.setInfographics(info);
         infoRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
         infoRV.setAdapter(infoListAdapter);
 //        if(infoCategories.size() == 0) {
