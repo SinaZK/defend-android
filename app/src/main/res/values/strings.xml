@@ -111,5 +111,6 @@
     <string name="time_tv">ساعت رویداد: %02d:%02d</string>
     <string name="date_tv">تاریخ رویداد: %2d %s %2d</string>
     <string name="submit_btn">ارسال</string>
+    <string name="success_toast">درخواست شما با موفقیت ثبت شد.</string>
 
 </resources>

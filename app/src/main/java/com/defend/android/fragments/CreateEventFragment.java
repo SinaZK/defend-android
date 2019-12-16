@@ -4,6 +4,7 @@ package com.defend.android.fragments;
 import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +13,26 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.defend.android.Network.AuthObjectRequest;
+import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
 import com.defend.android.calendar.CalendarUtils;
 import com.defend.android.constants.Constants;
 import com.defend.android.utils.ResourceManager;
+import com.defend.android.utils.Utils;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
 import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 
+import org.json.JSONObject;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
@@ -79,7 +90,7 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                sendSubmitRequest();
             }
         });
 
@@ -125,17 +136,49 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
     private void setProgress(boolean show) {
         if (show) {
             progressBar.setVisibility(View.VISIBLE);
+            submitButton.setVisibility(View.GONE);
         } else {
             progressBar.setVisibility(View.GONE);
+            submitButton.setVisibility(View.VISIBLE);
         }
     }
 
     private void sendSubmitRequest() {
+        String url = Constants.API_URL + Constants.API_SUBMIT_NEW_EVENT;
 
+        JSONObject object = new JSONObject();
+
+        try {
+            object.put("title", titleEditText.getText().toString());
+            object.put("body", bodyEditText.getText().toString());
+            object.put("location", locationEditText.getText().toString());
+            object.put("date", getGregorianDateString());
+            object.put("time", getTimeString());
+        } catch (Exception e) {
+            Log.i("_Create", e.toString());
+        }
+
+        AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, object, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                setProgress(false);
+//                Log.i("_Create", "Success: " + response.toString());
+                onSuccess();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                setProgress(false);
+            }
+        });
+        setProgress(true);
+
+        NetworkManager.getInstance().sendRequest(request);
     }
 
     private void onSuccess() {
-
+        Utils.showToast(getString(R.string.success_toast));
+        activity.setFragment(Constants.MENU_HOME);
     }
 
     @Override
@@ -146,5 +189,16 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
         updateTime(hourOfDay, minute);
+    }
+
+    private String getGregorianDateString() {
+        PersianCalendar persianCalendar = new PersianCalendar();
+        persianCalendar.setPersianDate(year, month - 1, day);
+        return "" + persianCalendar.get(Calendar.YEAR) + "-" + (persianCalendar.get(Calendar.MONTH) + 1) + "-" +
+                persianCalendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+    private String getTimeString() {
+        return "" + hour + ":" + minute;
     }
 }

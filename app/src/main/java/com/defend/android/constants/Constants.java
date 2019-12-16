@@ -9,6 +9,7 @@ public class Constants {
     public static String API_LOGIN = "users/login/"; //POST
     public static String API_LIST_NEWS = "news/"; //GET
     public static String API_LIST_MONTH_EVENTS = "events/"; //POST
+    public static String API_SUBMIT_NEW_EVENT = "events/create/"; //POST
     public static String API_LIST_ATLAS_CATEGORY = "atlas/with-category/%d"; //GET
     public static String API_LIST_INFOGRAPHIC_CATEGORY = "info/with-category/%d"; //GET
     public static String API_LIST_BOOKS = "book/all/"; //GET

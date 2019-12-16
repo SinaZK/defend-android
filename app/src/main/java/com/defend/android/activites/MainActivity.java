@@ -130,7 +130,9 @@ public class MainActivity extends AppCompatActivity {
                                 getSupportFragmentManager().beginTransaction().remove(fr_v4).commit();
                             }
                             lastFragmentTag = "";
-                            getFragmentManager().beginTransaction().replace(R.id.flContent, new CreateEventFragment()).commit();
+                            android.app.Fragment fragment1 = new CreateEventFragment();
+                            ((CreateEventFragment) fragment1).setMainActivity(MainActivity.this);
+                            getFragmentManager().beginTransaction().replace(R.id.flContent, fragment1).commit();
                             toolbar.setText(getString(R.string.menu_tes_calendar));
                         }
 
