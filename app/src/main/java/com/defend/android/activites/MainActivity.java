@@ -161,9 +161,18 @@ public class MainActivity extends AppCompatActivity {
         if (drawer.isDrawerOpen()) {
             drawer.closeDrawer();
         } else {
-            if(drawer.getCurrentSelection() == Constants.MENU_INFOGRAPHIC ||
-                drawer.getCurrentSelection() == Constants.MENU_WARFARE) {
-
+            if(drawer.getCurrentSelection() == Constants.MENU_INFOGRAPHIC) {
+                if(((InfographicCategoryFragment) fragment).queueSize() > 1) {
+                    ((InfographicCategoryFragment) fragment).onBackPressed();
+                } else {
+                    setFragment(Constants.MENU_HOME);
+                }
+            } else  if(drawer.getCurrentSelection() == Constants.MENU_WARFARE) {
+                if(((WarfareCategoryFragment) fragment).queueSize() > 1) {
+                    ((WarfareCategoryFragment) fragment).onBackPressed();
+                } else {
+                    setFragment(Constants.MENU_HOME);
+                }
             } else if(drawer.getCurrentSelection() != Constants.MENU_HOME) {
                 setFragment(Constants.MENU_HOME);
             }

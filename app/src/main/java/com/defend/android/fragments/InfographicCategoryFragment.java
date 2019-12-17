@@ -188,4 +188,12 @@ public class InfographicCategoryFragment extends Fragment {
         }
     }
 
+    public void onBackPressed() {
+        goBack();
+    }
+
+    public int queueSize() {
+        return categoryQueue.size();
+    }
+
 }

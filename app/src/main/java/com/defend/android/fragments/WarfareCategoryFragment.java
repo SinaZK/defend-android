@@ -189,4 +189,12 @@ public class WarfareCategoryFragment extends Fragment {
         }
     }
 
+    public void onBackPressed() {
+        goBack();
+    }
+
+    public int queueSize() {
+        return categoryQueue.size();
+    }
+
 }
