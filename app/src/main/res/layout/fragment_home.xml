@@ -238,7 +238,7 @@
                     android:id="@+id/info_image"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:src="@drawable/magazine_color"
+                    android:src="@drawable/info_img"
                     android:scaleType="fitCenter"/>
 
                 <TextView
@@ -272,7 +272,7 @@
                     android:id="@+id/tes_image"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:src="@drawable/warfare_col"
+                    android:src="@drawable/add_event_img4"
                     android:scaleType="fitCenter"/>
 
                 <TextView

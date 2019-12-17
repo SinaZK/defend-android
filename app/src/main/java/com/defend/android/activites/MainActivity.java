@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
         PrimaryDrawerItem warfareItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_WARFARE)
                 .withName(R.string.menu_warfare).withIcon(R.drawable.warfare);
         PrimaryDrawerItem infoItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_INFOGRAPHIC)
-                .withName(R.string.menu_infographic).withIcon(R.drawable.warfare);
+                .withName(R.string.menu_infographic).withIcon(R.drawable.info_icon);
         PrimaryDrawerItem tesCalendarItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWEVENT)
-                .withName(R.string.menu_tes_calendar).withIcon(R.drawable.warfare);
+                .withName(R.string.menu_tes_calendar).withIcon(R.drawable.add_event_icon);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
