@@ -131,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
                             ((CreateEventFragment) supFragment).setMainActivity(MainActivity.this);
                             getFragmentManager().beginTransaction().replace(R.id.flContent, supFragment).commit();
                             toolbar.setText(getString(R.string.menu_tes_calendar));
-                            Log.i(TAG, "salam");
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
