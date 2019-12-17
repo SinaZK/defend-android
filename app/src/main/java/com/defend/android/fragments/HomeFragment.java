@@ -143,7 +143,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 setProgress(false);
-                
+
                 setNewsURL(response.optJSONObject("news").optString("image_url"));
             }
         }, new Response.ErrorListener() {
