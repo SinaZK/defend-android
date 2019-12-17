@@ -8,11 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.defend.android.Network.AuthObjectRequest;
-import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.MyToolbar;
@@ -36,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private String lastFragmentTag = "";
 
     Fragment fragment = null;
+    android.app.Fragment supFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         PrimaryDrawerItem bookItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_BOOKS).withName(R.string.menu_books)
                 .withIcon(R.drawable.book2);
         PrimaryDrawerItem magazineItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_MAGAZINES).withName(R.string.menu_magazine)
-            .withIcon(R.drawable.magazine);
+                .withIcon(R.drawable.magazine);
         PrimaryDrawerItem newsItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWS).withName(R.string.menu_news)
                 .withIcon(R.drawable.news2);
         PrimaryDrawerItem eventItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EVENTS).withName(R.string.menu_events)
@@ -131,16 +127,22 @@ public class MainActivity extends AppCompatActivity {
                                 getSupportFragmentManager().beginTransaction().remove(fr_v4).commit();
                             }
                             lastFragmentTag = "";
-                            android.app.Fragment fragment1 = new CreateEventFragment();
-                            ((CreateEventFragment) fragment1).setMainActivity(MainActivity.this);
-                            getFragmentManager().beginTransaction().replace(R.id.flContent, fragment1).commit();
+                            supFragment = new CreateEventFragment();
+                            ((CreateEventFragment) supFragment).setMainActivity(MainActivity.this);
+                            getFragmentManager().beginTransaction().replace(R.id.flContent, supFragment).commit();
                             toolbar.setText(getString(R.string.menu_tes_calendar));
+                            Log.i(TAG, "salam");
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
-                        if(fragment != null) {
+                        if (fragment != null) {
                             lastFragmentTag = String.valueOf(drawerItem.getIdentifier());
-                            fragmentManager.beginTransaction().replace(R.id.flContent, fragment, lastFragmentTag).commit();
+                            if (supFragment != null) {
+                                getFragmentManager().beginTransaction().remove(supFragment).commit();
+                                supFragment = null;
+                            }
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.flContent, fragment, lastFragmentTag).commit();
                         }
 
                         drawer.closeDrawer();
@@ -161,19 +163,19 @@ public class MainActivity extends AppCompatActivity {
         if (drawer.isDrawerOpen()) {
             drawer.closeDrawer();
         } else {
-            if(drawer.getCurrentSelection() == Constants.MENU_INFOGRAPHIC) {
-                if(((InfographicCategoryFragment) fragment).queueSize() > 1) {
+            if (drawer.getCurrentSelection() == Constants.MENU_INFOGRAPHIC) {
+                if (((InfographicCategoryFragment) fragment).queueSize() > 1) {
                     ((InfographicCategoryFragment) fragment).onBackPressed();
                 } else {
                     setFragment(Constants.MENU_HOME);
                 }
-            } else  if(drawer.getCurrentSelection() == Constants.MENU_WARFARE) {
-                if(((WarfareCategoryFragment) fragment).queueSize() > 1) {
+            } else if (drawer.getCurrentSelection() == Constants.MENU_WARFARE) {
+                if (((WarfareCategoryFragment) fragment).queueSize() > 1) {
                     ((WarfareCategoryFragment) fragment).onBackPressed();
                 } else {
                     setFragment(Constants.MENU_HOME);
                 }
-            } else if(drawer.getCurrentSelection() != Constants.MENU_HOME) {
+            } else if (drawer.getCurrentSelection() != Constants.MENU_HOME) {
                 setFragment(Constants.MENU_HOME);
             }
         }
