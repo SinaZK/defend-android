@@ -173,8 +173,6 @@ public class HomeFragment extends Fragment {
     private void setNewsURL(String url) {
         if (url.length() == 0) return;
 
-        Log.i(TAG, "url = " + url);
-
         Picasso.get().load(url)
                 .error(R.drawable.news_card)
                 .into(newsImageView);

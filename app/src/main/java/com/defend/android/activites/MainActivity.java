@@ -29,13 +29,13 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import org.json.JSONObject;
-
 public class MainActivity extends AppCompatActivity {
     String TAG = "_MAIN";
     public Drawer drawer;
     public MyToolbar toolbar;
     private String lastFragmentTag = "";
+
+    Fragment fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
 
-                        Fragment fragment = null;
+                        fragment = null;
+
                         toolbar.setVisibility(View.VISIBLE);
 
                         if (drawerItem.getIdentifier() == Constants.MENU_HOME) {
@@ -157,35 +158,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        drawer.closeDrawer();
-    }
+        if (drawer.isDrawerOpen()) {
+            drawer.closeDrawer();
+        } else {
+            if(drawer.getCurrentSelection() == Constants.MENU_INFOGRAPHIC ||
+                drawer.getCurrentSelection() == Constants.MENU_WARFARE) {
 
-    private boolean isLoading;
-    private void sendSyncRequest() {
-        if(isLoading) return;
-//        parent.setVisibility(View.GONE);
-
-        String url = Constants.API_URL + Constants.API_SYNC;
-
-        AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, new JSONObject(), new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-//                setProgress(false);
-
-                Log.i(TAG, "response = " + response);
-
-//                setNewsURL(response.optJSONObject("news").optString("image_url"));
+            } else if(drawer.getCurrentSelection() != Constants.MENU_HOME) {
+                setFragment(Constants.MENU_HOME);
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-//                setProgress(false);
-                Log.i(TAG, "error = " + error);
-            }
-        });
-
-//        setProgress(true);
-        NetworkManager.getInstance().sendRequest(request);
+        }
     }
 
 }
