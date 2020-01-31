@@ -15,6 +15,7 @@ import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.CreateEventFragment;
 import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.HomeFragment;
+import com.defend.android.fragments.IdeaFragment;
 import com.defend.android.fragments.InfographicCategoryFragment;
 import com.defend.android.fragments.NewsFragment;
 import com.defend.android.fragments.WarfareCategoryFragment;
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 .withName(R.string.menu_infographic).withIcon(R.drawable.info_icon);
         PrimaryDrawerItem tesCalendarItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWEVENT)
                 .withName(R.string.menu_tes_calendar).withIcon(R.drawable.add_event_icon);
+        PrimaryDrawerItem ideaItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_IDEA)
+                .withName(R.string.menu_idea).withIcon(R.drawable.add_event_icon);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                         infoItem,
                         tesCalendarItem,
                         bookItem,
+                        ideaItem,
 //                        magazineItem,
                         new DividerDrawerItem()
                 )
@@ -119,6 +123,11 @@ public class MainActivity extends AppCompatActivity {
                         if (drawerItem.getIdentifier() == Constants.MENU_INFOGRAPHIC) {
                             fragment = new InfographicCategoryFragment();
                             toolbar.setText(getString(R.string.menu_infographic));
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_IDEA) {
+                            fragment = new IdeaFragment();
+                            toolbar.setText(getString(R.string.menu_idea));
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWEVENT) {

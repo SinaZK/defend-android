@@ -18,6 +18,8 @@
     <string name="menu_warfare">اطلس جنگ‌افزارها</string>
     <string name="menu_infographic">داده‌نمایی</string>
     <string name="menu_tes_calendar">ثبت رویداد</string>
+    <string name="menu_idea">ایده‌پردازی</string>
+    <string name="menu_ebook">کتاب الکترونیک</string>
 
     <!--Login Activity-->
     <string name="login_btn">ورود</string>
@@ -98,6 +100,8 @@
     <string name="card_calendar">تقویم رویدادها</string>
     <string name="card_info">داده‌نمایی</string>
     <string name="card_tes">ثبت رویداد</string>
+    <string name="card_idea">ایده‌پردازی</string>
+    <string name="card_ebook">کتاب الکترونیک</string>
 
     <!--WarfareFragment-->
     <string name="warfare_back_btn">بازگشت</string>
@@ -112,5 +116,9 @@
     <string name="date_tv">تاریخ رویداد: %2d %s %2d</string>
     <string name="submit_btn">ارسال</string>
     <string name="success_toast">درخواست شما با موفقیت ثبت شد.</string>
+
+    <!-- IdeaFragment -->
+    <string name="idea_new">ثبت ایده‌ی جدید</string>
+    <string name="idea_mine">ایده‌های من</string>
 
 </resources>
