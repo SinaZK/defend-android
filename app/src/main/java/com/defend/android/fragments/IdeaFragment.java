@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.defend.android.R;
+import com.defend.android.activites.MyIdeasActivity;
 import com.defend.android.activites.NewIdeaFirstActivity;
 import com.defend.android.constants.Constants;
 import com.defend.android.utils.ResourceManager;
@@ -53,7 +54,8 @@ public class IdeaFragment extends Fragment {
         myIdeasParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), MyIdeasActivity.class);
+                startActivity(intent);
             }
         });
 

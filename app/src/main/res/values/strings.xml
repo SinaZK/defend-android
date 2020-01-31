@@ -155,4 +155,10 @@
     <string name="idea_cat_3_1">توسعه فناوری‌های نوین در ارتقاء عملکرد</string>
     <string name="idea_cat_3_2">توسعه فناوری‌های کلیدی</string>
 
+    <!-- MyIdeas Activity -->
+    <string name="my_idea_activity_title">ایده‌های من</string>
+    <string name="my_idea_state">وضعیت:</string>
+    <string name="my_idea_state_text">ملاحظات:</string>
+    <string name="my_idea_code">کد پیگیری:</string>
+
 </resources>
