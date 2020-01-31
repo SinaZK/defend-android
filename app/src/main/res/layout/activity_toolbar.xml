@@ -7,13 +7,12 @@
 
     <ImageView
         android:id="@+id/button"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_centerVertical="true"
-        android:src="@android:drawable/btn_star"
-        android:scaleType="fitCenter"
+        android:src="@drawable/back"
         tools:ignore="RtlHardcoded" />
 
     <TextView
