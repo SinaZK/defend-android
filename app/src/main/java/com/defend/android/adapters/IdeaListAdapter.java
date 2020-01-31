@@ -75,11 +75,11 @@ public class IdeaListAdapter extends RecyclerView.Adapter<IdeaListAdapter.MyView
         ResourceManager.getInstance().decorateTextView(viewHolder.codePlaceTV, Color.BLACK, Constants.FONT_REGULAR);
 
         viewHolder.title.setText(idea.getTitle());
-        viewHolder.stateTV.setText(idea.getState());
+        viewHolder.stateTV.setText(idea.getStateFa());
         viewHolder.stateTextTV.setText(idea.getStateText());
         viewHolder.codeTV.setText(idea.getCode());
 
-        if (idea.getStateText().equals("")) {
+        if (idea.getStateText().equals("") || idea.getStateText().equals("null")) {
             viewHolder.stateTextParent.setVisibility(View.GONE);
         }
     }

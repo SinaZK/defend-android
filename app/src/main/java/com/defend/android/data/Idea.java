@@ -17,6 +17,7 @@ public class Idea {
     private String state = "";
     private String stateText = "";
     private String code = "";
+    private String stateFa = "";
 
     public void updateFromJson(JSONObject object) {
         title = object.optString("title");
@@ -30,6 +31,7 @@ public class Idea {
         address = object.optString("physical_address");
         category = object.optString("category");
         state = object.optString("state");
+        stateFa = object.optString("state_fa");
         stateText = object.optString("state_text");
         code = object.optString("code");
     }
@@ -148,4 +150,7 @@ public class Idea {
         return code;
     }
 
+    public String getStateFa() {
+        return stateFa;
+    }
 }
