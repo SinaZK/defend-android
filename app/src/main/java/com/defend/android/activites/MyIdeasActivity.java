@@ -1,6 +1,7 @@
 package com.defend.android.activites;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.android.volley.Request;
@@ -22,6 +25,7 @@ import com.defend.android.adapters.IdeaListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.ActivityToolbar;
 import com.defend.android.data.Idea;
+import com.defend.android.utils.ResourceManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,6 +37,8 @@ public class MyIdeasActivity extends Activity {
     ActivityToolbar toolbar;
     RecyclerView recyclerView;
     ProgressBar progressBar;
+    RelativeLayout infoParent;
+    TextView infoTextView;
 
     private ArrayList<Idea> ideas = new ArrayList<>();
 
@@ -44,10 +50,20 @@ public class MyIdeasActivity extends Activity {
         toolbar = findViewById(R.id.toolbar);
         recyclerView = findViewById(R.id.recycler_view);
         progressBar = findViewById(R.id.progress);
+        infoParent = findViewById(R.id.bottom_view);
+        infoTextView = findViewById(R.id.info_text);
 
         toolbar.setActivity(this);
         toolbar.setText(getString(R.string.my_idea_activity_title));
         sendListRequest();
+
+        ResourceManager.getInstance().decorateTextView(infoTextView, Color.WHITE, Constants.FONT_BOLD);
+        infoParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
     }
 
     private void sendListRequest() {

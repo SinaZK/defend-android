@@ -28,4 +28,22 @@
         android:layout_height="50dp"
         android:layout_centerInParent="true"/>
 
+    <RelativeLayout
+        android:id="@+id/bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/my_idea_info"
+            tools:ignore="SpUsage" />
+
+    </RelativeLayout>
+
 </RelativeLayout>

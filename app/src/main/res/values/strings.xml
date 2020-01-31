@@ -160,5 +160,6 @@
     <string name="my_idea_state">وضعیت:</string>
     <string name="my_idea_state_text">ملاحظات:</string>
     <string name="my_idea_code">کد پیگیری:</string>
+    <string name="my_idea_info">راهنمای ثبت ایده</string>
 
 </resources>
