@@ -83,6 +83,15 @@
                 tools:ignore="SpUsage"
                 android:layout_marginBottom="30dp"/>
 
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/categoryTV"
+                android:visibility="gone"/>
+
         </RelativeLayout>
 
     </ScrollView>

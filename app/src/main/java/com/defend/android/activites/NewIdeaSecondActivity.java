@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -32,6 +33,7 @@ public class NewIdeaSecondActivity extends Activity {
     EditText titleEditText, bodyEditText;
     TextView categoryTextView;
     Button submitButton;
+    ProgressBar progressBar;
 
 
     IdeaCategoryDialog.onSelectListener listener = new IdeaCategoryDialog.onSelectListener() {
@@ -53,6 +55,7 @@ public class NewIdeaSecondActivity extends Activity {
         bodyEditText = findViewById(R.id.bodyET);
         categoryTextView = findViewById(R.id.categoryTV);
         submitButton = findViewById(R.id.submit);
+        progressBar = findViewById(R.id.progress);
 
         initUI();
         fillUI();
@@ -136,6 +139,12 @@ public class NewIdeaSecondActivity extends Activity {
     }
 
     private void setProgress(boolean loading) {
-
+        if(loading) {
+            progressBar.setVisibility(View.VISIBLE);
+            submitButton.setVisibility(View.GONE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+            submitButton.setVisibility(View.VISIBLE);
+        }
     }
 }
