@@ -62,9 +62,11 @@
                 android:layout_marginLeft="60dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/white_btn"
+                android:textSize="18dp"
                 android:text="@string/idea_activity_education_hint"
                 android:gravity="center"
-                android:layout_below="@id/locationET"/>
+                android:layout_below="@id/locationET"
+                tools:ignore="SpUsage" />
 
             <EditText
                 android:id="@+id/educationFieldET"
@@ -98,20 +100,20 @@
                 tools:ignore="TextFields" />
 
             <EditText
-            android:id="@+id/emailET"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:inputType="text"
-            android:layout_marginRight="60dp"
-            android:layout_marginLeft="60dp"
-            android:layout_below="@id/phoneET"
-            android:layout_marginTop="20dp"
-            android:hint="@string/idea_activity_email_hint"
-            android:gravity="center"
-            android:background="@drawable/white_btn"
-            android:layout_centerHorizontal="true"
-            tools:ignore="TextFields" />
+                android:id="@+id/emailET"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_below="@id/phoneET"
+                android:layout_marginTop="20dp"
+                android:hint="@string/idea_activity_email_hint"
+                android:gravity="center"
+                android:background="@drawable/white_btn"
+                android:layout_centerHorizontal="true"
+                tools:ignore="TextFields" />
 
             <EditText
                 android:id="@+id/addressET"

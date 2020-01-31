@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/diploma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        tools:ignore="SpUsage"
+        android:text="@string/education_diploma"/>
+
+    <TextView
+        android:id="@+id/bach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        tools:ignore="SpUsage"
+        android:text="@string/education_bachelour"/>
+    <TextView
+        android:id="@+id/master"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        tools:ignore="SpUsage"
+        android:text="@string/education_master"/>
+    <TextView
+        android:id="@+id/doc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        tools:ignore="SpUsage"
+        android:text="@string/education_doc"/>
+    <TextView
+        android:id="@+id/post_doc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        tools:ignore="SpUsage"
+        android:text="@string/education_post_doc"/>
+
+</LinearLayout>
