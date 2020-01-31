@@ -1,6 +1,7 @@
 package com.defend.android.activites;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,7 +62,8 @@ public class MyIdeasActivity extends Activity {
         infoParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent = new Intent(MyIdeasActivity.this, IdeaInfoActivity.class);
+                MyIdeasActivity.this.startActivity(intent);
             }
         });
     }
