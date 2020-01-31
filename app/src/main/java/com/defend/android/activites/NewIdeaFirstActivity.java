@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.ActivityToolbar;
+import com.defend.android.data.IdeaHelper;
 import com.defend.android.utils.ResourceManager;
 
 public class NewIdeaFirstActivity extends Activity {
@@ -36,6 +38,7 @@ public class NewIdeaFirstActivity extends Activity {
         nextButton = findViewById(R.id.submit);
 
         initUI();
+        fillUI();
     }
 
     private void initUI() {
@@ -51,5 +54,30 @@ public class NewIdeaFirstActivity extends Activity {
 
         ResourceManager.getInstance().decorateButton(nextButton, Color.WHITE);
         nextButton.setBackgroundResource(R.drawable.btn_bg);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateIdea();
+                finish();
+            }
+        });
+    }
+
+    private void fillUI() {
+        nameEditText.setText(IdeaHelper.getInstance().getIdea().getName());
+        locationEditText.setText(IdeaHelper.getInstance().getIdea().getLocation());
+        fieldEditText.setText(IdeaHelper.getInstance().getIdea().getField());
+        phoneEditText.setText(IdeaHelper.getInstance().getIdea().getPhone());
+        emailEditText.setText(IdeaHelper.getInstance().getIdea().getEmail());
+        addressEditText.setText(IdeaHelper.getInstance().getIdea().getAddress());
+    }
+
+    private void updateIdea() {
+        IdeaHelper.getInstance().getIdea().setName(nameEditText.getText().toString());
+        IdeaHelper.getInstance().getIdea().setLocation(locationEditText.getText().toString());
+        IdeaHelper.getInstance().getIdea().setField(fieldEditText.getText().toString());
+        IdeaHelper.getInstance().getIdea().setPhone(phoneEditText.getText().toString());
+        IdeaHelper.getInstance().getIdea().setEmail(emailEditText.getText().toString());
+        IdeaHelper.getInstance().getIdea().setAddress(addressEditText.getText().toString());
     }
 }
