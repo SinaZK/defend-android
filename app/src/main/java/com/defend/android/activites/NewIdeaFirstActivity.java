@@ -1,6 +1,7 @@
 package com.defend.android.activites;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,8 +20,6 @@ import com.defend.android.data.IdeaHelper;
 import com.defend.android.utils.ResourceManager;
 
 public class NewIdeaFirstActivity extends Activity {
-
-    private String TAG = "_idea";
 
     ActivityToolbar toolbar;
     EditText nameEditText, locationEditText, fieldEditText, phoneEditText, emailEditText, addressEditText;
@@ -72,6 +71,8 @@ public class NewIdeaFirstActivity extends Activity {
             @Override
             public void onClick(View v) {
                 updateIdea();
+                Intent intent = new Intent(NewIdeaFirstActivity.this, NewIdeaSecondActivity.class);
+                NewIdeaFirstActivity.this.startActivity(intent);
                 finish();
             }
         });

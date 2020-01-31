@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cat_1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="22dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_1"/>
+
+        <TextView
+            android:id="@+id/cat_1_1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_1_1"/>
+        <TextView
+            android:id="@+id/cat_1_2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_1_2"/>
+        <TextView
+            android:id="@+id/cat_1_3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_1_3"/>
+        <TextView
+            android:id="@+id/cat_1_4"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_1_4"/>
+
+        <!--  -->
+
+        <TextView
+            android:id="@+id/cat_2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="22dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_2"/>
+
+        <TextView
+            android:id="@+id/cat_2_1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_2_1"/>
+        <TextView
+            android:id="@+id/cat_2_2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_2_2"/>
+        <TextView
+            android:id="@+id/cat_2_3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_2_3"/>
+
+        <!--    -->
+        <TextView
+            android:id="@+id/cat_3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="22dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_3"/>
+
+        <TextView
+            android:id="@+id/cat_3_1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_3_1"/>
+        <TextView
+            android:id="@+id/cat_3_2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_3_2"/>
+
+    </LinearLayout>
+</ScrollView>

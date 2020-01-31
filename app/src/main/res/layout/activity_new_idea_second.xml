@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activites.NewIdeaSecondActivity"
+    android:background="@color/activityBackground">
+
+    <com.defend.android.customViews.ActivityToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+    </com.defend.android.customViews.ActivityToolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <RelativeLayout
+            android:id="@+id/form_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/titleET"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:hint="@string/idea_activity_title_hint"
+                android:gravity="center"
+                android:background="@drawable/white_btn"
+                android:layout_centerHorizontal="true"/>
+
+            <EditText
+                android:id="@+id/bodyET"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:ems="10"
+                android:padding="10dp"
+                android:inputType="textMultiLine"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_below="@id/titleET"
+                android:layout_marginTop="20dp"
+                android:hint="@string/idea_activity_body_hint"
+                android:gravity="center"
+                android:background="@drawable/white_btn"
+                android:layout_centerHorizontal="true"
+                tools:ignore="TextFields" />
+
+            <TextView
+                android:id="@+id/categoryTV"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/white_btn"
+                android:textSize="18dp"
+                android:text="@string/idea_activity_category_hint"
+                android:gravity="center"
+                android:layout_below="@id/bodyET"
+                tools:ignore="SpUsage" />
+
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/categoryTV"
+                android:text="@string/idea_activity_submit"
+                android:textSize="20dp"
+                tools:ignore="SpUsage"
+                android:layout_marginBottom="30dp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

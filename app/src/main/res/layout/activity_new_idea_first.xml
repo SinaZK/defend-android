@@ -16,8 +16,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        tools:context=".fragments.CreateEventFragment">
+        android:layout_below="@id/toolbar">
 
         <RelativeLayout
             android:id="@+id/form_parent"
@@ -141,7 +140,7 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="20dp"
                 android:layout_below="@id/addressET"
-                android:text="@string/submit_btn"
+                android:text="@string/idea_activity_next"
                 android:textSize="20dp"
                 tools:ignore="SpUsage"
                 android:layout_marginBottom="30dp"/>
