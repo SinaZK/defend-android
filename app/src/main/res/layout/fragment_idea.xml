@@ -19,7 +19,7 @@
 
         <ImageView
             android:id="@+id/new_img"
-            android:src="@drawable/add_event_img4"
+            android:src="@drawable/new_idea"
             android:layout_width="match_parent"
             android:layout_height="130dp" />
 
@@ -46,7 +46,7 @@
 
         <ImageView
             android:id="@+id/my_img"
-            android:src="@drawable/add_event_img4"
+            android:src="@drawable/my_ideas"
             android:layout_width="match_parent"
             android:layout_height="130dp" />
 

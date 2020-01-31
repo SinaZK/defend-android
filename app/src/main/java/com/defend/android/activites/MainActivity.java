@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         PrimaryDrawerItem tesCalendarItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWEVENT)
                 .withName(R.string.menu_tes_calendar).withIcon(R.drawable.add_event_icon);
         PrimaryDrawerItem ideaItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_IDEA)
-                .withName(R.string.menu_idea).withIcon(R.drawable.add_event_icon);
+                .withName(R.string.menu_idea).withIcon(R.drawable.idea_minimal);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
