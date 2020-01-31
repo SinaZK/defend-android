@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activites.NewIdeaFirstActivity">
+    tools:context=".activites.NewIdeaFirstActivity"
+    android:background="@color/activityBackground">
 
     <com.defend.android.customViews.ActivityToolbar
         android:id="@+id/toolbar"
@@ -12,5 +13,139 @@
         android:layout_height="80dp">
 
     </com.defend.android.customViews.ActivityToolbar>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        tools:context=".fragments.CreateEventFragment">
+
+        <RelativeLayout
+            android:id="@+id/form_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/nameET"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:hint="@string/idea_activity_name_hint"
+                android:gravity="center"
+                android:background="@drawable/white_btn"
+                android:layout_centerHorizontal="true"/>
+
+            <EditText
+                android:id="@+id/locationET"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_below="@id/nameET"
+                android:layout_marginTop="20dp"
+                android:hint="@string/idea_activity_location_hint"
+                android:gravity="center"
+                android:background="@drawable/white_btn"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/educationTV"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/white_btn"
+                android:text="@string/idea_activity_education_hint"
+                android:gravity="center"
+                android:layout_below="@id/locationET"/>
+
+            <EditText
+                android:id="@+id/educationFieldET"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_below="@id/educationTV"
+                android:layout_marginTop="20dp"
+                android:hint="@string/idea_activity_field_hint"
+                android:gravity="center"
+                android:background="@drawable/white_btn"
+                android:layout_centerHorizontal="true"/>
+
+            <EditText
+                android:id="@+id/phoneET"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="number"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_below="@id/educationFieldET"
+                android:layout_marginTop="20dp"
+                android:hint="@string/idea_activity_phone_hint"
+                android:gravity="center"
+                android:background="@drawable/white_btn"
+                android:layout_centerHorizontal="true"
+                tools:ignore="TextFields" />
+
+            <EditText
+            android:id="@+id/emailET"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_below="@id/phoneET"
+            android:layout_marginTop="20dp"
+            android:hint="@string/idea_activity_email_hint"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"
+            tools:ignore="TextFields" />
+
+            <EditText
+                android:id="@+id/addressET"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_below="@id/emailET"
+                android:layout_marginTop="20dp"
+                android:hint="@string/idea_activity_address_hint"
+                android:gravity="center"
+                android:background="@drawable/white_btn"
+                android:layout_centerHorizontal="true"
+                tools:ignore="TextFields" />
+
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/addressET"
+                android:text="@string/submit_btn"
+                android:textSize="20dp"
+                tools:ignore="SpUsage"
+                android:layout_marginBottom="30dp"/>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

@@ -34,7 +34,7 @@ public class ActivityToolbar extends RelativeLayout {
     }
 
     private void initView() {
-        View view = inflate(getContext(), R.layout.my_toolbar, null);
+        View view = inflate(getContext(), R.layout.activity_toolbar, null);
         addView(view);
 
         backButton = view.findViewById(R.id.button);

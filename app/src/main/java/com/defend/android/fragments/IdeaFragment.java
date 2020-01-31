@@ -1,6 +1,7 @@
 package com.defend.android.fragments;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.defend.android.R;
+import com.defend.android.activites.NewIdeaFirstActivity;
 import com.defend.android.constants.Constants;
 import com.defend.android.utils.ResourceManager;
 
@@ -58,7 +60,8 @@ public class IdeaFragment extends Fragment {
         newIdeaParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), NewIdeaFirstActivity.class);
+                startActivity(intent);
             }
         });
     }
