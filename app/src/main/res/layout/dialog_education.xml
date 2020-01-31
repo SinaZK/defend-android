@@ -2,14 +2,18 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="15dp"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/diploma"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:textSize="18dp"
         tools:ignore="SpUsage"
         android:text="@string/education_diploma"/>
@@ -17,28 +21,32 @@
     <TextView
         android:id="@+id/bach"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:textSize="18dp"
         tools:ignore="SpUsage"
         android:text="@string/education_bachelour"/>
     <TextView
         android:id="@+id/master"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:textSize="18dp"
         tools:ignore="SpUsage"
         android:text="@string/education_master"/>
     <TextView
         android:id="@+id/doc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:textSize="18dp"
         tools:ignore="SpUsage"
         android:text="@string/education_doc"/>
     <TextView
         android:id="@+id/post_doc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:textSize="18dp"
         tools:ignore="SpUsage"
         android:text="@string/education_post_doc"/>
