@@ -121,4 +121,21 @@
     <string name="idea_new">ثبت ایده‌ی جدید</string>
     <string name="idea_mine">ایده‌های من</string>
 
+    <!-- New Idea1 Activity -->
+    <string name="education_diploma">دیپلم</string>
+    <string name="education_bachelour">کارشناسی</string>
+    <string name="education_master">کارشناسی ارشد</string>
+    <string name="education_doc">دکترا</string>
+    <string name="education_post_doc">پسادکترا</string>
+    <string name="idea_activity_title">ایده‌ی جدید</string>
+    <string name="idea_activity_name_hint">نام و نام خانوادگی</string>
+    <string name="idea_activity_location_hint">محل خدمت</string>
+    <string name="idea_activity_education_hint">مدرک تحصیلی</string>
+    <string name="idea_activity_field_hint">رشته‌ی تحصیلی</string>
+    <string name="idea_activity_phone_hint">شماره تماس</string>
+    <string name="idea_activity_email_hint">ایمیل</string>
+    <string name="idea_activity_address_hint">آدرس سکونت</string>
+    <string name="idea_activity_next">ادامه</string>
+    <string name="idea_activity_submit">ارسال</string>
+
 </resources>
