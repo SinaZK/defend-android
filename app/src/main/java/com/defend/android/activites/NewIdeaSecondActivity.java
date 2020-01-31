@@ -4,17 +4,27 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.defend.android.Network.AuthObjectRequest;
+import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.ActivityToolbar;
 import com.defend.android.customViews.IdeaCategoryDialog;
 import com.defend.android.data.IdeaHelper;
 import com.defend.android.utils.ResourceManager;
+import com.defend.android.utils.Utils;
+
+import org.json.JSONObject;
 
 public class NewIdeaSecondActivity extends Activity {
 
@@ -27,6 +37,7 @@ public class NewIdeaSecondActivity extends Activity {
     IdeaCategoryDialog.onSelectListener listener = new IdeaCategoryDialog.onSelectListener() {
         @Override
         public void onSelect(String text) {
+            categoryTextView.setError(null);
             categoryTextView.setText(text);
             IdeaHelper.getInstance().getIdea().setCategory(text);
         }
@@ -60,7 +71,7 @@ public class NewIdeaSecondActivity extends Activity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                sendRequest();
             }
         });
 
@@ -88,7 +99,40 @@ public class NewIdeaSecondActivity extends Activity {
     }
 
     private void sendRequest() {
+        if (!isOkFields()) {
+            return;
+        }
         updateIdea();
+
+        String url = Constants.API_URL + Constants.API_IDEA_CREATE;
+        JSONObject object = IdeaHelper.getInstance().getIdea().toJson();
+
+        setProgress(true);
+
+        AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, object, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                setProgress(false);
+                Utils.showToast(getString(R.string.idea_activity_ok_toast));
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                setProgress(false);
+            }
+        });
+
+        NetworkManager.getInstance().sendRequest(request);
+    }
+
+    private boolean isOkFields() {
+        if (IdeaHelper.getInstance().getIdea().getCategory().equals("")) {
+            categoryTextView.setError("");
+            return false;
+        }
+
+        return true;
     }
 
     private void setProgress(boolean loading) {

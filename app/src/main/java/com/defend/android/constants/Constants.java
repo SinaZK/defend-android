@@ -15,6 +15,8 @@ public class Constants {
     public static String API_LIST_BOOKS = "book/all/"; //GET
     public static String API_CHECKOUT_ORDER = "book/order/new"; //POST
     public static String API_SYNC = "sync/"; //POST
+    public static String API_IDEA_CREATE = "idea/create/"; //POST
+    public static String API_IDEA_LIST = "idea/"; //GET
 
     //Font Constants
     public final static int FONT_REGULAR = 0;
