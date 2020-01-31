@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.defend.android.MyApp;
@@ -32,6 +33,7 @@ public class IdeaListAdapter extends RecyclerView.Adapter<IdeaListAdapter.MyView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
         public TextView stateTV, statePlaceTV, stateTextTV, stateTextPlaceTV, codeTV, codePlaceTV;
+        public LinearLayout stateTextParent;
         public CardView cardView;
 
         public MyViewHolder(View view) {
@@ -43,6 +45,7 @@ public class IdeaListAdapter extends RecyclerView.Adapter<IdeaListAdapter.MyView
             stateTextPlaceTV = view.findViewById(R.id.state_text_place);
             codeTV = view.findViewById(R.id.code_tv);
             codePlaceTV = view.findViewById(R.id.code_place);
+            stateTextParent = view.findViewById(R.id.state_text_parent);
             cardView = view.findViewById(R.id.parent);
         }
     }
@@ -75,6 +78,10 @@ public class IdeaListAdapter extends RecyclerView.Adapter<IdeaListAdapter.MyView
         viewHolder.stateTV.setText(idea.getState());
         viewHolder.stateTextTV.setText(idea.getStateText());
         viewHolder.codeTV.setText(idea.getCode());
+
+        if (idea.getStateText().equals("")) {
+            viewHolder.stateTextParent.setVisibility(View.GONE);
+        }
     }
 
     @Override
