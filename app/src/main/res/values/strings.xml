@@ -163,4 +163,8 @@
     <string name="my_idea_info">راهنمای ثبت ایده</string>
     <string name="my_idea_info_title">راهنمای ثبت ایده</string>
 
+    <!-- EBook fragment-->
+    <string name="ebook_downloads">خرید‌ها و دانلود‌ها</string>
+    <string name="ebook_toast">به دانلود‌ها اضافه شد</string>
+
 </resources>

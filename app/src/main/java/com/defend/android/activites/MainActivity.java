@@ -13,6 +13,7 @@ import com.defend.android.constants.Constants;
 import com.defend.android.customViews.MyToolbar;
 import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.CreateEventFragment;
+import com.defend.android.fragments.EBookShopFragment;
 import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.HomeFragment;
 import com.defend.android.fragments.IdeaFragment;
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 .withName(R.string.menu_tes_calendar).withIcon(R.drawable.add_event_icon);
         PrimaryDrawerItem ideaItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_IDEA)
                 .withName(R.string.menu_idea).withIcon(R.drawable.idea_minimal);
+        PrimaryDrawerItem ebookItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EBOOK).withName(R.string.menu_ebook)
+                .withIcon(R.drawable.magazine);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         bookItem,
                         ideaItem,
 //                        magazineItem,
+                        ebookItem,
                         new DividerDrawerItem()
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -140,6 +144,11 @@ public class MainActivity extends AppCompatActivity {
                             ((CreateEventFragment) supFragment).setMainActivity(MainActivity.this);
                             getFragmentManager().beginTransaction().replace(R.id.flContent, supFragment).commit();
                             toolbar.setText(getString(R.string.menu_tes_calendar));
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_EBOOK) {
+                            fragment = new EBookShopFragment();
+                            toolbar.setText(getString(R.string.menu_ebook));
                         }
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
