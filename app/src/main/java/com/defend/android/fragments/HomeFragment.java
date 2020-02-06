@@ -41,11 +41,6 @@ public class HomeFragment extends Fragment {
     private String TAG = "_Home";
     ProgressBar progressBar;
     RecyclerView recyclerView;
-    RelativeLayout parent;
-    RelativeLayout newsCard, bookCard, calendarCard, warfareCard, infoCard, tesCard;
-    ImageView newsImageView;
-    TextView newsTextView, bookTextView, calendarTextView, magazineTextView, warfareTextView;
-    TextView infoTextView, tesTextView;
 
     MainActivity mainActivity;
 
@@ -66,86 +61,17 @@ public class HomeFragment extends Fragment {
 
         progressBar = view.findViewById(R.id.progress);
         recyclerView = view.findViewById(R.id.recycler_view);
-        parent = view.findViewById(R.id.parent);
-        newsImageView = view.findViewById(R.id.news_image);
-        newsTextView = view.findViewById(R.id.news_title);
-        bookTextView = view.findViewById(R.id.book_title);
-        calendarTextView = view.findViewById(R.id.calendar_title);
-        magazineTextView = view.findViewById(R.id.mag_title);
-        warfareTextView = view.findViewById(R.id.war_title);
-        infoTextView = view.findViewById(R.id.info_title);
-        tesTextView = view.findViewById(R.id.tes_title);
-        newsCard = view.findViewById(R.id.news);
-        bookCard = view.findViewById(R.id.book);
-        calendarCard = view.findViewById(R.id.calendar);
-        tesCard = view.findViewById(R.id.tes_calendar);
-        warfareCard = view.findViewById(R.id.warfare);
-        infoCard = view.findViewById(R.id.infographic);
 
         sendSyncRequest();
 
-        initUI();
-        initRV();
+        adapter = new HomeItemAdapter();
 
         return view;
-    }
-
-    private void initUI() {
-        ResourceManager.getInstance().decorateTextView(newsTextView, Color.WHITE);
-        ResourceManager.getInstance().decorateTextView(bookTextView, Color.WHITE);
-        ResourceManager.getInstance().decorateTextView(calendarTextView, Color.WHITE);
-        ResourceManager.getInstance().decorateTextView(warfareTextView, Color.WHITE);
-        ResourceManager.getInstance().decorateTextView(magazineTextView, Color.WHITE);
-        ResourceManager.getInstance().decorateTextView(infoTextView, Color.WHITE);
-        ResourceManager.getInstance().decorateTextView(tesTextView, Color.WHITE);
-
-        newsCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainActivity.setFragment(Constants.MENU_NEWS);
-            }
-        });
-
-        bookCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainActivity.setFragment(Constants.MENU_BOOKS);
-            }
-        });
-
-        calendarCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainActivity.setFragment(Constants.MENU_EVENTS);
-            }
-        });
-
-        tesCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainActivity.setFragment(Constants.MENU_NEWEVENT);
-            }
-        });
-
-        infoCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainActivity.setFragment(Constants.MENU_INFOGRAPHIC);
-            }
-        });
-
-        warfareCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainActivity.setFragment(Constants.MENU_WARFARE);
-            }
-        });
     }
 
     private boolean isLoading;
     private void sendSyncRequest() {
         if(isLoading) return;
-        parent.setVisibility(View.GONE);
 
         String url = Constants.API_URL + Constants.API_SYNC;
 
@@ -155,11 +81,13 @@ public class HomeFragment extends Fragment {
                 setProgress(false);
 
                 setNewsURL(response.optJSONObject("news").optString("image_url"));
+                initRV();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 setProgress(false);
+                initRV();
                 Log.i(TAG, "error = " + error);
             }
         });
@@ -182,13 +110,10 @@ public class HomeFragment extends Fragment {
     private void setNewsURL(String url) {
         if (url.length() == 0) return;
 
-        Picasso.get().load(url)
-                .error(R.drawable.news_card)
-                .into(newsImageView);
+        adapter.setNewsURL(url);
     }
 
     private void showCards() {
-        parent.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.VISIBLE);
 
     }
@@ -196,7 +121,7 @@ public class HomeFragment extends Fragment {
     HomeItemAdapter adapter;
     private void initRV() {
         ArrayList <HomeItem> items = new ArrayList<>();
-        items.add(new HomeItem(getString(R.string.card_news), Constants.MENU_NEWS, R.drawable.defence_icon_white));
+        items.add(new HomeItem(getString(R.string.card_news), Constants.MENU_NEWS, R.drawable.ic_launcher_no_image));
         items.add(new HomeItem(getString(R.string.card_calendar), Constants.MENU_EVENTS, R.drawable.calendar_512));
         items.add(new HomeItem(getString(R.string.card_book), Constants.MENU_BOOKS, R.drawable.book));
         items.add(new HomeItem(getString(R.string.card_magazine), Constants.MENU_MAGAZINES, R.drawable.magazine_color));
@@ -204,7 +129,6 @@ public class HomeFragment extends Fragment {
         items.add(new HomeItem(getString(R.string.card_info), Constants.MENU_INFOGRAPHIC, R.drawable.info_img));
         items.add(new HomeItem(getString(R.string.card_tes), Constants.MENU_NEWEVENT, R.drawable.add_event_img4));
 
-        adapter = new HomeItemAdapter();
         adapter.setMainActivity(mainActivity);
         adapter.setItems(items);
         recyclerView.setHasFixedSize(true);

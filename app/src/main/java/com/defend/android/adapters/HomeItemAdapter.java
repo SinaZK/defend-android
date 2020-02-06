@@ -18,6 +18,7 @@ import com.defend.android.data.HomeItem;
 import com.defend.android.listeners.BookCartItemChangeListener;
 import com.defend.android.utils.ResourceManager;
 import com.defend.android.utils.Utils;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
 
     private MainActivity mainActivity;
     private ArrayList <HomeItem> items;
+    private String newsURL;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
@@ -47,6 +49,10 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
         this.mainActivity = mainActivity;
     }
 
+    public void setNewsURL(String newsURL) {
+        this.newsURL = newsURL;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -62,11 +68,6 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
 
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.WHITE);
 
-        if (i == 0) { //News Card
-            viewHolder.image.setScaleType(ImageView.ScaleType.FIT_XY);
-            viewHolder.image.setMinimumHeight(Utils.dpToPx(200));
-        }
-
         viewHolder.image.setImageResource(item.getDrawable());
         viewHolder.title.setText(item.getTitle());
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +76,17 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
                 mainActivity.setFragment(item.getMenuId());
             }
         });
+
+
+        if (i == 0) { //News Card
+            viewHolder.image.setScaleType(ImageView.ScaleType.FIT_XY);
+            viewHolder.image.setMinimumHeight(Utils.dpToPx(200));
+
+            Picasso.get().load(newsURL)
+                    .error(R.drawable.news_card)
+                    .into(viewHolder.image);
+        }
+
     }
 
     @Override
