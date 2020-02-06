@@ -33,7 +33,6 @@ public class CustomDownloadManager {
         //File file = new File(MyApp.getInstance().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), url.substring(10));
         File file = new File(MyApp.getInstance().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), convertUrlToPath(url));
 
-        Log.i("_download ", "" +  Uri.fromFile(file));
         /*
         Create a DownloadManager.Request with all the information necessary to start the download
          */
@@ -51,6 +50,7 @@ public class CustomDownloadManager {
         DownloadItem item = new DownloadItem();
         item.setId(downloadID);
         item.setUrl(url);
+        item.setDownloadPath(Uri.fromFile(file));
         downloadItems.add(item);
     }
 
@@ -61,8 +61,13 @@ public class CustomDownloadManager {
             //Fetching the download id received with the broadcast
             long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
 
+            DownloadItem item = findItem(id);
+            if (item != null) {
+                openFile(item);
+            }
+
             //Checking if the received broadcast is for our enqueued download by matching download id
-            Toast.makeText(MyApp.getInstance(), "Download Completed " + id, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MyApp.getInstance(), "Download Completed " + id, Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -81,5 +86,21 @@ public class CustomDownloadManager {
         }
 
         return url.substring(url.length() - 15);
+    }
+
+    private DownloadItem findItem(long id) {
+        for(int i = 0;i < downloadItems.size();i++) {
+            if(downloadItems.get(i).getId() == id) {
+                return downloadItems.get(i);
+            }
+        }
+
+        return null;
+    }
+
+    private void openFile(DownloadItem item) {
+        Intent myIntent = new Intent(Intent.ACTION_VIEW);
+        myIntent.setData(Uri.fromFile(item.getDownloadPath()));
+        MyApp.getInstance().startActivity(myIntent);
     }
 }

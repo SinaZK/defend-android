@@ -1,9 +1,11 @@
 package com.defend.android.download;
 
+import android.net.Uri;
+
 public class DownloadItem {
     private long id;
     private String url;
-    private String downloadPath;
+    private Uri downloadPath;
 
     public long getId() {
         return id;
@@ -21,11 +23,11 @@ public class DownloadItem {
         this.url = url;
     }
 
-    public String getDownloadPath() {
+    public Uri getDownloadPath() {
         return downloadPath;
     }
 
-    public void setDownloadPath(String downloadPath) {
+    public void setDownloadPath(Uri downloadPath) {
         this.downloadPath = downloadPath;
     }
 }
