@@ -23,9 +23,11 @@ import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.activites.BookCartActivity;
 import com.defend.android.adapters.BookListAdapter;
+import com.defend.android.adapters.EBookListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
 import com.defend.android.data.BookOrder;
+import com.defend.android.data.EBook;
 import com.defend.android.listeners.BookAddToCartListener;
 import com.defend.android.listeners.RecyclerLoadMoreListener;
 import com.defend.android.utils.ResourceManager;
@@ -48,7 +50,7 @@ public class EBookShopFragment extends Fragment {
 
     private int page = 1;
 
-    private ArrayList <Book> books = new ArrayList<>();
+    private ArrayList <EBook> eBooks = new ArrayList<>();
 
     public EBookShopFragment() {
     }
@@ -95,14 +97,14 @@ public class EBookShopFragment extends Fragment {
     private void sendBookRequest(final boolean clear) {
         if(isLoading) return;
 
-        String url = Constants.API_URL + Constants.API_LIST_BOOKS + "?page=" + page;
+        String url = Constants.API_URL + Constants.API_LIST_EBOOKS + "?page=" + page;
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 setProgress(false);
                 if(clear) {
-                    books.clear();
+                    eBooks.clear();
                 }
 
                 onSuccess(response.optJSONArray("results"), clear);
@@ -125,10 +127,10 @@ public class EBookShopFragment extends Fragment {
 
     private void onSuccess(JSONArray array, boolean clear) {
         for(int i = 0;i < array.length();i++) {
-            Book book = new Book();
+            EBook book = new EBook();
             book.updateFromJson(array.optJSONObject(i));
 
-            books.add(book);
+            eBooks.add(book);
         }
 
         if(clear) {
@@ -138,10 +140,10 @@ public class EBookShopFragment extends Fragment {
         }
     }
 
-    BookListAdapter adapter;
+    EBookListAdapter adapter;
     private void initRV() {
-        adapter = new BookListAdapter();
-        adapter.setBooks(books);
+        adapter = new EBookListAdapter();
+        adapter.seteBooks(eBooks);
         adapter.setLoadMoreListener(new RecyclerLoadMoreListener() {
             @Override
             public void loadMore() {
@@ -149,13 +151,6 @@ public class EBookShopFragment extends Fragment {
                     page += 1;
                     sendBookRequest(false);
                 }
-            }
-        });
-        adapter.setBookAddToCartListener(new BookAddToCartListener() {
-            @Override
-            public void onAdd(Book book) {
-                BookOrder.getInstance().addItem(book, 1);
-                cartParent.setVisibility(View.VISIBLE);
             }
         });
 
