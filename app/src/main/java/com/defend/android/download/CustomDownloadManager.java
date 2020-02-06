@@ -100,7 +100,7 @@ public class CustomDownloadManager {
 
     private void openFile(DownloadItem item) {
         Intent myIntent = new Intent(Intent.ACTION_VIEW);
-        myIntent.setData(Uri.fromFile(item.getDownloadPath()));
+        myIntent.setData(item.getDownloadPath());
         MyApp.getInstance().startActivity(myIntent);
     }
 }
