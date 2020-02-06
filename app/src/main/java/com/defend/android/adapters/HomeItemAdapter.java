@@ -42,6 +42,10 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
         this.items = items;
     }
 
+    public void setMainActivity(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

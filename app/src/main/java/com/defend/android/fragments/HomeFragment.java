@@ -4,6 +4,7 @@ package com.defend.android.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,11 +22,15 @@ import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
+import com.defend.android.adapters.HomeItemAdapter;
 import com.defend.android.constants.Constants;
+import com.defend.android.data.HomeItem;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +64,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         progressBar = view.findViewById(R.id.progress);
+        recyclerView = view.findViewById(R.id.recycler_view);
         parent = view.findViewById(R.id.parent);
         newsImageView = view.findViewById(R.id.news_image);
         newsTextView = view.findViewById(R.id.news_title);
@@ -78,6 +84,7 @@ public class HomeFragment extends Fragment {
         sendSyncRequest();
 
         initUI();
+        initRV();
 
         return view;
     }
@@ -164,6 +171,7 @@ public class HomeFragment extends Fragment {
         isLoading = progress;
         if(progress) {
             progressBar.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         } else {
             progressBar.setVisibility(View.GONE);
             showCards();
@@ -180,7 +188,26 @@ public class HomeFragment extends Fragment {
 
     private void showCards() {
         parent.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
 
+    }
 
+    HomeItemAdapter adapter;
+    private void initRV() {
+        ArrayList <HomeItem> items = new ArrayList<>();
+        items.add(new HomeItem(getString(R.string.card_news), Constants.MENU_NEWS, R.drawable.defence_icon_white));
+        items.add(new HomeItem(getString(R.string.card_calendar), Constants.MENU_EVENTS, R.drawable.calendar_512));
+        items.add(new HomeItem(getString(R.string.card_book), Constants.MENU_BOOKS, R.drawable.book));
+        items.add(new HomeItem(getString(R.string.card_magazine), Constants.MENU_MAGAZINES, R.drawable.magazine_color));
+        items.add(new HomeItem(getString(R.string.card_atlas), Constants.MENU_WARFARE, R.drawable.warfare_col));
+        items.add(new HomeItem(getString(R.string.card_info), Constants.MENU_INFOGRAPHIC, R.drawable.info_img));
+        items.add(new HomeItem(getString(R.string.card_tes), Constants.MENU_NEWEVENT, R.drawable.add_event_img4));
+
+        adapter = new HomeItemAdapter();
+        adapter.setMainActivity(mainActivity);
+        adapter.setItems(items);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
+        recyclerView.setAdapter(adapter);
     }
 }
