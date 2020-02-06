@@ -1,12 +1,15 @@
 package com.defend.android.download;
 
+import android.Manifest;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.widget.Toast;
@@ -31,6 +34,10 @@ public class CustomDownloadManager {
     }
 
     public void addToDownload(String title, String desc, String url) {
+        if (!permissionIsOk()) {
+            return;
+        }
+        
         //File file = new File(MyApp.getInstance().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), url.substring(10));
         File file = new File(Environment.getExternalStorageDirectory().toString(), "Defend/" + convertUrlToPath(url));
 
@@ -110,5 +117,16 @@ public class CustomDownloadManager {
         } catch (Exception e) {
             Log.e("_download", e.toString());
         }
+    }
+
+    private boolean permissionIsOk() {
+        int permissionWriteExternal = ContextCompat.checkSelfPermission(MyApp.getInstance(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permissionWriteExternal != PackageManager.PERMISSION_GRANTED) {
+            return false;
+        }
+
+        return true;
     }
 }
