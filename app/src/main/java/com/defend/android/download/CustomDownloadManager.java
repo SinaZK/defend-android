@@ -37,8 +37,7 @@ public class CustomDownloadManager {
         if (!permissionIsOk()) {
             return;
         }
-        
-        //File file = new File(MyApp.getInstance().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), url.substring(10));
+
         File file = new File(Environment.getExternalStorageDirectory().toString(), "Defend/" + convertUrlToPath(url));
 
         Log.i("_download", "" + file.getAbsoluteFile());
