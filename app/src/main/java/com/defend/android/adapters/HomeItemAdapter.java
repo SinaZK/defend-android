@@ -17,6 +17,7 @@ import com.defend.android.data.BookOrder;
 import com.defend.android.data.HomeItem;
 import com.defend.android.listeners.BookCartItemChangeListener;
 import com.defend.android.utils.ResourceManager;
+import com.defend.android.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -60,6 +61,11 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
         final HomeItem item = items.get(i);
 
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.WHITE);
+
+        if (i == 0) { //News Card
+            viewHolder.image.setScaleType(ImageView.ScaleType.FIT_XY);
+            viewHolder.image.setMinimumHeight(Utils.dpToPx(200));
+        }
 
         viewHolder.image.setImageResource(item.getDrawable());
         viewHolder.title.setText(item.getTitle());

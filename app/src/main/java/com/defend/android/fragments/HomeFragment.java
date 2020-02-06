@@ -4,6 +4,7 @@ package com.defend.android.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -207,7 +208,18 @@ public class HomeFragment extends Fragment {
         adapter.setMainActivity(mainActivity);
         adapter.setItems(items);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(mainActivity, 2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int i) {
+                if (i == 0) {
+                    return 2;
+                }
+
+                return 1;
+            }
+        });
+        recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
     }
 }
