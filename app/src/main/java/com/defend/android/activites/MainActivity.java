@@ -11,6 +11,7 @@ import android.view.View;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.MyToolbar;
+import com.defend.android.download.CustomDownloadManager;
 import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.CreateEventFragment;
 import com.defend.android.fragments.EBookShopFragment;
@@ -198,4 +199,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        CustomDownloadManager.getInstance().onDestroy();
+    }
 }

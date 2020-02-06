@@ -166,5 +166,7 @@
     <!-- EBook fragment-->
     <string name="ebook_downloads">خرید‌ها و دانلود‌ها</string>
     <string name="ebook_toast">به دانلود‌ها اضافه شد</string>
+    <string name="add_to_download">افزودن به دانلود‌ها</string>
+    <string name="purchase">خرید</string>
 
 </resources>

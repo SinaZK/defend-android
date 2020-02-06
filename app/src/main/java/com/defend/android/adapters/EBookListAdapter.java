@@ -59,7 +59,7 @@ public class EBookListAdapter extends RecyclerView.Adapter<EBookListAdapter.MyVi
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.from(MyApp.getInstance())
-                .inflate(R.layout.book_list_item, viewGroup, false);
+                .inflate(R.layout.ebook_list_item, viewGroup, false);
 
         return new MyViewHolder(itemView);
     }
@@ -92,12 +92,23 @@ public class EBookListAdapter extends RecyclerView.Adapter<EBookListAdapter.MyVi
             }
         });
 
-        viewHolder.cartButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (book.getPrice() == 0) {
+            viewHolder.cartButton.setText(MyApp.getInstance().getString(R.string.add_to_download));
+            viewHolder.cartButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            }
-        });
+                }
+            });
+        } else {
+            viewHolder.cartButton.setText(MyApp.getInstance().getString(R.string.purchase));
+            viewHolder.cartButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
 
         if (i >= eBooks.size() - 5) {
             if(loadMoreListener != null) {

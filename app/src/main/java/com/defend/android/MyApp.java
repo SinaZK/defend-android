@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.defend.android.data.DataStore;
+import com.defend.android.download.CustomDownloadManager;
 
 public class MyApp extends Application {
     private static MyApp singleton;
@@ -18,5 +19,6 @@ public class MyApp extends Application {
         singleton = this;
 
         DataStore.getInstance();
+        CustomDownloadManager.getInstance().register();
     }
 }
