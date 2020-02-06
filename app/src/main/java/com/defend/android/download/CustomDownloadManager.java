@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -31,7 +32,9 @@ public class CustomDownloadManager {
 
     public void addToDownload(String title, String desc, String url) {
         //File file = new File(MyApp.getInstance().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), url.substring(10));
-        File file = new File(MyApp.getInstance().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), convertUrlToPath(url));
+        File file = new File(Environment.getExternalStorageDirectory().toString(), "Defend/" + convertUrlToPath(url));
+
+        Log.i("_download", "" + file.getAbsoluteFile());
 
         /*
         Create a DownloadManager.Request with all the information necessary to start the download
@@ -99,8 +102,13 @@ public class CustomDownloadManager {
     }
 
     private void openFile(DownloadItem item) {
-        Intent myIntent = new Intent(Intent.ACTION_VIEW);
-        myIntent.setData(item.getDownloadPath());
-        MyApp.getInstance().startActivity(myIntent);
+        try {
+            Intent myIntent = new Intent(Intent.ACTION_VIEW);
+            myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            myIntent.setDataAndType(item.getDownloadPath(), "application/pdf");
+            MyApp.getInstance().startActivity(myIntent);
+        } catch (Exception e) {
+            Log.e("_download", e.toString());
+        }
     }
 }
