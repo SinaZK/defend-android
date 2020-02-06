@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.defend.android.MyApp;
@@ -27,14 +29,17 @@ public class CustomDownloadManager {
         return instance;
     }
 
-    public void addToDownload(String url) {
-        File file=new File(MyApp.getInstance().getExternalFilesDir(null),"Dummy");
+    public void addToDownload(String title, String desc, String url) {
+        //File file = new File(MyApp.getInstance().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), url.substring(10));
+        File file = new File(MyApp.getInstance().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), convertUrlToPath(url));
+
+        Log.i("_download ", "" +  Uri.fromFile(file));
         /*
         Create a DownloadManager.Request with all the information necessary to start the download
          */
-        DownloadManager.Request request=new DownloadManager.Request(Uri.parse(url))
-                .setTitle("Dummy File")// Title of the Download Notification
-                .setDescription("Downloading")// Description of the Download Notification
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url))
+                .setTitle(title)// Title of the Download Notification
+                .setDescription(desc)// Description of the Download Notification
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)// Visibility of the download Notification
                 .setDestinationUri(Uri.fromFile(file))// Uri of the destination file
                 .setRequiresCharging(false)// Set if charging is required to begin the download
@@ -67,5 +72,14 @@ public class CustomDownloadManager {
 
     public void register() {
         MyApp.getInstance().registerReceiver(onDownloadComplete,new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+    }
+
+    private String convertUrlToPath(String url) {
+        url = url.replace("/", "");
+        if (url.length() <= 15) {
+            return url;
+        }
+
+        return url.substring(url.length() - 15);
     }
 }

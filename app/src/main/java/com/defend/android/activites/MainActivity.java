@@ -1,12 +1,17 @@
 package com.defend.android.activites;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
@@ -50,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         initDrawer();
         drawer.setSelection(Constants.MENU_HOME);
+
     }
 
     private void initDrawer() {
@@ -205,4 +211,5 @@ public class MainActivity extends AppCompatActivity {
 
         CustomDownloadManager.getInstance().onDestroy();
     }
+
 }
