@@ -128,6 +128,7 @@ public class HomeFragment extends Fragment {
         items.add(new HomeItem(getString(R.string.card_atlas), Constants.MENU_WARFARE, R.drawable.warfare_col));
         items.add(new HomeItem(getString(R.string.card_info), Constants.MENU_INFOGRAPHIC, R.drawable.info_img));
         items.add(new HomeItem(getString(R.string.card_tes), Constants.MENU_NEWEVENT, R.drawable.add_event_img4));
+        items.add(new HomeItem(getString(R.string.card_idea), Constants.MENU_IDEA, R.drawable.my_ideas));
 
         adapter.setMainActivity(mainActivity);
         adapter.setItems(items);
