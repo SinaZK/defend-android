@@ -10,11 +10,10 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.defend.android.MyApp;
+import com.defend.android.constants.Constants;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -60,6 +59,7 @@ public class CustomDownloadManager {
         item.setId(downloadID);
         item.setUrl(url);
         item.setDownloadPath(Uri.fromFile(file));
+        item.setState(Constants.DOWNLOAD_STATE_DOWNLOADING);
         downloadItems.add(item);
     }
 
@@ -72,7 +72,7 @@ public class CustomDownloadManager {
 
             DownloadItem item = findItem(id);
             if (item != null) {
-                openFile(item);
+                item.setState(Constants.DOWNLOAD_STATE_DOWNLOADED);
             }
 
             //Checking if the received broadcast is for our enqueued download by matching download id
@@ -108,14 +108,7 @@ public class CustomDownloadManager {
     }
 
     private void openFile(DownloadItem item) {
-        try {
-            Intent myIntent = new Intent(Intent.ACTION_VIEW);
-            myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            myIntent.setDataAndType(item.getDownloadPath(), "application/pdf");
-            MyApp.getInstance().startActivity(myIntent);
-        } catch (Exception e) {
-            Log.e("_download", e.toString());
-        }
+        item.open();
     }
 
     private boolean permissionIsOk() {
@@ -127,5 +120,9 @@ public class CustomDownloadManager {
         }
 
         return true;
+    }
+
+    public ArrayList<DownloadItem> getDownloadItems() {
+        return downloadItems;
     }
 }

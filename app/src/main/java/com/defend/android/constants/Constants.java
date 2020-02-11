@@ -56,4 +56,9 @@ public class Constants {
     public static String STATE_PAID_FAILED = "payfail";
     public static String STATE_DELIVERING = "delivering";
     public static String STATE_DELIVERED = "delivered";
+
+    //Download States
+    public static int DOWNLOAD_STATE_DOWNLOADED = 2;
+    public static int DOWNLOAD_STATE_DOWNLOADING = 1;
+    public static int DOWNLOAD_STATE_NOT_START = 0;
 }

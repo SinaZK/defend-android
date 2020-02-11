@@ -22,13 +22,10 @@ import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.activites.BookCartActivity;
-import com.defend.android.adapters.BookListAdapter;
+import com.defend.android.activites.EbookDownloadActivity;
 import com.defend.android.adapters.EBookListAdapter;
 import com.defend.android.constants.Constants;
-import com.defend.android.data.Book;
-import com.defend.android.data.BookOrder;
 import com.defend.android.data.EBook;
-import com.defend.android.listeners.BookAddToCartListener;
 import com.defend.android.listeners.RecyclerLoadMoreListener;
 import com.defend.android.utils.ResourceManager;
 
@@ -78,7 +75,7 @@ public class EBookShopFragment extends Fragment {
         cartParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCartActivity();
+                openDownloadsActivity();
             }
         });
 
@@ -158,8 +155,8 @@ public class EBookShopFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-    private void openCartActivity() {
-        Intent intent = new Intent(MyApp.getInstance(), BookCartActivity.class);
+    private void openDownloadsActivity() {
+        Intent intent = new Intent(MyApp.getInstance(), EbookDownloadActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         MyApp.getInstance().startActivity(intent);
     }

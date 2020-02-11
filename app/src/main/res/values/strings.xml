@@ -169,4 +169,10 @@
     <string name="add_to_download">افزودن به دانلود‌ها</string>
     <string name="purchase">خرید</string>
 
+    <!-- EBook download activity-->
+    <string name="ebook_downloads_title">خرید‌ها و دانلود‌ها</string>
+    <string name="ebook_downloads_download">دانلود</string>
+    <string name="ebook_downloads_downloading">درحال دانلود</string>
+    <string name="ebook_downloads_open">مشاهده</string>
+
 </resources>

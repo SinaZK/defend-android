@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activites.IdeaInfoActivity"></activity>
+        <activity android:name=".activites.EbookDownloadActivity"></activity>
+        <activity android:name=".activites.IdeaInfoActivity" />
         <activity android:name=".activites.MyIdeasActivity" />
         <activity android:name=".activites.NewIdeaSecondActivity" />
         <activity android:name=".activites.NewIdeaFirstActivity" />
