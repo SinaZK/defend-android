@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.activites.BookDetailActivity;
+import com.defend.android.activites.EBookDetailActivity;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
 import com.defend.android.data.EBook;
@@ -92,7 +93,7 @@ public class EBookListAdapter extends RecyclerView.Adapter<EBookListAdapter.MyVi
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyApp.getInstance(), BookDetailActivity.class);
+                Intent intent = new Intent(MyApp.getInstance(), EBookDetailActivity.class);
                 intent.putExtra(Constants.EXTRA_BOOK_JSON, book.toJson().toString());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 MyApp.getInstance().startActivity(intent);

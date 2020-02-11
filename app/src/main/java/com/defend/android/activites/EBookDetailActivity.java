@@ -15,6 +15,7 @@ import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
 import com.defend.android.data.BookOrder;
+import com.defend.android.data.EBook;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
@@ -26,12 +27,12 @@ public class EBookDetailActivity extends Activity {
     RelativeLayout cartParent;
     TextView title, body, author, price, addToCartTV;
     ImageView image;
-    Book book = new Book();
+    EBook book = new EBook();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_detail);
+        setContentView(R.layout.activity_ebook_detail);
 
         title = findViewById(R.id.title);
         body = findViewById(R.id.body);
@@ -56,7 +57,12 @@ public class EBookDetailActivity extends Activity {
         body.setMovementMethod(LinkMovementMethod.getInstance());
         body.setText(Html.fromHtml(book.getBody().replace("\n", "<br>")));
         author.setText(String.format(MyApp.getInstance().getString(R.string.book_author_str), book.getAuthor()));
-        price.setText(String.format(MyApp.getInstance().getString(R.string.book_detail_item_price), book.getPrice()));
+        if (book.getPrice() > 0) {
+            price.setText(String.format(MyApp.getInstance().getString(R.string.book_detail_item_price), book.getPrice()));
+        } else {
+            price.setText(MyApp.getInstance().getString(R.string.price_free));
+        }
+
         if (book.hasImage()) {
             Picasso.get().load(book.getImageUrl())
                     .error(R.drawable.ic_launcher_no_image)
@@ -72,7 +78,6 @@ public class EBookDetailActivity extends Activity {
         cartParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BookOrder.getInstance().addItem(book, 1);
             }
         });
     }
