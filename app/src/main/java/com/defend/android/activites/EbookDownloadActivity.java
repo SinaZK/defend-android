@@ -36,5 +36,12 @@ public class EbookDownloadActivity extends Activity {
         adapter.setDownloadItems(CustomDownloadManager.getInstance().getDownloadItems());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        CustomDownloadManager.getInstance().getOnFinishRunnables().add(new Runnable() {
+            @Override
+            public void run() {
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 }

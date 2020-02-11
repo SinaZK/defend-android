@@ -23,6 +23,7 @@ import static android.content.Context.DOWNLOAD_SERVICE;
 public class CustomDownloadManager {
     private static CustomDownloadManager instance;
     private ArrayList <DownloadItem> downloadItems = new ArrayList<>();
+    private ArrayList <Runnable> onFinishRunnables = new ArrayList<>();
 
     public static CustomDownloadManager getInstance() {
         if (instance == null) {
@@ -32,9 +33,9 @@ public class CustomDownloadManager {
         return instance;
     }
 
-    public void addToDownload(String title, String desc, String url) {
+    public DownloadItem addToDownload(String title, String desc, String url) {
         if (!permissionIsOk()) {
-            return;
+            return null;
         }
 
         File file = new File(Environment.getExternalStorageDirectory().toString(), "Defend/" + convertUrlToPath(url));
@@ -61,6 +62,8 @@ public class CustomDownloadManager {
         item.setDownloadPath(Uri.fromFile(file));
         item.setState(Constants.DOWNLOAD_STATE_DOWNLOADING);
         downloadItems.add(item);
+
+        return item;
     }
 
     private BroadcastReceiver onDownloadComplete = new BroadcastReceiver() {
@@ -73,6 +76,12 @@ public class CustomDownloadManager {
             DownloadItem item = findItem(id);
             if (item != null) {
                 item.setState(Constants.DOWNLOAD_STATE_DOWNLOADED);
+            }
+
+            for (int i = 0;i < onFinishRunnables.size();i++) {
+                if (onFinishRunnables.get(i) != null) {
+                    onFinishRunnables.get(i).run();
+                }
             }
 
             //Checking if the received broadcast is for our enqueued download by matching download id
@@ -124,5 +133,9 @@ public class CustomDownloadManager {
 
     public ArrayList<DownloadItem> getDownloadItems() {
         return downloadItems;
+    }
+
+    public ArrayList<Runnable> getOnFinishRunnables() {
+        return onFinishRunnables;
     }
 }

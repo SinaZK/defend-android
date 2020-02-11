@@ -69,6 +69,7 @@ public class DownloadItem {
     }
 
     public void open() {
+        Log.i("_download", "try to open");
         try {
             Intent myIntent = new Intent(Intent.ACTION_VIEW);
             myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

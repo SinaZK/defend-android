@@ -19,6 +19,7 @@ import com.defend.android.constants.Constants;
 import com.defend.android.data.Book;
 import com.defend.android.data.EBook;
 import com.defend.android.download.CustomDownloadManager;
+import com.defend.android.download.DownloadItem;
 import com.defend.android.listeners.RecyclerLoadMoreListener;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
@@ -98,10 +99,12 @@ public class EBookListAdapter extends RecyclerView.Adapter<EBookListAdapter.MyVi
             viewHolder.cartButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    CustomDownloadManager.getInstance().addToDownload(book.getTitle(), "", book.getDownloadUrl());
-                    //String url = "http://ipv4.download.thinkbroadband.com/20MB.zip";
-                    //String url5 = "http://ipv4.download.thinkbroadband.com/5MB.zip";
-                    //CustomDownloadManager.getInstance().addToDownload(book.getTitle(), "", url5);
+                    DownloadItem item = CustomDownloadManager.getInstance()
+                            .addToDownload(book.getTitle(), "", book.getDownloadUrl());
+                    if (item != null) {
+                        item.setImageUrl(book.getImageUrl());
+                        item.setTitle(book.getTitle());
+                    }
                 }
             });
         } else {

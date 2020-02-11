@@ -78,7 +78,7 @@ public class EBookDownloadListAdapter extends RecyclerView.Adapter<EBookDownload
             //CustomDownloadManager.getInstance().addToDownload(ite);
         } else  if (downloadItem.getState() == Constants.DOWNLOAD_STATE_DOWNLOADING) {
             viewHolder.actionButton.setText(MyApp.getInstance().getString(R.string.ebook_downloads_downloading));
-            viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            viewHolder.actionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -86,7 +86,7 @@ public class EBookDownloadListAdapter extends RecyclerView.Adapter<EBookDownload
             });
         } else  if (downloadItem.getState() == Constants.DOWNLOAD_STATE_DOWNLOADED) {
             viewHolder.actionButton.setText(MyApp.getInstance().getString(R.string.ebook_downloads_open));
-            viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            viewHolder.actionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     downloadItem.open();
