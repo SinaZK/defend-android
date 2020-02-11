@@ -14,6 +14,10 @@ import android.util.Log;
 
 import com.defend.android.MyApp;
 import com.defend.android.constants.Constants;
+import com.defend.android.utils.MyJSON;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -31,6 +35,12 @@ public class CustomDownloadManager {
         }
 
         return instance;
+    }
+
+    public CustomDownloadManager() {
+        if (MyJSON.getData(MyApp.getInstance()) == null) {
+            saveToFile();
+        }
     }
 
     public DownloadItem addToDownload(String title, String desc, String url) {
@@ -67,6 +77,8 @@ public class CustomDownloadManager {
         item.setState(Constants.DOWNLOAD_STATE_DOWNLOADING);
         downloadItems.add(item);
 
+        saveToFile();
+
         return item;
     }
 
@@ -87,6 +99,8 @@ public class CustomDownloadManager {
                     onFinishRunnables.get(i).run();
                 }
             }
+
+            saveToFile();
 
             //Checking if the received broadcast is for our enqueued download by matching download id
             //Toast.makeText(MyApp.getInstance(), "Download Completed " + id, Toast.LENGTH_SHORT).show();
@@ -130,10 +144,6 @@ public class CustomDownloadManager {
         return null;
     }
 
-    private void openFile(DownloadItem item) {
-        item.open();
-    }
-
     private boolean permissionIsOk() {
         int permissionWriteExternal = ContextCompat.checkSelfPermission(MyApp.getInstance(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -151,5 +161,29 @@ public class CustomDownloadManager {
 
     public ArrayList<Runnable> getOnFinishRunnables() {
         return onFinishRunnables;
+    }
+
+    public void saveToFile() {
+        JSONArray array = new JSONArray();
+
+        for (int i = 0;i < downloadItems.size();i++) {
+            array.put(downloadItems.get(i).toJson());
+        }
+
+        MyJSON.saveData(MyApp.getInstance(), array.toString());
+    }
+
+    public void updateFromFile() {
+        try {
+            downloadItems.clear();
+            JSONArray array = new JSONArray(MyJSON.getData(MyApp.getInstance()));
+            for(int i = 0;i < array.length();i++) {
+                DownloadItem item = new DownloadItem();
+                item.updateFromJson(array.getJSONObject(i));
+                downloadItems.add(item);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

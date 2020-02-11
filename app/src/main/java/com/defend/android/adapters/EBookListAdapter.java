@@ -104,6 +104,7 @@ public class EBookListAdapter extends RecyclerView.Adapter<EBookListAdapter.MyVi
                     if (item != null) {
                         item.setImageUrl(book.getImageUrl());
                         item.setTitle(book.getTitle());
+                        CustomDownloadManager.getInstance().saveToFile();
                     }
                 }
             });

@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.defend.android.MyApp;
 
+import org.json.JSONObject;
+
 public class DownloadItem {
     private long id;
     private String url;
@@ -77,5 +79,30 @@ public class DownloadItem {
         } catch (Exception e) {
             Log.e("_download", e.toString());
         }
+    }
+
+    public JSONObject toJson() {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("id", id);
+            object.put("url", url);
+            object.put("downloadPath", downloadPath.toString());
+            object.put("title", title);
+            object.put("imageUrl", imageUrl);
+            object.put("state", state);
+        } catch (Exception e) {
+
+        }
+
+        return object;
+    }
+
+    public void updateFromJson(JSONObject object) {
+        id = object.optInt("id");
+        url = object.optString("url");
+        downloadPath = Uri.parse(object.optString("downloadPath"));
+        title = object.optString("title");
+        imageUrl = object.optString("imageUrl");
+        state = object.optInt("state");
     }
 }

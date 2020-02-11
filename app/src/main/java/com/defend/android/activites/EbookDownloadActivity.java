@@ -44,4 +44,10 @@ public class EbookDownloadActivity extends Activity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CustomDownloadManager.getInstance().updateFromFile();
+    }
 }
