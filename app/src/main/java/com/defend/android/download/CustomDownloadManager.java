@@ -38,6 +38,10 @@ public class CustomDownloadManager {
             return null;
         }
 
+        if (isDuplicate(url)) {
+            return null;
+        }
+
         File file = new File(Environment.getExternalStorageDirectory().toString(), "Defend/" + convertUrlToPath(url));
 
         Log.i("_download", "" + file.getAbsoluteFile());
@@ -88,6 +92,16 @@ public class CustomDownloadManager {
             //Toast.makeText(MyApp.getInstance(), "Download Completed " + id, Toast.LENGTH_SHORT).show();
         }
     };
+
+    private boolean isDuplicate(String url) {
+        for (int i = 0;i < downloadItems.size();i++) {
+            if (downloadItems.get(i).getUrl().equals(url)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public void onDestroy() {
         MyApp.getInstance().unregisterReceiver(onDownloadComplete);
