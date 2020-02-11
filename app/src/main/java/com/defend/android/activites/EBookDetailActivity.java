@@ -13,9 +13,9 @@ import android.widget.TextView;
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
-import com.defend.android.data.Book;
-import com.defend.android.data.BookOrder;
 import com.defend.android.data.EBook;
+import com.defend.android.download.CustomDownloadManager;
+import com.defend.android.download.DownloadItem;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class EBookDetailActivity extends Activity {
 
     RelativeLayout cartParent;
-    TextView title, body, author, price, addToCartTV;
+    TextView title, body, author, price, purchaseDownloadTV;
     ImageView image;
     EBook book = new EBook();
 
@@ -40,7 +40,7 @@ public class EBookDetailActivity extends Activity {
         price = findViewById(R.id.price);
         image = findViewById(R.id.image);
         cartParent = findViewById(R.id.add_to_cart_parent);
-        addToCartTV = findViewById(R.id.cart_tv);
+        purchaseDownloadTV = findViewById(R.id.cart_tv);
 
         String jsonString = getIntent().getStringExtra(Constants.EXTRA_BOOK_JSON);
         try {
@@ -73,12 +73,37 @@ public class EBookDetailActivity extends Activity {
         ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(author, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(price, Color.RED, Constants.FONT_REGULAR);
-        ResourceManager.getInstance().decorateTextView(addToCartTV, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(purchaseDownloadTV, Color.WHITE, Constants.FONT_REGULAR);
 
         cartParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onButtonClicked();
             }
         });
+
+        if (book.getPrice() == 0 || book.isHasPurchased()) {
+            purchaseDownloadTV.setText(getString(R.string.ebook_add_to_download));
+        } else {
+            purchaseDownloadTV.setText(getString(R.string.ebook_purchase));
+        }
+    }
+
+    private void onButtonClicked() {
+        if (book.getPrice() == 0 || book.isHasPurchased()) {
+            DownloadItem item = CustomDownloadManager.getInstance()
+                    .addToDownload(book.getTitle(), "", book.getDownloadUrl());
+            if (item != null) {
+                item.setTitle(book.getTitle());
+                item.setImageUrl(book.getImageUrl());
+                CustomDownloadManager.getInstance().saveToFile();
+            }
+        } else {
+            sendPurchaseRequest();
+        }
+    }
+
+    private void sendPurchaseRequest() {
+
     }
 }

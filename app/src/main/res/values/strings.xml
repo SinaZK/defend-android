@@ -176,4 +176,8 @@
     <string name="ebook_downloads_downloading">درحال دانلود</string>
     <string name="ebook_downloads_open">مشاهده</string>
 
+    <!-- EBook Detail Activity-->
+    <string name="ebook_purchase">خرید</string>
+    <string name="ebook_add_to_download">افزودن به دانلود‌ها</string>
+
 </resources>
