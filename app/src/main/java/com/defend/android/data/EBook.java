@@ -11,7 +11,6 @@ public class EBook {
     private String downloadUrl = "";
     private int id;
     private JSONObject object;
-    private boolean hasPurchased;
 
     public void updateFromJson(JSONObject object) {
         this.object = object;
@@ -22,7 +21,6 @@ public class EBook {
         imageUrl = object.optString("image_url");
         downloadUrl = object.optString("file_url");
         price = object.optInt("price");
-        hasPurchased = object.optBoolean("purchased");
     }
 
     public JSONObject toJson() {
@@ -62,6 +60,6 @@ public class EBook {
     }
 
     public boolean isHasPurchased() {
-        return hasPurchased;
+        return downloadUrl.length() > 0;
     }
 }

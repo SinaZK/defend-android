@@ -14,10 +14,8 @@ import android.widget.TextView;
 
 import com.defend.android.MyApp;
 import com.defend.android.R;
-import com.defend.android.activites.BookDetailActivity;
 import com.defend.android.activites.EBookDetailActivity;
 import com.defend.android.constants.Constants;
-import com.defend.android.data.Book;
 import com.defend.android.data.EBook;
 import com.defend.android.download.CustomDownloadManager;
 import com.defend.android.download.DownloadItem;
@@ -100,7 +98,7 @@ public class EBookListAdapter extends RecyclerView.Adapter<EBookListAdapter.MyVi
             }
         });
 
-        if (book.getPrice() == 0) {
+        if (book.isHasPurchased()) {
             viewHolder.cartButton.setText(MyApp.getInstance().getString(R.string.add_to_download));
             viewHolder.cartButton.setOnClickListener(new View.OnClickListener() {
                 @Override
