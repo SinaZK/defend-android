@@ -113,11 +113,14 @@ public class EBookListAdapter extends RecyclerView.Adapter<EBookListAdapter.MyVi
                 }
             });
         } else {
-            viewHolder.cartButton.setText(MyApp.getInstance().getString(R.string.purchase));
+            viewHolder.cartButton.setText(MyApp.getInstance().getString(R.string.detail));
             viewHolder.cartButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(MyApp.getInstance(), EBookDetailActivity.class);
+                    intent.putExtra(Constants.EXTRA_BOOK_JSON, book.toJson().toString());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    MyApp.getInstance().startActivity(intent);
                 }
             });
         }

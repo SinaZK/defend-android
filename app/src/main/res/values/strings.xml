@@ -169,6 +169,7 @@
     <string name="ebook_toast">به دانلود‌ها اضافه شد</string>
     <string name="add_to_download">افزودن به دانلود‌ها</string>
     <string name="purchase">خرید</string>
+    <string name="detail">جزییات</string>
 
     <!-- EBook download activity-->
     <string name="ebook_downloads_title">خرید‌ها و دانلود‌ها</string>
