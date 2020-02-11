@@ -39,7 +39,7 @@ public class EBookDownloadListAdapter extends RecyclerView.Adapter<EBookDownload
             super(view);
             title = view.findViewById(R.id.title);
             image = view.findViewById(R.id.image);
-            actionButton = view.findViewById(R.id.cart_btn);
+            actionButton = view.findViewById(R.id.btn);
             cardView = view.findViewById(R.id.parent);
         }
     }
@@ -52,7 +52,7 @@ public class EBookDownloadListAdapter extends RecyclerView.Adapter<EBookDownload
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.from(MyApp.getInstance())
-                .inflate(R.layout.ebook_list_item, viewGroup, false);
+                .inflate(R.layout.ebook_download_list_item, viewGroup, false);
 
         return new MyViewHolder(itemView);
     }
