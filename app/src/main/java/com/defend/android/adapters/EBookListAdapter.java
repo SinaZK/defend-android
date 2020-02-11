@@ -74,7 +74,12 @@ public class EBookListAdapter extends RecyclerView.Adapter<EBookListAdapter.MyVi
         ResourceManager.getInstance().decorateButton(viewHolder.cartButton, Color.WHITE);
         viewHolder.cartButton.setBackgroundResource(R.drawable.btn_bg);
         viewHolder.title.setText(book.getTitle());
-        viewHolder.price.setText(String.format(MyApp.getInstance().getString(R.string.price_str), book.getPrice()));
+
+        if (book.getPrice() > 0) {
+            viewHolder.price.setText(String.format(MyApp.getInstance().getString(R.string.price_str), book.getPrice()));
+        } else {
+            viewHolder.price.setText(MyApp.getInstance().getString(R.string.price_free));
+        }
 
         if(book.hasImage()) {
             Picasso.get().load(book.getImageUrl())

@@ -13,8 +13,10 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.defend.android.MyApp;
+import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.utils.MyJSON;
+import com.defend.android.utils.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -78,6 +80,8 @@ public class CustomDownloadManager {
         downloadItems.add(item);
 
         saveToFile();
+
+        Utils.showToast(MyApp.getInstance().getString(R.string.ebook_toast));
 
         return item;
     }
