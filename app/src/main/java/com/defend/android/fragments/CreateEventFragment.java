@@ -2,6 +2,7 @@ package com.defend.android.fragments;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,13 +35,15 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.Locale;
 
+import droidninja.filepicker.FilePickerBuilder;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CreateEventFragment extends Fragment implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     MainActivity activity;
-    EditText titleEditText, locationEditText, bodyEditText;
+    EditText titleEditText, locationEditText, bodyEditText, fileEditText;
     TextView timeTextView, dateTextView;
     Button submitButton;
     ProgressBar progressBar;
@@ -67,6 +70,7 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         titleEditText = view.findViewById(R.id.titleTV);
         locationEditText = view.findViewById(R.id.locationTV);
         bodyEditText = view.findViewById(R.id.bodyTV);
+        fileEditText = view.findViewById(R.id.fileET);
         timeTextView = view.findViewById(R.id.time_tv);
         dateTextView = view.findViewById(R.id.date_tv);
         submitButton = view.findViewById(R.id.submit);
@@ -108,6 +112,15 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
                 DatePickerDialog dialog = DatePickerDialog.newInstance(CreateEventFragment.this,
                         year, month, day);
                 dialog.show(getFragmentManager(), "DatePickerDialog");
+            }
+        });
+
+        fileEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FilePickerBuilder.getInstance()
+                        .setMaxCount(1)
+                        .pickPhoto(activity);
             }
         });
 
@@ -199,5 +212,12 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
 
     private String getTimeString() {
         return "" + hour + ":" + minute;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
     }
 }
