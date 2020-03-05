@@ -11,8 +11,8 @@ import android.widget.EditText;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.defend.android.MyApp;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;

@@ -1,10 +1,10 @@
 package com.defend.android.Network;
-import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Response;
+import com.android.volley.error.AuthFailureError;
+import com.android.volley.error.ParseError;
+import com.android.volley.request.JsonArrayRequest;
 import com.android.volley.toolbox.HttpHeaderParser;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.DataStore;
 

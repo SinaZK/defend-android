@@ -1,24 +1,19 @@
 package com.defend.android.fragments;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import com.android.volley.error.VolleyError;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
@@ -26,8 +21,6 @@ import com.defend.android.activites.MainActivity;
 import com.defend.android.adapters.HomeItemAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.HomeItem;
-import com.defend.android.utils.ResourceManager;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
