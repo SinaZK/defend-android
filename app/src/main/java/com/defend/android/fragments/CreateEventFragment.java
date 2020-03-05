@@ -120,7 +120,7 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, FileChooser.class);
-//                intent.putExtra(Constants.SELECTION_MODE, Constants.SELECTION_MODES.SINGLE_SELECTION.ordinal());
+                intent.putExtra(com.aditya.filebrowser.Constants.SELECTION_MODE, com.aditya.filebrowser.Constants.SELECTION_MODES.SINGLE_SELECTION.ordinal());
                 startActivityForResult(intent, Constants.FILE_PICKER_REQUEST);
             }
         });

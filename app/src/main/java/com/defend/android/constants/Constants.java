@@ -48,7 +48,6 @@ public class Constants {
     public static int MENU_IDEA = 9;
     public static int MENU_EBOOK = 10;
 
-
     //BookOrderStates
     public static String STATE_CHECKOUT = "checkout";
     public static String STATE_PAID = "paid";
