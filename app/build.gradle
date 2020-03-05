@@ -44,5 +44,5 @@ dependencies {
     implementation "com.android.support:design:28.0.0"
 
     //FilePicker and Uploader
-    implementation 'com.droidninja:filepicker:2.2.1'
+    implementation 'com.adityak:browsemyfiles:1.9'
 }

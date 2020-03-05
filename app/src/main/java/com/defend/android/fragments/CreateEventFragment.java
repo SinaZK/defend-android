@@ -4,6 +4,7 @@ package com.defend.android.fragments;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.aditya.filebrowser.FileChooser;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -35,18 +37,17 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.Locale;
 
-import droidninja.filepicker.FilePickerBuilder;
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CreateEventFragment extends Fragment implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     MainActivity activity;
-    EditText titleEditText, locationEditText, bodyEditText, fileEditText;
-    TextView timeTextView, dateTextView;
+    EditText titleEditText, locationEditText, bodyEditText;
+    TextView timeTextView, dateTextView, fileTextView;
     Button submitButton;
     ProgressBar progressBar;
+    Uri selectedFile = null;
 
     private int hour = 12;
     private int minute = 0;
@@ -70,7 +71,7 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         titleEditText = view.findViewById(R.id.titleTV);
         locationEditText = view.findViewById(R.id.locationTV);
         bodyEditText = view.findViewById(R.id.bodyTV);
-        fileEditText = view.findViewById(R.id.fileET);
+        fileTextView = view.findViewById(R.id.fileET);
         timeTextView = view.findViewById(R.id.time_tv);
         dateTextView = view.findViewById(R.id.date_tv);
         submitButton = view.findViewById(R.id.submit);
@@ -115,12 +116,12 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
             }
         });
 
-        fileEditText.setOnClickListener(new View.OnClickListener() {
+        fileTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FilePickerBuilder.getInstance()
-                        .setMaxCount(1)
-                        .pickPhoto(activity);
+                Intent intent = new Intent(activity, FileChooser.class);
+//                intent.putExtra(Constants.SELECTION_MODE, Constants.SELECTION_MODES.SINGLE_SELECTION.ordinal());
+                startActivityForResult(intent, Constants.FILE_PICKER_REQUEST);
             }
         });
 
@@ -218,6 +219,12 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
+        if (requestCode == Constants.FILE_PICKER_REQUEST) {
+            selectedFile = data.getData();
+            if (selectedFile != null){
+//                Log.i("_event", selectedFile.toString());
+                fileTextView.setText(Utils.getFileNameFromUri(selectedFile));
+            }
+        }
     }
 }

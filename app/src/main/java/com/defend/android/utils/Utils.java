@@ -29,4 +29,9 @@ public class Utils {
         browserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         MyApp.getInstance().startActivity(browserIntent);
     }
+
+    public static String getFileNameFromUri(Uri uri) {
+        String [] splits = uri.toString().split("/");
+        return splits[splits.length - 1];
+    }
 }

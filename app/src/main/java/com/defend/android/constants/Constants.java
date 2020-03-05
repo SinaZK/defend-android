@@ -61,4 +61,7 @@ public class Constants {
     public static int DOWNLOAD_STATE_DOWNLOADED = 2;
     public static int DOWNLOAD_STATE_DOWNLOADING = 1;
     public static int DOWNLOAD_STATE_NOT_START = 0;
+
+    //Activity request codes
+    public static int FILE_PICKER_REQUEST = 1001;
 }

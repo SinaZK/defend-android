@@ -70,17 +70,16 @@
             android:background="@drawable/white_btn"
             android:layout_centerHorizontal="true"/>
 
-        <EditText
+        <TextView
             android:id="@+id/fileET"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
-            android:inputType="text"
             android:layout_marginRight="60dp"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="20dp"
             android:layout_below="@id/bodyTV"
-            android:hint="@string/file_hint"
+            android:text="@string/file_hint"
             android:gravity="center"
             android:background="@drawable/white_btn"
             android:layout_centerHorizontal="true"/>
