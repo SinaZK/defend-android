@@ -1,12 +1,13 @@
 package com.defend.android.Network;
 
-import android.app.Activity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.request.JsonArrayRequest;
 import com.android.volley.request.JsonObjectRequest;
+import com.android.volley.request.MultiPartRequest;
+import com.android.volley.request.SimpleMultiPartRequest;
 import com.android.volley.toolbox.Volley;
 import com.defend.android.MyApp;
 
@@ -25,6 +26,18 @@ public class NetworkManager {
     }
 
     public void sendRequest(JsonObjectRequest request) {
+        queue.add(request);
+    }
+
+    public void sendRequest(Request request) {
+        queue.add(request);
+    }
+
+    public void sendRequest(SimpleMultiPartRequest request) {
+        queue.add(request);
+    }
+
+    public void sendRequest(MultiPartRequest request) {
         queue.add(request);
     }
 

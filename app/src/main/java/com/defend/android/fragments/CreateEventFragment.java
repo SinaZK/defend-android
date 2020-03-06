@@ -16,16 +16,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.aditya.filebrowser.FileChooser;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.error.AuthFailureError;
 import com.android.volley.error.VolleyError;
 import com.defend.android.Network.AuthObjectRequest;
+import com.defend.android.Network.AuthSimpleMultipartRequest;
 import com.defend.android.Network.NetworkManager;
+import com.defend.android.Network.VolleyMultipartRequest;
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
 import com.defend.android.calendar.CalendarUtils;
 import com.defend.android.constants.Constants;
+import com.defend.android.data.DataStore;
 import com.defend.android.utils.ResourceManager;
 import com.defend.android.utils.Utils;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
@@ -36,7 +40,9 @@ import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -172,19 +178,42 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
             Log.i("_Create", e.toString());
         }
 
-        AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, object, new Response.Listener<JSONObject>() {
+        VolleyMultipartRequest request = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(NetworkResponse response) {
                 setProgress(false);
-//                Log.i("_Create", "Success: " + response.toString());
+                Log.i("_Create", "Success: " + response);
                 onSuccess();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                setProgress(false);
             }
-        });
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("title", titleEditText.getText().toString());
+                params.put("body", bodyEditText.getText().toString());
+                params.put("location", locationEditText.getText().toString());
+                params.put("date", getGregorianDateString());
+                params.put("time", getTimeString());
+                return params;
+            }
+
+            @Override
+            protected Map<String, DataPart> getByteData() throws AuthFailureError {
+                Map<String, DataPart> params = new HashMap<>();
+
+                if (selectedFile != null) {
+                    params.put("image", new DataPart("image.jpg", Utils.getFileDataFromUri(activity, selectedFile)));
+                }
+
+                return params;
+            }
+        };
+
         setProgress(true);
 
         NetworkManager.getInstance().sendRequest(request);
@@ -221,6 +250,12 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == Constants.FILE_PICKER_REQUEST) {
+            if (data == null) {
+                selectedFile = null;
+
+                return;
+            }
+
             selectedFile = data.getData();
             if (selectedFile != null){
 //                Log.i("_event", selectedFile.toString());
