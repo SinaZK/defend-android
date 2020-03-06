@@ -50,10 +50,21 @@
         tools:ignore="RtlHardcoded,SpUsage" />
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/publish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/author"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
+        android:textSize="16dp"
+        tools:ignore="RtlHardcoded,SpUsage" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/publish"
         android:layout_alignParentRight="true"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"

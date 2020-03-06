@@ -83,6 +83,8 @@
 
     <!--BookDetailActivity-->
     <string name="book_author_str">نویسنده: %s</string>
+    <string name="book_translator_str">مترجم: %s</string>
+    <string name="book_year_str">سال چاپ: %s</string>
     <string name="book_detail_item_price">قیمت: %d تومان</string>
 
     <!--BookBillingActivity-->

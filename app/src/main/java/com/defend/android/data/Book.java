@@ -1,11 +1,15 @@
 package com.defend.android.data;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 public class Book {
     private String title = "";
     private String body = "";
     private String author = "";
+    private String translator = "";
+    private String publishYear = "";
     private int price;
     private String imageUrl = "";
     private int id;
@@ -17,6 +21,8 @@ public class Book {
         title = object.optString("title");
         body = object.optString("description");
         author = object.optString("author");
+        translator = object.optString("translator");
+        publishYear = object.optString("publish_year");
         imageUrl = object.optString("image_url");
         price = object.optInt("price");
     }
@@ -51,5 +57,16 @@ public class Book {
 
     public int getId() {
         return id;
+    }
+
+    public String getTranslator() {
+        if (translator.equals("null")) {
+            translator = "";
+        }
+        return translator;
+    }
+
+    public String getPublishYear() {
+        return publishYear;
     }
 }

@@ -25,27 +25,13 @@ public class NetworkManager {
         return instance;
     }
 
-    public void sendRequest(JsonObjectRequest request) {
-        queue.add(request);
-    }
-
     public void sendRequest(Request request) {
+        request.setShouldCache(false);
+
         queue.add(request);
     }
 
-    public void sendRequest(SimpleMultiPartRequest request) {
-        queue.add(request);
-    }
-
-    public void sendRequest(MultiPartRequest request) {
-        queue.add(request);
-    }
-
-    public void sendRequest(JsonArrayRequest request) {
-        queue.add(request);
-    }
-
-    public void sendRequest(JsonObjectRequest request, int timeout) {
+    public void sendRequest(Request request, int timeout) {
         if (request == null) {
             return;
         }
@@ -53,6 +39,8 @@ public class NetworkManager {
         if (queue == null) {
             return;
         }
+
+        request.setShouldCache(false);
 
         request.setRetryPolicy(new DefaultRetryPolicy(
                 timeout,

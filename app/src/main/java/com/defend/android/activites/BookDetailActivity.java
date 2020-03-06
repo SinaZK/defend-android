@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class BookDetailActivity extends Activity {
 
     RelativeLayout cartParent;
-    TextView title, body, author, price, addToCartTV;
+    TextView title, body, author, price, addToCartTV, publish;
     ImageView image;
     Book book = new Book();
 
@@ -38,6 +38,7 @@ public class BookDetailActivity extends Activity {
         author = findViewById(R.id.author);
         price = findViewById(R.id.price);
         image = findViewById(R.id.image);
+        publish = findViewById(R.id.publish);
         cartParent = findViewById(R.id.add_to_cart_parent);
         addToCartTV = findViewById(R.id.cart_tv);
 
@@ -55,7 +56,12 @@ public class BookDetailActivity extends Activity {
         title.setText(book.getTitle());
         body.setMovementMethod(LinkMovementMethod.getInstance());
         body.setText(Html.fromHtml(book.getBody().replace("\n", "<br>")));
-        author.setText(String.format(MyApp.getInstance().getString(R.string.book_author_str), book.getAuthor()));
+        if (book.getTranslator().length() > 0) {
+            author.setText(String.format(MyApp.getInstance().getString(R.string.book_translator_str), book.getTranslator()));
+        } else {
+            author.setText(String.format(MyApp.getInstance().getString(R.string.book_author_str), book.getAuthor()));
+        }
+        publish.setText(String.format(MyApp.getInstance().getString(R.string.book_year_str), book.getPublishYear()));
         price.setText(String.format(MyApp.getInstance().getString(R.string.book_detail_item_price), book.getPrice()));
         if (book.hasImage()) {
             Picasso.get().load(book.getImageUrl())
@@ -66,6 +72,7 @@ public class BookDetailActivity extends Activity {
         ResourceManager.getInstance().decorateTextView(title, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(author, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(publish, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(price, Color.RED, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(addToCartTV, Color.WHITE, Constants.FONT_REGULAR);
 
