@@ -41,19 +41,51 @@
 
         <TextView
             android:id="@+id/time_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/white_btn"
             android:layout_below="@id/locationTV"/>
 
         <TextView
             android:id="@+id/date_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/time_tv"/>
+
+        <TextView
+            android:id="@+id/e_time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/white_btn"
+            android:layout_below="@id/date_tv"/>
+
+        <TextView
+            android:id="@+id/e_date_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/e_time_tv"/>
 
         <EditText
             android:id="@+id/bodyTV"
@@ -64,7 +96,7 @@
             android:layout_marginRight="60dp"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/date_tv"
+            android:layout_below="@id/e_date_tv"
             android:hint="@string/body_hint"
             android:gravity="center"
             android:background="@drawable/white_btn"

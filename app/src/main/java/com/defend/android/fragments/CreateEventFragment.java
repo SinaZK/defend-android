@@ -21,23 +21,18 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.error.AuthFailureError;
 import com.android.volley.error.VolleyError;
-import com.defend.android.Network.AuthObjectRequest;
-import com.defend.android.Network.AuthSimpleMultipartRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.Network.VolleyMultipartRequest;
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
 import com.defend.android.calendar.CalendarUtils;
 import com.defend.android.constants.Constants;
-import com.defend.android.data.DataStore;
 import com.defend.android.utils.ResourceManager;
 import com.defend.android.utils.Utils;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
 import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
-
-import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -52,6 +47,7 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
     MainActivity activity;
     EditText titleEditText, locationEditText, bodyEditText;
     TextView timeTextView, dateTextView, fileTextView;
+    TextView endTimeTextView, endDateTextView;
     Button submitButton;
     ProgressBar progressBar;
     Uri selectedFile = null;
@@ -61,6 +57,12 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
     private int day = 1;
     private int month = 1;
     private int year = 1396;
+
+    private int eHour = 12;
+    private int eMinute = 0;
+    private int eDay = 1;
+    private int eMonth = 1;
+    private int eYear = 1396;
 
 
     public CreateEventFragment() {
@@ -81,6 +83,8 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         fileTextView = view.findViewById(R.id.fileET);
         timeTextView = view.findViewById(R.id.time_tv);
         dateTextView = view.findViewById(R.id.date_tv);
+        endTimeTextView = view.findViewById(R.id.e_time_tv);
+        endDateTextView = view.findViewById(R.id.e_date_tv);
         submitButton = view.findViewById(R.id.submit);
         progressBar = view.findViewById(R.id.progress);
 
@@ -95,6 +99,8 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         ResourceManager.getInstance().decorateEditText(bodyEditText, Color.WHITE, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(timeTextView, Color.WHITE, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(dateTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(endTimeTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(endDateTextView, Color.WHITE, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateButton(submitButton, Color.WHITE, Constants.FONT_REGULAR);
 
         submitButton.setBackgroundResource(R.drawable.btn_bg);
@@ -110,7 +116,7 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
             public void onClick(View v) {
                 TimePickerDialog dialog = TimePickerDialog.newInstance(CreateEventFragment.this,
                         hour, minute, true);
-                dialog.show(getFragmentManager(), "timePicker");
+                dialog.show(getFragmentManager(), "1");
             }
         });
 
@@ -119,7 +125,30 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
             public void onClick(View v) {
                 DatePickerDialog dialog = DatePickerDialog.newInstance(CreateEventFragment.this,
                         year, month, day);
-                dialog.show(getFragmentManager(), "DatePickerDialog");
+                dialog.show(getFragmentManager(), "1");
+            }
+        });
+
+        endTimeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog dialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                                                                           @Override
+                                                                           public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+                                                                               updateEndTime(hourOfDay, minute);
+                                                                           }
+                                                                       },
+                        hour, minute, true);
+                dialog.show(getFragmentManager(), "2");
+            }
+        });
+
+        endDateTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = DatePickerDialog.newInstance(CreateEventFragment.this,
+                        year, month, day);
+                dialog.show(getFragmentManager(), "2");
             }
         });
 
@@ -136,12 +165,21 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
 
         updateTime(hour, minute);
         updateDate(calendar.getPersianYear(), calendar.getPersianMonth(), calendar.getPersianDay());
+
+        updateEndTime(hour, minute);
+        updateEndDate(calendar.getPersianYear(), calendar.getPersianMonth(), calendar.getPersianDay());
     }
 
     private void updateTime(int h, int m) {
         hour = h;
         minute = m;
         timeTextView.setText(String.format(Locale.ENGLISH, getString(R.string.time_tv), hour, minute));
+    }
+
+    private void updateEndTime(int h, int m) {
+        eHour = h;
+        eMinute = m;
+        endTimeTextView.setText(String.format(Locale.ENGLISH, getString(R.string.e_time_tv), eHour, eMinute));
     }
 
     private void updateDate(int y, int m, int d) {
@@ -151,6 +189,15 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         day = d;
         dateTextView.setText(String.format(Locale.ENGLISH, getString(R.string.date_tv), day,
                 CalendarUtils.getMonthPersianString(month), year));
+    }
+
+    private void updateEndDate(int y, int m, int d) {
+        m = m + 1;
+        eYear = y;
+        eMonth = m;
+        eDay = d;
+        endDateTextView.setText(String.format(Locale.ENGLISH, getString(R.string.e_date_tv), eDay,
+                CalendarUtils.getMonthPersianString(eMonth), eYear));
     }
 
     private void setProgress(boolean show) {
@@ -165,18 +212,6 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
 
     private void sendSubmitRequest() {
         String url = Constants.API_URL + Constants.API_SUBMIT_NEW_EVENT;
-
-        JSONObject object = new JSONObject();
-
-        try {
-            object.put("title", titleEditText.getText().toString());
-            object.put("body", bodyEditText.getText().toString());
-            object.put("location", locationEditText.getText().toString());
-            object.put("date", getGregorianDateString());
-            object.put("time", getTimeString());
-        } catch (Exception e) {
-            Log.i("_Create", e.toString());
-        }
 
         VolleyMultipartRequest request = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
             @Override
@@ -199,6 +234,8 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
                 params.put("location", locationEditText.getText().toString());
                 params.put("date", getGregorianDateString());
                 params.put("time", getTimeString());
+                params.put("end_date", getGregorianEndDateString());
+                params.put("end_time", getEndTimeString());
                 return params;
             }
 
@@ -226,7 +263,11 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        updateDate(year, monthOfYear, dayOfMonth);
+        if (view.getTag().equals("1")) {
+            updateDate(year, monthOfYear, dayOfMonth);
+        } else {
+            updateEndDate(year, monthOfYear, dayOfMonth);
+        }
     }
 
     @Override
@@ -245,6 +286,17 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         return "" + hour + ":" + minute;
     }
 
+    private String getGregorianEndDateString() {
+        PersianCalendar persianCalendar = new PersianCalendar();
+        persianCalendar.setPersianDate(eYear, eMonth - 1, eDay);
+        return "" + persianCalendar.get(Calendar.YEAR) + "-" + (persianCalendar.get(Calendar.MONTH) + 1) + "-" +
+                persianCalendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+    private String getEndTimeString() {
+        return "" + eHour + ":" + eMinute;
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -252,6 +304,7 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         if (requestCode == Constants.FILE_PICKER_REQUEST) {
             if (data == null) {
                 selectedFile = null;
+                fileTextView.setText(getString(R.string.file_hint));
 
                 return;
             }

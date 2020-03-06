@@ -114,8 +114,12 @@
     <string name="location_hint">محل برگزاری</string>
     <string name="body_hint">توضیحات</string>
     <string name="file_hint">آپلود عکس (اختیاری)</string>
-    <string name="time_tv">ساعت رویداد: %02d:%02d</string>
-    <string name="date_tv">تاریخ رویداد: %2d %s %2d</string>
+    <string name="start_separator">زمان شروع</string>
+    <string name="end_separator">زمان پایان</string>
+    <string name="time_tv">ساعت شروع رویداد: %02d:%02d</string>
+    <string name="date_tv">تاریخ شروع رویداد: %2d %s %2d</string>
+    <string name="e_time_tv">ساعت پایان رویداد: %02d:%02d</string>
+    <string name="e_date_tv">تاریخ پایان رویداد: %2d %s %2d</string>
     <string name="submit_btn">ارسال</string>
     <string name="success_toast">درخواست شما با موفقیت ثبت شد.</string>
 
