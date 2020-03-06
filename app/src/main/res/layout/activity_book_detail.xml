@@ -84,7 +84,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_below="@id/price"
-        android:layout_above="@id/add_to_cart_parent">
+        android:layout_above="@id/add_to_cart_parent"
+        android:background="#FFF59D">
 
         <RelativeLayout
             android:layout_width="match_parent"
