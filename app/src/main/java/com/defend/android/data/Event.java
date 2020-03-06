@@ -1,5 +1,7 @@
 package com.defend.android.data;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,6 +11,9 @@ public class Event {
     private String location = "";
     private String date = "";
     private String time = "";
+    private String endDate = "";
+    private String endTime = "";
+    private String info = "";
     private String imageUrl = "";
 
     public void updateFromJson(JSONObject object) {
@@ -17,6 +22,9 @@ public class Event {
         location = object.optString("location");
         date = object.optString("jalali_date");
         time = object.optString("time");
+        endDate = object.optString("jalali_end_date");
+        endTime = object.optString("end_time");
+        info = object.optString("info");
         imageUrl = object.optString("image_url");
     }
 
@@ -29,6 +37,9 @@ public class Event {
             result.put("location", location);
             result.put("jalali_date", date);
             result.put("time", time);
+            result.put("jalali_end_date", endDate);
+            result.put("end_time", endTime);
+            result.put("info", info);
             result.put("image_url", imageUrl);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -91,5 +102,17 @@ public class Event {
         } catch (Exception e) {
             return -1;
         }
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public String getInfo() {
+        return info;
     }
 }

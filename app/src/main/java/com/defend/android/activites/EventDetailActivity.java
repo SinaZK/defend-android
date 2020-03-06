@@ -49,7 +49,11 @@ public class EventDetailActivity extends Activity {
         body.setMovementMethod(LinkMovementMethod.getInstance());
         body.setText(Html.fromHtml(event.getBody().replace("\n", "<br>")));
         location.setText(event.getLocation());
-        date.setText(event.getDate());
+        if (event.getDate().equals(event.getEndDate())) {
+            date.setText(event.getDate());
+        } else {
+            date.setText(event.getDate() + " تا " + event.getEndDate());
+        }
         if (event.hasImage()) {
             Picasso.get().load(event.getImageUrl())
                     .error(R.drawable.ic_launcher_no_image)
