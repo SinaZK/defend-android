@@ -13,4 +13,16 @@
 
     </android.support.v4.view.ViewPager>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_btn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/add_plus_512"
+        android:tint="#000000"
+        android:backgroundTint="@color/primary"
+        tools:ignore="RtlHardcoded,UnusedAttribute" />
+
 </RelativeLayout>

@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (drawerItem.getIdentifier() == Constants.MENU_EVENTS) {
                             fragment = new EventsFragment();
+                            ((EventsFragment) fragment).setActivity(MainActivity.this);
                             toolbar.setText(getString(R.string.menu_events));
                         }
 
