@@ -45,7 +45,7 @@ import java.util.Map;
 public class CreateEventFragment extends Fragment implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     MainActivity activity;
-    EditText titleEditText, locationEditText, bodyEditText;
+    EditText titleEditText, locationEditText, bodyEditText, infoEditText;
     TextView timeTextView, dateTextView, fileTextView;
     TextView endTimeTextView, endDateTextView;
     Button submitButton;
@@ -79,6 +79,7 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
         View view = inflater.inflate(R.layout.fragment_create_event, container, false);
         titleEditText = view.findViewById(R.id.titleTV);
         locationEditText = view.findViewById(R.id.locationTV);
+        infoEditText = view.findViewById(R.id.infoET);
         bodyEditText = view.findViewById(R.id.bodyTV);
         fileTextView = view.findViewById(R.id.fileET);
         timeTextView = view.findViewById(R.id.time_tv);
@@ -96,8 +97,10 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
     private void initUI() {
         ResourceManager.getInstance().decorateEditText(titleEditText, Color.WHITE, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateEditText(locationEditText, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(infoEditText, Color.WHITE, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateEditText(bodyEditText, Color.WHITE, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(timeTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(fileTextView, Color.WHITE, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(dateTextView, Color.WHITE, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(endTimeTextView, Color.WHITE, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(endDateTextView, Color.WHITE, Constants.FONT_BOLD);
@@ -236,6 +239,7 @@ public class CreateEventFragment extends Fragment implements TimePickerDialog.On
                 params.put("time", getTimeString());
                 params.put("end_date", getGregorianEndDateString());
                 params.put("end_time", getEndTimeString());
+                params.put("info", infoEditText.getText().toString());
                 return params;
             }
 
