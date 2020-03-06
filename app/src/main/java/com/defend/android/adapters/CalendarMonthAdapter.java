@@ -43,7 +43,7 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView text;
-        public ImageView selectedImage, todayImage;
+        public ImageView selectedImage, todayImage, hasEventImageView;
         public RelativeLayout cardView;
         public View view;
 
@@ -52,6 +52,7 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
             text = view.findViewById(R.id.text);
             selectedImage = view.findViewById(R.id.selected);
             todayImage = view.findViewById(R.id.today);
+            hasEventImageView = view.findViewById(R.id.has_event);
             cardView = view.findViewById(R.id.parent);
             this.view = view.findViewById(R.id.view);
         }
@@ -110,7 +111,8 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
         ResourceManager.getInstance().decorateTextView(holder.text, Color.WHITE);
         if(getDayOfMonth(position) > 0) {
             if(hasEvent[getDayOfMonth(position)]) {
-                ResourceManager.getInstance().decorateTextView(holder.text, Color.RED);
+                ResourceManager.getInstance().decorateTextView(holder.text, Color.BLACK);
+                holder.hasEventImageView.setVisibility(View.VISIBLE);
             }
         }
         holder.text.setText(getDayOfMonthStr(position));
@@ -130,6 +132,7 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
     private void invisibleView(MyViewHolder holder) {
         holder.todayImage.setVisibility(View.GONE);
         holder.selectedImage.setVisibility(View.GONE);
+        holder.hasEventImageView.setVisibility(View.GONE);
         holder.view.setVisibility(View.GONE);
     }
 

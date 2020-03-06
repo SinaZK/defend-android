@@ -13,12 +13,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/activityBackground">
+
+        <ImageView
+            android:id="@+id/selected"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/has_event"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/has_event_bg"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/today"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"/>
+
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:background="@drawable/btn_bg">
+            android:background="@drawable/btn_bg"
+            tools:visibility="visible">
 
         </View>
 
@@ -30,19 +53,6 @@
             android:textSize="16dp"
             android:layout_centerInParent="true"
             tools:ignore="SpUsage" />
-
-        <ImageView
-            android:id="@+id/selected"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/today"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"/>
 
     </RelativeLayout>
 </RelativeLayout>
