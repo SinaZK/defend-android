@@ -98,11 +98,11 @@ public class SearchFragment extends Fragment {
     private void initUI() {
         ResourceManager.getInstance().decorateTextView(noResultTextView, Color.BLACK, Constants.FONT_BOLD);
 
-        ResourceManager.getInstance().decorateTextView(atlasTextView, Color.BLACK, Constants.FONT_BOLD);
-        ResourceManager.getInstance().decorateTextView(ebookTextView, Color.BLACK, Constants.FONT_BOLD);
-        ResourceManager.getInstance().decorateTextView(bookTextView, Color.BLACK, Constants.FONT_BOLD);
-        ResourceManager.getInstance().decorateTextView(infoTextView, Color.BLACK, Constants.FONT_BOLD);
-        ResourceManager.getInstance().decorateTextView(magTextView, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(atlasTextView, Color.parseColor("#222222"), Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(ebookTextView, Color.parseColor("#222222"), Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(bookTextView, Color.parseColor("#222222"), Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(infoTextView, Color.parseColor("#222222"), Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(magTextView, Color.parseColor("#222222"), Constants.FONT_BOLD);
 
         searchToolbar.setSearchListener(new SearchListener() {
             @Override
@@ -117,9 +117,9 @@ public class SearchFragment extends Fragment {
     }
 
     private void sendSearchRequest(String searchTerm) {
-//        if (searchTerm.length() == 0) {
-//            return;
-//        }
+        if (searchTerm.length() == 0) {
+            return;
+        }
 
         warfares.clear();
         infographics.clear();

@@ -31,7 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/search_no_result"/>
+            android:textSize="20dp"
+            tools:ignore="SpUsage"
+            android:text="@string/search_no_result" />
 
     </RelativeLayout>
 
@@ -44,7 +46,8 @@
             android:id="@+id/result_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,9 +57,13 @@
 
                 <TextView
                     android:id="@+id/atlas_result"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_atlas"/>
+                    android:text="@string/search_atlas"
+                    android:gravity="right"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="RtlHardcoded,SpUsage"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/atlas_rv"
@@ -75,9 +82,13 @@
 
                 <TextView
                     android:id="@+id/book_result"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_book"/>
+                    android:text="@string/search_book"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="right"
+                    android:textSize="25dp"
+                    tools:ignore="RtlHardcoded,SpUsage"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/book_rv"
@@ -96,9 +107,13 @@
 
                 <TextView
                     android:id="@+id/info_result"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_infographic"/>
+                    android:text="@string/search_infographic"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="right"
+                    android:textSize="25dp"
+                    tools:ignore="RtlHardcoded,SpUsage"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/info_rv"
@@ -117,9 +132,13 @@
 
                 <TextView
                     android:id="@+id/ebook_result"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_ebook"/>
+                    android:text="@string/search_ebook"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    tools:ignore="RtlHardcoded,SpUsage"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/ebook_rv"
@@ -139,9 +158,13 @@
 
                 <TextView
                     android:id="@+id/magazine_result"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_mag"/>
+                    android:text="@string/search_mag"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    tools:ignore="RtlHardcoded,SpUsage"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/magazine_rv"
