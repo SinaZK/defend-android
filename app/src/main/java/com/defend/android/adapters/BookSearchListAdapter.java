@@ -63,7 +63,7 @@ public class BookSearchListAdapter extends RecyclerView.Adapter<BookSearchListAd
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.from(MyApp.getInstance())
-                .inflate(R.layout.book_list_item, viewGroup, false);
+                .inflate(R.layout.book_search_list_item, viewGroup, false);
 
         return new MyViewHolder(itemView);
     }
