@@ -23,6 +23,7 @@ import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
+import com.defend.android.adapters.InfoSearchListAdapter;
 import com.defend.android.adapters.WarfareSearchListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.SearchToolbar;
@@ -57,7 +58,7 @@ public class SearchFragment extends Fragment {
     ArrayList <Infographic> infographics = new ArrayList<>();
     ArrayList <Book> books = new ArrayList<>();
     ArrayList <EBook> eBooks = new ArrayList<>();
-    //ArrayList <Magazi> warfares = new ArrayList<>();
+    //ArrayList <Magazine> warfares = new ArrayList<>();
 
     public SearchFragment() {
         // Required empty public constructor
@@ -126,7 +127,14 @@ public class SearchFragment extends Fragment {
 
         String url = Constants.API_URL + Constants.API_SEARCH_ALL;
 
-        AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, new JSONObject(), new Response.Listener<JSONObject>() {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("search", searchTerm);
+        } catch (Exception e) {
+
+        }
+
+        AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 setProgress(false);
@@ -145,9 +153,42 @@ public class SearchFragment extends Fragment {
     }
 
     private void onSuccess(JSONObject response) {
-        boolean hasResult = false;
         showResult();
 
+        boolean hasResult = updateWarfares(response);
+        hasResult = hasResult || updateInfos(response);
+
+        if (!hasResult) {
+            showNoResult();
+        }
+    }
+
+    private boolean updateInfos(JSONObject response) {
+        JSONArray infoArray = response.optJSONArray("info");
+        for(int i = 0;i < infoArray.length();i++) {
+            Infographic infographic = new Infographic();
+            infographic.updateFromJson(infoArray.optJSONObject(i));
+            infographics.add(infographic);
+        }
+
+        if (infographics.size() == 0) {
+            infoRV.setVisibility(View.GONE);
+            infoTextView.setVisibility(View.GONE);
+
+            return false;
+        } else {
+            infoRV.setVisibility(View.VISIBLE);
+            infoTextView.setVisibility(View.VISIBLE);
+            InfoSearchListAdapter adapter = new InfoSearchListAdapter();
+            adapter.setInfographics(infographics);
+            infoRV.setAdapter(adapter);
+            infoRV.setLayoutManager(new LinearLayoutManager(activity));
+
+            return true;
+        }
+    }
+
+    private boolean updateWarfares(JSONObject response) {
         JSONArray warfareArray = response.optJSONArray("atlas");
         for(int i = 0;i < warfareArray.length();i++) {
             Warfare warfare = new Warfare();
@@ -158,16 +199,17 @@ public class SearchFragment extends Fragment {
         if (warfares.size() == 0) {
             atlasRV.setVisibility(View.GONE);
             atlasTextView.setVisibility(View.GONE);
+
+            return false;
         } else {
-            hasResult = true;
+            atlasRV.setVisibility(View.VISIBLE);
+            atlasTextView.setVisibility(View.VISIBLE);
             WarfareSearchListAdapter adapter = new WarfareSearchListAdapter();
             adapter.setWarfares(warfares);
             atlasRV.setAdapter(adapter);
             atlasRV.setLayoutManager(new LinearLayoutManager(activity));
-        }
 
-        if (!hasResult) {
-            showNoResult();
+            return true;
         }
     }
 
