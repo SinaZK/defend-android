@@ -192,5 +192,6 @@
 
     <!-- Search -->
     <string name="search">جست‌و‌جو</string>
+    <string name="search_no_result">نتیجه‌ای یافت نشد</string>
 
 </resources>

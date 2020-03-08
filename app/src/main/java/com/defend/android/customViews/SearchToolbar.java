@@ -96,7 +96,6 @@ public class SearchToolbar extends RelativeLayout {
     }
 
     private void onSearch() {
-        Log.i("_search", "searching : " + searchEditText.getText().toString());
         if (searchListener != null) {
             searchListener.onSearch(searchEditText.getText().toString());
         }
