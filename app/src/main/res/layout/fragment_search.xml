@@ -7,6 +7,7 @@
     android:background="@color/activityBackground">
 
     <com.defend.android.customViews.SearchToolbar
+        android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 

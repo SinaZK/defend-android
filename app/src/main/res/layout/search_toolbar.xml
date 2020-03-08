@@ -9,6 +9,7 @@
         android:id="@+id/search_icon"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/ic_search_black"
@@ -16,13 +17,14 @@
 
     <EditText
         android:id="@+id/search_edit_text"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="40dp"
         android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/button"
         android:textSize="20dp"
         android:singleLine="true"
+        android:gravity="right"
         android:hint="@string/search"
         android:imeOptions="actionSearch"
         tools:ignore="RtlHardcoded,SpUsage"

@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (drawerItem.getIdentifier() == Constants.MENU_SEARCH) {
                             fragment = new SearchFragment();
+                            ((SearchFragment) fragment).setActivity(MainActivity.this);
 //                            toolbar.setText(getString(R.string.menu_search));
                             toolbar.setVisibility(View.GONE);
                         }

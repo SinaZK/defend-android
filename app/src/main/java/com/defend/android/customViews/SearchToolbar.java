@@ -50,7 +50,7 @@ public class SearchToolbar extends RelativeLayout {
         searchImage = view.findViewById(R.id.search_icon);
 
         ResourceManager.getInstance().decorateTextView(searchEditText, Color.WHITE);
-        ResourceManager.getInstance().decorateEditText(searchEditText, Color.BLACK, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(searchEditText, Color.WHITE, Constants.FONT_REGULAR);
 
         searchImage.setOnClickListener(new OnClickListener() {
             @Override
