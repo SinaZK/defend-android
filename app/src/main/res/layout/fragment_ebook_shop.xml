@@ -21,15 +21,46 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/search_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/cart_parent">
+
+        <ImageView
+            android:id="@+id/search_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_search_black"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/search_edit_text"
+            android:layout_marginLeft="40dp"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/search_icon"
+            android:textSize="20dp"
+            android:singleLine="true"
+            android:gravity="center"
+            android:hint="@string/search"
+            tools:ignore="RtlHardcoded,SpUsage"
+            android:background="@android:color/transparent" />
+
+    </RelativeLayout>
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/cart_parent">
+        android:layout_below="@id/search_toolbar">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/book_rv"
-            android:layout_below="@id/cart_parent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
