@@ -4,6 +4,7 @@ package com.defend.android.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,12 +23,20 @@ import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
+import com.defend.android.adapters.WarfareSearchListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.SearchToolbar;
+import com.defend.android.data.Book;
+import com.defend.android.data.EBook;
+import com.defend.android.data.Infographic;
+import com.defend.android.data.Warfare;
 import com.defend.android.listeners.SearchListener;
 import com.defend.android.utils.ResourceManager;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +52,12 @@ public class SearchFragment extends Fragment {
 
     TextView atlasTextView, bookTextView, ebookTextView, magTextView, infoTextView;
     RecyclerView atlasRV, bookRV, ebookRV, magRV, infoRV;
+
+    ArrayList <Warfare> warfares = new ArrayList<>();
+    ArrayList <Infographic> infographics = new ArrayList<>();
+    ArrayList <Book> books = new ArrayList<>();
+    ArrayList <EBook> eBooks = new ArrayList<>();
+    //ArrayList <Magazi> warfares = new ArrayList<>();
 
     public SearchFragment() {
         // Required empty public constructor
@@ -103,6 +118,12 @@ public class SearchFragment extends Fragment {
             return;
         }
 
+        warfares.clear();
+        infographics.clear();
+        eBooks.clear();
+        books.clear();
+
+
         String url = Constants.API_URL + Constants.API_SEARCH_ALL;
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, new JSONObject(), new Response.Listener<JSONObject>() {
@@ -124,7 +145,30 @@ public class SearchFragment extends Fragment {
     }
 
     private void onSuccess(JSONObject response) {
-        Log.i("_Search", response.toString());
+        boolean hasResult = false;
+        showResult();
+
+        JSONArray warfareArray = response.optJSONArray("atlas");
+        for(int i = 0;i < warfareArray.length();i++) {
+            Warfare warfare = new Warfare();
+            warfare.updateFromJson(warfareArray.optJSONObject(i));
+            warfares.add(warfare);
+        }
+
+        if (warfares.size() == 0) {
+            atlasRV.setVisibility(View.GONE);
+            atlasTextView.setVisibility(View.GONE);
+        } else {
+            hasResult = true;
+            WarfareSearchListAdapter adapter = new WarfareSearchListAdapter();
+            adapter.setWarfares(warfares);
+            atlasRV.setAdapter(adapter);
+            atlasRV.setLayoutManager(new LinearLayoutManager(activity));
+        }
+
+        if (!hasResult) {
+            showNoResult();
+        }
     }
 
     private void setProgress(boolean show) {
