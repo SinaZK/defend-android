@@ -4,10 +4,6 @@ package com.defend.android.Network;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.request.JsonArrayRequest;
-import com.android.volley.request.JsonObjectRequest;
-import com.android.volley.request.MultiPartRequest;
-import com.android.volley.request.SimpleMultiPartRequest;
 import com.android.volley.toolbox.Volley;
 import com.defend.android.MyApp;
 

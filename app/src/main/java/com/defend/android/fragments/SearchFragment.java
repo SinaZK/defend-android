@@ -23,6 +23,8 @@ import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
+import com.defend.android.adapters.BookSearchListAdapter;
+import com.defend.android.adapters.EBookSearchListAdapter;
 import com.defend.android.adapters.InfoSearchListAdapter;
 import com.defend.android.adapters.WarfareSearchListAdapter;
 import com.defend.android.constants.Constants;
@@ -115,9 +117,9 @@ public class SearchFragment extends Fragment {
     }
 
     private void sendSearchRequest(String searchTerm) {
-        if (searchTerm.length() == 0) {
-            return;
-        }
+//        if (searchTerm.length() == 0) {
+//            return;
+//        }
 
         warfares.clear();
         infographics.clear();
@@ -155,8 +157,22 @@ public class SearchFragment extends Fragment {
     private void onSuccess(JSONObject response) {
         showResult();
 
-        boolean hasResult = updateWarfares(response);
-        hasResult = hasResult || updateInfos(response);
+        boolean hasResult = false;
+        if (updateWarfares(response)) {
+            hasResult = true;
+        }
+
+        if (updateInfos(response)) {
+            hasResult = true;
+        }
+
+        if (updateEBooks(response)) {
+            hasResult = true;
+        }
+
+        if (updateBooks(response)) {
+            hasResult = true;
+        }
 
         if (!hasResult) {
             showNoResult();
@@ -174,7 +190,6 @@ public class SearchFragment extends Fragment {
         if (infographics.size() == 0) {
             infoRV.setVisibility(View.GONE);
             infoTextView.setVisibility(View.GONE);
-
             return false;
         } else {
             infoRV.setVisibility(View.VISIBLE);
@@ -183,6 +198,56 @@ public class SearchFragment extends Fragment {
             adapter.setInfographics(infographics);
             infoRV.setAdapter(adapter);
             infoRV.setLayoutManager(new LinearLayoutManager(activity));
+
+            return true;
+        }
+    }
+
+    private boolean updateBooks(JSONObject response) {
+        JSONArray bookArray = response.optJSONArray("book");
+        for(int i = 0;i < bookArray.length();i++) {
+            Book book = new Book();
+            book.updateFromJson(bookArray.optJSONObject(i));
+            books.add(book);
+        }
+
+        if (books.size() == 0) {
+            bookRV.setVisibility(View.GONE);
+            bookTextView.setVisibility(View.GONE);
+
+            return false;
+        } else {
+            bookRV.setVisibility(View.VISIBLE);
+            bookTextView.setVisibility(View.VISIBLE);
+            BookSearchListAdapter adapter = new BookSearchListAdapter();
+            adapter.setBooks(books);
+            bookRV.setAdapter(adapter);
+            bookRV.setLayoutManager(new LinearLayoutManager(activity));
+
+            return true;
+        }
+    }
+
+    private boolean updateEBooks(JSONObject response) {
+        JSONArray ebookArray = response.optJSONArray("ebook");
+        for(int i = 0;i < ebookArray.length();i++) {
+            EBook book = new EBook();
+            book.updateFromJson(ebookArray.optJSONObject(i));
+            eBooks.add(book);
+        }
+
+        if (eBooks.size() == 0) {
+            ebookRV.setVisibility(View.GONE);
+            ebookTextView.setVisibility(View.GONE);
+
+            return false;
+        } else {
+            ebookRV.setVisibility(View.VISIBLE);
+            ebookTextView.setVisibility(View.VISIBLE);
+            EBookSearchListAdapter adapter = new EBookSearchListAdapter();
+            adapter.seteBooks(eBooks);
+            ebookRV.setAdapter(adapter);
+            ebookRV.setLayoutManager(new LinearLayoutManager(activity));
 
             return true;
         }
