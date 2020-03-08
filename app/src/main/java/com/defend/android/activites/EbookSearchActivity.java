@@ -85,9 +85,7 @@ public class EbookSearchActivity extends Activity {
 
 
         String url = Constants.API_URL + String.format(Constants.API_SEARCH_EBOOK, searchTerm);
-
-        Log.i("_search", url);
-
+        
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
