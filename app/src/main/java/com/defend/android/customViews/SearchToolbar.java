@@ -104,4 +104,8 @@ public class SearchToolbar extends RelativeLayout {
     public void setText(String text) {
         searchEditText.setText(text);
     }
+
+    public void setFocus() {
+        searchEditText.requestFocus();
+    }
 }

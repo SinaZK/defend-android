@@ -72,6 +72,7 @@ public class BookSearchActivity extends Activity {
                 sendSearchRequest(search);
             }
         });
+        searchToolbar.setFocus();
     }
 
     private void sendSearchRequest(String searchTerm) {

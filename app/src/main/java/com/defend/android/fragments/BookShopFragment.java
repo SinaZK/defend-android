@@ -45,7 +45,7 @@ public class BookShopFragment extends Fragment {
 
     RecyclerView recyclerView;
     SwipeRefreshLayout refreshLayout;
-    SearchToolbar searchToolbar;
+    RelativeLayout searchToolbar;
 
     RelativeLayout cartParent;
     TextView cartTextView;
