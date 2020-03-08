@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/search_icon"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_search_black"
+        tools:ignore="RtlHardcoded" />
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_marginLeft="50dp"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/button"
+        android:textSize="20dp"
+        android:singleLine="true"
+        android:hint="@string/search"
+        android:imeOptions="actionSearch"
+        tools:ignore="RtlHardcoded,SpUsage"
+        android:layout_alignParentLeft="true"/>
+
+    <ImageView
+        android:id="@+id/button"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/drawer_white"
+        android:scaleType="fitCenter"
+        tools:ignore="RtlHardcoded" />
+
+    <View
+        android:background="#222222"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

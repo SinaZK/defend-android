@@ -20,6 +20,7 @@
     <string name="menu_tes_calendar">ثبت رویداد</string>
     <string name="menu_idea">ایده‌پردازی</string>
     <string name="menu_ebook">کتاب الکترونیک</string>
+    <string name="menu_search">جست‌و‌جو</string>
 
     <!--Login Activity-->
     <string name="login_btn">ورود</string>
@@ -188,5 +189,8 @@
     <!-- EBook Detail Activity-->
     <string name="ebook_purchase">خرید</string>
     <string name="ebook_add_to_download">افزودن به دانلود‌ها</string>
+
+    <!-- Search -->
+    <string name="search">جست‌و‌جو</string>
 
 </resources>

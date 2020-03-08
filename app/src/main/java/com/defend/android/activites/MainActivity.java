@@ -1,6 +1,7 @@
 package com.defend.android.activites;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -26,6 +27,7 @@ import com.defend.android.fragments.HomeFragment;
 import com.defend.android.fragments.IdeaFragment;
 import com.defend.android.fragments.InfographicCategoryFragment;
 import com.defend.android.fragments.NewsFragment;
+import com.defend.android.fragments.SearchFragment;
 import com.defend.android.fragments.WarfareCategoryFragment;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragment = null;
     android.app.Fragment supFragment = null;
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,12 +88,15 @@ public class MainActivity extends AppCompatActivity {
                 .withName(R.string.menu_idea).withIcon(R.drawable.idea_minimal);
         PrimaryDrawerItem ebookItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EBOOK).withName(R.string.menu_ebook)
                 .withIcon(R.drawable.magazine);
+        PrimaryDrawerItem searchItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_SEARCH).withName(R.string.menu_search)
+                .withIcon(R.drawable.magazine);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
                 .addDrawerItems(
                         homeItem,
                         new DividerDrawerItem(),
+                        searchItem,
                         newsItem,
                         eventItem,
                         warfareItem,
@@ -114,7 +120,12 @@ public class MainActivity extends AppCompatActivity {
                             fragment = new HomeFragment();
                             ((HomeFragment) fragment).setMainActivity(MainActivity.this);
                             toolbar.setText(getString(R.string.menu_home));
-//                            toolbar.setVisibility(View.GONE);
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_SEARCH) {
+                            fragment = new SearchFragment();
+//                            toolbar.setText(getString(R.string.menu_search));
+                            toolbar.setVisibility(View.GONE);
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWS) {
