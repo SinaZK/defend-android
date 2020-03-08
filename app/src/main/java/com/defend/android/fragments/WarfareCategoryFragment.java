@@ -1,6 +1,7 @@
 package com.defend.android.fragments;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,8 @@ import com.defend.android.MyApp;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
+import com.defend.android.activites.BookSearchActivity;
+import com.defend.android.activites.WarfareSearchActivity;
 import com.defend.android.adapters.WarfareCategoryListAdapter;
 import com.defend.android.adapters.WarfareListAdapter;
 import com.defend.android.constants.Constants;
@@ -50,6 +53,8 @@ public class WarfareCategoryFragment extends Fragment {
     Button backButton;
     TextView categoryNameTextView;
 
+    RelativeLayout searchToolbar;
+
     private ArrayList<Integer> categoryQueue = new ArrayList<>();
     private ArrayList<String> categoryQueueName = new ArrayList<>();
     private ArrayList<Warfare> warfares = new ArrayList<>();
@@ -69,6 +74,7 @@ public class WarfareCategoryFragment extends Fragment {
         backButton = view.findViewById(R.id.back_button);
         topParent = view.findViewById(R.id.top_parent);
         categoryNameTextView = view.findViewById(R.id.category_tv);
+        searchToolbar = view.findViewById(R.id.search_toolbar);
 
         categoryQueue.add(0);
         categoryQueueName.add(getString(R.string.warfare_parent_cat_tv));
@@ -91,6 +97,15 @@ public class WarfareCategoryFragment extends Fragment {
         });
 
         ResourceManager.getInstance().decorateTextView(categoryNameTextView, Color.WHITE, Constants.FONT_BOLD);
+
+        searchToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyApp.getInstance(), WarfareSearchActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                MyApp.getInstance().startActivity(intent);
+            }
+        });
     }
 
     private void sendAtlasRequest() {

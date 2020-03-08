@@ -18,12 +18,12 @@ import com.android.volley.error.VolleyError;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
-import com.defend.android.adapters.BookSearchListAdapter;
 import com.defend.android.adapters.EBookSearchListAdapter;
+import com.defend.android.adapters.WarfareSearchListAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.SearchToolbar;
-import com.defend.android.data.Book;
 import com.defend.android.data.EBook;
+import com.defend.android.data.Warfare;
 import com.defend.android.listeners.SearchListener;
 import com.defend.android.utils.ResourceManager;
 
@@ -32,7 +32,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class EbookSearchActivity extends Activity {
+public class WarfareSearchActivity extends Activity {
 
     SearchToolbar searchToolbar;
     ProgressBar progressBar;
@@ -43,12 +43,12 @@ public class EbookSearchActivity extends Activity {
     //TextView resultTextView;
     RecyclerView recyclerView;
 
-    ArrayList<EBook> data = new ArrayList<>();
+    ArrayList<Warfare> data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ebook_search);
+        setContentView(R.layout.activity_warfare_search);
 
         searchToolbar = findViewById(R.id.search_toolbar);
         progressBar = findViewById(R.id.progress);
@@ -84,7 +84,7 @@ public class EbookSearchActivity extends Activity {
         data.clear();
 
 
-        String url = Constants.API_URL + String.format(Constants.API_SEARCH_EBOOK, searchTerm);
+        String url = Constants.API_URL + String.format(Constants.API_SEARCH_WARFARE, searchTerm);
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
@@ -120,7 +120,7 @@ public class EbookSearchActivity extends Activity {
 
     private boolean updateData(JSONArray response) {
         for(int i = 0;i < response.length();i++) {
-            EBook _data = new EBook();
+            Warfare _data = new Warfare();
             _data.updateFromJson(response.optJSONObject(i));
             data.add(_data);
         }
@@ -133,8 +133,8 @@ public class EbookSearchActivity extends Activity {
         } else {
             recyclerView.setVisibility(View.VISIBLE);
 //            resultTextView.setVisibility(View.VISIBLE);
-            EBookSearchListAdapter adapter = new EBookSearchListAdapter();
-            adapter.seteBooks(data);
+            WarfareSearchListAdapter adapter = new WarfareSearchListAdapter();
+            adapter.setWarfares(data);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
