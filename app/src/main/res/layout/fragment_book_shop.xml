@@ -5,8 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".fragments.BookShopFragment">
 
+    <com.defend.android.customViews.SearchToolbar
+        android:id="@+id/search_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </com.defend.android.customViews.SearchToolbar>
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh"
+        android:layout_below="@id/search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

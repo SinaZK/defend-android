@@ -12,13 +12,14 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning"
-        android:networkSecurityConfig="@xml/security_config">
-        <activity android:name=".activites.EbookDownloadActivity"/>
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activites.BookSearchActivity"></activity>
+        <activity android:name=".activites.EbookDownloadActivity" />
         <activity android:name=".activites.IdeaInfoActivity" />
         <activity android:name=".activites.MyIdeasActivity" />
         <activity android:name=".activites.NewIdeaSecondActivity" />
@@ -44,7 +45,10 @@
             android:name=".activites.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>

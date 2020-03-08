@@ -23,8 +23,10 @@ import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
 import com.defend.android.activites.BookCartActivity;
+import com.defend.android.activites.BookSearchActivity;
 import com.defend.android.adapters.BookListAdapter;
 import com.defend.android.constants.Constants;
+import com.defend.android.customViews.SearchToolbar;
 import com.defend.android.data.Book;
 import com.defend.android.data.BookOrder;
 import com.defend.android.listeners.BookAddToCartListener;
@@ -43,6 +45,7 @@ public class BookShopFragment extends Fragment {
 
     RecyclerView recyclerView;
     SwipeRefreshLayout refreshLayout;
+    SearchToolbar searchToolbar;
 
     RelativeLayout cartParent;
     TextView cartTextView;
@@ -64,6 +67,7 @@ public class BookShopFragment extends Fragment {
         cartTextView = view.findViewById(R.id.cart_tv);
         recyclerView = view.findViewById(R.id.book_rv);
         refreshLayout = view.findViewById(R.id.refresh);
+        searchToolbar = view.findViewById(R.id.search_toolbar);
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -82,6 +86,15 @@ public class BookShopFragment extends Fragment {
         });
 
         sendBookRequest(true);
+
+        searchToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyApp.getInstance(), BookSearchActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                MyApp.getInstance().startActivity(intent);
+            }
+        });
 
         return view;
     }
