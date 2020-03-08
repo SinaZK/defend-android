@@ -4,9 +4,12 @@ package com.defend.android.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,8 +37,12 @@ public class SearchFragment extends Fragment {
     MainActivity activity;
     SearchToolbar searchToolbar;
     ProgressBar progressBar;
-    RelativeLayout noResultParent, resultParent;
+    RelativeLayout noResultParent;
+    LinearLayout resultParent;
     TextView noResultTextView;
+
+    TextView atlasTextView, bookTextView, ebookTextView, magTextView, infoTextView;
+    RecyclerView atlasRV, bookRV, ebookRV, magRV, infoRV;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -52,6 +59,17 @@ public class SearchFragment extends Fragment {
         resultParent = view.findViewById(R.id.result_parent);
         noResultTextView = view.findViewById(R.id.no_result_tv);
 
+        atlasTextView = view.findViewById(R.id.atlas_result);
+        bookTextView = view.findViewById(R.id.book_result);
+        ebookTextView = view.findViewById(R.id.ebook_result);
+        magTextView = view.findViewById(R.id.magazine_result);
+        infoTextView = view.findViewById(R.id.info_result);
+        atlasRV = view.findViewById(R.id.atlas_rv);
+        bookRV = view.findViewById(R.id.book_rv);
+        ebookRV = view.findViewById(R.id.ebook_rv);
+        magRV = view.findViewById(R.id.magazine_rv);
+        infoRV = view.findViewById(R.id.info_rv);
+
         searchToolbar.setActivity(activity);
 
         initUI();
@@ -61,6 +79,12 @@ public class SearchFragment extends Fragment {
 
     private void initUI() {
         ResourceManager.getInstance().decorateTextView(noResultTextView, Color.BLACK, Constants.FONT_BOLD);
+
+        ResourceManager.getInstance().decorateTextView(atlasTextView, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(ebookTextView, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(bookTextView, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(infoTextView, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(magTextView, Color.BLACK, Constants.FONT_BOLD);
 
         searchToolbar.setSearchListener(new SearchListener() {
             @Override
@@ -85,6 +109,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 setProgress(false);
+                onSuccess(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -96,6 +121,10 @@ public class SearchFragment extends Fragment {
         setProgress(true);
 
         NetworkManager.getInstance().sendRequest(request);
+    }
+
+    private void onSuccess(JSONObject response) {
+        Log.i("_Search", response.toString());
     }
 
     private void setProgress(boolean show) {

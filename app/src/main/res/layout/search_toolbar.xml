@@ -28,6 +28,7 @@
         android:hint="@string/search"
         android:imeOptions="actionSearch"
         tools:ignore="RtlHardcoded,SpUsage"
+        android:background="@android:color/transparent"
         android:layout_alignParentLeft="true"/>
 
     <ImageView

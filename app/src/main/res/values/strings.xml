@@ -193,5 +193,10 @@
     <!-- Search -->
     <string name="search">جست‌و‌جو</string>
     <string name="search_no_result">نتیجه‌ای یافت نشد</string>
+    <string name="search_atlas">نتایج در جنگ‌افزارها</string>
+    <string name="search_book">نتایج در کتاب‌ها</string>
+    <string name="search_mag">نتایج در مجلات</string>
+    <string name="search_infographic">نتایج در داده‌نمایی</string>
+    <string name="search_ebook">نتایج در کتاب الکترونیک</string>
 
 </resources>

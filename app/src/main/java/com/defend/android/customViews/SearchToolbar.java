@@ -64,7 +64,7 @@ public class SearchToolbar extends RelativeLayout {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     onSearch();
-                    return true;
+                    return false;
                 }
 
                 return false;
