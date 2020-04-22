@@ -99,6 +99,9 @@ public class CreateThesisEventFragment extends Fragment implements TimePickerDia
     }
 
     private void initUI() {
+        ResourceManager.getInstance().decorateEditText(studentEditText, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(teacherEditText, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateEditText(universityEditText, Color.WHITE, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateEditText(titleEditText, Color.WHITE, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateEditText(locationEditText, Color.WHITE, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateEditText(infoEditText, Color.WHITE, Constants.FONT_REGULAR);
