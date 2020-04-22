@@ -50,6 +50,7 @@ public class Event {
             result.put("jalali_end_date", endDate);
             result.put("end_time", endTime);
             result.put("info", info);
+            result.put("image_url", imageUrl);
             result.put("type", type);
             result.put("student_name", studentName);
             result.put("teacher_name", teacherName);
