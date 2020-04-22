@@ -2,6 +2,8 @@ package com.defend.android.data;
 
 import android.util.Log;
 
+import com.defend.android.constants.Constants;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +17,10 @@ public class Event {
     private String endTime = "";
     private String info = "";
     private String imageUrl = "";
+    private String type = "";
+    private String studentName = "";
+    private String teacherName = "";
+    private String university = "";
 
     public void updateFromJson(JSONObject object) {
         title = object.optString("title");
@@ -26,6 +32,10 @@ public class Event {
         endTime = object.optString("end_time");
         info = object.optString("info");
         imageUrl = object.optString("image_url");
+        type = object.optString("type");
+        studentName = object.optString("student_name");
+        teacherName = object.optString("teacher_name");
+        university = object.optString("university");
     }
 
     public JSONObject toJson() {
@@ -40,7 +50,10 @@ public class Event {
             result.put("jalali_end_date", endDate);
             result.put("end_time", endTime);
             result.put("info", info);
-            result.put("image_url", imageUrl);
+            result.put("type", type);
+            result.put("student_name", studentName);
+            result.put("teacher_name", teacherName);
+            result.put("university", university);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -114,5 +127,37 @@ public class Event {
 
     public String getInfo() {
         return info;
+    }
+
+    public String getTypeString() {
+        return type;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public boolean isRegular() {
+        return type.equals(Constants.EVENT_TYPE_REGULAR);
+    }
+
+    public boolean isThesis() {
+        return type.equals(Constants.EVENT_TYPE_THESIS);
+    }
+
+    public void setRegular() {
+        type = Constants.EVENT_TYPE_REGULAR;
+    }
+
+    public void setThesis() {
+        type = Constants.EVENT_TYPE_THESIS;
     }
 }
