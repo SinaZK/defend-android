@@ -1,5 +1,6 @@
 package com.defend.android.activites;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ import org.json.JSONObject;
 
 public class EventDetailActivity extends Activity {
 
-    TextView title, body, date, location;
+    TextView title, body, date, location, student, teacher, university, time;
     ImageView image;
     Event event = new Event();
 
@@ -31,8 +32,12 @@ public class EventDetailActivity extends Activity {
         title = findViewById(R.id.title);
         body = findViewById(R.id.body);
         date = findViewById(R.id.date);
+        time = findViewById(R.id.time);
         location = findViewById(R.id.location);
         image = findViewById(R.id.image);
+        university = findViewById(R.id.universityTV);
+        student = findViewById(R.id.studentTV);
+        teacher = findViewById(R.id.teacherTV);
 
         String jsonString = getIntent().getStringExtra(Constants.EXTRA_EVENT_JSON);
         try {
@@ -44,11 +49,16 @@ public class EventDetailActivity extends Activity {
         initUI();
     }
 
+    @SuppressLint("SetTextI18n")
     private void initUI() {
         title.setText(event.getTitle());
         body.setMovementMethod(LinkMovementMethod.getInstance());
         body.setText(Html.fromHtml(event.getBody().replace("\n", "<br>")));
         location.setText(event.getLocation());
+        student.setText(event.getStudentName());
+        teacher.setText(event.getTeacherName());
+        university.setText(event.getUniversity());
+        time.setText(event.getTime());
         if (event.getDate().equals(event.getEndDate())) {
             date.setText(event.getDate());
         } else {
@@ -64,5 +74,9 @@ public class EventDetailActivity extends Activity {
         ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(location, Color.parseColor("#222222"), Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(date, Color.BLACK, Constants.FONT_LIGHT);
+        ResourceManager.getInstance().decorateTextView(time, Color.BLACK, Constants.FONT_LIGHT);
+        ResourceManager.getInstance().decorateTextView(student, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(teacher, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(university, Color.BLACK, Constants.FONT_BOLD);
     }
 }

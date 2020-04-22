@@ -83,7 +83,7 @@ public class Event {
 
     public String getTime() {
         if (time.split(":").length > 2) {
-            return time.split(":")[0] + time.split(":")[1];
+            return time.split(":")[0] + ":" + time.split(":")[1];
         }
 
         return time;
