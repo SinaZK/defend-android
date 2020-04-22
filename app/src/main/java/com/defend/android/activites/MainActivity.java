@@ -21,6 +21,7 @@ import com.defend.android.customViews.MyToolbar;
 import com.defend.android.download.CustomDownloadManager;
 import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.CreateEventFragment;
+import com.defend.android.fragments.CreateThesisEventFragment;
 import com.defend.android.fragments.EBookShopFragment;
 import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.HomeFragment;
@@ -90,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 .withIcon(R.drawable.magazine);
         PrimaryDrawerItem searchItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_SEARCH).withName(R.string.menu_search)
                 .withIcon(R.drawable.magazine);
+        PrimaryDrawerItem thesisItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_THESIS_EVENT)
+                .withName(R.string.menu_thesis_event).withIcon(R.drawable.magazine);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                         ideaItem,
 //                        magazineItem,
                         ebookItem,
+                        thesisItem,
                         new DividerDrawerItem()
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -158,6 +162,18 @@ public class MainActivity extends AppCompatActivity {
                         if (drawerItem.getIdentifier() == Constants.MENU_IDEA) {
                             fragment = new IdeaFragment();
                             toolbar.setText(getString(R.string.menu_idea));
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_THESIS_EVENT) {
+                            if (!lastFragmentTag.equals("")) {
+                                android.support.v4.app.Fragment fr_v4 = getSupportFragmentManager().findFragmentByTag(lastFragmentTag);
+                                getSupportFragmentManager().beginTransaction().remove(fr_v4).commit();
+                            }
+                            lastFragmentTag = "";
+                            supFragment = new CreateThesisEventFragment();
+                            ((CreateThesisEventFragment) supFragment).setMainActivity(MainActivity.this);
+                            getFragmentManager().beginTransaction().replace(R.id.flContent, supFragment).commit();
+                            toolbar.setText(getString(R.string.menu_thesis_event));
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_NEWEVENT) {

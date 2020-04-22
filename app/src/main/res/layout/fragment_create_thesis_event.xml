@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CreateEventFragment">
+
+    <RelativeLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/studentTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:hint="@string/te_student_name_hint"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            android:id="@+id/teacherTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:hint="@string/te_teacher_name_hint"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_below="@id/studentTV"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            android:id="@+id/titleTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:hint="@string/te_title_hint"
+            android:gravity="center"
+            android:layout_below="@id/teacherTV"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            android:id="@+id/universityTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:hint="@string/te_university_hint"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_below="@id/titleTV"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            android:id="@+id/locationTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_below="@id/universityTV"
+            android:layout_marginTop="20dp"
+            android:hint="@string/te_location_hint"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/white_btn"
+            android:layout_below="@id/locationTV"/>
+
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/time_tv"/>
+
+        <TextView
+            android:id="@+id/e_time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/white_btn"
+            android:layout_below="@id/date_tv"/>
+
+        <TextView
+            android:id="@+id/e_date_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/e_time_tv"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/bodyTV"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/e_date_tv"
+            android:hint="@string/body_hint"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/fileET"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/bodyTV"
+            android:text="@string/te_file_hint"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            android:id="@+id/infoET"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_below="@id/fileET"
+            android:layout_marginTop="20dp"
+            android:hint="@string/info_hint"
+            android:gravity="center"
+            android:background="@drawable/white_btn"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/infoET"
+            android:text="@string/submit_btn"
+            android:textSize="20dp"/>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/infoET"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>

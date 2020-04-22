@@ -21,6 +21,7 @@
     <string name="menu_idea">ایده‌پردازی</string>
     <string name="menu_ebook">کتاب الکترونیک</string>
     <string name="menu_search">جست‌و‌جو</string>
+    <string name="menu_thesis_event">ثبت رویداد دفاع</string>
 
     <!--Login Activity-->
     <string name="login_btn">ورود</string>
@@ -106,6 +107,7 @@
     <string name="card_tes">ثبت رویداد</string>
     <string name="card_idea">ایده‌پردازی</string>
     <string name="card_ebook">کتاب الکترونیک</string>
+    <string name="card_thesis_event">ثبت رویداد دفاع</string>
 
     <!--WarfareFragment-->
     <string name="warfare_back_btn">بازگشت</string>
@@ -126,6 +128,23 @@
     <string name="info_hint">ایمیل یا شماره تماس (اختیاری)</string>
     <string name="submit_btn">ارسال</string>
     <string name="success_toast">درخواست شما با موفقیت ثبت شد.</string>
+
+    <!-- CreateThesisEventFragment -->
+    <string name="te_title_hint">موضوع ارایه</string>
+    <string name="te_location_hint">محل دفاع</string>
+    <string name="te_student_name_hint">نام دانشجو</string>
+    <string name="te_teacher_name_hint">نام استاد راهنما</string>
+    <string name="te_university_hint">دانشگاه</string>
+    <string name="te_file_hint">آپلود عکس (اختیاری)</string>
+    <string name="te_start_separator">زمان شروع</string>
+    <string name="te_end_separator">زمان پایان</string>
+    <string name="te_time_tv">ساعت شروع رویداد: %02d:%02d</string>
+    <string name="te_date_tv">تاریخ شروع رویداد: %2d %s %2d</string>
+    <!--<string name="te_e_time_tv">ساعت پایان رویداد: %02d:%02d</string>-->
+    <!--<string name="te_e_date_tv">تاریخ پایان رویداد: %2d %s %2d</string>-->
+    <string name="te_info_hint">ایمیل یا شماره تماس (اختیاری)</string>
+    <string name="te_submit_btn">ارسال</string>
+    <string name="te_success_toast">درخواست شما با موفقیت ثبت شد.</string>
 
     <!-- IdeaFragment -->
     <string name="idea_new">ثبت ایده‌ی جدید</string>

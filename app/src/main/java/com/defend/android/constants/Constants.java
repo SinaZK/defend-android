@@ -1,8 +1,8 @@
 package com.defend.android.constants;
 
 public class Constants {
-//    public static String API_URL = "http://192.168.43.36:8000/";
-    public static String API_URL = "http://185.8.175.170/";
+    public static String API_URL = "http://192.168.43.36:8000/";
+//    public static String API_URL = "http://185.8.175.170/";
     //public static String API_URL = "http://127.0.0.1:8000/";
 
     public static String API_SIGN_UP = "users/"; //POST
@@ -53,6 +53,7 @@ public class Constants {
     public static int MENU_IDEA = 9;
     public static int MENU_EBOOK = 10;
     public static int MENU_SEARCH = 11;
+    public static int MENU_THESIS_EVENT = 12;
 
     //BookOrderStates
     public static String STATE_CHECKOUT = "checkout";
