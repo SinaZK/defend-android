@@ -32,7 +32,7 @@ public class EducationDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setCancelable(false);
+        setCancelable(true);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_education);
 

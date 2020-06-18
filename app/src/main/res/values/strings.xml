@@ -171,9 +171,9 @@
     <string name="idea_activity_category_hint">محور ایده</string>
     <string name="idea_activity_submit">ارسال</string>
     <string name="idea_activity_ok_toast">با موفقیت ثبت شد</string>
-    <string name="idea_cat_1">ایده‌های سامانه‌های موشکی</string>
+    <string name="idea_cat_1">ایده‌های سامانه‌های هوافضایی</string>
     <string name="idea_cat_1_1">سامانه‌های موشکی بالستیک</string>
-    <string name="idea_cat_1_2">سامانه‌های موشکی ضدزره</string>
+    <string name="idea_cat_1_2">سامانه‌های موشکی ماهواره‌بر</string>
     <string name="idea_cat_1_3">سامانه‌های موشکی کروز</string>
     <string name="idea_cat_1_4">سامانه‌های موشکی پدافند</string>
     <string name="idea_cat_2">ایده‌های عملیاتی موشکی</string>
@@ -183,6 +183,8 @@
     <string name="idea_cat_3">ایده‌های توسعه فناوری‌های موشکی</string>
     <string name="idea_cat_3_1">توسعه فناوری‌های نوین در ارتقاء عملکرد</string>
     <string name="idea_cat_3_2">توسعه فناوری‌های کلیدی</string>
+    <string name="idea_cat_4">سایر</string>
+    <string name="idea_cat_4_1">سایر</string>
 
     <!-- MyIdeas Activity -->
     <string name="my_idea_activity_title">ایده‌های من</string>

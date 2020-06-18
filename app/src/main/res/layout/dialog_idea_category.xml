@@ -111,11 +111,30 @@
         <TextView
             android:id="@+id/cat_3_2"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:gravity="right"
             android:textSize="18dp"
             tools:ignore="SpUsage"
             android:text="@string/idea_cat_3_2"/>
+
+        <!--    -->
+        <TextView
+            android:id="@+id/cat_4"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textSize="22dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_4"/>
+
+        <TextView
+            android:id="@+id/cat_4_1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="right"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:text="@string/idea_cat_4_1"/>
 
     </LinearLayout>
 </ScrollView>
