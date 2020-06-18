@@ -2,6 +2,7 @@ package com.defend.android.activites;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
@@ -52,6 +53,7 @@ public class EventDetailActivity extends Activity {
 
     @SuppressLint("SetTextI18n")
     private void initUI() {
+
         title.setText(event.getTitle());
         body.setMovementMethod(LinkMovementMethod.getInstance());
         body.setText(Html.fromHtml(event.getBody().replace("\n", "<br>")));
