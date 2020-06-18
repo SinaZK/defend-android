@@ -15,7 +15,7 @@
     <string name="menu_events">تقویم رویدادها</string>
     <string name="menu_books">کتابفروشی</string>
     <string name="menu_magazine">مجلات</string>
-    <string name="menu_warfare">اطلس جنگ‌افزارها</string>
+    <string name="menu_warfare">اطلس سامانه‌ها</string>
     <string name="menu_infographic">داده‌نمایی</string>
     <string name="menu_tes_calendar">ثبت رویداد</string>
     <string name="menu_idea">ایده‌پردازی</string>
@@ -100,7 +100,7 @@
     <string name="title">دفاع</string>
     <string name="card_news">اخبار</string>
     <string name="card_book">کتابفروشی</string>
-    <string name="card_atlas">اطلس جنگ‌افزارها</string>
+    <string name="card_atlas">اطلس سامانه‌ها</string>
     <string name="card_magazine">مجلات</string>
     <string name="card_calendar">تقویم رویدادها</string>
     <string name="card_info">داده‌نمایی</string>
