@@ -17,6 +17,9 @@ public class MyToolbar extends RelativeLayout {
     MainActivity activity;
     TextView textView;
     ImageView drawerButton;
+    ImageView searchButton;
+
+    Runnable searchRunnable;
 
 
     public MyToolbar(Context context) {
@@ -39,9 +42,19 @@ public class MyToolbar extends RelativeLayout {
         addView(view);
 
         drawerButton = view.findViewById(R.id.button);
+        searchButton = view.findViewById(R.id.search);
         textView = view.findViewById(R.id.text);
 
         ResourceManager.getInstance().decorateTextView(textView, Color.WHITE);
+
+        searchButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (searchRunnable != null) {
+                    searchRunnable.run();
+                }
+            }
+        });
     }
 
     public void setActivity(final MainActivity activity) {
@@ -57,6 +70,10 @@ public class MyToolbar extends RelativeLayout {
                 }
             }
         });
+    }
+
+    public void setOnSearch(Runnable runnable) {
+        this.searchRunnable = runnable;
     }
 
     public void setText(String text) {

@@ -7,13 +7,25 @@
 
     <TextView
         android:id="@+id/text"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="20dp"
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        tools:ignore="SpUsage"
-        android:layout_alignParentLeft="true"/>
+        tools:ignore="RtlHardcoded,SpUsage"
+        android:layout_toRightOf="@id/search"/>
+
+
+    <ImageView
+        android:id="@+id/search"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_search_black"
+        android:scaleType="fitCenter"
+        tools:ignore="RtlHardcoded" />
 
     <ImageView
         android:id="@+id/button"
@@ -23,7 +35,8 @@
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
         android:src="@drawable/drawer_white"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"
+        tools:ignore="RtlHardcoded" />
 
     <View
         android:background="#222222"
