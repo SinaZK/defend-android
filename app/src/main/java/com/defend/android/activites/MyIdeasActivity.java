@@ -1,6 +1,9 @@
 package com.defend.android.activites;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,6 +44,8 @@ public class MyIdeasActivity extends Activity {
     ProgressBar progressBar;
     RelativeLayout infoParent;
     TextView infoTextView;
+    TextView topInfoTextView;
+    ImageView topInfoImageView;
 
     private ArrayList<Idea> ideas = new ArrayList<>();
 
@@ -53,17 +59,43 @@ public class MyIdeasActivity extends Activity {
         progressBar = findViewById(R.id.progress);
         infoParent = findViewById(R.id.bottom_view);
         infoTextView = findViewById(R.id.info_text);
+        topInfoTextView = findViewById(R.id.info);
+        topInfoImageView = findViewById(R.id.info_img);
 
         toolbar.setActivity(this);
         toolbar.setText(getString(R.string.my_idea_activity_title));
         sendListRequest();
 
         ResourceManager.getInstance().decorateTextView(infoTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(topInfoTextView, Color.WHITE, Constants.FONT_BOLD);
         infoParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MyIdeasActivity.this, IdeaInfoActivity.class);
                 MyIdeasActivity.this.startActivity(intent);
+            }
+        });
+
+        topInfoImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MyIdeasActivity.this)
+                        .setTitle("")
+                        .setMessage(R.string.my_idea_info_dialog_text)
+                        .setPositiveButton(R.string.my_idea_info_dialog_yes, null)
+                        .setNegativeButton("", null)
+                        .show();
+            }
+        });
+        topInfoTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MyIdeasActivity.this)
+                        .setTitle("")
+                        .setMessage(R.string.my_idea_info_dialog_text)
+                        .setPositiveButton(R.string.my_idea_info_dialog_yes, null)
+                        .setNegativeButton("", null)
+                        .show();
             }
         });
     }

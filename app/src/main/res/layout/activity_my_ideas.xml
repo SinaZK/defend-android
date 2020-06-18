@@ -14,11 +14,38 @@
 
     </com.defend.android.customViews.ActivityToolbar>
 
+    <TextView
+        android:id="@+id/info"
+        android:layout_below="@id/toolbar"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="@string/my_idea_info_text"
+        tools:ignore="RtlHardcoded,SpUsage" />
+
+
+    <ImageView
+        android:id="@+id/info_img"
+        android:layout_below="@id/toolbar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/info"
+        android:src="@android:drawable/ic_dialog_info"
+        android:scaleType="fitCenter"
+        tools:ignore="RtlHardcoded" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/info"
         android:layout_marginBottom="50dp">
 
     </android.support.v7.widget.RecyclerView>

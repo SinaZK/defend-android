@@ -193,6 +193,9 @@
     <string name="my_idea_code">کد پیگیری:</string>
     <string name="my_idea_info">راهنمای ثبت ایده</string>
     <string name="my_idea_info_title">راهنمای ثبت ایده</string>
+    <string name="my_idea_info_text">راهنما</string>
+    <string name="my_idea_info_dialog_text">در صورتی که ایده‌ی شما پس از بررسی پذیرفته شد، با شما از طرف سازمان تماس برقرار میشود.</string>
+    <string name="my_idea_info_dialog_yes">باشه</string>
 
     <!-- EBook fragment-->
     <string name="ebook_downloads">خرید‌ها و دانلود‌ها</string>
