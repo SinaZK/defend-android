@@ -52,5 +52,24 @@
             tools:ignore="SpUsage"
             android:gravity="right"/>
 
+        <VideoView
+            android:id="@+id/video"
+            android:layout_below="@id/body"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="visible"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            tools:ignore="RtlHardcoded" />
+
+        <View
+            android:id="@+id/video_bg"
+            android:layout_width="match_parent"
+            android:layout_below="@id/body"
+            android:layout_height="200dp"
+            android:background="#000000"
+            />
+
     </RelativeLayout>
 </ScrollView>

@@ -6,6 +6,7 @@ public class Warfare {
     private String name = "";
     private String body = "";
     private String imageUrl = "";
+    private String videoUrl = "";
     private int category;
 
     private JSONObject object;
@@ -16,6 +17,7 @@ public class Warfare {
         name = object.optString("name");
         body = object.optString("body");
         imageUrl = object.optString("image_url");
+        videoUrl = object.optString("video_url");
         category = object.optInt("category");
 
         return this;
@@ -35,6 +37,14 @@ public class Warfare {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public boolean hasVideo() {
+        return videoUrl.length() > 0;
     }
 
     public int getCategory() {

@@ -2,11 +2,17 @@ package com.defend.android.activites;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
@@ -21,6 +27,8 @@ public class WarfareDetailActivity extends Activity {
 
     TextView title, body;
     ImageView image;
+    VideoView videoView;
+    View videoBG;
 
     Warfare warfare = new Warfare();
 
@@ -32,6 +40,8 @@ public class WarfareDetailActivity extends Activity {
         title = findViewById(R.id.title);
         body = findViewById(R.id.body);
         image = findViewById(R.id.image);
+        videoView = findViewById(R.id.video);
+        videoBG = findViewById(R.id.video_bg);
 
         String jsonString = getIntent().getStringExtra(Constants.EXTRA_WARFARE_JSON);
         try {
@@ -54,7 +64,34 @@ public class WarfareDetailActivity extends Activity {
                     .into(image);
         }
 
+        if (!warfare.hasVideo()) {
+            videoBG.setVisibility(View.GONE);
+            videoView.setVisibility(View.GONE);
+        }
+
         ResourceManager.getInstance().decorateTextView(title, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
+
+        prepareVideo();
+    }
+
+    private void prepareVideo() {
+        if (!warfare.hasVideo()) return;
+
+        Uri video = Uri.parse(warfare.getVideoUrl());
+        videoView.setVideoURI(video);
+        videoView.setVisibility(View.VISIBLE);
+
+        MediaController mediaController = new MediaController(this, false);
+        mediaController.setAnchorView(videoView);
+        videoView.setMediaController(mediaController);
+        videoView.setZOrderOnTop(true); //Very important line, add it to Your code
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                videoView.start();
+            }
+        });
+        videoView.start();
     }
 }

@@ -62,7 +62,6 @@ public class NewsActivity extends Activity {
             Picasso.get().load(news.getImageUrl())
                     .error(R.drawable.ic_launcher_no_image)
                     .into(image);
-            Log.i("salam", "gone");
             videoBG.setVisibility(View.GONE);
             videoView.setVisibility(View.GONE);
             videoProgress.setVisibility(View.GONE);
