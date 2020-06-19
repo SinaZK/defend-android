@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("jwt", DataStore.getInstance().getStringData(Constants.DATA_FIELD_TOKEN, ""));
         setContentView(R.layout.activity_main);
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();

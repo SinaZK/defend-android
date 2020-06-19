@@ -129,8 +129,6 @@ public class MagazineListActivity extends Activity {
             url += "&year=" + Integer.valueOf(year.toString());
         }
 
-        Log.i("_magazine", "year = " + year + " " + url);
-
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -140,7 +138,6 @@ public class MagazineListActivity extends Activity {
                 }
 
                 onSuccess(response.optJSONArray("results"), clear);
-                Log.i("_magazine", response.optJSONArray("results").toString());
             }
         }, new Response.ErrorListener() {
             @Override
@@ -162,8 +159,6 @@ public class MagazineListActivity extends Activity {
         for(int i = 0;i < array.length();i++) {
             Magazine magazine = new Magazine();
             magazine.updateFromJson(array.optJSONObject(i));
-            Log.i("_Magazine", array.optJSONObject(i).toString());
-
             magazines.add(magazine);
         }
 
