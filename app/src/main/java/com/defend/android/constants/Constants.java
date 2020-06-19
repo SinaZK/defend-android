@@ -23,6 +23,7 @@ public class Constants {
     public static String API_SEARCH_EBOOK = "ebook/all/?search=%s"; //GET
     public static String API_SEARCH_WARFARE = "atlas/all/?search=%s"; //GET
     public static String API_SEARCH_INFO = "info/all/?search=%s"; //GET
+    public static String API_LIST_MAGAZINE_CATEGORIES = "magazine/all/"; //GET
 
     //Font Constants
     public final static int FONT_REGULAR = 0;
