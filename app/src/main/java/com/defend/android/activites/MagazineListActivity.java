@@ -47,7 +47,7 @@ public class MagazineListActivity extends Activity {
 
     private ArrayList<Magazine> magazines = new ArrayList<>();
     private CharSequence[] years = new CharSequence[] {
-            "1390", "1391", "1392", "1393", "1394", "1395",
+            "1390", "1391", "1392", "1393", "1394", "1395", "1396", "1397", "1398", "1399",
     };
     private CharSequence year = "";
 

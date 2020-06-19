@@ -7,13 +7,13 @@
 
     <TextView
         android:id="@+id/text"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="60dp"
         android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        tools:ignore="RtlHardcoded,SpUsage"
-        android:layout_toRightOf="@id/search"/>
+        tools:ignore="RtlHardcoded,SpUsage" />
 
 
     <ImageView

@@ -79,4 +79,12 @@ public class MyToolbar extends RelativeLayout {
     public void setText(String text) {
         textView.setText(text);
     }
+
+    public void hideSearch() {
+        searchButton.setVisibility(GONE);
+    }
+
+    public void showSearch() {
+        searchButton.setVisibility(VISIBLE);
+    }
 }

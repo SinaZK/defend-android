@@ -133,6 +133,9 @@ public class MainActivity extends AppCompatActivity {
                             fragment = new HomeFragment();
                             ((HomeFragment) fragment).setMainActivity(MainActivity.this);
                             toolbar.setText(getString(R.string.menu_home));
+                            toolbar.showSearch();
+                        } else {
+                            toolbar.hideSearch();
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_SEARCH) {
