@@ -1,12 +1,16 @@
 package com.defend.android.activites;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -15,12 +19,13 @@ import com.defend.android.MyApp;
 import com.defend.android.Network.AuthObjectRequest;
 import com.defend.android.Network.NetworkManager;
 import com.defend.android.R;
-import com.defend.android.adapters.MagazineCatListAdapter;
 import com.defend.android.adapters.MagazineListAdapter;
 import com.defend.android.constants.Constants;
+import com.defend.android.customViews.ActivityToolbar;
 import com.defend.android.data.Magazine;
 import com.defend.android.data.MagazineCategory;
 import com.defend.android.listeners.RecyclerLoadMoreListener;
+import com.defend.android.utils.ResourceManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,21 +35,34 @@ import java.util.ArrayList;
 
 public class MagazineListActivity extends Activity {
 
+    ActivityToolbar toolbar;
     RecyclerView recyclerView;
     SwipeRefreshLayout refreshLayout;
+    TextView topFilterTextView;
+    ImageView topFilterImageView;
 
     private int page = 1;
     private MagazineCategory magazineCategory = new MagazineCategory();
 
     private ArrayList<Magazine> magazines = new ArrayList<>();
+    private int[] years = {
+            1390, 1391, 1392, 1393, 1394, 1395
+    };
+    private int year = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_magazine_list);
 
+        toolbar = findViewById(R.id.toolbar);
         recyclerView = findViewById(R.id.book_rv);
         refreshLayout = findViewById(R.id.refresh);
+        topFilterTextView = findViewById(R.id.filter);
+        topFilterImageView = findViewById(R.id.filter_img);
+
+        toolbar.setActivity(this);
+        toolbar.setText(getString(R.string.magazine_title));
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -61,6 +79,30 @@ public class MagazineListActivity extends Activity {
             e.printStackTrace();
         }
 
+        ResourceManager.getInstance().decorateTextView(topFilterTextView, Color.WHITE, Constants.FONT_BOLD);
+        topFilterImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MagazineListActivity.this)
+                        .setTitle("")
+                        .setMessage(R.string.my_idea_info_dialog_text)
+                        .setPositiveButton(R.string.my_idea_info_dialog_yes, null)
+                        .setNegativeButton("", null)
+                        .show();
+            }
+        });
+        topFilterTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MagazineListActivity.this)
+                        .setTitle("")
+                        .setMessage(R.string.my_idea_info_dialog_text)
+                        .setPositiveButton(R.string.my_idea_info_dialog_yes, null)
+                        .setNegativeButton("", null)
+                        .show();
+            }
+        });
+
         senMagRequest(true);
     }
 
@@ -69,6 +111,9 @@ public class MagazineListActivity extends Activity {
         if(isLoading) return;
 
         String url = Constants.API_URL + Constants.API_LIST_MAGAZINE_ALL + "?category=" + magazineCategory.getId() + "&page=" + page;
+        if (year != -1) {
+            url += "&year=" + year;
+        }
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override

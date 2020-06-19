@@ -223,4 +223,8 @@
     <string name="search_infographic">نتایج در داده‌نمایی</string>
     <string name="search_ebook">نتایج در کتاب الکترونیک</string>
 
+    <!--MagazineListActivity-->
+    <string name="magazine_title">مجلات</string>
+    <string name="magazine_filter">فیلتر</string>
+
 </resources>
