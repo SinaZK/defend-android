@@ -19,6 +19,7 @@ import android.view.View;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.MyToolbar;
+import com.defend.android.data.DataStore;
 import com.defend.android.download.CustomDownloadManager;
 import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.CreateEventFragment;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("jwt", DataStore.getInstance().getStringData(Constants.DATA_FIELD_TOKEN, ""));
         setContentView(R.layout.activity_main);
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();

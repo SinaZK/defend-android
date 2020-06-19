@@ -34,5 +34,4 @@ public class MagazineCategory {
     public int getId() {
         return id;
     }
-
 }

@@ -15,18 +15,17 @@ import android.widget.TextView;
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.activites.BookDetailActivity;
-import com.defend.android.activites.MagazineListActivity;
 import com.defend.android.constants.Constants;
-import com.defend.android.data.MagazineCategory;
+import com.defend.android.data.Magazine;
 import com.defend.android.listeners.RecyclerLoadMoreListener;
 import com.defend.android.utils.ResourceManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class MagazineCatListAdapter extends RecyclerView.Adapter<MagazineCatListAdapter.MyViewHolder> {
+public class MagazineListAdapter extends RecyclerView.Adapter<MagazineListAdapter.MyViewHolder> {
 
-    private ArrayList<MagazineCategory> magazineCategories;
+    private ArrayList<Magazine> magazines;
 
     private RecyclerLoadMoreListener loadMoreListener;
 
@@ -46,8 +45,8 @@ public class MagazineCatListAdapter extends RecyclerView.Adapter<MagazineCatList
         }
     }
 
-    public void setMagazineCategories(ArrayList<MagazineCategory> magazineCategories) {
-        this.magazineCategories = magazineCategories;
+    public void setMagazines(ArrayList<Magazine> magazines) {
+        this.magazines = magazines;
     }
 
     public void setLoadMoreListener(RecyclerLoadMoreListener loadMoreListener) {
@@ -65,15 +64,14 @@ public class MagazineCatListAdapter extends RecyclerView.Adapter<MagazineCatList
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, final int i) {
-        final MagazineCategory magazineCategory = magazineCategories.get(i);
+        final Magazine magazine = magazines.get(i);
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(viewHolder.price, Color.RED);
         ResourceManager.getInstance().decorateButton(viewHolder.cartButton, Color.WHITE);
-        viewHolder.cartButton.setBackgroundResource(R.drawable.btn_bg);
-        viewHolder.title.setText(magazineCategory.getTitle());
+        viewHolder.title.setText(magazine.getTitle());
 
-        if(magazineCategory.hasImage()) {
-            Picasso.get().load(magazineCategory.getImageUrl())
+        if(magazine.hasImage()) {
+            Picasso.get().load(magazine.getImageUrl())
                     .error(R.drawable.ic_launcher_no_image)
                     .into(viewHolder.image);
         } else {
@@ -83,8 +81,8 @@ public class MagazineCatListAdapter extends RecyclerView.Adapter<MagazineCatList
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyApp.getInstance(), MagazineListActivity.class);
-                intent.putExtra(Constants.EXTRA_MAGAZINE_JSON, magazineCategory.toJson().toString());
+                Intent intent = new Intent(MyApp.getInstance(), BookDetailActivity.class);
+                intent.putExtra(Constants.EXTRA_BOOK_JSON, magazine.toJson().toString());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 MyApp.getInstance().startActivity(intent);
             }
@@ -97,7 +95,7 @@ public class MagazineCatListAdapter extends RecyclerView.Adapter<MagazineCatList
             }
         });
 
-        if (i >= magazineCategories.size() - 5) {
+        if (i >= magazines.size() - 5) {
             if(loadMoreListener != null) {
                 loadMoreListener.loadMore();
             }
@@ -106,6 +104,6 @@ public class MagazineCatListAdapter extends RecyclerView.Adapter<MagazineCatList
 
     @Override
     public int getItemCount() {
-        return magazineCategories.size();
+        return magazines.size();
     }
 }

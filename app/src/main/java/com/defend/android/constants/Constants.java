@@ -43,6 +43,7 @@ public class Constants {
     public static String EXTRA_EVENT_JSON = "event";
     public static String EXTRA_WARFARE_JSON = "warfare";
     public static String EXTRA_BOOK_JSON = "book";
+    public static String EXTRA_MAGAZINE_JSON = "magazine";
 
     //Main Drawer item id (just id not the order)
     public static int MENU_HOME = 1;

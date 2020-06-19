@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activites.InfoSearchActivity"></activity>
+        <activity android:name=".activites.MagazineListActivity"></activity>
+        <activity android:name=".activites.InfoSearchActivity" />
         <activity android:name=".activites.WarfareSearchActivity" />
         <activity android:name=".activites.EbookSearchActivity" />
         <activity android:name=".activites.BookSearchActivity" />
