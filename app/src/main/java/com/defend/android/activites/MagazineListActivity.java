@@ -2,6 +2,7 @@ package com.defend.android.activites;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
@@ -45,10 +46,10 @@ public class MagazineListActivity extends Activity {
     private MagazineCategory magazineCategory = new MagazineCategory();
 
     private ArrayList<Magazine> magazines = new ArrayList<>();
-    private int[] years = {
-            1390, 1391, 1392, 1393, 1394, 1395
+    private CharSequence[] years = new CharSequence[] {
+            "1390", "1391", "1392", "1393", "1394", "1395",
     };
-    private int year = -1;
+    private CharSequence year = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class MagazineListActivity extends Activity {
             @Override
             public void onRefresh() {
                 page = 1;
-                senMagRequest(true);
+                sendMagRequest(true);
             }
         });
 
@@ -83,11 +84,18 @@ public class MagazineListActivity extends Activity {
         topFilterImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 new AlertDialog.Builder(MagazineListActivity.this)
                         .setTitle("")
-                        .setMessage(R.string.my_idea_info_dialog_text)
-                        .setPositiveButton(R.string.my_idea_info_dialog_yes, null)
-                        .setNegativeButton("", null)
+                        .setSingleChoiceItems(years, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                year = years[which];
+                                page = 1;
+                                sendMagRequest(true);
+                                dialog.dismiss();
+                            }
+                        })
                         .show();
             }
         });
@@ -96,24 +104,32 @@ public class MagazineListActivity extends Activity {
             public void onClick(View v) {
                 new AlertDialog.Builder(MagazineListActivity.this)
                         .setTitle("")
-                        .setMessage(R.string.my_idea_info_dialog_text)
-                        .setPositiveButton(R.string.my_idea_info_dialog_yes, null)
-                        .setNegativeButton("", null)
+                        .setSingleChoiceItems(years, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                year = years[which];
+                                page = 1;
+                                sendMagRequest(true);
+                                dialog.dismiss();
+                            }
+                        })
                         .show();
             }
         });
 
-        senMagRequest(true);
+        sendMagRequest(true);
     }
 
     private boolean isLoading;
-    private void senMagRequest(final boolean clear) {
+    private void sendMagRequest(final boolean clear) {
         if(isLoading) return;
 
         String url = Constants.API_URL + Constants.API_LIST_MAGAZINE_ALL + "?category=" + magazineCategory.getId() + "&page=" + page;
-        if (year != -1) {
-            url += "&year=" + year;
+        if (year.length() > 0) {
+            url += "&year=" + Integer.valueOf(year.toString());
         }
+
+        Log.i("_magazine", "year = " + year + " " + url);
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
@@ -124,6 +140,7 @@ public class MagazineListActivity extends Activity {
                 }
 
                 onSuccess(response.optJSONArray("results"), clear);
+                Log.i("_magazine", response.optJSONArray("results").toString());
             }
         }, new Response.ErrorListener() {
             @Override
@@ -166,7 +183,7 @@ public class MagazineListActivity extends Activity {
             public void loadMore() {
                 if(!isLoading) {
                     page += 1;
-                    senMagRequest(false);
+                    sendMagRequest(false);
                 }
             }
         });

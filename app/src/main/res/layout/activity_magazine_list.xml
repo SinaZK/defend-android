@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.BookShopFragment">
+    tools:context=".fragments.BookShopFragment"
+    android:background="@color/activityBackground">
 
     <com.defend.android.customViews.ActivityToolbar
         android:id="@+id/toolbar"
