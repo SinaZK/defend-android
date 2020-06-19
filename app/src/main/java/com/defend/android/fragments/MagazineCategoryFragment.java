@@ -47,8 +47,6 @@ public class MagazineCategoryFragment extends Fragment {
     RecyclerView recyclerView;
     SwipeRefreshLayout refreshLayout;
 
-    TextView cartTextView;
-
     private int page = 1;
 
     private ArrayList <MagazineCategory> magazineCategories = new ArrayList<>();
@@ -62,7 +60,6 @@ public class MagazineCategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_magazine_cat, container, false);
 
-        cartTextView = view.findViewById(R.id.cart_tv);
         recyclerView = view.findViewById(R.id.book_rv);
         refreshLayout = view.findViewById(R.id.refresh);
 
@@ -73,8 +70,6 @@ public class MagazineCategoryFragment extends Fragment {
                 senMagRequest(true);
             }
         });
-
-        ResourceManager.getInstance().decorateTextView(cartTextView, Color.WHITE, Constants.FONT_BOLD);
 
         senMagRequest(true);
 
@@ -90,7 +85,7 @@ public class MagazineCategoryFragment extends Fragment {
     private void senMagRequest(final boolean clear) {
         if(isLoading) return;
 
-        String url = Constants.API_URL + Constants.API_LIST_BOOKS + "?page=" + page;
+        String url = Constants.API_URL + Constants.API_LIST_MAGAZINE_CATEGORIES + "?page=" + page;
 
         AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override

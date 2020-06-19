@@ -28,6 +28,7 @@ import com.defend.android.fragments.EventsFragment;
 import com.defend.android.fragments.HomeFragment;
 import com.defend.android.fragments.IdeaFragment;
 import com.defend.android.fragments.InfographicCategoryFragment;
+import com.defend.android.fragments.MagazineCategoryFragment;
 import com.defend.android.fragments.NewsFragment;
 import com.defend.android.fragments.SearchFragment;
 import com.defend.android.fragments.WarfareCategoryFragment;
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         tesCalendarItem,
                         bookItem,
                         ideaItem,
-//                        magazineItem,
+                        magazineItem,
                         ebookItem,
                         thesisItem,
                         new DividerDrawerItem()
@@ -169,6 +170,11 @@ public class MainActivity extends AppCompatActivity {
                         if (drawerItem.getIdentifier() == Constants.MENU_IDEA) {
                             fragment = new IdeaFragment();
                             toolbar.setText(getString(R.string.menu_idea));
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_MAGAZINES) {
+                            fragment = new MagazineCategoryFragment();
+                            toolbar.setText(getString(R.string.menu_magazine));
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_THESIS_EVENT) {
