@@ -31,6 +31,7 @@
         <activity android:name=".activites.InfographicDetailActivity" />
         <activity android:name=".activites.BookBillingActivity" />
         <activity android:name=".activites.BookDetailActivity" />
+        <activity android:name=".activites.MagazineDetailActivity" />
         <activity android:name=".activites.EBookDetailActivity" />
         <activity android:name=".activites.BookCartActivity" />
         <activity android:name=".activites.WarfareDetailActivity" />

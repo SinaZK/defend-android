@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.activites.BookDetailActivity;
+import com.defend.android.activites.MagazineDetailActivity;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.Magazine;
 import com.defend.android.listeners.RecyclerLoadMoreListener;
@@ -81,7 +82,7 @@ public class MagazineListAdapter extends RecyclerView.Adapter<MagazineListAdapte
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyApp.getInstance(), BookDetailActivity.class);
+                Intent intent = new Intent(MyApp.getInstance(), MagazineDetailActivity.class);
                 intent.putExtra(Constants.EXTRA_BOOK_JSON, magazine.toJson().toString());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 MyApp.getInstance().startActivity(intent);

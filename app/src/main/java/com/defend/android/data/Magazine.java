@@ -5,10 +5,10 @@ import org.json.JSONObject;
 public class Magazine {
     private String title = "";
     private String body = "";
-    private String author = "";
     private int price;
     private String imageUrl = "";
     private String downloadUrl = "";
+    private int year;
     private int id;
     private JSONObject object;
 
@@ -17,10 +17,10 @@ public class Magazine {
         id = object.optInt("id");
         title = object.optString("title");
         body = object.optString("description");
-        author = object.optString("author");
         imageUrl = object.optString("image_url");
         downloadUrl = object.optString("file_url");
         price = object.optInt("price");
+        year = object.optInt("year");
     }
 
     public JSONObject toJson() {
@@ -43,10 +43,6 @@ public class Magazine {
         return imageUrl;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
     public int getPrice() {
         return price;
     }
@@ -61,5 +57,9 @@ public class Magazine {
 
     public boolean isHasPurchased() {
         return downloadUrl.length() > 0;
+    }
+
+    public int getYear() {
+        return year;
     }
 }
