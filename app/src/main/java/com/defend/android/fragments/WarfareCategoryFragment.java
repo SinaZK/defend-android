@@ -112,12 +112,12 @@ public class WarfareCategoryFragment extends Fragment {
         String url = Constants.API_URL +
                 String.format(Locale.ENGLISH, Constants.API_LIST_ATLAS_CATEGORY, categoryQueue.get(categoryQueue.size() - 1));
 
-        AuthObjectRequest request = new AuthObjectRequest(Request.Method.GET, url, new JSONObject(), new Response.Listener<JSONObject>() {
+        AuthObjectRequest request = new AuthObjectRequest(Request.Method.POST, url, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 setProgress(false);
-                updateWarfares(response.optJSONObject("results").optJSONArray("atlases"));
-                updateWarfareCategories(response.optJSONObject("results").optJSONArray("categories"));
+//                updateWarfares(response.optJSONObject("results").optJSONArray("atlases"));
+                updateWarfareCategories(response.optJSONArray("categories"));
                 updateRVs();
             }
         }, new Response.ErrorListener() {
