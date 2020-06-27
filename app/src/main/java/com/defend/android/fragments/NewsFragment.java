@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -61,8 +62,20 @@ public class NewsFragment extends Fragment {
         errorTextView = view.findViewById(R.id.load_error);
 
         recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(MyApp.getInstance());
-        recyclerView.setLayoutManager(layoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int i) {
+                if (i == 0 || i == 9) {
+                    return 2;
+                }
+
+
+
+                return 1;
+            }
+        });
+        recyclerView.setLayoutManager(gridLayoutManager);
         adapter = new NewsListAdapter();
         recyclerView.setAdapter(adapter);
 
