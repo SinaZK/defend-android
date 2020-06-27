@@ -27,6 +27,8 @@
         android:gravity="right"
         android:hint="@string/search"
         android:imeOptions="actionSearch"
+        android:textColorHint="@android:color/black"
+        android:shadowColor="@android:color/black"
         tools:ignore="RtlHardcoded,SpUsage"
         android:background="@android:color/transparent"
         android:layout_alignParentLeft="true"/>
@@ -38,7 +40,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
-        android:src="@drawable/drawer_white"
+        android:src="@drawable/drawer"
         android:scaleType="fitCenter"
         tools:ignore="RtlHardcoded" />
 

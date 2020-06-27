@@ -13,13 +13,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.MyToolbar;
-import com.defend.android.data.DataStore;
 import com.defend.android.download.CustomDownloadManager;
 import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.CreateEventFragment;
@@ -110,16 +108,17 @@ public class MainActivity extends AppCompatActivity {
                         new DividerDrawerItem(),
                         searchItem,
                         newsItem,
-                        eventItem,
                         warfareItem,
                         infoItem,
-                        tesCalendarItem,
+                        new DividerDrawerItem(),
                         bookItem,
-                        ideaItem,
                         magazineItem,
                         ebookItem,
+                        new DividerDrawerItem(),
+                        eventItem,
+                        tesCalendarItem,
                         thesisItem,
-                        new DividerDrawerItem()
+                        ideaItem
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
