@@ -66,7 +66,7 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, final int i) {
         final HomeItem item = items.get(i);
 
-        ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK);
 
         viewHolder.image.setImageResource(item.getDrawable());
         viewHolder.title.setText(item.getTitle());

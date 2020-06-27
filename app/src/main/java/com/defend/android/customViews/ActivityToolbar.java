@@ -40,7 +40,7 @@ public class ActivityToolbar extends RelativeLayout {
         backButton = view.findViewById(R.id.button);
         textView = view.findViewById(R.id.text);
 
-        ResourceManager.getInstance().decorateTextView(textView, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(textView, Color.BLACK);
     }
 
     public void setActivity(final Activity activity) {

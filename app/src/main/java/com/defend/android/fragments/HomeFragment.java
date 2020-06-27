@@ -115,15 +115,15 @@ public class HomeFragment extends Fragment {
     private void initRV() {
         ArrayList <HomeItem> items = new ArrayList<>();
         items.add(new HomeItem(getString(R.string.card_news), Constants.MENU_NEWS, R.drawable.ic_launcher_no_image));
-        items.add(new HomeItem(getString(R.string.card_calendar), Constants.MENU_EVENTS, R.drawable.calendar_512));
+        items.add(new HomeItem(getString(R.string.card_info), Constants.MENU_INFOGRAPHIC, R.drawable.info_img));
+        items.add(new HomeItem(getString(R.string.card_atlas), Constants.MENU_WARFARE, R.drawable.warfare_col));
         items.add(new HomeItem(getString(R.string.card_book), Constants.MENU_BOOKS, R.drawable.book));
         items.add(new HomeItem(getString(R.string.card_magazine), Constants.MENU_MAGAZINES, R.drawable.magazine_color));
-        items.add(new HomeItem(getString(R.string.card_atlas), Constants.MENU_WARFARE, R.drawable.warfare_col));
-        items.add(new HomeItem(getString(R.string.card_info), Constants.MENU_INFOGRAPHIC, R.drawable.info_img));
+        items.add(new HomeItem(getString(R.string.card_ebook), Constants.MENU_EBOOK, R.drawable.ebook));
+        items.add(new HomeItem(getString(R.string.card_calendar), Constants.MENU_EVENTS, R.drawable.calendar_512));
         items.add(new HomeItem(getString(R.string.card_tes), Constants.MENU_NEWEVENT, R.drawable.add_event_img4));
-        items.add(new HomeItem(getString(R.string.card_idea), Constants.MENU_IDEA, R.drawable.my_ideas));
-        items.add(new HomeItem(getString(R.string.card_ebook), Constants.MENU_EBOOK, R.drawable.my_ideas));
         items.add(new HomeItem(getString(R.string.card_thesis_event), Constants.MENU_THESIS_EVENT, R.drawable.add_event_img4));
+        items.add(new HomeItem(getString(R.string.card_idea), Constants.MENU_IDEA, R.drawable.my_ideas));
 
         adapter.setMainActivity(mainActivity);
         adapter.setItems(items);
@@ -132,9 +132,11 @@ public class HomeFragment extends Fragment {
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int i) {
-                if (i == 0) {
+                if (i == 0 || i == 9) {
                     return 2;
                 }
+
+
 
                 return 1;
             }

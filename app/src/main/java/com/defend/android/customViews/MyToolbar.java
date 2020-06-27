@@ -45,7 +45,7 @@ public class MyToolbar extends RelativeLayout {
         searchButton = view.findViewById(R.id.search);
         textView = view.findViewById(R.id.text);
 
-        ResourceManager.getInstance().decorateTextView(textView, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(textView, Color.BLACK);
 
         searchButton.setOnClickListener(new OnClickListener() {
             @Override
