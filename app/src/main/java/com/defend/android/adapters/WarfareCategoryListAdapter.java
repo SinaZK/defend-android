@@ -29,11 +29,13 @@ public class WarfareCategoryListAdapter extends RecyclerView.Adapter<WarfareCate
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
         public CardView cardView;
+        public ImageView image;
 
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
             cardView = view.findViewById(R.id.parent);
+            image = view.findViewById(R.id.image);
         }
     }
 
@@ -59,6 +61,12 @@ public class WarfareCategoryListAdapter extends RecyclerView.Adapter<WarfareCate
         final WarfareCategory warfareCategory = warfareCategories.get(i);
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK, Constants.FONT_BOLD);
         viewHolder.title.setText(warfareCategory.getName());
+
+        if (warfareCategory.getImageUrl().length() > 0) {
+            Picasso.get().load(warfareCategory.getImageUrl())
+                    .error(R.drawable.ic_launcher_no_image)
+                    .into(viewHolder.image);
+        }
 
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

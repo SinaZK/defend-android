@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -116,7 +117,7 @@ public class WarfareCategoryFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 setProgress(false);
-//                updateWarfares(response.optJSONObject("results").optJSONArray("atlases"));
+                updateWarfares(response.optJSONArray("atlases"));
                 updateWarfareCategories(response.optJSONArray("categories"));
                 updateRVs();
             }
@@ -133,6 +134,9 @@ public class WarfareCategoryFragment extends Fragment {
 
     private void updateWarfares(JSONArray array) {
         warfares.clear();
+        if (array == null) {
+            return;
+        }
 
         for(int i = 0;i < array.length();i++) {
             warfares.add(new Warfare().updateFromJson(array.optJSONObject(i)));
@@ -152,11 +156,8 @@ public class WarfareCategoryFragment extends Fragment {
     private void updateRVs() {
         warfareListAdapter = new WarfareListAdapter();
         warfareListAdapter.setWarfares(warfares);
-        warfareRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
+        warfareRV.setLayoutManager(new GridLayoutManager(MyApp.getInstance(), 1));
         warfareRV.setAdapter(warfareListAdapter);
-//        if(warfareCategories.size() == 0) {
-//            infoRV.setMaxSize(1000);
-//        }
 
         warfareCategoryListAdapter = new WarfareCategoryListAdapter();
         warfareCategoryListAdapter.setWarfareCategories(warfareCategories);
@@ -169,7 +170,8 @@ public class WarfareCategoryFragment extends Fragment {
                 onCategoryChange();
             }
         });
-        catRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        catRV.setLayoutManager(gridLayoutManager);
         catRV.setAdapter(warfareCategoryListAdapter);
     }
 
