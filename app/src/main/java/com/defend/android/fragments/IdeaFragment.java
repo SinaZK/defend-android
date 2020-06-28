@@ -48,8 +48,8 @@ public class IdeaFragment extends Fragment {
     }
 
     private void initUI() {
-        ResourceManager.getInstance().decorateTextView(myIdeasTextView, Color.WHITE, Constants.FONT_BOLD);
-        ResourceManager.getInstance().decorateTextView(newIdeaTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(myIdeasTextView, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(newIdeaTextView, Color.BLACK, Constants.FONT_BOLD);
 
         myIdeasParent.setOnClickListener(new View.OnClickListener() {
             @Override
