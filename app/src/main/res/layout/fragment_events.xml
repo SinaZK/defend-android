@@ -21,8 +21,6 @@
         android:layout_alignParentLeft="true"
         android:layout_margin="20dp"
         android:src="@drawable/add_plus_512"
-        android:tint="#000000"
-        android:backgroundTint="@color/primary"
         tools:ignore="RtlHardcoded,UnusedAttribute" />
 
 </RelativeLayout>

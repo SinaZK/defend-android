@@ -65,7 +65,7 @@ public class MonthViewFragment extends Fragment {
         progressBar = view.findViewById(R.id.progress);
         eventRecyclerView = view.findViewById(R.id.event_rv);
         monthTextView = view.findViewById(R.id.month_text);
-        ResourceManager.getInstance().decorateTextView(monthTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(monthTextView, Color.BLACK, Constants.FONT_BOLD);
         monthTextView.setText(String.format(Locale.ENGLISH, "%s %d", CalendarUtils.getMonthPersianString(month), year
         ));
 

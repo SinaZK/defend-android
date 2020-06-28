@@ -103,12 +103,12 @@ public class CalendarMonthAdapter extends RecyclerView.Adapter<CalendarMonthAdap
     }
 
     private void setViewTop(MyViewHolder holder, int position) {
-        ResourceManager.getInstance().decorateTextView(holder.text, Color.parseColor("#c7c7c7ff"));
+        ResourceManager.getInstance().decorateTextView(holder.text, Color.parseColor("#444444"));
         holder.text.setText(CalendarUtils.getWeekDayChar(position));
     }
 
     private void setViewDay(MyViewHolder holder, int position) {
-        ResourceManager.getInstance().decorateTextView(holder.text, Color.WHITE);
+        ResourceManager.getInstance().decorateTextView(holder.text, Color.BLACK);
         if(getDayOfMonth(position) > 0) {
             if(hasEvent[getDayOfMonth(position)]) {
                 ResourceManager.getInstance().decorateTextView(holder.text, Color.BLACK);
