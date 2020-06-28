@@ -66,8 +66,8 @@ public class MyIdeasActivity extends Activity {
         toolbar.setText(getString(R.string.my_idea_activity_title));
         sendListRequest();
 
-        ResourceManager.getInstance().decorateTextView(infoTextView, Color.WHITE, Constants.FONT_BOLD);
-        ResourceManager.getInstance().decorateTextView(topInfoTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(infoTextView, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(topInfoTextView, Color.BLACK, Constants.FONT_BOLD);
         infoParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

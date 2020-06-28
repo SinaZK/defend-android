@@ -73,7 +73,7 @@ public class EBookDetailActivity extends Activity {
         ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(author, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(price, Color.RED, Constants.FONT_REGULAR);
-        ResourceManager.getInstance().decorateTextView(purchaseDownloadTV, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(purchaseDownloadTV, Color.BLACK, Constants.FONT_REGULAR);
 
         cartParent.setOnClickListener(new View.OnClickListener() {
             @Override

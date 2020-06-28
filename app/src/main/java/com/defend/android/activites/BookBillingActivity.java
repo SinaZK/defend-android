@@ -45,7 +45,7 @@ public class BookBillingActivity extends Activity {
         ResourceManager.getInstance().decorateEditText(name, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateEditText(phone, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateEditText(address, Color.BLACK, Constants.FONT_BOLD);
-        ResourceManager.getInstance().decorateTextView(buy, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(buy, Color.BLACK, Constants.FONT_BOLD);
 
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override

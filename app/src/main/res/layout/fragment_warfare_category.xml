@@ -32,7 +32,9 @@
             android:singleLine="true"
             android:gravity="center"
             android:hint="@string/search"
+            android:textColorHint="@color/solid_black"
             tools:ignore="RtlHardcoded,SpUsage"
+            android:textColor="@color/solid_black"
             android:background="@android:color/transparent" />
 
     </RelativeLayout>

@@ -80,7 +80,7 @@ public class MagazineListActivity extends Activity {
             e.printStackTrace();
         }
 
-        ResourceManager.getInstance().decorateTextView(topFilterTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(topFilterTextView, Color.BLACK, Constants.FONT_BOLD);
         topFilterImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -97,7 +97,7 @@ public class WarfareCategoryFragment extends Fragment {
             }
         });
 
-        ResourceManager.getInstance().decorateTextView(categoryNameTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(categoryNameTextView, Color.BLACK, Constants.FONT_BOLD);
 
         searchToolbar.setOnClickListener(new View.OnClickListener() {
             @Override

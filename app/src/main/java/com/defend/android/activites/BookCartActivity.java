@@ -40,7 +40,7 @@ public class BookCartActivity extends Activity {
         checkoutParent = findViewById(R.id.checkout_parent);
         progressBar = findViewById(R.id.progress);
 
-        ResourceManager.getInstance().decorateTextView(checkoutTextView, Color.WHITE, Constants.FONT_LIGHT);
+        ResourceManager.getInstance().decorateTextView(checkoutTextView, Color.BLACK, Constants.FONT_LIGHT);
         ResourceManager.getInstance().decorateTextView(totalTextView, Color.RED, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(valueTextView, Color.RED, Constants.FONT_BOLD);
 

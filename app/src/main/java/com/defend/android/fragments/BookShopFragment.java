@@ -77,7 +77,7 @@ public class BookShopFragment extends Fragment {
             }
         });
 
-        ResourceManager.getInstance().decorateTextView(cartTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(cartTextView, Color.BLACK, Constants.FONT_BOLD);
         cartParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

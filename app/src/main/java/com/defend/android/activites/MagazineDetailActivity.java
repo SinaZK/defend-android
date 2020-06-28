@@ -67,6 +67,6 @@ public class MagazineDetailActivity extends Activity {
         ResourceManager.getInstance().decorateTextView(body, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(publish, Color.BLACK, Constants.FONT_REGULAR);
         ResourceManager.getInstance().decorateTextView(price, Color.RED, Constants.FONT_REGULAR);
-        ResourceManager.getInstance().decorateTextView(addToCartTV, Color.WHITE, Constants.FONT_REGULAR);
+        ResourceManager.getInstance().decorateTextView(addToCartTV, Color.BLACK, Constants.FONT_REGULAR);
     }
 }
