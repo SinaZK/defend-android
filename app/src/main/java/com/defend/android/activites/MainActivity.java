@@ -33,6 +33,7 @@ import com.defend.android.fragments.MagazineCategoryFragment;
 import com.defend.android.fragments.NewsFragment;
 import com.defend.android.fragments.SearchFragment;
 import com.defend.android.fragments.WarfareCategoryFragment;
+import com.defend.android.utils.ResourceManager;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -79,32 +80,32 @@ public class MainActivity extends AppCompatActivity {
 
     private void initDrawer() {
         PrimaryDrawerItem homeItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_HOME).withName(R.string.menu_home)
-                .withIcon(R.drawable.home);
+                .withIcon(R.drawable.home).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem bookItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_BOOKS).withName(R.string.menu_books)
-                .withIcon(R.drawable.book2);
+                .withIcon(R.drawable.book2).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem magazineItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_MAGAZINES).withName(R.string.menu_magazine)
-                .withIcon(R.drawable.magazine);
+                .withIcon(R.drawable.magazine).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem newsItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWS).withName(R.string.menu_news)
-                .withIcon(R.drawable.news2);
+                .withIcon(R.drawable.news2).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem eventItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EVENTS).withName(R.string.menu_events)
-                .withIcon(R.drawable.events);
+                .withIcon(R.drawable.events).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem warfareItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_WARFARE)
-                .withName(R.string.menu_warfare).withIcon(R.drawable.warfare);
+                .withName(R.string.menu_warfare).withIcon(R.drawable.warfare).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem infoItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_INFOGRAPHIC)
-                .withName(R.string.menu_infographic).withIcon(R.drawable.info_icon);
+                .withName(R.string.menu_infographic).withIcon(R.drawable.info_icon).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem tesCalendarItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWEVENT)
-                .withName(R.string.menu_tes_calendar).withIcon(R.drawable.add_event_icon);
+                .withName(R.string.menu_tes_calendar).withIcon(R.drawable.add_event_icon).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem ideaItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_IDEA)
-                .withName(R.string.menu_idea).withIcon(R.drawable.idea_minimal);
+                .withName(R.string.menu_idea).withIcon(R.drawable.idea_minimal).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem ebookItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EBOOK).withName(R.string.menu_ebook)
-                .withIcon(R.drawable.magazine);
+                .withIcon(R.drawable.ebook2).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem searchItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_SEARCH).withName(R.string.menu_search)
-                .withIcon(R.drawable.magazine);
+                .withIcon(R.drawable.search).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem thesisItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_THESIS_EVENT)
-                .withName(R.string.menu_thesis_event).withIcon(R.drawable.magazine);
+                .withName(R.string.menu_thesis_event).withIcon(R.drawable.add_event_icon).withTypeface(ResourceManager.getInstance().getFont());
 
         PrimaryDrawerItem exitItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EXIT)
-                .withName(R.string.menu_exit).withIcon(R.drawable.exit_icon);
+                .withName(R.string.menu_exit).withIcon(R.drawable.exit_icon).withTypeface(ResourceManager.getInstance().getFont());
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
