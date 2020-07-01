@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -43,8 +44,10 @@ public class MonthViewFragment extends Fragment {
     RecyclerView eventRecyclerView;
     ProgressBar progressBar;
     TextView monthTextView;
+    ImageView next, prev;
     private int month, year;
 
+    private Runnable nextRunnable, prevRunnable;
     private ArrayList<Event> events = new ArrayList<>();
 
     public MonthViewFragment() {
@@ -65,6 +68,8 @@ public class MonthViewFragment extends Fragment {
         progressBar = view.findViewById(R.id.progress);
         eventRecyclerView = view.findViewById(R.id.event_rv);
         monthTextView = view.findViewById(R.id.month_text);
+        next = view.findViewById(R.id.month_next);
+        prev = view.findViewById(R.id.month_prev);
         ResourceManager.getInstance().decorateTextView(monthTextView, Color.BLACK, Constants.FONT_BOLD);
         monthTextView.setText(String.format(Locale.ENGLISH, "%s %d", CalendarUtils.getMonthPersianString(month), year
         ));
@@ -77,6 +82,24 @@ public class MonthViewFragment extends Fragment {
             }
         });
         calendarView.setDate(year, month); //Create view
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (nextRunnable != null) {
+                    nextRunnable.run();
+                }
+            }
+        });
+
+        prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (prevRunnable != null) {
+                    prevRunnable.run();
+                }
+            }
+        });
 
         initRV();
         sendRequest();
@@ -158,4 +181,11 @@ public class MonthViewFragment extends Fragment {
         }
     }
 
+    public void setNextRunnable(Runnable nextRunnable) {
+        this.nextRunnable = nextRunnable;
+    }
+
+    public void setPrevRunnable(Runnable prevRunnable) {
+        this.prevRunnable = prevRunnable;
+    }
 }

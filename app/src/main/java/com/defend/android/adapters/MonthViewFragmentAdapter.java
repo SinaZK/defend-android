@@ -3,10 +3,12 @@ package com.defend.android.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
 import com.defend.android.fragments.MonthViewFragment;
 
 public class MonthViewFragmentAdapter extends FragmentPagerAdapter {
+    private ViewPager viewPager;
     private int count = 36;
     private int startMonth;
     private int startYear;
@@ -18,10 +20,26 @@ public class MonthViewFragmentAdapter extends FragmentPagerAdapter {
         this.startMonth = startMonth;
     }
 
+    public void setViewPager(ViewPager viewPager) {
+        this.viewPager = viewPager;
+    }
+
     @Override
-    public Fragment getItem(int i) {
+    public Fragment getItem(final int i) {
         MonthViewFragment fragment = new MonthViewFragment();
         fragment.setDate(getYearFromMonthAhead(i - FIRST_PAGE), getMonthFromMonthAhead(i - FIRST_PAGE));
+        fragment.setNextRunnable(new Runnable() {
+            @Override
+            public void run() {
+                viewPager.setCurrentItem(i + 1);
+            }
+        });
+        fragment.setPrevRunnable(new Runnable() {
+            @Override
+            public void run() {
+                viewPager.setCurrentItem(i - 1);
+            }
+        });
 
         return fragment;
     }

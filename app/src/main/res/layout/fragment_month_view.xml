@@ -15,6 +15,26 @@
         android:textSize="20dp"
         tools:ignore="SpUsage" />
 
+    <ImageView
+        android:id="@+id/month_next"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/right"
+        tools:ignore="RtlHardcoded,SpUsage" />
+
+    <ImageView
+        android:id="@+id/month_prev"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/left"
+        tools:ignore="RtlHardcoded,SpUsage" />
+
     <com.defend.android.customViews.CalendarMonthView
         android:id="@+id/calendar"
         android:layout_below="@id/month_text"

@@ -48,7 +48,9 @@ public class EventsFragment extends Fragment {
         DateConverter converter = new DateConverter();
         JalaliDate today = converter.nowAsJalali();
         viewPager = view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(new MonthViewFragmentAdapter(getChildFragmentManager(), today.getYear(), today.getMonthPersian().getValue()));
+        MonthViewFragmentAdapter adapter = new MonthViewFragmentAdapter(getChildFragmentManager(), today.getYear(), today.getMonthPersian().getValue());
+        adapter.setViewPager(viewPager);
+        viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(MonthViewFragmentAdapter.FIRST_PAGE);
 
         button.setOnClickListener(new View.OnClickListener() {
