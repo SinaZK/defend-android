@@ -50,7 +50,7 @@ public class InfographicCategoryFragment extends Fragment {
     RecyclerView catRV, infoRV;
     RelativeLayout topParent;
     Button backButton;
-    TextView categoryNameTextView;
+    TextView categoryNameTextView, searchTextView;
 
     RelativeLayout searchToolbar;
 
@@ -74,6 +74,7 @@ public class InfographicCategoryFragment extends Fragment {
         topParent = view.findViewById(R.id.top_parent);
         categoryNameTextView = view.findViewById(R.id.category_tv);
         searchToolbar = view.findViewById(R.id.search_toolbar);
+        searchTextView = view.findViewById(R.id.search_edit_text);
 
         categoryQueue.add(0);
         categoryQueueName.add(getString(R.string.warfare_parent_cat_tv));
@@ -96,6 +97,7 @@ public class InfographicCategoryFragment extends Fragment {
         });
 
         ResourceManager.getInstance().decorateTextView(categoryNameTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(searchTextView, Color.BLACK, Constants.FONT_BOLD);
 
         searchToolbar.setOnClickListener(new View.OnClickListener() {
             @Override

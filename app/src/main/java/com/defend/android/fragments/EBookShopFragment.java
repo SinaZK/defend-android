@@ -45,7 +45,7 @@ public class EBookShopFragment extends Fragment {
     SwipeRefreshLayout refreshLayout;
 
     RelativeLayout cartParent;
-    TextView cartTextView;
+    TextView cartTextView, searchTextView;
 
     RelativeLayout searchToolbar;
 
@@ -67,6 +67,7 @@ public class EBookShopFragment extends Fragment {
         recyclerView = view.findViewById(R.id.book_rv);
         refreshLayout = view.findViewById(R.id.refresh);
         searchToolbar = view.findViewById(R.id.search_toolbar);
+        searchTextView = view.findViewById(R.id.search_edit_text);
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -77,6 +78,7 @@ public class EBookShopFragment extends Fragment {
         });
 
         ResourceManager.getInstance().decorateTextView(cartTextView, Color.WHITE, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(searchTextView, Color.BLACK, Constants.FONT_BOLD);
         cartParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

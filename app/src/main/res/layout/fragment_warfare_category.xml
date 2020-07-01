@@ -31,7 +31,7 @@
             android:textSize="20dp"
             android:singleLine="true"
             android:gravity="center"
-            android:hint="@string/search"
+            android:text="@string/search"
             android:textColorHint="@color/solid_black"
             tools:ignore="RtlHardcoded,SpUsage"
             android:textColor="@color/solid_black"

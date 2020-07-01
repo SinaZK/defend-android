@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,6 @@ import com.defend.android.activites.BookCartActivity;
 import com.defend.android.activites.BookSearchActivity;
 import com.defend.android.adapters.BookListAdapter;
 import com.defend.android.constants.Constants;
-import com.defend.android.customViews.SearchToolbar;
 import com.defend.android.data.Book;
 import com.defend.android.data.BookOrder;
 import com.defend.android.listeners.BookAddToCartListener;
@@ -49,6 +47,7 @@ public class BookShopFragment extends Fragment {
 
     RelativeLayout cartParent;
     TextView cartTextView;
+    TextView searchTextView;
 
     private int page = 1;
 
@@ -68,6 +67,7 @@ public class BookShopFragment extends Fragment {
         recyclerView = view.findViewById(R.id.book_rv);
         refreshLayout = view.findViewById(R.id.refresh);
         searchToolbar = view.findViewById(R.id.search_toolbar);
+        searchTextView = view.findViewById(R.id.search_edit_text);
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -78,6 +78,7 @@ public class BookShopFragment extends Fragment {
         });
 
         ResourceManager.getInstance().decorateTextView(cartTextView, Color.BLACK, Constants.FONT_BOLD);
+        ResourceManager.getInstance().decorateTextView(searchTextView, Color.BLACK, Constants.FONT_BOLD);
         cartParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
