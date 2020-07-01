@@ -1,6 +1,7 @@
 package com.defend.android.adapters;
 
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +14,7 @@ import android.widget.TextView;
 import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
-import com.defend.android.data.BookOrder;
 import com.defend.android.data.HomeItem;
-import com.defend.android.listeners.BookCartItemChangeListener;
 import com.defend.android.utils.ResourceManager;
 import com.defend.android.utils.Utils;
 import com.squareup.picasso.Picasso;
@@ -26,7 +25,8 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
 
     private MainActivity mainActivity;
     private ArrayList <HomeItem> items;
-    private String newsURL;
+    private int newsImagePointer = 0;
+    private ArrayList<String> newsUrls = new ArrayList<>();
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
@@ -49,8 +49,24 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
         this.mainActivity = mainActivity;
     }
 
-    public void setNewsURL(String newsURL) {
-        this.newsURL = newsURL;
+    public void addNewsImageUrl(String newsURL) {
+        this.newsUrls.add(newsURL);
+    }
+
+    public void makeNewsSlideShow() {
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                newsImagePointer += 1;
+                if (newsImagePointer >= newsUrls.size()) {
+                    newsImagePointer = 0;
+                }
+                makeNewsSlideShow();
+
+                notifyItemChanged(0);
+            }
+        }, 1000);
     }
 
     @NonNull
@@ -82,9 +98,11 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
             viewHolder.image.setScaleType(ImageView.ScaleType.FIT_XY);
             viewHolder.image.setMinimumHeight(Utils.dpToPx(200));
 
-            Picasso.get().load(newsURL)
-                    .error(R.drawable.news_card)
-                    .into(viewHolder.image);
+            if (newsUrls.size() > 0) {
+                Picasso.get().load(newsUrls.get(newsImagePointer))
+                        .error(R.drawable.news_card)
+                        .into(viewHolder.image);
+            }
         }
 
     }

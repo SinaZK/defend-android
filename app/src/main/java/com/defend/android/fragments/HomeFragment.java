@@ -22,6 +22,7 @@ import com.defend.android.adapters.HomeItemAdapter;
 import com.defend.android.constants.Constants;
 import com.defend.android.data.HomeItem;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -73,7 +74,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(JSONObject response) {
                 setProgress(false);
 
-                setNewsURL(response.optJSONObject("news").optString("image_url"));
+                setNewsURL(response.optJSONArray("news"));
                 initRV();
             }
         }, new Response.ErrorListener() {
@@ -100,10 +101,16 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void setNewsURL(String url) {
-        if (url.length() == 0) return;
-
-        adapter.setNewsURL(url);
+    private void setNewsURL(JSONArray array) {
+        for (int i = 0;i < array.length();i++) {
+            JSONObject newsObject = array.optJSONObject(i);
+            String url = newsObject.optString("image_url");
+            if (url.length() == 0) {
+                continue;
+            }
+            
+            adapter.addNewsImageUrl(url);
+        }
     }
 
     private void showCards() {
@@ -143,5 +150,6 @@ public class HomeFragment extends Fragment {
         });
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
+        adapter.makeNewsSlideShow();
     }
 }
