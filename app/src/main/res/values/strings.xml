@@ -108,6 +108,7 @@
     <string name="card_idea">ایده‌پردازی</string>
     <string name="card_ebook">کتاب الکترونیک</string>
     <string name="card_thesis_event">ثبت رویداد دفاع</string>
+    <string name="exit_toast">برای خروج دوباره دکمه بازگشت را بزنید</string>
 
     <!--WarfareFragment-->
     <string name="warfare_back_btn">بازگشت</string>

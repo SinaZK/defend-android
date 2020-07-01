@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
@@ -233,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
         drawer.setSelection(type);
     }
 
+    boolean doubleBackToExitPressedOnce = false;
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen()) {
@@ -252,6 +255,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             } else if (drawer.getCurrentSelection() != Constants.MENU_HOME) {
                 setFragment(Constants.MENU_HOME);
+            } else if(drawer.getCurrentSelection() == Constants.MENU_HOME) {
+                if (doubleBackToExitPressedOnce) {
+                    finish();
+                    return;
+                }
+                doubleBackToExitPressedOnce = true;
+                Toast.makeText(this, getString(R.string.exit_toast), Toast.LENGTH_SHORT).show();
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
             }
         }
     }
