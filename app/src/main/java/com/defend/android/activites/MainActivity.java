@@ -103,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
         PrimaryDrawerItem thesisItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_THESIS_EVENT)
                 .withName(R.string.menu_thesis_event).withIcon(R.drawable.magazine);
 
+        PrimaryDrawerItem exitItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EXIT)
+                .withName(R.string.menu_exit).withIcon(R.drawable.exit_icon);
+
         drawer = new DrawerBuilder()
                 .withActivity(this)
                 .addDrawerItems(
@@ -120,7 +123,9 @@ public class MainActivity extends AppCompatActivity {
                         eventItem,
                         tesCalendarItem,
                         thesisItem,
-                        ideaItem
+                        ideaItem,
+                        new DividerDrawerItem(),
+                        exitItem
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -129,6 +134,11 @@ public class MainActivity extends AppCompatActivity {
                         fragment = null;
 
                         toolbar.setVisibility(View.VISIBLE);
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_EXIT) {
+                            finish();
+                            return true;
+                        }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_HOME) {
                             fragment = new HomeFragment();
