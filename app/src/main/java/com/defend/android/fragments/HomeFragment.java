@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment {
             if (url.length() == 0) {
                 continue;
             }
-            
+
             adapter.addNewsImageUrl(url);
         }
     }
