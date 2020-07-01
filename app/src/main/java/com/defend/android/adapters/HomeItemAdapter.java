@@ -64,7 +64,7 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
                 }
                 makeNewsSlideShow();
 
-                notifyItemChanged(0);
+                notifyDataSetChanged();
             }
         }, 8000);
     }
