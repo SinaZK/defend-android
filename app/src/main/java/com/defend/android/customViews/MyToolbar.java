@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.defend.android.R;
 import com.defend.android.activites.MainActivity;
+import com.defend.android.constants.Constants;
 import com.defend.android.utils.ResourceManager;
 
 public class MyToolbar extends RelativeLayout {
@@ -45,7 +46,7 @@ public class MyToolbar extends RelativeLayout {
         searchButton = view.findViewById(R.id.search);
         textView = view.findViewById(R.id.text);
 
-        ResourceManager.getInstance().decorateTextView(textView, Color.BLACK);
+        ResourceManager.getInstance().decorateTextView(textView, Color.BLACK, Constants.FONT_BOLD);
 
         searchButton.setOnClickListener(new OnClickListener() {
             @Override

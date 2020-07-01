@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.defend.android.R;
+import com.defend.android.constants.Constants;
 import com.defend.android.utils.ResourceManager;
 
 public class ActivityToolbar extends RelativeLayout {
@@ -40,7 +41,7 @@ public class ActivityToolbar extends RelativeLayout {
         backButton = view.findViewById(R.id.button);
         textView = view.findViewById(R.id.text);
 
-        ResourceManager.getInstance().decorateTextView(textView, Color.BLACK);
+        ResourceManager.getInstance().decorateTextView(textView, Color.BLACK, Constants.FONT_BOLD);
     }
 
     public void setActivity(final Activity activity) {

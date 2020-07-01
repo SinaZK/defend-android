@@ -18,13 +18,11 @@
     <TextView
         android:id="@+id/text"
         android:layout_marginLeft="50dp"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        tools:ignore="RtlHardcoded,SpUsage"
-        android:layout_alignParentLeft="true"
-        android:layout_toRightOf="@id/button"/>
+        tools:ignore="RtlHardcoded,SpUsage" />
 
     <View
         android:background="#222222"
