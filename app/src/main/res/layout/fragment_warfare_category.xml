@@ -52,17 +52,31 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:textSize="22dp"/>
+            android:textSize="22dp"
+            tools:ignore="RtlHardcoded,SpUsage" />
 
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
-        android:layout_centerVertical="true"
-        android:text="@string/warfare_back_btn"
-        android:textSize="18dp"/>
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:textSize="18dp"
+            android:elevation="0dp"
+            tools:ignore="RtlHardcoded,SpUsage"
+            tools:targetApi="lollipop" />
+
+        <ImageView
+            android:id="@+id/back_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/up"
+            android:elevation="10dp"
+            tools:ignore="RtlHardcoded,UnusedAttribute" />
 
     </RelativeLayout>
 

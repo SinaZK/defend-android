@@ -89,8 +89,9 @@ public class WarfareCategoryFragment extends Fragment {
     }
 
     private void initUI() {
-        ResourceManager.getInstance().decorateButton(backButton, Color.WHITE);
+        ResourceManager.getInstance().decorateButton(backButton, R.color.primary_dark);
         backButton.setBackgroundResource(R.drawable.btn_bg);
+        backButton.setBackgroundColor(getResources().getColor(R.color.primary_dark));
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

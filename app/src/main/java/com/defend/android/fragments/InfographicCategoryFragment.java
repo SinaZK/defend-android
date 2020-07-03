@@ -89,6 +89,7 @@ public class InfographicCategoryFragment extends Fragment {
     private void initUI() {
         ResourceManager.getInstance().decorateButton(backButton, Color.WHITE);
         backButton.setBackgroundResource(R.drawable.btn_bg);
+        backButton.setBackgroundColor(getResources().getColor(R.color.primary_dark));
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
