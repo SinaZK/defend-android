@@ -66,7 +66,7 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
 
                 notifyDataSetChanged();
             }
-        }, 8000);
+        }, 5000);
     }
 
     @NonNull
