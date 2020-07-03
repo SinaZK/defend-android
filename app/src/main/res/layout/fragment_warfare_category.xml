@@ -32,6 +32,7 @@
             android:singleLine="true"
             android:gravity="center"
             android:text="@string/search"
+            android:layout_marginRight="25dp"
             android:textColorHint="@color/solid_black"
             tools:ignore="RtlHardcoded,SpUsage"
             android:textColor="@color/solid_black"

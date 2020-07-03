@@ -30,6 +30,7 @@
             android:textSize="20dp"
             android:singleLine="true"
             android:gravity="center"
+            android:layout_marginRight="25dp"
             android:text="@string/search"
             tools:ignore="RtlHardcoded,SpUsage"
             android:background="@android:color/transparent" />
