@@ -31,12 +31,12 @@
     <ImageView
         android:id="@+id/info_img"
         android:layout_below="@id/toolbar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:layout_toLeftOf="@id/info"
-        android:src="@android:drawable/ic_dialog_info"
+        android:src="@drawable/infogreen"
         android:scaleType="fitCenter"
         tools:ignore="RtlHardcoded" />
 
