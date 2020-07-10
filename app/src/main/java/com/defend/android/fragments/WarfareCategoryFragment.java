@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -51,7 +52,7 @@ public class WarfareCategoryFragment extends Fragment {
     ProgressBar progressBar;
     RecyclerView catRV, warfareRV;
     RelativeLayout topParent;
-    Button backButton;
+    ImageView backButton;
     TextView categoryNameTextView, searchTextView;
 
     RelativeLayout searchToolbar;
@@ -72,7 +73,6 @@ public class WarfareCategoryFragment extends Fragment {
         catRV = view.findViewById(R.id.category_rv);
         warfareRV = view.findViewById(R.id.warfare_rv);
         progressBar = view.findViewById(R.id.progress);
-        backButton = view.findViewById(R.id.back_button);
         topParent = view.findViewById(R.id.top_parent);
         categoryNameTextView = view.findViewById(R.id.category_tv);
         searchToolbar = view.findViewById(R.id.search_toolbar);
@@ -89,15 +89,8 @@ public class WarfareCategoryFragment extends Fragment {
     }
 
     private void initUI() {
-        ResourceManager.getInstance().decorateButton(backButton, R.color.primary_dark);
-        backButton.setBackgroundResource(R.drawable.btn_bg);
-        backButton.setBackgroundColor(getResources().getColor(R.color.primary_dark));
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goBack();
-            }
-        });
+//        ResourceManager.getInstance().decorateButton(backButton, R.color.primary_dark);
+
 
         ResourceManager.getInstance().decorateTextView(categoryNameTextView, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(searchTextView, Color.BLACK, Constants.FONT_BOLD);
@@ -108,6 +101,16 @@ public class WarfareCategoryFragment extends Fragment {
                 Intent intent = new Intent(MyApp.getInstance(), WarfareSearchActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 MyApp.getInstance().startActivity(intent);
+            }
+        });
+    }
+
+    public void setBackButton(ImageView backButton) {
+        this.backButton = backButton;
+        this.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
             }
         });
     }
@@ -203,7 +206,9 @@ public class WarfareCategoryFragment extends Fragment {
     public void onCategoryChange() {
         if (categoryQueue.size() <= 1) {
             topParent.setVisibility(View.GONE);
+            backButton.setVisibility(View.GONE);
         } else {
+            backButton.setVisibility(View.VISIBLE);
             topParent.setVisibility(View.VISIBLE);
             categoryNameTextView.setText(categoryQueueName.get(categoryQueueName.size() - 1));
         }

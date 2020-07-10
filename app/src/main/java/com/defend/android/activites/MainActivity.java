@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = null;
 
                         toolbar.setVisibility(View.VISIBLE);
+                        toolbar.hideUP();
 
                         if (drawerItem.getIdentifier() == Constants.MENU_EXIT) {
                             finish();
@@ -187,7 +188,9 @@ public class MainActivity extends AppCompatActivity {
 
                         if (drawerItem.getIdentifier() == Constants.MENU_WARFARE) {
                             fragment = new WarfareCategoryFragment();
+                            ((WarfareCategoryFragment) fragment).setBackButton(toolbar.getUpButton());
                             toolbar.setText(getString(R.string.menu_warfare));
+//                            toolbar.showUP();
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_BOOKS) {

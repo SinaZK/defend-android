@@ -19,6 +19,7 @@ public class MyToolbar extends RelativeLayout {
     TextView textView;
     ImageView drawerButton;
     ImageView searchButton;
+    ImageView backButton;
 
     Runnable searchRunnable;
 
@@ -42,6 +43,7 @@ public class MyToolbar extends RelativeLayout {
         View view = inflate(getContext(), R.layout.my_toolbar, null);
         addView(view);
 
+        backButton = view.findViewById(R.id.back_button);
         drawerButton = view.findViewById(R.id.button);
         searchButton = view.findViewById(R.id.search);
         textView = view.findViewById(R.id.text);
@@ -73,6 +75,10 @@ public class MyToolbar extends RelativeLayout {
         });
     }
 
+    public ImageView getUpButton() {
+        return backButton;
+    }
+
     public void setOnSearch(Runnable runnable) {
         this.searchRunnable = runnable;
     }
@@ -87,5 +93,13 @@ public class MyToolbar extends RelativeLayout {
 
     public void showSearch() {
         searchButton.setVisibility(VISIBLE);
+    }
+
+    public void hideUP() {
+        backButton.setVisibility(GONE);
+    }
+
+    public void showUP() {
+        backButton.setVisibility(VISIBLE);
     }
 }
