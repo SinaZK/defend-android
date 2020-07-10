@@ -14,12 +14,15 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.defend.android.MyApp;
 import com.defend.android.R;
 import com.defend.android.constants.Constants;
 import com.defend.android.customViews.MyToolbar;
+import com.defend.android.data.MagazineCategory;
 import com.defend.android.download.CustomDownloadManager;
 import com.defend.android.fragments.BookShopFragment;
 import com.defend.android.fragments.CreateEventFragment;
@@ -85,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 .withIcon(R.drawable.book2).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem magazineItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_MAGAZINES).withName(R.string.menu_magazine)
                 .withIcon(R.drawable.magazine).withTypeface(ResourceManager.getInstance().getFont());
+        PrimaryDrawerItem havafazaMagazineItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_HAVAFAZA_MAG).withName(R.string.card_havafaza_mag)
+                .withIcon(R.drawable.magazine).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem newsItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_NEWS).withName(R.string.menu_news)
                 .withIcon(R.drawable.news2).withTypeface(ResourceManager.getInstance().getFont());
         PrimaryDrawerItem eventItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EVENTS).withName(R.string.menu_events)
@@ -104,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         PrimaryDrawerItem thesisItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_THESIS_EVENT)
                 .withName(R.string.menu_thesis_event).withIcon(R.drawable.add_event_icon).withTypeface(ResourceManager.getInstance().getFont());
 
+
         PrimaryDrawerItem exitItem = new PrimaryDrawerItem().withIdentifier(Constants.MENU_EXIT)
                 .withName(R.string.menu_exit).withIcon(R.drawable.exit_icon).withTypeface(ResourceManager.getInstance().getFont());
 
@@ -118,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
                         infoItem,
                         new DividerDrawerItem(),
                         bookItem,
+                        havafazaMagazineItem,
                         magazineItem,
                         ebookItem,
                         new DividerDrawerItem(),
@@ -148,6 +155,16 @@ public class MainActivity extends AppCompatActivity {
                             toolbar.showSearch();
                         } else {
                             toolbar.hideSearch();
+                        }
+
+                        if (drawerItem.getIdentifier() == Constants.MENU_HAVAFAZA_MAG) {
+                            MagazineCategory magazineCategory = new MagazineCategory();
+                            magazineCategory.setId(1);
+                            
+                            Intent intent = new Intent(MyApp.getInstance(), MagazineListActivity.class);
+                            intent.putExtra(Constants.EXTRA_MAGAZINE_JSON, magazineCategory.createJson().toString());
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            MyApp.getInstance().startActivity(intent);
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_SEARCH) {

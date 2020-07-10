@@ -59,6 +59,7 @@ public class Constants {
     public static int MENU_SEARCH = 11;
     public static int MENU_THESIS_EVENT = 12;
     public static int MENU_EXIT = 13;
+    public static int MENU_HAVAFAZA_MAG = 14;
 
     //BookOrderStates
     public static String STATE_CHECKOUT = "checkout";

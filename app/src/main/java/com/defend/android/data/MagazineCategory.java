@@ -19,6 +19,19 @@ public class MagazineCategory {
         return object;
     }
 
+    public JSONObject createJson() {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("id", id);
+            object.put("title", title);
+            object.put("image_url", imageUrl);
+        } catch (Exception e) {
+
+        }
+
+        return object;
+    }
+
     public boolean hasImage() {
         return imageUrl.length() > 0;
     }
@@ -33,5 +46,17 @@ public class MagazineCategory {
 
     public int getId() {
         return id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

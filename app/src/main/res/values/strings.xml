@@ -109,6 +109,7 @@
     <string name="card_idea">ایده‌پردازی</string>
     <string name="card_ebook">کتاب الکترونیک</string>
     <string name="card_thesis_event">ثبت رویداد دفاع</string>
+    <string name="card_havafaza_mag">ماهنامه هوافضا</string>
     <string name="exit_toast">برای خروج دوباره دکمه بازگشت را بزنید</string>
 
     <!--WarfareFragment-->

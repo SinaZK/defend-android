@@ -125,6 +125,7 @@ public class HomeFragment extends Fragment {
         items.add(new HomeItem(getString(R.string.card_info), Constants.MENU_INFOGRAPHIC, R.drawable.info_new));
         items.add(new HomeItem(getString(R.string.card_atlas), Constants.MENU_WARFARE, R.drawable.globe_new));
         items.add(new HomeItem(getString(R.string.card_book), Constants.MENU_BOOKS, R.drawable.book));
+        items.add(new HomeItem(getString(R.string.card_havafaza_mag), Constants.MENU_HAVAFAZA_MAG, R.drawable.my_ideas));
         items.add(new HomeItem(getString(R.string.card_magazine), Constants.MENU_MAGAZINES, R.drawable.magazine_color));
         items.add(new HomeItem(getString(R.string.card_ebook), Constants.MENU_EBOOK, R.drawable.ebook));
         items.add(new HomeItem(getString(R.string.card_calendar), Constants.MENU_EVENTS, R.drawable.calendar_512));
@@ -139,7 +140,7 @@ public class HomeFragment extends Fragment {
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int i) {
-                if (i == 0 || i == 9) {
+                if (i == 0) {
                     return 2;
                 }
 
