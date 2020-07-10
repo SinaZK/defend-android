@@ -85,7 +85,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
-                android:gravity="right"
                 android:textSize="18dp"
                 tools:ignore="SpUsage" />
 

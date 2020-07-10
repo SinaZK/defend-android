@@ -2,6 +2,7 @@ package com.defend.android.activites;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -21,6 +22,8 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 public class EBookDetailActivity extends Activity {
 
@@ -56,6 +59,9 @@ public class EBookDetailActivity extends Activity {
         title.setText(book.getTitle());
         body.setMovementMethod(LinkMovementMethod.getInstance());
         body.setText(Html.fromHtml(book.getBody().replace("\n", "<br>")));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            body.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
         author.setText(String.format(MyApp.getInstance().getString(R.string.book_author_str), book.getAuthor()));
         if (book.getPrice() > 0) {
             price.setText(String.format(MyApp.getInstance().getString(R.string.book_detail_item_price), book.getPrice()));

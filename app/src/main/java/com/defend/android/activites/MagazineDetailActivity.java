@@ -2,6 +2,7 @@ package com.defend.android.activites;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -20,6 +21,8 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 public class MagazineDetailActivity extends Activity {
 
@@ -55,6 +58,9 @@ public class MagazineDetailActivity extends Activity {
         title.setText(magazine.getTitle());
         body.setMovementMethod(LinkMovementMethod.getInstance());
         body.setText(Html.fromHtml(magazine.getBody().replace("\n", "<br>")));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            body.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
         publish.setText(String.format(MyApp.getInstance().getString(R.string.book_year_str), String.valueOf(magazine.getYear())));
         price.setText(String.format(MyApp.getInstance().getString(R.string.book_detail_item_price), magazine.getPrice()));
         if (magazine.hasImage()) {
