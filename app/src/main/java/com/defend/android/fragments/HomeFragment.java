@@ -105,11 +105,13 @@ public class HomeFragment extends Fragment {
         for (int i = 0;i < array.length();i++) {
             JSONObject newsObject = array.optJSONObject(i);
             String url = newsObject.optString("image_url");
+            String title = newsObject.optString("title");
             if (url.length() == 0) {
                 continue;
             }
 
             adapter.addNewsImageUrl(url);
+            adapter.addNewsTitle(title);
         }
     }
 

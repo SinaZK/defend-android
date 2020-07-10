@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                         if (drawerItem.getIdentifier() == Constants.MENU_HAVAFAZA_MAG) {
                             MagazineCategory magazineCategory = new MagazineCategory();
                             magazineCategory.setId(1);
-                            
+
                             Intent intent = new Intent(MyApp.getInstance(), MagazineListActivity.class);
                             intent.putExtra(Constants.EXTRA_MAGAZINE_JSON, magazineCategory.createJson().toString());
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

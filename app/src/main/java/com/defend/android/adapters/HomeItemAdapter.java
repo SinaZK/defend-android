@@ -27,15 +27,18 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
     private ArrayList <HomeItem> items;
     private int newsImagePointer = 0;
     private ArrayList<String> newsUrls = new ArrayList<>();
+    private ArrayList<String> newsTitles = new ArrayList<>();
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
         public ImageView image;
         public CardView cardView;
+        public View titleCard;
 
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
+            titleCard = view.findViewById(R.id.title_card);
             image = view.findViewById(R.id.image);
             cardView = view.findViewById(R.id.parent);
         }
@@ -51,6 +54,10 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
 
     public void addNewsImageUrl(String newsURL) {
         this.newsUrls.add(newsURL);
+    }
+
+    public void addNewsTitle(String newsTitle) {
+        this.newsTitles.add(newsTitle);
     }
 
     public void makeNewsSlideShow() {
@@ -95,14 +102,19 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
 
 
         if (i == 0) { //News Card
+            viewHolder.titleCard.setVisibility(View.VISIBLE);
             viewHolder.image.setScaleType(ImageView.ScaleType.FIT_XY);
             viewHolder.image.setMinimumHeight(Utils.dpToPx(200));
+            ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.WHITE);
+            viewHolder.title.setText(newsTitles.get(newsImagePointer));
 
             if (newsUrls.size() > 0) {
                 Picasso.get().load(newsUrls.get(newsImagePointer))
                         .error(R.drawable.news_card)
                         .into(viewHolder.image);
             }
+        } else {
+            viewHolder.titleCard.setVisibility(View.GONE);
         }
 
     }
