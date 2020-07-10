@@ -90,6 +90,7 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
         final HomeItem item = items.get(i);
 
         ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.BLACK);
+        viewHolder.title.setTextSize(22);
 
         viewHolder.image.setImageResource(item.getDrawable());
         viewHolder.title.setText(item.getTitle());
@@ -107,6 +108,7 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.MyView
             viewHolder.image.setMinimumHeight(Utils.dpToPx(200));
             ResourceManager.getInstance().decorateTextView(viewHolder.title, Color.WHITE);
             viewHolder.title.setText(newsTitles.get(newsImagePointer));
+            viewHolder.title.setTextSize(16);
 
             if (newsUrls.size() > 0) {
                 Picasso.get().load(newsUrls.get(newsImagePointer))
