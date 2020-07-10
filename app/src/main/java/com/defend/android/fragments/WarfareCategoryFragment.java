@@ -89,9 +89,6 @@ public class WarfareCategoryFragment extends Fragment {
     }
 
     private void initUI() {
-//        ResourceManager.getInstance().decorateButton(backButton, R.color.primary_dark);
-
-
         ResourceManager.getInstance().decorateTextView(categoryNameTextView, Color.BLACK, Constants.FONT_BOLD);
         ResourceManager.getInstance().decorateTextView(searchTextView, Color.BLACK, Constants.FONT_BOLD);
 

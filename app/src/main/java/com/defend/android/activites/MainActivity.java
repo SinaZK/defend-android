@@ -190,7 +190,6 @@ public class MainActivity extends AppCompatActivity {
                             fragment = new WarfareCategoryFragment();
                             ((WarfareCategoryFragment) fragment).setBackButton(toolbar.getUpButton());
                             toolbar.setText(getString(R.string.menu_warfare));
-//                            toolbar.showUP();
                         }
 
                         if (drawerItem.getIdentifier() == Constants.MENU_BOOKS) {
@@ -200,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (drawerItem.getIdentifier() == Constants.MENU_INFOGRAPHIC) {
                             fragment = new InfographicCategoryFragment();
+                            ((InfographicCategoryFragment) fragment).setBackButton(toolbar.getUpButton());
                             toolbar.setText(getString(R.string.menu_infographic));
                         }
 
