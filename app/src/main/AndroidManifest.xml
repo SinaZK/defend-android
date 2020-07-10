@@ -18,37 +18,60 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activites.MagazineListActivity"></activity>
-        <activity android:name=".activites.InfoSearchActivity" />
-        <activity android:name=".activites.WarfareSearchActivity" />
-        <activity android:name=".activites.EbookSearchActivity" />
-        <activity android:name=".activites.BookSearchActivity" />
-        <activity android:name=".activites.EbookDownloadActivity" />
-        <activity android:name=".activites.IdeaInfoActivity" />
-        <activity android:name=".activites.MyIdeasActivity" />
-        <activity android:name=".activites.NewIdeaSecondActivity" />
-        <activity android:name=".activites.NewIdeaFirstActivity" />
-        <activity android:name=".activites.InfographicDetailActivity" />
-        <activity android:name=".activites.BookBillingActivity" />
-        <activity android:name=".activites.BookDetailActivity" />
-        <activity android:name=".activites.MagazineDetailActivity" />
-        <activity android:name=".activites.EBookDetailActivity" />
-        <activity android:name=".activites.BookCartActivity" />
-        <activity android:name=".activites.WarfareDetailActivity" />
-        <activity android:name=".activites.EventDetailActivity" />
-        <activity android:name=".activites.NewsActivity" />
-        <activity android:name=".activites.SignUpActivity" />
-        <activity android:name=".activites.SplashActivity">
+        <activity android:name=".activites.MagazineListActivity"
+            android:screenOrientation="portrait"> </activity>
+        <activity android:name=".activites.InfoSearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.WarfareSearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.EbookSearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.BookSearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.EbookDownloadActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.IdeaInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.MyIdeasActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.NewIdeaSecondActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.NewIdeaFirstActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.InfographicDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.BookBillingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.BookDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.MagazineDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.EBookDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.BookCartActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.WarfareDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.EventDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.NewsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activites.LoginActivity" />
+        <activity android:name=".activites.LoginActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activites.MainActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <uses-library
