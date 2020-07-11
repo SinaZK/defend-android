@@ -124,10 +124,10 @@ public class HomeFragment extends Fragment {
     private void initRV() {
         ArrayList <HomeItem> items = new ArrayList<>();
         items.add(new HomeItem(getString(R.string.card_news), Constants.MENU_NEWS, R.drawable.ic_launcher_no_image));
-        items.add(new HomeItem(getString(R.string.card_info), Constants.MENU_INFOGRAPHIC, R.drawable.info_new));
+        items.add(new HomeItem(getString(R.string.card_havafaza_mag), Constants.MENU_HAVAFAZA_MAG, R.drawable.my_ideas));
         items.add(new HomeItem(getString(R.string.card_atlas), Constants.MENU_WARFARE, R.drawable.globe_new));
         items.add(new HomeItem(getString(R.string.card_book), Constants.MENU_BOOKS, R.drawable.book));
-        items.add(new HomeItem(getString(R.string.card_havafaza_mag), Constants.MENU_HAVAFAZA_MAG, R.drawable.my_ideas));
+        items.add(new HomeItem(getString(R.string.card_info), Constants.MENU_INFOGRAPHIC, R.drawable.info_new));
         items.add(new HomeItem(getString(R.string.card_magazine), Constants.MENU_MAGAZINES, R.drawable.magazine_color));
         items.add(new HomeItem(getString(R.string.card_ebook), Constants.MENU_EBOOK, R.drawable.ebook));
         items.add(new HomeItem(getString(R.string.card_calendar), Constants.MENU_EVENTS, R.drawable.calendar_512));
