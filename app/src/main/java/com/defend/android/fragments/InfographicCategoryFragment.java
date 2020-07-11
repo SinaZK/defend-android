@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -118,8 +119,10 @@ public class InfographicCategoryFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 setProgress(false);
-                updateInfos(response.optJSONObject("results").optJSONArray("info"));
-                updateInfoCategories(response.optJSONObject("results").optJSONArray("categories"));
+                boolean full = updateInfoCategories(response.optJSONObject("results").optJSONArray("categories"));
+                if (!full) {
+                    updateInfos(response.optJSONObject("results").optJSONArray("info"));
+                }
                 updateRVs();
             }
         }, new Response.ErrorListener() {
@@ -141,12 +144,15 @@ public class InfographicCategoryFragment extends Fragment {
         }
     }
 
-    private void updateInfoCategories(JSONArray array) {
+    private boolean updateInfoCategories(JSONArray array) {
+        info.clear();
         infoCategories.clear();
 
         for(int i = 0;i < array.length();i++) {
             infoCategories.add(new WarfareCategory().updateFromJson(array.optJSONObject(i)));
         }
+
+        return array.length() > 0;
     }
 
     InfoListAdapter infoListAdapter;
@@ -156,9 +162,6 @@ public class InfographicCategoryFragment extends Fragment {
         infoListAdapter.setInfographics(info);
         infoRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
         infoRV.setAdapter(infoListAdapter);
-//        if(infoCategories.size() == 0) {
-//            infoRV.setMaxSize(1000);
-//        }
 
         infoCategoryListAdapter = new WarfareCategoryListAdapter();
         infoCategoryListAdapter.setWarfareCategories(infoCategories);
@@ -171,7 +174,8 @@ public class InfographicCategoryFragment extends Fragment {
                 onCategoryChange();
             }
         });
-        catRV.setLayoutManager(new LinearLayoutManager(MyApp.getInstance()));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        catRV.setLayoutManager(gridLayoutManager);
         catRV.setAdapter(infoCategoryListAdapter);
     }
 

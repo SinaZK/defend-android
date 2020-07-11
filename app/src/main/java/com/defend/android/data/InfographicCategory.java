@@ -5,10 +5,12 @@ import org.json.JSONObject;
 public class InfographicCategory {
     private String name = "";
     private int id = 0;
+    private String imageUrl = "";
 
     public InfographicCategory updateFromJson(JSONObject object) {
         name = object.optString("name");
         id = object.optInt("id");
+        imageUrl = object.optString("image_url");
         return this;
     }
 
@@ -18,5 +20,9 @@ public class InfographicCategory {
 
     public int getId() {
         return id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }
